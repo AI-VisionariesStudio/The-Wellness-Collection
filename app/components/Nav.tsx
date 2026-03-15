@@ -52,6 +52,7 @@ export default function Nav() {
           .nav-mobile-header { display: flex !important; }
           .nav-menu-btn-text { display: none !important; }
           nav { padding: 12px 16px !important; }
+          .nav-mobile-header { position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; }
         }
         @media (min-width: 641px) {
           .nav-mobile-header { display: none !important; }
@@ -69,16 +70,16 @@ export default function Nav() {
           {t[lang].home.tagline}
         </p>
       </Link>
-      {/* Mobile title — centered, takes up space between hamburger */}
+      {/* Mobile title — truly centered using a spacer div on the left matching button width */}
       <Link href="/" className="nav-mobile-header" style={{ flex: 1, flexDirection: 'column', alignItems: 'center', textDecoration: 'none' }}>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 400, color: 'var(--text)', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2, whiteSpace: 'nowrap' }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 400, color: 'var(--text)', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2, whiteSpace: 'nowrap' }}>
           Gracefully Redefined
         </p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 400, color: 'var(--text-muted)', margin: '3px 0 0', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '11px', fontWeight: 400, color: 'var(--text-muted)', margin: '3px 0 0', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
           The Wellness Collection
         </p>
       </Link>
-      <div ref={menuRef} style={{ position: 'relative' }}>
+      <div ref={menuRef} style={{ position: 'relative', flexShrink: 0 }}>
         <button
           onClick={() => setOpen(o => !o)}
           style={{ cursor: 'pointer', padding: '10px 20px', border: '1px solid var(--text)', borderRadius: 'var(--radius)', fontSize: '13px', fontFamily: 'var(--font-body)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', background: 'transparent' }}

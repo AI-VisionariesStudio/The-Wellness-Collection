@@ -82,7 +82,7 @@ export default function Nav() {
       <div ref={menuRef} style={{ position: 'relative', flexShrink: 0 }}>
         <button
           onClick={() => setOpen(o => !o)}
-          style={{ cursor: 'pointer', padding: '10px 20px', border: '1px solid var(--text)', borderRadius: 'var(--radius)', fontSize: '13px', fontFamily: 'var(--font-body)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', background: 'transparent' }}
+          style={{ cursor: 'pointer', padding: '10px 20px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontSize: '13px', fontFamily: 'var(--font-body)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', background: 'transparent' }}
         >
           ☰ Menu
         </button>

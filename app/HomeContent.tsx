@@ -12,14 +12,26 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
   return (
     <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
+      <style>{`
+        @media (min-width: 641px) {
+          .hero-white-space { padding: '120px 40px 0' !important; }
+          .hero-card-outer { padding: 0 !important; }
+          .hero-card-inner { max-width: 100% !important; border-left: none !important; border-right: none !important; border-radius: 0 !important; }
+        }
+        @media (max-width: 640px) {
+          .hero-white-space { padding-top: 72px !important; }
+          .hero-card-outer { padding-left: 56px !important; padding-right: 56px !important; }
+        }
+      `}</style>
+
       {/* ── White space with oval logo ── */}
-      <section style={{ background: '#fff', padding: '72px 40px 0', textAlign: 'center' }}>
+      <section className="hero-white-space" style={{ background: '#fff', padding: '120px 40px 0', textAlign: 'center' }}>
         <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '160px', objectFit: 'contain', position: 'relative', zIndex: 2, display: 'block', margin: '0 auto -80px', mixBlendMode: 'multiply' }} />
       </section>
 
-      {/* ── Hero card (beige, bordered, oval logo overlaps top) ── */}
-      <section style={{ background: '#fff', padding: '0 56px 60px' }}>
-        <div style={{ background: 'var(--cream)', border: '1px solid var(--border)', maxWidth: '860px', margin: '0 auto', padding: '100px 60px 60px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+      {/* ── Hero card (beige, bordered) ── */}
+      <section className="hero-card-outer" style={{ background: '#fff', padding: '0' }}>
+        <div className="hero-card-inner" style={{ background: 'var(--cream)', border: '1px solid var(--border)', maxWidth: '100%', margin: '0', padding: '100px 60px 60px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '18px' }}>
             <div style={{ width: '280px', height: '48px', overflow: 'hidden' }}>
               <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />

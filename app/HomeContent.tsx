@@ -13,12 +13,12 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
     <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
       {/* ── White space with oval logo ── */}
-      <section style={{ background: '#fff', padding: '100px 40px 0', textAlign: 'center' }}>
+      <section style={{ background: '#fff', padding: '72px 40px 0', textAlign: 'center' }}>
         <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '160px', objectFit: 'contain', position: 'relative', zIndex: 2, display: 'block', margin: '0 auto -80px', mixBlendMode: 'multiply' }} />
       </section>
 
       {/* ── Hero card (beige, bordered, oval logo overlaps top) ── */}
-      <section style={{ background: '#fff', padding: '0 32px 60px' }}>
+      <section style={{ background: '#fff', padding: '0 56px 60px' }}>
         <div style={{ background: 'var(--cream)', border: '1px solid var(--border)', maxWidth: '860px', margin: '0 auto', padding: '100px 60px 60px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '18px' }}>
             <div style={{ width: '280px', height: '48px', overflow: 'hidden' }}>

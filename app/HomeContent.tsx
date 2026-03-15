@@ -23,7 +23,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
               <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
             </div>
           </div>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '58px', fontWeight: 300, lineHeight: 1.08, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0' }}>
+          <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '58px', fontWeight: 300, lineHeight: 1.08, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0' }}>
             {T.tagline}
           </h1>
           <div style={{ width: '48px', height: '1px', background: 'var(--border)', margin: '32px auto' }} />

@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String        @id @default(cuid())
+  email           String        @unique
+  name            String
+  password        String
+  role            Role          @default(STUDENT)
+  caseNumber      String?       // court case number
+  courtCounty     String?
+  courtState      String?
+  phone           String?
+  emailVerified      Boolean       @default(false)
+  verificationToken  String?       @unique
+  resetToken         String?       @unique
+  resetTokenExpiry   DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  enrollments      Enrollment[]
+  progress         Progress[]
+  certificates     Certificate[]
+  quizAttempts     QuizAttempt[]
+  reflectionPulses ReflectionPulse[]
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  outcomes    String[]     // learning outcomes, one per entry
+  thumbnail   String?      // URL to cover image
+  duration    Int          // total hours
+  price       Int          // in cents
+  isActive    Boolean      @default(true)
+  isComingSoon Boolean     @default(false)
+  order       Int          @default(0)
+  createdAt   DateTime     @default(now())
+  modules     Module[]
+  enrollments Enrollment[]
+  certificates Certificate[]
+}
+
+model Module {
+  id          String     @id @default(cuid())
+  courseId    String
+  title       String
+  description String?
+  order       Int
+  course      Course     @relation(fields: [courseId], references: [id])
+  lessons     Lesson[]
+}
+
+model Lesson {
+  id           String     @id @default(cuid())
+  moduleId     String
+  title        String
+  description  String?
+  videoUrl     String?    // local path or S3 URL
+  slideUrl     String?    // converted PowerPoint
+  documentUrl  String?    // uploaded document (PDF, PPTX, XLSX, DOC, etc.)
+  documentName String?    // original filename
+  duration     Int        // seconds
+  order        Int
+  isRequired   Boolean    @default(true)
+  module           Module            @relation(fields: [moduleId], references: [id])
+  progress         Progress[]
+  quiz             Quiz?
+  reflectionPulses ReflectionPulse[]
+}
+
+model Quiz {
+  id        String        @id @default(cuid())
+  lessonId  String        @unique
+  lesson    Lesson        @relation(fields: [lessonId], references: [id])
+  questions Question[]
+  attempts  QuizAttempt[]
+}
+
+model Question {
+  id        String   @id @default(cuid())
+  quizId    String
+  text      String
+  options   String[] // JSON array of answer options
+  correct   Int      // index of correct option
+  order     Int
+  quiz      Quiz     @relation(fields: [quizId], references: [id])
+}
+
+model QuizAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  quizId    String
+  score     Int
+  passed    Boolean
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  quiz      Quiz     @relation(fields: [quizId], references: [id])
+}
+
+model Enrollment {
+  id          String    @id @default(cuid())
+  userId      String
+  courseId    String
+  paidAmount  Int       @default(0)
+  stripeId    String?
+  enrolledAt  DateTime  @default(now())
+  completedAt DateTime?
+  user        User      @relation(fields: [userId], references: [id])
+  course      Course    @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
+model Progress {
+  id           String    @id @default(cuid())
+  userId       String
+  lessonId     String
+  watchedSecs  Int       @default(0)
+  completed    Boolean   @default(false)
+  completedAt  DateTime?
+  user         User      @relation(fields: [userId], references: [id])
+  lesson       Lesson    @relation(fields: [lessonId], references: [id])
+
+  @@unique([userId, lessonId])
+}
+
+model Certificate {
+  id           String   @id @default(cuid())
+  userId       String
+  courseId     String
+  serialNumber String   @unique @default(cuid())
+  issuedAt     DateTime @default(now())
+  pdfPath      String
+  user         User     @relation(fields: [userId], references: [id])
+  course       Course   @relation(fields: [courseId], references: [id])
+}
+
+enum ReflectionStage {
+  PRE
+  POST
+}
+
+model ReflectionPulse {
+  id              String          @id @default(cuid())
+  userId          String
+  lessonId        String
+  stage           ReflectionStage
+  engagementScore Int
+  createdAt       DateTime        @default(now())
+  user            User            @relation(fields: [userId], references: [id])
+  lesson          Lesson          @relation(fields: [lessonId], references: [id])
+}

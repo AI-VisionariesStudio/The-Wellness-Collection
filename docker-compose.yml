@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: coparent_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: coparent
+      POSTGRES_PASSWORD: coparent_local_dev
+      POSTGRES_DB: coparent_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: coparent_app
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://coparent:coparent_local_dev@postgres:5432/coparent_platform
+      NEXTAUTH_SECRET: change-this-in-production-use-openssl-rand-base64-32
+      NEXTAUTH_URL: http://localhost:3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./public/uploads:/app/public/uploads
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  postgres_data:

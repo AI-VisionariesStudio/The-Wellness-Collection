@@ -45,7 +45,7 @@ export default function Nav() {
 
   return (
     <nav style={{ background: 'var(--header)', padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100 }}>
-      <style>{`@media (max-width: 640px) { .nav-logo { display: none !important; } }`}</style>
+      <style>{`@media (max-width: 640px) { .nav-logo { display: none !important; } .nav-menu { margin-left: auto; } }`}</style>
       <Link href="/" className="nav-logo">
         <img src="/gr-logo.png" alt="Logo" style={{ height: '100px', width: '100px', objectFit: 'contain' }} />
       </Link>
@@ -57,7 +57,7 @@ export default function Nav() {
           {t[lang].home.tagline}
         </p>
       </Link>
-      <div ref={menuRef} style={{ position: 'relative' }}>
+      <div ref={menuRef} className="nav-menu" style={{ position: 'relative' }}>
         <button
           onClick={() => setOpen(o => !o)}
           style={{ cursor: 'pointer', padding: '10px 20px', border: '1px solid var(--text)', borderRadius: 'var(--radius)', fontSize: '13px', fontFamily: 'var(--font-body)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', background: 'transparent' }}

@@ -13,7 +13,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
     <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
       {/* ── White space with oval logo ── */}
-      <section style={{ background: '#fff', padding: '180px 40px 0', textAlign: 'center' }}>
+      <section style={{ background: '#fff', padding: '100px 40px 0', textAlign: 'center' }}>
         <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '160px', objectFit: 'contain', position: 'relative', zIndex: 2, display: 'block', margin: '0 auto -80px', mixBlendMode: 'multiply' }} />
       </section>
 

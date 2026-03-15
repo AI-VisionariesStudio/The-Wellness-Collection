@@ -13,11 +13,8 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
     <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', padding: '80px 40px 72px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>
+      <section style={{ background: '#fff', padding: '80px 40px 96px', textAlign: 'center' }}>
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
-            <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '160px', objectFit: 'contain' }} />
-          </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '18px' }}>
             <div style={{ width: '320px', height: '54px', overflow: 'hidden' }}>
               <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
@@ -41,9 +38,15 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
         </div>
       </section>
 
-      {/* ── Trust strip ── */}
-      <section style={{ background: 'var(--header)', padding: '20px 40px' }}>
-        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '12px' }}>
+      {/* ── Oval logo bridging white → beige ── */}
+      <div style={{ position: 'relative', background: 'var(--header)', paddingTop: '100px', paddingBottom: '0', textAlign: 'center', borderTop: '1px solid var(--border)' }}>
+        <img
+          src="/GR-LOGO-OVAL.JPG"
+          alt="Gracefully Redefined"
+          style={{ position: 'absolute', top: '-80px', left: '50%', transform: 'translateX(-50%)', height: '160px', objectFit: 'contain', background: '#fff', borderRadius: '50%', padding: '4px' }}
+        />
+        {/* ── Trust strip ── */}
+        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '12px', padding: '0 40px 28px' }}>
           {[T.trust1, T.trust2, T.trust3].map(item => (
             <span key={item} style={{ fontSize: '12px', letterSpacing: '0.08em', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ color: 'var(--text)', fontSize: '14px' }}>&#10003;</span>
@@ -51,7 +54,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
             </span>
           ))}
         </div>
-      </section>
+      </div>
 
       {/* ── Philosophy ── */}
       <section className="reveal" style={{ background: '#fff', padding: '100px 40px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>

@@ -38,11 +38,12 @@ export default function NavMenu() {
             minWidth: '200px', overflow: 'hidden'
           }}>
             {[
-              { label: '🏠 Home', href: '/' },
-              { label: '📋 Dashboard', href: '/dashboard' },
-              { label: '📚 My Courses', href: '/dashboard' },
-              isAdmin ? { label: '⚙️ Admin Panel', href: '/admin' } : null,
-            ].filter(Boolean).map((item: any) => (
+        { label: 'Home', href: '/' },
+        session ? { label: 'Dashboard', href: '/dashboard' } : null,
+        session ? { label: 'My Courses', href: '/dashboard' } : null,
+        isAdmin ? { label: 'Admin Panel', href: '/admin' } : null,
+      ].filter(Boolean).map((item: any) => (
+    
               <Link
                 key={item.href + item.label}
                 href={item.href}

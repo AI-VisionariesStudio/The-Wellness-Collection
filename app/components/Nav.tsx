@@ -45,11 +45,23 @@ export default function Nav() {
 
   return (
     <nav style={{ background: 'var(--header)', padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100 }}>
-      <style>{`@media (max-width: 640px) { .nav-logo { display: none !important; } .nav-menu { margin-left: auto; } }`}</style>
+      <style>{`
+        @media (max-width: 640px) {
+          .nav-logo { display: none !important; }
+          .nav-title-desktop { display: none !important; }
+          .nav-mobile-header { display: flex !important; }
+          .nav-menu-btn-text { display: none !important; }
+          nav { padding: 12px 16px !important; }
+        }
+        @media (min-width: 641px) {
+          .nav-mobile-header { display: none !important; }
+        }
+      `}</style>
       <Link href="/" className="nav-logo">
         <img src="/gr-logo.png" alt="Logo" style={{ height: '100px', width: '100px', objectFit: 'contain' }} />
       </Link>
-      <Link href="/" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>
+      {/* Desktop title */}
+      <Link href="/" className="nav-title-desktop" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>
         <p style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 400, color: 'var(--text)', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2 }}>
           Gracefully Redefined
         </p>
@@ -57,12 +69,21 @@ export default function Nav() {
           {t[lang].home.tagline}
         </p>
       </Link>
-      <div ref={menuRef} className="nav-menu" style={{ position: 'relative' }}>
+      {/* Mobile title — centered, takes up space between hamburger */}
+      <Link href="/" className="nav-mobile-header" style={{ flex: 1, flexDirection: 'column', alignItems: 'center', textDecoration: 'none' }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 400, color: 'var(--text)', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2, whiteSpace: 'nowrap' }}>
+          Gracefully Redefined
+        </p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 400, color: 'var(--text-muted)', margin: '3px 0 0', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+          The Wellness Collection
+        </p>
+      </Link>
+      <div ref={menuRef} style={{ position: 'relative' }}>
         <button
           onClick={() => setOpen(o => !o)}
           style={{ cursor: 'pointer', padding: '10px 20px', border: '1px solid var(--text)', borderRadius: 'var(--radius)', fontSize: '13px', fontFamily: 'var(--font-body)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', background: 'transparent' }}
         >
-          ☰ Menu
+          ☰ <span className="nav-menu-btn-text">Menu</span>
         </button>
         {open && (
           <div style={{ position: 'absolute', right: 0, top: '52px', background: 'var(--cream)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border)', minWidth: '220px', overflow: 'hidden', zIndex: 99 }}>

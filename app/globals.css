@@ -246,6 +246,12 @@ td {
   body { display: none !important; }
 }
 
+/* Mobile fixes */
+@media (max-width: 640px) {
+  html, body { overflow-x: hidden; width: 100%; }
+  main, .course-content, section { max-width: 100% !important; padding-left: 16px !important; padding-right: 16px !important; box-sizing: border-box; }
+}
+
 
 
 /* Prevent screen capture where supported */

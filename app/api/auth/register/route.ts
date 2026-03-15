@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         caseNumber: caseNumber || null,
         courtCounty: courtCounty || null,
         courtState: courtState || null,
-        emailVerified: false,
+        emailVerified: true,
         verificationToken,
       },
     })

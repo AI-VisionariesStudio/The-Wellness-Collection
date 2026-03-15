@@ -12,11 +12,16 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
   return (
     <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
-      {/* ── Hero ── */}
-      <section style={{ background: '#fff', padding: '80px 40px 96px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+      {/* ── White space with oval logo ── */}
+      <section style={{ background: '#fff', padding: '60px 40px 0', textAlign: 'center' }}>
+        <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '160px', objectFit: 'contain', position: 'relative', zIndex: 2, marginBottom: '-80px' }} />
+      </section>
+
+      {/* ── Hero card (beige, bordered, oval logo overlaps top) ── */}
+      <section style={{ background: '#fff', padding: '0 32px 60px' }}>
+        <div style={{ background: 'var(--cream)', border: '1px solid var(--border)', maxWidth: '860px', margin: '0 auto', padding: '100px 60px 60px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '18px' }}>
-            <div style={{ width: '320px', height: '54px', overflow: 'hidden' }}>
+            <div style={{ width: '280px', height: '48px', overflow: 'hidden' }}>
               <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
             </div>
           </div>
@@ -28,25 +33,19 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
             {T.hero}
           </p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/register" className="btn btn-primary" style={{ fontSize: '11px', padding: '15px 40px', letterSpacing: '0.14em', background: 'var(--header)', border: '1px solid var(--border)' }}>
+            <Link href="/register" className="btn btn-primary" style={{ fontSize: '11px', padding: '15px 40px', letterSpacing: '0.14em', background: '#fff', border: '1px solid var(--border)' }}>
               {T.beginJourney}
             </Link>
-            <Link href={coursesHref} className="btn btn-outline" style={{ fontSize: '11px', padding: '15px 40px', letterSpacing: '0.14em', background: 'var(--header)', border: '1px solid var(--border)' }}>
+            <Link href={coursesHref} className="btn btn-outline" style={{ fontSize: '11px', padding: '15px 40px', letterSpacing: '0.14em', background: '#fff', border: '1px solid var(--border)' }}>
               {T.viewCourses}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Oval logo bridging white → beige ── */}
-      <div style={{ position: 'relative', background: 'var(--header)', paddingTop: '100px', paddingBottom: '0', textAlign: 'center', borderTop: '1px solid var(--border)' }}>
-        <img
-          src="/GR-LOGO-OVAL.JPG"
-          alt="Gracefully Redefined"
-          style={{ position: 'absolute', top: '-80px', left: '50%', transform: 'translateX(-50%)', height: '160px', objectFit: 'contain', background: '#fff', borderRadius: '50%', padding: '4px' }}
-        />
-        {/* ── Trust strip ── */}
-        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '12px', padding: '0 40px 28px' }}>
+      {/* ── Trust strip ── */}
+      <section style={{ background: 'var(--header)', padding: '20px 40px', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '12px' }}>
           {[T.trust1, T.trust2, T.trust3].map(item => (
             <span key={item} style={{ fontSize: '12px', letterSpacing: '0.08em', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ color: 'var(--text)', fontSize: '14px' }}>&#10003;</span>
@@ -54,7 +53,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
             </span>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* ── Philosophy ── */}
       <section className="reveal" style={{ background: '#fff', padding: '100px 40px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>

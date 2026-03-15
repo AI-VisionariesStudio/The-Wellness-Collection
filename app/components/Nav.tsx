@@ -59,7 +59,7 @@ export default function Nav() {
         }
       `}</style>
       <Link href="/" className="nav-logo">
-        <img src="/gr-logo.png" alt="Logo" style={{ height: '100px', width: '100px', objectFit: 'contain' }} />
+        <img src="/gr-logo.png" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
       </Link>
       {/* Desktop title */}
       <Link href="/" className="nav-title-desktop" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>

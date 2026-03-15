@@ -2,8 +2,7 @@
 const { withSentryConfig } = require('@sentry/nextjs')
 
 const nextConfig = {
-  output: 'standalone',
-  experimental: {
+    experimental: {
     serverComponentsExternalPackages: ['puppeteer', '@prisma/client'],
     instrumentationHook: true,
   },

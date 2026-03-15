@@ -45,7 +45,8 @@ export default function Nav() {
 
   return (
     <nav style={{ background: 'var(--header)', padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100 }}>
-      <Link href="/">
+      <style>{`@media (max-width: 640px) { .nav-logo { display: none !important; } }`}</style>
+      <Link href="/" className="nav-logo">
         <img src="/gr-logo.png" alt="Logo" style={{ height: '100px', width: '100px', objectFit: 'contain' }} />
       </Link>
       <Link href="/" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>
@@ -72,6 +73,16 @@ export default function Nav() {
             ))}
 
 
+            {session && (
+              <Link href="/dashboard" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--text)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
+                My Dashboard
+              </Link>
+            )}
+            {(session?.user as any)?.role === 'ADMIN' && (
+              <Link href="/admin" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--gold)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
+                Admin Panel
+              </Link>
+            )}
             {session ? (
               <button
                 onClick={() => { setOpen(false); handleLogout() }}

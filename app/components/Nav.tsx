@@ -44,7 +44,7 @@ export default function Nav() {
   ]
 
   return (
-    <nav style={{ background: 'var(--header)', padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100 }}>
+    <nav style={{ background: 'rgba(247, 244, 242, 0.88)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid rgba(224, 216, 208, 0.5)' }}>
       <style>{`
         @media (max-width: 640px) {
           .nav-logo { display: none !important; }

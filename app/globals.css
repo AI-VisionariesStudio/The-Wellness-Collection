@@ -255,6 +255,10 @@ td {
 
 
 
+/* Suppress LastPass browser extension icon injection */
+[data-lastpass-icon-root],
+div[id^="__lpform_"] { display: none !important; }
+
 /* Prevent screen capture where supported */
 .protected-video {
   -webkit-touch-callout: none;

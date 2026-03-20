@@ -9,7 +9,7 @@ export default function Disclaimers() {
   const dir = lang === 'he' ? 'rtl' : 'ltr'
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--cream)', fontFamily: 'var(--font-body)', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
       {/* Header */}
       <section style={{ background: '#fff', padding: '72px 40px 64px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>

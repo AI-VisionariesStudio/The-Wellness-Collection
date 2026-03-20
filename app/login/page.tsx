@@ -40,7 +40,7 @@ function LoginPageContent() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: '#fff', direction: dir }}>
 
       {/* Header band */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
@@ -89,11 +89,11 @@ function LoginPageContent() {
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>{T.labelEmail}</label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required />
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required data-lpignore="true" />
               </div>
               <div className="form-group" style={{ marginBottom: '8px' }}>
                 <label>{T.labelPassword}</label>
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required />
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required data-lpignore="true" />
               </div>
               <div style={{ textAlign: 'right', marginBottom: '28px' }}>
                 <Link href="/forgot-password" style={{ fontSize: '13px', color: 'var(--text-muted)' }}>

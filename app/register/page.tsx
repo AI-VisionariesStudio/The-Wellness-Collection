@@ -40,7 +40,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', background: 'var(--cream)', direction: dir }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', background: '#fff', direction: dir }}>
       <div style={{ width: '100%', maxWidth: '520px' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <Link href="/">
@@ -61,15 +61,15 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>{T.labelName}</label>
-              <input type="text" value={form.name} onChange={set('name')} placeholder={T.placeholderName} required />
+              <input type="text" value={form.name} onChange={set('name')} placeholder={T.placeholderName} required data-lpignore="true" />
             </div>
             <div className="form-group">
               <label>{T.labelEmail}</label>
-              <input type="email" value={form.email} onChange={set('email')} placeholder="you@example.com" required />
+              <input type="email" value={form.email} onChange={set('email')} placeholder="you@example.com" required data-lpignore="true" />
             </div>
             <div className="form-group">
               <label>{T.labelPassword}</label>
-              <input type="password" value={form.password} onChange={set('password')} placeholder={T.placeholderPassword} minLength={8} required />
+              <input type="password" value={form.password} onChange={set('password')} placeholder={T.placeholderPassword} minLength={8} required data-lpignore="true" />
             </div>
 
             <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center' }}>

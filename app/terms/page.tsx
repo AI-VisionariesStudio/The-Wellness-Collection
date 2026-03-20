@@ -26,7 +26,7 @@ export default function TermsOfService() {
   const lastUpdated = 'March 2025'
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', fontFamily: 'var(--font-body)', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
 
       {/* Header */}
       <section style={{ background: 'var(--header)', padding: '72px 40px 64px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>

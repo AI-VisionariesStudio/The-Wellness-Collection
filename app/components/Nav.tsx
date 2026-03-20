@@ -9,10 +9,9 @@ import { t } from '@/lib/translations'
 export default function Nav() {
   const { data: session } = useSession()
   const router = useRouter()
-  const { lang, setLang } = useLanguage()
+  const { lang } = useLanguage()
   const T = t[lang].nav
   const [open, setOpen] = useState(false)
-  const [langOpen, setLangOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -44,7 +43,7 @@ export default function Nav() {
   ]
 
   return (
-    <nav style={{ background: 'rgba(247, 244, 242, 0.88)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid rgba(224, 216, 208, 0.5)' }}>
+    <nav style={{ background: 'rgba(247, 244, 242, 0.88)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid rgba(224, 216, 208, 0.5)' }}>
       <style>{`
         @media (max-width: 640px) {
           .nav-logo { display: none !important; }
@@ -63,10 +62,10 @@ export default function Nav() {
       </Link>
       {/* Desktop title */}
       <Link href="/" className="nav-title-desktop" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 400, color: 'var(--text)', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2 }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 400, color: 'var(--text)', margin: 0, letterSpacing: '0.02em', lineHeight: 1.15 }}>
           Gracefully Redefined
         </p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 400, color: 'var(--text-muted)', margin: '3px 0 0', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 400, color: 'var(--text-muted)', margin: '4px 0 0', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
           {t[lang].home.tagline}
         </p>
       </Link>

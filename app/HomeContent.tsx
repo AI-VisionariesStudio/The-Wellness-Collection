@@ -57,7 +57,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
       </section>
 
       {/* ── Trust strip ── */}
-      <section style={{ background: '#fff', padding: '36px 40px' }}>
+      <section style={{ background: 'var(--blush)', padding: '36px 40px' }}>
         <div className="strip-row" style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '48px', flexWrap: 'wrap' }}>
           {[T.trust1, T.trust2, T.trust3].map(item => (
             <span key={item} style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '10px' }}>

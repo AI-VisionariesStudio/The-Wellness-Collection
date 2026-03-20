@@ -21,7 +21,8 @@ export default withAuth(
         if (
           pathname.startsWith('/admin') ||
           pathname.startsWith('/dashboard') ||
-          pathname.startsWith('/learn')
+          pathname.startsWith('/learn') ||
+          pathname.startsWith('/profile')
         ) {
           return !!token
         }
@@ -35,5 +36,5 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ['/admin/:path*', '/dashboard/:path*', '/learn/:path*'],
+  matcher: ['/admin/:path*', '/dashboard/:path*', '/learn/:path*', '/profile/:path*'],
 }

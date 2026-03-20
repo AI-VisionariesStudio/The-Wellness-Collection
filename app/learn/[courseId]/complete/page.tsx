@@ -26,6 +26,7 @@ export default async function CourseCompletePage({ params }: { params: { courseI
         courseTitle={course.title}
         certificateId={certificate?.id}
         serialNumber={certificate?.serialNumber}
+        pdfPath={certificate?.pdfPath}
       />
     )
   } catch (err: any) {

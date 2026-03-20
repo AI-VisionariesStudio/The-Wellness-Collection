@@ -103,9 +103,14 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                       </div>
                       <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{pct}{T.pctComplete}</p>
                     </div>
-                    <div>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
                       {enrollment.completedAt ? (
-                        <span className="badge badge-success">{T.completed}</span>
+                        <>
+                          <span className="badge badge-success">{T.completed}</span>
+                          <Link href={`/learn/${enrollment.courseId}`} style={{ fontSize: '13px', color: 'var(--text-muted)', textDecoration: 'none' }}>
+                            Review Course →
+                          </Link>
+                        </>
                       ) : (
                         <Link href={`/learn/${enrollment.courseId}`} className="btn btn-primary">
                           {pct === 0 ? T.startCourse : T.continue} →

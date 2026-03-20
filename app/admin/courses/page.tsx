@@ -208,7 +208,7 @@ export default function AdminCoursesPage() {
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                   {saving === course.id && <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Saving...</span>}
                   <Link href={`/admin/courses/${course.id}`} className="btn btn-outline" style={{ padding: '8px 20px', fontSize: '13px' }}>
-                    {course.isComingSoon ? 'Coming Soon' : 'Edit Course →'}
+                    Edit Course →
                   </Link>
                   <button onClick={() => deleteCourse(course.id)} style={{ background: 'none', border: 'none', color: '#c0392b', cursor: 'pointer', fontSize: '13px' }}>
                     Delete

@@ -105,6 +105,30 @@ export default function AdminCourseEditorPage() {
     setCourse((prev: any) => ({ ...prev, modules: [...prev.modules, { ...newModule, lessons: [] }] }))
   }
 
+  async function updateModule(moduleId: string, field: string, value: any) {
+    await fetch(`/api/admin/modules/${moduleId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ [field]: value }),
+    })
+  }
+
+  function handleModuleChange(moduleId: string, field: string, value: any) {
+    setCourse((prev: any) => ({
+      ...prev,
+      modules: prev.modules.map((m: any) => m.id === moduleId ? { ...m, [field]: value } : m),
+    }))
+  }
+
+  async function deleteModule(moduleId: string) {
+    if (!confirm('Delete this module and all its lessons? This cannot be undone.')) return
+    await fetch(`/api/admin/modules/${moduleId}`, { method: 'DELETE' })
+    setCourse((prev: any) => ({
+      ...prev,
+      modules: prev.modules.filter((m: any) => m.id !== moduleId),
+    }))
+  }
+
   if (loading) return <div style={{ padding: '80px', textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: '24px' }}>Loading...</div>
   if (!course) return <div style={{ padding: '80px', textAlign: 'center' }}>Course not found</div>
 
@@ -122,13 +146,25 @@ export default function AdminCourseEditorPage() {
         <div style={{ display: 'grid', gap: '32px' }}>
           {course.modules?.map((module: any, mi: number) => (
             <div key={module.id} className="card" style={{ overflow: 'hidden' }}>
-              <div style={{ padding: '20px 28px', background: 'var(--header)', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 400 }}>
-                  Module {mi + 1}: {module.title}
-                </h3>
-                <button onClick={() => addLesson(module.id)} className="btn btn-outline" style={{ padding: '8px 16px', fontSize: '12px' }}>
-                  + Add Lesson
-                </button>
+              <div style={{ padding: '16px 28px', background: 'var(--header)', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '16px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Module {mi + 1}:</span>
+                  <input
+                    value={module.title}
+                    onChange={e => handleModuleChange(module.id, 'title', e.target.value)}
+                    onFocus={e => (e.target.style.borderBottomColor = 'var(--border)')}
+                    onBlur={e => { updateModule(module.id, 'title', e.target.value); e.target.style.borderBottomColor = 'transparent' }}
+                    style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, border: 'none', background: 'transparent', outline: 'none', flex: 1, color: 'var(--text)', padding: '2px 4px', borderBottom: '1px solid transparent', cursor: 'text' }}
+                  />
+                </div>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <button onClick={() => addLesson(module.id)} className="btn btn-outline" style={{ padding: '8px 16px', fontSize: '12px' }}>
+                    + Add Lesson
+                  </button>
+                  <button onClick={() => deleteModule(module.id)} style={{ background: 'none', border: 'none', color: '#c0392b', cursor: 'pointer', fontSize: '12px' }}>
+                    Delete Module
+                  </button>
+                </div>
               </div>
 
               <div>

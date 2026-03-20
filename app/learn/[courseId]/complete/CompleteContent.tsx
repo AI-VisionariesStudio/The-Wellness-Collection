@@ -8,9 +8,10 @@ type Props = {
   courseTitle: string
   certificateId?: string
   serialNumber?: string
+  pdfPath?: string
 }
 
-export default function CompleteContent({ courseId, courseTitle, certificateId, serialNumber }: Props) {
+export default function CompleteContent({ courseId, courseTitle, certificateId, serialNumber, pdfPath }: Props) {
   const { lang } = useLanguage()
   const T = t[lang].complete
   const dir = lang === 'he' ? 'rtl' : 'ltr'
@@ -35,25 +36,20 @@ export default function CompleteContent({ courseId, courseTitle, certificateId, 
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {certificateId ? (
+            {pdfPath ? (
               <a
-                href={`/api/certificate?id=${certificateId}`}
-                target="_blank"
-                rel="noreferrer"
+                href={pdfPath}
+                download
                 className="btn btn-gold"
                 style={{ justifyContent: 'center' }}
               >
                 {T.downloadCert}
               </a>
-            ) : (
-              <a
-                href={`/api/certificate`}
-                className="btn btn-gold"
-                style={{ justifyContent: 'center' }}
-              >
-                {T.generateCert}
-              </a>
-            )}
+            ) : certificateId ? (
+              <p style={{ fontSize: '13px', color: 'var(--text-muted)', textAlign: 'center' }}>
+                {T.downloadCert} — check your email or your dashboard.
+              </p>
+            ) : null}
             <Link href={`/learn/${courseId}/reflection`} className="btn btn-outline" style={{ justifyContent: 'center' }}>
               {T.reflection}
             </Link>

@@ -99,6 +99,11 @@ export default function Nav() {
                 My Dashboard
               </Link>
             )}
+            {session && (
+              <Link href="/profile" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--text)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
+                My Profile
+              </Link>
+            )}
             {(session?.user as any)?.role === 'ADMIN' && (
               <Link href="/admin" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--gold)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
                 Admin Panel

@@ -51,6 +51,30 @@ export default async function DashboardPage() {
         moduleCount: (c as any)._count?.modules ?? 0,
       }))
 
+    // Compute learning streak from completedAt timestamps
+    const completedDates = user.progress
+      .filter(p => p.completed && p.completedAt)
+      .map(p => new Date(p.completedAt!).toLocaleDateString('en-CA')) // YYYY-MM-DD
+    const uniqueDates = Array.from(new Set(completedDates)).sort().reverse()
+
+    let streak = 0
+    if (uniqueDates.length > 0) {
+      const today = new Date().toLocaleDateString('en-CA')
+      const yesterday = new Date(Date.now() - 86400000).toLocaleDateString('en-CA')
+      if (uniqueDates[0] === today || uniqueDates[0] === yesterday) {
+        streak = 1
+        let prev = new Date(uniqueDates[0])
+        for (let i = 1; i < uniqueDates.length; i++) {
+          const curr = new Date(uniqueDates[i])
+          const diff = Math.round((prev.getTime() - curr.getTime()) / 86400000)
+          if (diff === 1) { streak++; prev = curr }
+          else break
+        }
+      }
+    }
+
+    const totalCompleted = user.progress.filter(p => p.completed).length
+
     return (
       <DashboardContent
         certificates={user.certificates.map(cert => ({
@@ -70,9 +94,11 @@ export default async function DashboardPage() {
             modules: e.course.modules.map(m => ({ lessons: m.lessons.map(l => ({ id: l.id })) })),
           },
         }))}
-        progress={user.progress.map(p => ({ lessonId: p.lessonId, completed: p.completed }))}
+        progress={user.progress.map(p => ({ lessonId: p.lessonId, completed: p.completed, completedAt: p.completedAt?.toISOString() ?? null }))}
         availableCourses={availableCourses}
         enrolledIds={enrolledIds}
+        streak={streak}
+        totalCompleted={totalCompleted}
       />
     )
   } catch (err: any) {

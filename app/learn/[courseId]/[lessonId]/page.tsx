@@ -3,6 +3,7 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import LessonPlayer from './LessonPlayer'
+import JournalDrawer from '@/app/components/JournalDrawer'
 
 function getDocumentViewUrl(docUrl: string): string | null {
   if (!docUrl) return null
@@ -66,18 +67,21 @@ export default async function LessonPage({
       : null
 
     return (
-      <LessonPlayer
-        course={course as any}
-        lesson={lesson as any}
-        allLessons={allLessons as any}
-        completedIds={Array.from(completedIds)}
-        prevLessonId={prevLesson?.id ?? null}
-        nextLessonId={nextLesson?.id ?? null}
-        initialWatchedSecs={currentProgress?.watchedSecs ?? 0}
-        isCompleted={completedIds.has(params.lessonId)}
-        isAdmin={isAdmin}
-        documentViewUrl={documentViewUrl}
-      />
+      <>
+        <LessonPlayer
+          course={course as any}
+          lesson={lesson as any}
+          allLessons={allLessons as any}
+          completedIds={Array.from(completedIds)}
+          prevLessonId={prevLesson?.id ?? null}
+          nextLessonId={nextLesson?.id ?? null}
+          initialWatchedSecs={currentProgress?.watchedSecs ?? 0}
+          isCompleted={completedIds.has(params.lessonId)}
+          isAdmin={isAdmin}
+          documentViewUrl={documentViewUrl}
+        />
+        <JournalDrawer lessonId={params.lessonId} lessonTitle={lesson.title} />
+      </>
     )
   } catch (err: any) {
     if (err?.digest?.startsWith('NEXT_REDIRECT')) throw err

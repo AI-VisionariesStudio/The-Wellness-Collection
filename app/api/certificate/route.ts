@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     const cert = await prisma.certificate.findUnique({
       where: { serialNumber: serial },
       include: {
-        user: { select: { name: true, caseNumber: true, courtCounty: true, courtState: true } },
+        user: { select: { name: true } },
         course: { select: { title: true, duration: true } },
       },
     })
@@ -45,12 +45,9 @@ export async function GET(req: NextRequest) {
       valid: true,
       serialNumber: cert.serialNumber,
       issuedTo: cert.user.name,
-      caseNumber: cert.user.caseNumber,
       course: cert.course.title,
       hours: cert.course.duration,
       issuedAt: cert.issuedAt,
-      county: cert.user.courtCounty,
-      state: cert.user.courtState,
     })
   } catch (err) {
     console.error('[GET /api/certificate]', err)

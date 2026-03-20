@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const { data, error } = await parseBody(req, registerSchema)
     if (error) return error
 
-    const { name, email, password, caseNumber, courtCounty, courtState } = data
+    const { name, email, password } = data
 
     const existing = await prisma.user.findUnique({ where: { email: email.toLowerCase().trim() } })
     if (existing)
@@ -29,9 +29,6 @@ export async function POST(req: NextRequest) {
         name: name.trim(),
         email: email.toLowerCase().trim(),
         password: hashed,
-        caseNumber: caseNumber || null,
-        courtCounty: courtCounty || null,
-        courtState: courtState || null,
         emailVerified: true,
         verificationToken,
       },

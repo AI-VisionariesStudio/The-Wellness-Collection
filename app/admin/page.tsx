@@ -17,7 +17,7 @@ export default async function AdminPage() {
         include: {
           _count: { select: { enrollments: true } },
           enrollments: {
-            include: { user: { select: { id: true, name: true, email: true, caseNumber: true, courtState: true } } },
+            include: { user: { select: { id: true, name: true, email: true } } },
             orderBy: { enrolledAt: 'desc' },
           },
         },
@@ -92,7 +92,7 @@ export default async function AdminPage() {
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                   <tr style={{ background: '#f8f9fa', borderBottom: '1px solid var(--border)' }}>
-                    {['Name', 'Email', 'Case Number', 'State', 'Joined'].map(h => (
+                    {['Name', 'Email', 'Joined'].map(h => (
                       <th key={h} style={{ padding: '14px 20px', textAlign: 'left', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500 }}>{h}</th>
                     ))}
                   </tr>
@@ -102,8 +102,6 @@ export default async function AdminPage() {
                     <tr key={user.id} style={{ borderBottom: '1px solid var(--border)' }}>
                       <td style={{ padding: '16px 20px', fontWeight: 500 }}>{user.name}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{user.email}</td>
-                      <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{user.caseNumber || '—'}</td>
-                      <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{user.courtState || '—'}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{new Date(user.createdAt).toLocaleDateString()}</td>
                     </tr>
                   ))}
@@ -137,7 +135,7 @@ export default async function AdminPage() {
                     <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                       <thead>
                         <tr style={{ background: '#f8f9fa', borderBottom: '1px solid var(--border)' }}>
-                          {['Name', 'Email', 'Case Number', 'State', 'Enrolled'].map(h => (
+                          {['Name', 'Email', 'Enrolled'].map(h => (
                             <th key={h} style={{ padding: '12px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text-muted)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{h}</th>
                           ))}
                         </tr>
@@ -147,8 +145,6 @@ export default async function AdminPage() {
                           <tr key={enr.id} style={{ borderBottom: '1px solid var(--border)' }}>
                             <td style={{ padding: '14px 20px', fontWeight: 500, fontSize: '14px' }}>{enr.user.name}</td>
                             <td style={{ padding: '14px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{enr.user.email}</td>
-                            <td style={{ padding: '14px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{enr.user.caseNumber || '—'}</td>
-                            <td style={{ padding: '14px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{enr.user.courtState || '—'}</td>
                             <td style={{ padding: '14px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{new Date(enr.enrolledAt).toLocaleDateString()}</td>
                           </tr>
                         ))}

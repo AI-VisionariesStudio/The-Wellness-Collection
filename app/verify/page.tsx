@@ -76,8 +76,6 @@ export default function VerifyPage() {
                     { label: T.hoursLabel, value: `${result.hours} ${T.hoursUnit}` },
                     { label: T.dateIssued, value: new Date(result.issuedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' }) },
                     { label: T.serialNumber, value: result.serialNumber },
-                    result.caseNumber && { label: T.caseNumber, value: result.caseNumber },
-                    result.county && { label: T.courtCounty, value: `${result.county} County, ${result.state}` },
                   ].filter(Boolean).map((item: any) => (
                     <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', borderBottom: '1px solid var(--border)' }}>
                       <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{item.label}</span>

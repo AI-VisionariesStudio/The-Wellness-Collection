@@ -13,9 +13,6 @@ model User {
   name              String
   password          String
   role              Role              @default(STUDENT)
-  caseNumber        String?
-  courtCounty       String?
-  courtState        String?
   phone             String?
   emailVerified     Boolean           @default(false)
   verificationToken String?           @unique
@@ -25,6 +22,7 @@ model User {
   updatedAt         DateTime          @updatedAt
   certificates      Certificate[]
   enrollments       Enrollment[]
+  journalEntries    JournalEntry[]
   progress          Progress[]
   quizAttempts      QuizAttempt[]
   reflectionPulses  ReflectionPulse[]
@@ -70,6 +68,7 @@ model Lesson {
   order            Int
   isRequired       Boolean           @default(true)
   module           Module            @relation(fields: [moduleId], references: [id])
+  journalEntries   JournalEntry[]
   progress         Progress[]
   quiz             Quiz?
   reflectionPulses ReflectionPulse[]
@@ -140,6 +139,18 @@ model Certificate {
   pdfPath      String
   course       Course   @relation(fields: [courseId], references: [id])
   user         User     @relation(fields: [userId], references: [id])
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  lessonId  String
+  body      String   @default("")
+  updatedAt DateTime @updatedAt
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, lessonId])
 }
 
 model ReflectionPulse {

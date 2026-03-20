@@ -57,22 +57,6 @@ export default async function ProfilePage() {
                 <div style={{ fontSize: '16px', color: 'var(--text)' }}>{user.email}</div>
               </div>
             </div>
-            {(user.caseNumber || user.courtState) && (
-              <div style={{ display: 'flex', gap: '16px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                {user.caseNumber && (
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>Case Number</div>
-                    <div style={{ fontSize: '16px', color: 'var(--text)' }}>{user.caseNumber}</div>
-                  </div>
-                )}
-                {user.courtState && (
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>State</div>
-                    <div style={{ fontSize: '16px', color: 'var(--text)' }}>{user.courtState}</div>
-                  </div>
-                )}
-              </div>
-            )}
             <div style={{ paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
               <div style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>Member Since</div>
               <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>{new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>

@@ -115,7 +115,7 @@ export const t = {
     register: {
       heading: 'Create your account',
       subtext: 'Begin your wellness journey today',
-      labelName: 'Full Legal Name',
+      labelName: 'Your Name',
       placeholderName: 'Your full name',
       labelEmail: 'Email Address',
       labelPassword: 'Password',
@@ -173,7 +173,7 @@ export const t = {
     // Verify certificate page
     verify: {
       heading: 'Verify a Certificate',
-      subtext: 'For courts, attorneys, and caseworkers. Enter the serial number from the completion certificate to verify its authenticity.',
+      subtext: 'Enter the serial number found on a Gracefully Redefined completion certificate to confirm its authenticity.',
       label: 'Certificate Serial Number',
       placeholder: 'e.g. CPA-1234567890-ABC12345',
       verifying: 'Verifying...',
@@ -183,12 +183,10 @@ export const t = {
       notFoundMsg: 'No certificate found with that serial number. Please double-check the number and try again.',
       issuedTo: 'Issued To',
       courseCompleted: 'Course Completed',
-      hoursLabel: 'Hours of Instruction',
+      hoursLabel: 'Hours of Learning',
       hoursUnit: 'hours',
       dateIssued: 'Date Issued',
       serialNumber: 'Serial Number',
-      caseNumber: 'Case Number',
-      courtCounty: 'Court County',
     },
 
     // Dashboard page
@@ -448,7 +446,7 @@ export const t = {
     register: {
       heading: 'צור את חשבונך',
       subtext: 'התחל את מסע הבריאות שלך היום',
-      labelName: 'שם מלא (כפי שמופיע בתעודה)',
+      labelName: 'שמך המלא',
       placeholderName: 'שמך המלא',
       labelEmail: 'כתובת אימייל',
       labelPassword: 'סיסמה',
@@ -506,7 +504,7 @@ export const t = {
     // Verify certificate page
     verify: {
       heading: 'אמת תעודה',
-      subtext: 'עבור בתי משפט, עורכי דין ועובדים סוציאליים. הכנס את המספר הסידורי מתעודת הסיום כדי לאמת את אמיתותה.',
+      subtext: 'הכנס את המספר הסידורי מתעודת הסיום של Gracefully Redefined כדי לאמת את אמיתותה.',
       label: 'מספר סידורי של התעודה',
       placeholder: 'לדוגמה: CPA-1234567890-ABC12345',
       verifying: 'מאמת...',
@@ -516,12 +514,10 @@ export const t = {
       notFoundMsg: 'לא נמצאה תעודה עם המספר הסידורי הזה. אנא בדוק את המספר ונסה שוב.',
       issuedTo: 'הונפקה ל',
       courseCompleted: 'קורס הושלם',
-      hoursLabel: 'שעות הוראה',
+      hoursLabel: 'שעות למידה',
       hoursUnit: 'שעות',
       dateIssued: 'תאריך הנפקה',
       serialNumber: 'מספר סידורי',
-      caseNumber: 'מספר תיק',
-      courtCounty: 'מחוז בית משפט',
     },
 
     // Dashboard page

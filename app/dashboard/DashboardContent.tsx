@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useLanguage } from '@/app/LanguageContext'
 import { t } from '@/lib/translations'
+import MilestoneCelebration from '@/app/components/MilestoneCelebration'
 
 type Certificate = {
   id: string
@@ -22,7 +23,7 @@ type Enrollment = {
   }
 }
 
-type Progress = { lessonId: string; completed: boolean }
+type Progress = { lessonId: string; completed: boolean; completedAt?: string | null }
 
 type Course = {
   id: string
@@ -40,15 +41,18 @@ type Props = {
   progress: Progress[]
   availableCourses: Course[]
   enrolledIds: string[]
+  streak: number
+  totalCompleted: number
 }
 
-export default function DashboardContent({ certificates, enrollments, progress, availableCourses, enrolledIds }: Props) {
+export default function DashboardContent({ certificates, enrollments, progress, availableCourses, enrolledIds, streak, totalCompleted }: Props) {
   const { lang } = useLanguage()
   const T = t[lang].dashboard
   const dir = lang === 'he' ? 'rtl' : 'ltr'
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)', direction: dir }}>
+      <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
       <main className="course-content" style={{ maxWidth: '1100px', margin: '0 auto', padding: '48px 40px' }}>
 
         {/* Certificates */}
@@ -73,6 +77,39 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                   </a>
                 </div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* Learning Streak */}
+        {streak > 0 && (
+          <section style={{ marginBottom: '40px' }}>
+            <div style={{
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2520 100%)',
+              borderRadius: 'var(--radius-lg, 12px)',
+              padding: '28px 36px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px',
+            }}>
+              <div style={{ textAlign: 'center', flexShrink: 0 }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '52px', fontWeight: 300, color: 'var(--gold, #c8922a)', lineHeight: 1 }}>
+                  {streak}
+                </div>
+                <div style={{ fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
+                  {streak === 1 ? 'Day' : 'Days'}
+                </div>
+              </div>
+              <div style={{ width: '1px', height: '48px', background: 'rgba(255,255,255,0.1)', flexShrink: 0 }} />
+              <div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, color: '#fff', marginBottom: '6px' }}>
+                  {streak === 1 ? 'You\'re on your way.' : streak >= 7 ? 'A week of intentional growth.' : `${streak} days of showing up.`}
+                </div>
+                <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
+                  {streak === 1 ? 'Every journey begins with a single step. Keep going.' : streak >= 7 ? 'Consistency is how understanding becomes transformation.' : 'Small, steady effort is how lasting change is built.'}
+                </div>
+              </div>
+              <div style={{ marginLeft: 'auto', fontSize: '28px', color: 'var(--gold, #c8922a)', flexShrink: 0 }}>✦</div>
             </div>
           </section>
         )}

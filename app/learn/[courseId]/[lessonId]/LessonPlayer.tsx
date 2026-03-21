@@ -9,6 +9,7 @@ interface Lesson {
   id: string
   title: string
   description?: string | null
+  backedResearch?: string | null
   videoUrl?: string | null
   documentUrl?: string | null
   documentName?: string | null

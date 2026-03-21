@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 
 export async function sendVerificationEmail(to: string, name: string, token: string) {
   const resend = new Resend(process.env.RESEND_API_KEY)
-  const FROM = process.env.EMAIL_FROM || 'noreply@gracefullyredefined.com'
+  const FROM = process.env.EMAIL_FROM || 'noreply@gracefullyredefined-thewellnesscollection.com'
   const PLATFORM = process.env.NEXT_PUBLIC_PLATFORM_NAME || 'Gracefully Redefined'
   const BASE_URL = process.env.NEXTAUTH_URL || 'http://localhost:3000'
   const link = `${BASE_URL}/verify-email?token=${token}`
@@ -39,7 +39,7 @@ export async function sendVerificationEmail(to: string, name: string, token: str
 
 export async function sendPasswordResetEmail(to: string, name: string, token: string) {
   const resend = new Resend(process.env.RESEND_API_KEY)
-  const FROM = process.env.EMAIL_FROM || 'noreply@gracefullyredefined.com'
+  const FROM = process.env.EMAIL_FROM || 'noreply@gracefullyredefined-thewellnesscollection.com'
   const PLATFORM = process.env.NEXT_PUBLIC_PLATFORM_NAME || 'Gracefully Redefined'
   const BASE_URL = process.env.NEXTAUTH_URL || 'http://localhost:3000'
   const link = `${BASE_URL}/reset-password?token=${token}`
@@ -76,7 +76,7 @@ export async function sendPasswordResetEmail(to: string, name: string, token: st
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-const FROM = process.env.EMAIL_FROM || 'noreply@gracefullyredefined.com'
+const FROM = process.env.EMAIL_FROM || 'noreply@gracefullyredefined-thewellnesscollection.com'
 const PLATFORM = process.env.NEXT_PUBLIC_PLATFORM_NAME || 'Gracefully Redefined'
 const BASE_URL = process.env.NEXTAUTH_URL || 'http://localhost:3000'
 

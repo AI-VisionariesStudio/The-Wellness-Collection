@@ -17,6 +17,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
         ...(body.videoUrl !== undefined && { videoUrl: body.videoUrl }),
         ...(body.documentUrl !== undefined && { documentUrl: body.documentUrl }),
         ...(body.documentName !== undefined && { documentName: body.documentName }),
+        ...(body.backedResearch !== undefined && { backedResearch: body.backedResearch }),
         ...(body.duration !== undefined && { duration: body.duration }),
         ...(body.order !== undefined && { order: body.order }),
       }

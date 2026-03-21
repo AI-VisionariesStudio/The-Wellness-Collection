@@ -10,12 +10,14 @@ interface Props {
   courseTitle: string
   moduleTitle: string
   lessonTitle: string
+  lessonDescription?: string | null
+  backedResearch?: string | null
 }
 
 const DISCLAIMER =
   'This assistant provides educational information only and is not a substitute for therapy, counseling, or professional mental health support.'
 
-export default function CourseCompanion({ courseTitle, moduleTitle, lessonTitle }: Props) {
+export default function CourseCompanion({ courseTitle, moduleTitle, lessonTitle, lessonDescription, backedResearch }: Props) {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -52,8 +54,10 @@ export default function CourseCompanion({ courseTitle, moduleTitle, lessonTitle 
         body: JSON.stringify({
           message: text,
           lessonTitle,
+          lessonDescription,
           moduleTitle,
           courseTitle,
+          backedResearch,
           conversationHistory: messages,
         }),
       })

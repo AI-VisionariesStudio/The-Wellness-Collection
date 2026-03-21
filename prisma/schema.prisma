@@ -60,6 +60,7 @@ model Lesson {
   moduleId         String
   title            String
   description      String?
+  backedResearch   String?
   videoUrl         String?
   slideUrl         String?
   documentUrl      String?

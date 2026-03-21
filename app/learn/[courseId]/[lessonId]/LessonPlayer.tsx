@@ -429,6 +429,8 @@ export default function LessonPlayer({
         courseTitle={course.title}
         moduleTitle={moduleTitle}
         lessonTitle={lesson.title}
+        lessonDescription={lesson.description}
+        backedResearch={lesson.backedResearch}
       />
     </div>
   )

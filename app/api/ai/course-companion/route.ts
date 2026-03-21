@@ -10,8 +10,10 @@ export async function POST(req: NextRequest) {
   let body: {
     message?: string
     lessonTitle?: string
+    lessonDescription?: string
     moduleTitle?: string
     courseTitle?: string
+    backedResearch?: string
     conversationHistory?: { role: 'user' | 'assistant'; content: string }[]
   }
   try {
@@ -20,11 +22,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
   }
 
-  const { message, lessonTitle, moduleTitle, courseTitle, conversationHistory = [] } = body
+  const { message, lessonTitle, lessonDescription, moduleTitle, courseTitle, backedResearch, conversationHistory = [] } = body
 
   if (!message?.trim()) {
     return NextResponse.json({ error: 'Message is required' }, { status: 400 })
   }
+
+  const moduleContent = [
+    lessonDescription && `Lesson overview: ${lessonDescription}`,
+    backedResearch && `Backed research and key concepts:\n${backedResearch}`,
+  ].filter(Boolean).join('\n\n')
 
   const systemPrompt = `You are an educational assistant for The Wellness Studio, a psychoeducational learning platform operated by a licensed clinician.
 
@@ -33,20 +40,20 @@ Current lesson context:
 - Module: ${moduleTitle ?? 'this module'}
 - Lesson: ${lessonTitle ?? 'this lesson'}
 
-YOUR ROLE: Help learners understand the educational content of this lesson. Discuss concepts, research findings, theoretical frameworks, and material directly related to this course.
+${moduleContent ? `MODULE CONTENT — your sole source of truth for answering questions:\n\n${moduleContent}\n\n` : ''}YOUR ROLE: Help learners understand the content of this specific lesson. Your answers must be grounded exclusively in the lesson overview and backed research provided above.
 
 STRICT BOUNDARIES — NEVER violate these:
-- Only discuss material related to this course, its psychoeducational concepts, research, and frameworks
+- ONLY answer questions using the module content provided above. Do not draw on outside knowledge, other courses, or general information not present in this lesson's content.
+- If a question cannot be answered from the provided module content, say: "That topic isn't covered in this lesson's material. I can only help with questions about what's included in this lesson."
 - Never provide therapy, counseling, diagnosis, or clinical guidance of any kind
 - Never analyze, interpret, or assess a learner's personal mental health situation
 - Never make treatment, medication, or referral recommendations in a clinical capacity
-- Do not engage with topics, questions, or tangents outside this course's educational scope
 
 TONE: Warm, clear, scholarly but accessible. Use plain language while honoring the depth of the material.
 
 DISTRESS PROTOCOL: If a learner expresses personal distress beyond normal reflection — including crisis language, expressions of self-harm, or acute emotional overwhelm — respond with: "I hear that you're going through something difficult. As an educational assistant, I'm not equipped to provide the support you may need right now. Please reach out to a licensed mental health professional or, if you're in crisis, contact the 988 Suicide & Crisis Lifeline by calling or texting 988."
 
-Remember: Your purpose is education, not therapy or support.`
+Remember: Your purpose is education grounded in this lesson's content only — not therapy, not general advice, and not outside knowledge.`
 
   const messages = [
     ...conversationHistory,

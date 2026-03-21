@@ -245,6 +245,17 @@ export default function AdminCourseEditorPage() {
                           style={{ resize: 'vertical' }}
                         />
                       </div>
+                      <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
+                        <label>Backed Research (AI Companion source content)</label>
+                        <textarea
+                          rows={6}
+                          value={lesson.backedResearch || ''}
+                          placeholder="Paste the research, frameworks, citations, and key concepts the AI should draw from when answering questions about this lesson…"
+                          onChange={e => handleLessonChange(lesson.id, module.id, 'backedResearch', e.target.value)}
+                          onBlur={e => updateLesson(lesson.id, module.id, 'backedResearch', e.target.value)}
+                          style={{ resize: 'vertical', fontFamily: 'var(--font-body)', fontSize: '13px' }}
+                        />
+                      </div>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                       <button onClick={() => deleteLesson(lesson.id, module.id)} style={{ background: 'none', border: 'none', color: '#c0392b', cursor: 'pointer', fontSize: '13px' }}>

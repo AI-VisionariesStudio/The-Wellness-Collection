@@ -70,8 +70,8 @@ export default function JournalDrawer({ lessonId, lessonTitle }: Props) {
           position: absolute;
           bottom: 100%;
           right: 32px;
-          background: var(--text, #1a1a1a);
-          color: #fff;
+          background: var(--blush, #e8c4b8);
+          color: var(--text, #1a1a1a);
           border: none;
           padding: 10px 20px 8px;
           border-radius: 8px 8px 0 0;
@@ -85,7 +85,7 @@ export default function JournalDrawer({ lessonId, lessonTitle }: Props) {
           transition: background 0.2s;
           white-space: nowrap;
         }
-        .journal-tab:hover { background: #333; }
+        .journal-tab:hover { background: #ddb0a0; }
         .journal-panel {
           background: #fff;
           border-top: 1px solid var(--border, #e0d8d0);

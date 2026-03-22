@@ -40,7 +40,7 @@ function LoginPageContent() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#fff', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* Header band */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
@@ -76,7 +76,7 @@ function LoginPageContent() {
           </div>
         )}
 
-        <div style={{ background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
+        <div suppressHydrationWarning style={{ background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
 
           {/* Form header accent */}
           <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '18px 40px' }}>
@@ -86,7 +86,7 @@ function LoginPageContent() {
           </div>
 
           <div style={{ padding: '40px' }}>
-            <form onSubmit={handleSubmit}>
+            <form suppressHydrationWarning onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>{T.labelEmail}</label>
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required data-lpignore="true" />

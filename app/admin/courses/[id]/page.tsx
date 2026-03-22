@@ -133,7 +133,7 @@ export default function AdminCourseEditorPage() {
   if (!course) return <div style={{ padding: '80px', textAlign: 'center' }}>Course not found</div>
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', padding: '48px 40px' }}>
+    <div style={{ minHeight: '100vh', background: '#fff', padding: '48px 40px' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         <div style={{ marginBottom: '48px' }}>
           <Link href="/admin/courses" style={{ fontSize: '13px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>← Course Editor</Link>

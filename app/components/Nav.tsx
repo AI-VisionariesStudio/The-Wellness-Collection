@@ -35,7 +35,7 @@ export default function Nav() {
   const menuItems = [
     { label: T.home, href: '/' },
     { label: T.about, href: '/about' },
-    { label: T.courses, href: '/dashboard' },
+    { label: T.courses, href: '/courses' },
     { label: T.resources, href: '/resources' },
     { label: T.workbooks, href: '/workbooks' },
     { label: T.disclaimers, href: '/disclaimers' },

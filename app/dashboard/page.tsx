@@ -33,23 +33,21 @@ export default async function DashboardPage() {
 
     if (!user) redirect('/login')
 
-    const allCourses = await prisma.course.findMany({
+    const coursesRaw = await prisma.course.findMany({
       orderBy: { order: 'asc' },
-      take: 3,
       include: { _count: { select: { modules: true } } },
     })
     const enrolledIds = user.enrollments.map(e => e.courseId)
-    const availableCourses = allCourses
-      .filter(c => !enrolledIds.includes(c.id))
-      .map(c => ({
-        id: c.id,
-        title: c.title,
-        description: c.description ?? '',
-        price: c.price,
-        isComingSoon: c.isComingSoon,
-        thumbnail: (c as any).thumbnail ?? undefined,
-        moduleCount: (c as any)._count?.modules ?? 0,
-      }))
+    const allCourses = coursesRaw.map(c => ({
+      id: c.id,
+      title: c.title,
+      description: c.description ?? '',
+      price: c.price,
+      isComingSoon: c.isComingSoon,
+      thumbnail: (c as any).thumbnail ?? undefined,
+      moduleCount: (c as any)._count?.modules ?? 0,
+    }))
+    const isAdmin = (session.user as any).role === 'ADMIN'
 
     // Compute learning streak from completedAt timestamps
     const completedDates = user.progress
@@ -95,8 +93,9 @@ export default async function DashboardPage() {
           },
         }))}
         progress={user.progress.map(p => ({ lessonId: p.lessonId, completed: p.completed, completedAt: p.completedAt?.toISOString() ?? null }))}
-        availableCourses={availableCourses}
+        allCourses={allCourses}
         enrolledIds={enrolledIds}
+        isAdmin={isAdmin}
         streak={streak}
         totalCompleted={totalCompleted}
       />

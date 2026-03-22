@@ -230,23 +230,26 @@ export default function ResourcesPage() {
         /* ── DECK CONTENT ── */
         <div className="deck-root">
 
-          {/* ── WHITE HERO SECTION ── */}
-          <section style={{ background: '#fff', padding: '120px 40px 100px', textAlign: 'center' }}>
-            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-              <p style={{ fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '28px' }}>
-                The Wellness Collection
-              </p>
-              <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(38px, 5.5vw, 58px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '24px' }}>
-                Affirmation &amp;<br /><em style={{ fontStyle: 'italic', color: 'var(--text-muted)' }}>Grounding Cards</em>
-              </h1>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '18px', marginBottom: '28px' }}>
-                <div style={{ width: '64px', height: '1px', background: 'linear-gradient(to right, transparent, var(--mid))' }} />
-                <div style={{ width: '6px', height: '6px', background: 'var(--mid)', transform: 'rotate(45deg)' }} />
-                <div style={{ width: '64px', height: '1px', background: 'linear-gradient(to left, transparent, var(--mid))' }} />
+          {/* ── HERO SECTION ── */}
+          <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
+            <img
+              src="/GR-LOGO-OVAL.JPG"
+              alt="Gracefully Redefined"
+              style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+            />
+            <div style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+              <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+                <p style={{ fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '28px' }}>
+                  The Wellness Collection
+                </p>
+                <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(38px, 5.5vw, 58px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '24px' }}>
+                  Affirmation &amp;<br /><em style={{ fontStyle: 'italic', color: 'var(--text-muted)' }}>Grounding Cards</em>
+                </h1>
+                <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, maxWidth: '480px', margin: '0 auto' }}>
+                  21 truth-based affirmations rooted in trauma recovery, attachment healing, and nervous system care.
+                </p>
               </div>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, maxWidth: '480px', margin: '0 auto' }}>
-                21 truth-based affirmations rooted in trauma recovery, attachment healing, and nervous system care.
-              </p>
             </div>
           </section>
 

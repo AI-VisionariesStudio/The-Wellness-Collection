@@ -1,0 +1,123 @@
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import Link from 'next/link'
+
+export default async function CoursesPage() {
+  const session = await getServerSession(authOptions).catch(() => null)
+  const userId = (session?.user as any)?.id ?? null
+
+  const courses = await prisma.course.findMany({
+    orderBy: { order: 'asc' },
+    include: { _count: { select: { modules: true } } },
+  })
+
+  const enrolledIds: string[] = userId
+    ? (await prisma.enrollment.findMany({ where: { userId }, select: { courseId: true } })).map(e => e.courseId)
+    : []
+
+  return (
+    <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
+
+      {/* ── Hero ── */}
+      <section style={{ background: '#fff', paddingTop: '70px', textAlign: 'center' }}>
+        <img
+          src="/GR-LOGO-OVAL.JPG"
+          alt="Gracefully Redefined"
+          style={{ height: '180px', objectFit: 'contain', display: 'block', margin: '0 auto -72px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+        />
+        <div style={{ background: 'var(--cream)', padding: '80px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>The Wellness Collection</p>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
+              The Wellness Courses
+            </h1>
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto 16px' }} />
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+              Psychoeducational journeys rooted in trauma recovery, attachment healing, and nervous system care.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Course Grid ── */}
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '36px 40px 80px' }}>
+        {courses.length === 0 ? (
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '16px' }}>Courses coming soon.</p>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '32px' }}>
+            {courses.map(course => {
+              const isEnrolled = enrolledIds.includes(course.id)
+              const moduleCount = (course as any)._count?.modules ?? 0
+
+              return (
+                <div key={course.id} style={{
+                  background: '#fff',
+                  border: '1px solid var(--border)',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  boxShadow: '0 2px 20px rgba(180,160,140,0.10)',
+                }}>
+                  {course.isComingSoon && (
+                    <div style={{ position: 'absolute', top: '18px', right: '18px', background: 'var(--text-muted)', color: '#fff', padding: '4px 14px', borderRadius: '100px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', zIndex: 1 }}>
+                      Coming Soon
+                    </div>
+                  )}
+                  {isEnrolled && (
+                    <div style={{ position: 'absolute', top: '18px', left: '18px', background: 'var(--success)', color: '#fff', padding: '4px 14px', borderRadius: '100px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', zIndex: 1 }}>
+                      Enrolled
+                    </div>
+                  )}
+
+                  {(course as any).thumbnail ? (
+                    <img src={(course as any).thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
+                  ) : (
+                    <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
+                      <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain', mixBlendMode: 'multiply' }} />
+                    </div>
+                  )}
+
+                  <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+                    <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 400, color: 'var(--text)', marginBottom: '6px', lineHeight: 1.2 }}>
+                      {course.title}
+                    </h2>
+                    <div style={{ width: '24px', height: '1px', background: 'var(--border)', margin: '0 auto 10px' }} />
+                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: 1.6, marginBottom: '16px', flex: 1, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' } as React.CSSProperties}>
+                      {course.description}
+                    </p>
+
+                    <div style={{ marginTop: 'auto' }}>
+                      {course.isComingSoon ? (
+                        <button disabled style={{ width: '100%', padding: '8px 0', background: 'var(--border)', color: 'var(--text-muted)', border: '1px solid var(--border)', fontSize: '10px', letterSpacing: '0.12em', cursor: 'not-allowed', opacity: 0.7 }}>
+                          Coming Soon
+                        </button>
+                      ) : (
+                        <>
+                          {!isEnrolled && (
+                            <div style={{ marginBottom: '10px' }}>
+                              <span style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 300, color: 'var(--text)' }}>
+                                ${(course.price / 100).toFixed(0)}
+                              </span>
+                              <span style={{ fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '0.06em', marginLeft: '6px', textTransform: 'uppercase' }}>
+                                {moduleCount} {moduleCount === 1 ? 'module' : 'modules'}
+                              </span>
+                            </div>
+                          )}
+                          <Link href={`/courses/${course.id}`} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center', display: 'flex', fontSize: '10px', letterSpacing: '0.12em', padding: '8px 16px' }}>
+                            {isEnrolled ? 'Continue Course →' : 'View Course →'}
+                          </Link>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </main>
+    </div>
+  )
+}

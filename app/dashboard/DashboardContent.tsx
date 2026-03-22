@@ -39,40 +39,56 @@ type Props = {
   certificates: Certificate[]
   enrollments: Enrollment[]
   progress: Progress[]
-  availableCourses: Course[]
+  allCourses: Course[]
   enrolledIds: string[]
   streak: number
   totalCompleted: number
+  isAdmin: boolean
 }
 
-export default function DashboardContent({ certificates, enrollments, progress, availableCourses, enrolledIds, streak, totalCompleted }: Props) {
+export default function DashboardContent({ certificates, enrollments, progress, allCourses, enrolledIds, streak, totalCompleted, isAdmin }: Props) {
   const { lang } = useLanguage()
   const T = t[lang].dashboard
   const dir = lang === 'he' ? 'rtl' : 'ltr'
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', direction: dir }}>
-      <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
-      <main className="course-content" style={{ maxWidth: '1100px', margin: '0 auto', padding: '48px 40px' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
-        {/* Certificates */}
+      {/* ── Hero ── */}
+      <section style={{ background: '#fff', paddingTop: '70px', textAlign: 'center' }}>
+        <img
+          src="/GR-LOGO-OVAL.JPG"
+          alt="Gracefully Redefined"
+          style={{ height: '180px', objectFit: 'contain', display: 'block', margin: '0 auto -72px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+        />
+        <div style={{ background: 'var(--cream)', padding: '80px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>The Wellness Collection</p>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>Administrative Dashboard</h1>
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto 0' }} />
+          </div>
+        </div>
+      </section>
+
+      <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
+
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '36px 40px 80px' }}>
+
+        {/* ── Certificates ── */}
         {certificates.length > 0 && (
-          <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', color: 'var(--navy)', marginBottom: '24px' }}>
+          <section style={{ marginBottom: '64px' }}>
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '8px', textAlign: 'center' }}>
               {T.certificates}
-            </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
+            </p>
+            <div style={{ width: '32px', height: '1px', background: 'var(--mid)', margin: '0 auto 36px' }} />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
               {certificates.map(cert => (
-                <div key={cert.id} className="card" style={{ padding: '28px', borderLeft: '4px solid var(--gold)' }}>
-                  <div className="badge badge-success" style={{ marginBottom: '12px' }}>{T.completed}</div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--navy)', marginBottom: '8px' }}>{cert.course.title}</h3>
-                  <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '16px' }}>
-                    {T.serial} <strong style={{ color: 'var(--navy)' }}>{cert.serialNumber}</strong>
-                  </p>
-                  <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                    {T.issued} {new Date(cert.issuedAt).toLocaleDateString()}
-                  </p>
-                  <a href={cert.pdfPath} download className="btn btn-gold" style={{ fontSize: '14px', padding: '10px 20px' }}>
+                <div key={cert.id} style={{ background: '#fff', border: '1px solid var(--border)', padding: '28px 32px', borderLeft: '3px solid var(--gold)', boxShadow: '0 2px 12px rgba(180,160,140,0.08)' }}>
+                  <div style={{ fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px', fontWeight: 600 }}>{T.completed}</div>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 400, color: 'var(--text)', marginBottom: '8px' }}>{cert.course.title}</h3>
+                  <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>{T.serial} <strong>{cert.serialNumber}</strong></p>
+                  <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '20px' }}>{T.issued} {new Date(cert.issuedAt).toLocaleDateString()}</p>
+                  <a href={cert.pdfPath} download className="btn btn-outline" style={{ fontSize: '11px', letterSpacing: '0.12em', padding: '9px 20px' }}>
                     {T.downloadCert}
                   </a>
                 </div>
@@ -81,21 +97,18 @@ export default function DashboardContent({ certificates, enrollments, progress, 
           </section>
         )}
 
-        {/* Learning Streak */}
+        {/* ── Learning Streak ── */}
         {streak > 0 && (
-          <section style={{ marginBottom: '40px' }}>
+          <section style={{ marginBottom: '64px' }}>
             <div style={{
               background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2520 100%)',
-              borderRadius: 'var(--radius-lg, 12px)',
               padding: '28px 36px',
               display: 'flex',
               alignItems: 'center',
               gap: '24px',
             }}>
               <div style={{ textAlign: 'center', flexShrink: 0 }}>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '52px', fontWeight: 300, color: 'var(--gold, #c8922a)', lineHeight: 1 }}>
-                  {streak}
-                </div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '52px', fontWeight: 300, color: 'var(--gold, #c8922a)', lineHeight: 1 }}>{streak}</div>
                 <div style={{ fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
                   {streak === 1 ? 'Day' : 'Days'}
                 </div>
@@ -103,7 +116,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
               <div style={{ width: '1px', height: '48px', background: 'rgba(255,255,255,0.1)', flexShrink: 0 }} />
               <div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, color: '#fff', marginBottom: '6px' }}>
-                  {streak === 1 ? 'You\'re on your way.' : streak >= 7 ? 'A week of intentional growth.' : `${streak} days of showing up.`}
+                  {streak === 1 ? "You're on your way." : streak >= 7 ? 'A week of intentional growth.' : `${streak} days of showing up.`}
                 </div>
                 <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
                   {streak === 1 ? 'Every journey begins with a single step. Keep going.' : streak >= 7 ? 'Consistency is how understanding becomes transformation.' : 'Small, steady effort is how lasting change is built.'}
@@ -114,110 +127,104 @@ export default function DashboardContent({ certificates, enrollments, progress, 
           </section>
         )}
 
-        {/* Enrolled Courses */}
-        {enrollments.length > 0 && (
-          <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', color: 'var(--navy)', marginBottom: '24px' }}>
-              {T.yourCourses}
-            </h2>
-            <div style={{ display: 'grid', gap: '20px' }}>
-              {enrollments.map(enrollment => {
-                const allLessons = enrollment.course.modules.flatMap(m => m.lessons)
-                const completedCount = progress.filter(p => allLessons.find(l => l.id === p.lessonId) && p.completed).length
-                const pct = allLessons.length > 0 ? Math.round((completedCount / allLessons.length) * 100) : 0
+        {/* ── All Courses ── */}
+        <section>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '32px' }}>
+            {allCourses.map(course => {
+              const isEnrolled = enrolledIds.includes(course.id)
+              const enrollment = enrollments.find(e => e.courseId === course.id)
+              const allLessons = enrollment ? enrollment.course.modules.flatMap(m => m.lessons) : []
+              const completedCount = allLessons.length > 0
+                ? progress.filter(p => allLessons.find(l => l.id === p.lessonId) && p.completed).length
+                : 0
+              const pct = allLessons.length > 0 ? Math.round((completedCount / allLessons.length) * 100) : 0
 
-                return (
-                  <div key={enrollment.id} className="card" style={{ padding: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '32px' }}>
-                    <div style={{ flex: 1 }}>
-                      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--navy)', marginBottom: '8px' }}>
-                        {enrollment.course.title}
-                      </h3>
-                      <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '16px' }}>
-                        {enrollment.course.duration} {lang === 'he' ? 'שעות' : 'hours'} &nbsp;·&nbsp; {completedCount} {T.of} {allLessons.length} {T.lessonsComplete}
-                      </p>
-                      <div className="progress-bar" style={{ marginBottom: '8px' }}>
-                        <div className="progress-fill" style={{ width: `${pct}%` }} />
-                      </div>
-                      <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{pct}{T.pctComplete}</p>
+              return (
+                <div key={course.id} style={{
+                  background: '#fff',
+                  border: '1px solid var(--border)',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  boxShadow: '0 2px 20px rgba(180,160,140,0.10)',
+                }}>
+                  {course.isComingSoon && (
+                    <div style={{ position: 'absolute', top: '18px', right: '18px', background: 'var(--text-muted)', color: '#fff', padding: '4px 14px', borderRadius: '100px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', zIndex: 1 }}>
+                      {T.comingSoon}
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
-                      {enrollment.completedAt ? (
-                        <>
-                          <span className="badge badge-success">{T.completed}</span>
-                          <Link href={`/learn/${enrollment.courseId}`} style={{ fontSize: '13px', color: 'var(--text-muted)', textDecoration: 'none' }}>
-                            Review Course →
-                          </Link>
-                        </>
+                  )}
+                  {isEnrolled && !course.isComingSoon && (
+                    <div style={{ position: 'absolute', top: '18px', left: '18px', background: 'var(--success)', color: '#fff', padding: '4px 14px', borderRadius: '100px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', zIndex: 1 }}>
+                      Enrolled
+                    </div>
+                  )}
+
+                  {course.thumbnail ? (
+                    <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
+                  ) : (
+                    <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
+                      <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain', mixBlendMode: 'multiply' as const }} />
+                    </div>
+                  )}
+
+                  <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 400, color: 'var(--text)', marginBottom: '6px', lineHeight: 1.2 }}>
+                      {course.title}
+                    </h3>
+                    <div style={{ width: '24px', height: '1px', background: 'var(--border)', margin: '0 auto 10px' }} />
+                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: 1.6, marginBottom: '16px', flex: 1, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' } as React.CSSProperties}>
+                      {course.description}
+                    </p>
+
+                    {/* Progress bar for enrolled */}
+                    {isEnrolled && allLessons.length > 0 && (
+                      <div style={{ marginBottom: '16px' }}>
+                        <div className="progress-bar" style={{ marginBottom: '6px' }}>
+                          <div className="progress-fill" style={{ width: `${pct}%` }} />
+                        </div>
+                        <p style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.06em', margin: 0 }}>{pct}{T.pctComplete}</p>
+                      </div>
+                    )}
+
+                    <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {course.isComingSoon ? (
+                        <button disabled style={{ padding: '8px 0', background: 'var(--border)', color: 'var(--text-muted)', border: '1px solid var(--border)', fontSize: '10px', letterSpacing: '0.12em', cursor: 'not-allowed', opacity: 0.7 }}>
+                          {T.comingSoon}
+                        </button>
                       ) : (
-                        <Link href={`/learn/${enrollment.courseId}`} className="btn btn-primary">
-                          {pct === 0 ? T.startCourse : T.continue} →
-                        </Link>
+                        <>
+                          {!isEnrolled && !isAdmin && (
+                            <div style={{ marginBottom: '2px' }}>
+                              <span style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 300, color: 'var(--text)' }}>
+                                ${(course.price / 100).toFixed(0)}
+                              </span>
+                              <span style={{ fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '0.06em', marginLeft: '6px', textTransform: 'uppercase' }}>
+                                {course.moduleCount ?? ''} {T.modules}
+                              </span>
+                            </div>
+                          )}
+                          {isEnrolled ? (
+                            <Link href={`/learn/${course.id}`} className="btn btn-outline" style={{ justifyContent: 'center', display: 'flex', fontSize: '10px', letterSpacing: '0.12em', padding: '8px 16px' }}>
+                              {enrollment?.completedAt ? 'Review Course →' : (pct === 0 ? T.startCourse : `${T.continue} →`)}
+                            </Link>
+                          ) : (
+                            <Link href={`/courses/${course.id}`} className="btn btn-outline" style={{ justifyContent: 'center', display: 'flex', fontSize: '10px', letterSpacing: '0.12em', padding: '8px 16px' }}>
+                              {T.viewCourse}
+                            </Link>
+                          )}
+                          {isAdmin && (
+                            <Link href={`/admin/courses/${course.id}`} style={{ fontSize: '10px', color: 'var(--gold)', letterSpacing: '0.08em', textAlign: 'center', textDecoration: 'none' }}>
+                              Edit Course →
+                            </Link>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
-                )
-              })}
-            </div>
-          </section>
-        )}
-
-        {/* Available Courses */}
-        <section>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', color: 'var(--navy)', marginBottom: '32px' }}>
-            {enrolledIds.length === 0 ? T.getStarted : T.moreCourses}
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
-            {availableCourses.map(course => (
-              <div key={course.id} style={{
-                background: 'var(--cream)',
-                border: '1px solid var(--border)', overflow: 'hidden',
-                position: 'relative', display: 'flex', flexDirection: 'column',
-                boxShadow: '0 2px 20px rgba(180,160,140,0.10)',
-              }}>
-                {course.isComingSoon && (
-                  <div style={{ position: 'absolute', top: '18px', right: '18px', background: 'var(--text-muted)', color: '#fff', padding: '4px 14px', borderRadius: '100px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', zIndex: 1 }}>
-                    {T.comingSoon}
-                  </div>
-                )}
-                {course.thumbnail ? (
-                  <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
-                ) : (
-                  <div style={{ width: '100%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 0', borderBottom: '1px solid var(--border)' }}>
-                    <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '150px', objectFit: 'contain' }} />
-                  </div>
-                )}
-                <div style={{ padding: '36px 40px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 400, color: 'var(--text)', marginBottom: '10px', lineHeight: 1.2 }}>
-                    {course.title}
-                  </h3>
-                  <div style={{ width: '32px', height: '1px', background: 'var(--border)', margin: '0 auto 16px' }} />
-                  <p style={{ color: 'var(--text-muted)', fontSize: '15px', lineHeight: 1.75, marginBottom: '28px' }}>
-                    {course.description}
-                  </p>
-                  <div style={{ marginTop: 'auto' }}>
-                    {course.isComingSoon ? (
-                      <button disabled className="btn" style={{ width: '100%', justifyContent: 'center', background: 'var(--border)', color: 'var(--text-muted)', border: '1px solid var(--border)', fontSize: '11px', letterSpacing: '0.12em', cursor: 'not-allowed', opacity: 0.7 }}>
-                        {T.comingSoon}
-                      </button>
-                    ) : (
-                      <>
-                        <div style={{ marginBottom: '20px' }}>
-                          <span style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: 300, color: 'var(--text)' }}>
-                            ${(course.price / 100).toFixed(0)}
-                          </span>
-                          <span style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.06em', marginLeft: '10px', textTransform: 'uppercase' }}>
-                            {course.moduleCount ?? ''} {T.modules}
-                          </span>
-                        </div>
-                        <Link href={`/courses/${course.id}`} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center', display: 'flex', fontSize: '11px', letterSpacing: '0.12em' }}>
-                          {T.viewCourse}
-                        </Link>
-                      </>
-                    )}
-                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </section>
 

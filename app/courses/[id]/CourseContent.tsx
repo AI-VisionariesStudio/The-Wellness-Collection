@@ -41,8 +41,25 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
   const dir = lang === 'he' ? 'rtl' : 'ltr'
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--cream)', fontFamily: 'var(--font-body)', direction: dir }}>
-      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '60px 40px 100px' }}>
+    <div suppressHydrationWarning style={{ minHeight: '100vh', background: 'var(--cream)', fontFamily: 'var(--font-body)', direction: dir }}>
+
+      {/* ── Hero ── */}
+      <section style={{ background: '#fff', paddingTop: '80px', textAlign: 'center' }}>
+        <img
+          src="/GR-LOGO-OVAL.JPG"
+          alt="Gracefully Redefined"
+          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+        />
+        <div style={{ background: 'var(--cream)', padding: '72px 60px 48px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '16px' }}>The Wellness Collection</p>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>{course.title}</h1>
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '24px auto 0' }} />
+          </div>
+        </div>
+      </section>
+
+      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '56px 40px 100px' }}>
 
         {isAdmin && (
           <div style={{ marginBottom: '28px', textAlign: 'center' }}>
@@ -52,89 +69,59 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
           </div>
         )}
 
-        {/* ── Course Card ── */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '56px' }}>
-          <div style={{
-            width: '100%', maxWidth: '400px',
-            background: '#fff',
-            border: '1px solid var(--border)',
-            overflow: 'hidden',
-            position: 'relative',
-            boxShadow: '0 2px 20px rgba(180,160,140,0.10)',
-          }}>
-            {course.isComingSoon && (
-              <div style={{ position: 'absolute', top: '18px', right: '18px', background: 'var(--text-muted)', color: '#fff', padding: '4px 14px', borderRadius: '100px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', zIndex: 1 }}>
-                {T.comingSoon}
-              </div>
-            )}
-
-            {course.thumbnail ? (
-              <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
-            ) : (
-              <div style={{ width: '100%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 0', borderBottom: '1px solid var(--border)' }}>
-                <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '150px', objectFit: 'contain' }} />
-              </div>
-            )}
-
-            <div style={{ padding: '36px 40px', textAlign: 'center' }}>
-              <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 400, color: 'var(--text)', marginBottom: '10px', lineHeight: 1.2 }}>
-                {course.title}
-              </h1>
-              <div style={{ width: '32px', height: '1px', background: 'var(--border)', margin: '0 auto 16px' }} />
-              <p style={{ color: 'var(--text-muted)', fontSize: '15px', lineHeight: 1.75, marginBottom: '28px' }}>
-                {course.description}
-              </p>
-
-              {enrollment && (
-                <div style={{ marginBottom: '24px' }}>
-                  <div className="progress-bar" style={{ marginBottom: '8px' }}>
-                    <div className="progress-fill" style={{ width: `${pct}%` }} />
-                  </div>
-                  <p style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.06em' }}>{pct}{T.complete}</p>
+        {/* ── Course Summary Bar ── */}
+        <div style={{ background: '#fff', border: '1px solid var(--border)', padding: '28px 40px', marginBottom: '48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '32px', flexWrap: 'wrap', boxShadow: '0 2px 12px rgba(180,160,140,0.08)' }}>
+          <div style={{ flex: 1, minWidth: '240px' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '15px', lineHeight: 1.7, margin: 0 }}>{course.description}</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
+            {enrollment && (
+              <div style={{ width: '220px' }}>
+                <div className="progress-bar" style={{ marginBottom: '6px' }}>
+                  <div className="progress-fill" style={{ width: `${pct}%` }} />
                 </div>
-              )}
-
-              {!enrollment && !isAdmin && (
-                <div style={{ marginBottom: '20px' }}>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: 300, color: 'var(--text)' }}>
+                <p style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.06em', textAlign: 'right', margin: 0 }}>{pct}{T.complete}</p>
+              </div>
+            )}
+            {!enrollment && !isAdmin && !course.isComingSoon && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '34px', fontWeight: 300, color: 'var(--text)' }}>
                     ${(course.price / 100).toFixed(0)}
                   </span>
-                  <span style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.06em', marginLeft: '10px', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.06em', marginLeft: '8px', textTransform: 'uppercase' }}>
                     {course.modules.length} {T.modules}
                   </span>
                 </div>
-              )}
-
-              {!enrollment && !isAdmin && !course.isComingSoon && isLoggedIn && (
-                <Link href={`/courses/${course.id}/enroll`} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center', display: 'flex', fontSize: '11px', letterSpacing: '0.12em' }}>
-                  {T.enrollNow}
-                </Link>
-              )}
-              {!enrollment && !isAdmin && !course.isComingSoon && !isLoggedIn && (
-                <Link href={`/login?next=/courses/${course.id}`} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center', display: 'flex', fontSize: '11px', letterSpacing: '0.12em' }}>
-                  {T.signInToEnroll}
-                </Link>
-              )}
-              {!enrollment && !isAdmin && course.isComingSoon && (
-                <button disabled className="btn" style={{ width: '100%', justifyContent: 'center', background: 'var(--border)', color: 'var(--text-muted)', border: '1px solid var(--border)', fontSize: '11px', letterSpacing: '0.12em', cursor: 'not-allowed', opacity: 0.7 }}>
-                  {T.notAvailable}
-                </button>
-              )}
-              {enrollment && pct < 100 && (
-                <Link href={`/learn/${course.id}`} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center', display: 'flex', fontSize: '11px', letterSpacing: '0.12em' }}>
-                  {T.continueCourse}
-                </Link>
-              )}
-              {enrollment && pct === 100 && (
-                <p style={{ fontSize: '13px', color: 'var(--success)', letterSpacing: '0.06em', fontWeight: 500 }}>{T.courseComplete}</p>
-              )}
-            </div>
+              </div>
+            )}
+            {course.isComingSoon && !enrollment && (
+              <span style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{T.comingSoon}</span>
+            )}
+            {!enrollment && !isAdmin && !course.isComingSoon && isLoggedIn && (
+              <Link href={`/courses/${course.id}/enroll`} className="btn btn-outline" style={{ fontSize: '11px', letterSpacing: '0.12em', padding: '10px 28px' }}>
+                {T.enrollNow}
+              </Link>
+            )}
+            {!enrollment && !isAdmin && !course.isComingSoon && !isLoggedIn && (
+              <Link href={`/login?next=/courses/${course.id}`} className="btn btn-outline" style={{ fontSize: '11px', letterSpacing: '0.12em', padding: '10px 28px' }}>
+                {T.signInToEnroll}
+              </Link>
+            )}
+            {enrollment && pct < 100 && (
+              <Link href={`/learn/${course.id}`} className="btn btn-outline" style={{ fontSize: '11px', letterSpacing: '0.12em', padding: '10px 28px' }}>
+                {T.continueCourse}
+              </Link>
+            )}
+            {enrollment && pct === 100 && (
+              <p style={{ fontSize: '13px', color: 'var(--success)', letterSpacing: '0.06em', fontWeight: 500, margin: 0 }}>{T.courseComplete}</p>
+            )}
           </div>
         </div>
 
         {/* ── Outcomes ── */}
         {course.outcomes.length > 0 && (
-          <div style={{ maxWidth: '680px', margin: '0 auto 56px' }}>
+          <div style={{ marginBottom: '56px' }}>
             <div style={{ textAlign: 'center', marginBottom: '28px' }}>
               <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>
                 {T.whatYouLearn}
@@ -153,7 +140,7 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
         )}
 
         {/* ── Curriculum ── */}
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+        <div>
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>
               {T.curriculum}

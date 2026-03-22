@@ -62,7 +62,7 @@ export default function AdminCoursesPage() {
   if (loading) return <div style={{ padding: '80px', textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: '24px' }}>Loading...</div>
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', padding: '48px 40px' }}>
+    <div style={{ minHeight: '100vh', background: '#fff', padding: '48px 40px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
         {/* Header */}

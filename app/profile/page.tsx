@@ -31,15 +31,25 @@ export default async function ProfilePage() {
   if (!user) redirect('/login')
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
-      <main style={{ maxWidth: '760px', margin: '0 auto', padding: '64px 40px' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
 
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '42px', fontWeight: 300, color: 'var(--text)', marginBottom: '8px' }}>
-          My Profile
-        </h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '48px' }}>
-          Your account details and course history.
-        </p>
+      {/* ── Hero ── */}
+      <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
+        <img
+          src="/GR-LOGO-OVAL.JPG"
+          alt="Gracefully Redefined"
+          style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+        />
+        <div style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '24px' }}>The Wellness Collection</p>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>My Profile</h1>
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto 0' }} />
+          </div>
+        </div>
+      </section>
+
+      <main style={{ maxWidth: '760px', margin: '0 auto', padding: '64px 40px' }}>
 
         {/* Account Info */}
         <section style={{ marginBottom: '48px' }}>

@@ -34,7 +34,7 @@ export default async function AdminPage() {
     }
 
     return (
-      <div style={{ minHeight: '100vh', background: '#f8f9fa' }}>
+      <div style={{ minHeight: '100vh', background: '#fff' }}>
         <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px' }}>
           {/* Stats */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '48px' }}>
@@ -190,7 +190,7 @@ export default async function AdminPage() {
     if (err?.digest?.startsWith('NEXT_REDIRECT')) throw err
     console.error('[AdminPage]', err)
     return (
-      <div style={{ minHeight: '100vh', background: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ minHeight: '100vh', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="card" style={{ padding: '48px', textAlign: 'center', maxWidth: '460px' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', color: 'var(--text)', marginBottom: '12px' }}>
             Something&apos;s not quite right on our end.

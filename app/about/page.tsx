@@ -9,7 +9,7 @@ export default function AboutPage() {
   const dir = lang === 'he' ? 'rtl' : 'ltr'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#fff', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* Header band */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>

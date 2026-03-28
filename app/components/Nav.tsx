@@ -1,15 +1,18 @@
 'use client'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '@/app/LanguageContext'
 import { t } from '@/lib/translations'
 
 export default function Nav() {
+  const pathname = usePathname()
   const { data: session } = useSession()
   const router = useRouter()
   const { lang } = useLanguage()
+
+  if (pathname === '/coming-soon') return null
   const T = t[lang].nav
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)

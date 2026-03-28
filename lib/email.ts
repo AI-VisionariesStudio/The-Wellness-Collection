@@ -250,6 +250,38 @@ export async function sendWellnessLeadWelcomeEmail(to: string, firstName: string
   })
 }
 
+export async function sendWaitlistWelcomeEmail(to: string, firstName: string) {
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `You're on the list — The Wellness Collection`,
+    html: `
+      <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; color: #1a1a1a;">
+        <div style="background: #D1C8BF; padding: 32px 40px; text-align: center;">
+          <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #7a7065; margin: 0;">The Wellness Collection</p>
+        </div>
+        <div style="padding: 40px;">
+          <h1 style="font-weight: 300; font-size: 32px; margin: 0 0 8px;">You're on the list, ${firstName}.</h1>
+          <p style="color: #c8922a; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 28px;">by Gracefully Redefined</p>
+          <p style="color: #7a7065; line-height: 1.85; margin: 0 0 28px;">
+            Thank you for being here. We're putting the finishing touches on something we believe will truly support you — a psychoeducational platform built for healing, clarity, and moving forward with intention.
+          </p>
+          <p style="color: #7a7065; line-height: 1.85; margin: 0 0 28px;">
+            You'll be the first to know the moment we open the doors. We can't wait to welcome you in.
+          </p>
+          <p style="color: #7a7065; font-size: 13px; font-style: italic; line-height: 1.7; margin: 0;">
+            "Healing isn't linear — but understanding yourself is always the right first step."
+          </p>
+        </div>
+        <div style="background: #F7F4F2; padding: 20px 40px; text-align: center; border-top: 1px solid #EAE2D7;">
+          <p style="font-size: 12px; color: #7a7065; margin: 0 0 4px;">© ${new Date().getFullYear()} Gracefully Redefined · The Wellness Collection</p>
+          <p style="font-size: 11px; color: #aaa; margin: 0;">No spam. Ever. Just a note when we open the doors.</p>
+        </div>
+      </div>
+    `,
+  })
+}
+
 export async function sendRefundEmail(
   to: string,
   name: string,

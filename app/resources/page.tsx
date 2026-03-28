@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import './card-deck.css'
 
 interface CardData {
@@ -124,22 +125,32 @@ const CARDS: CardData[] = [
 ]
 
 export default function ResourcesPage() {
+  const router = useRouter()
   const [unlocked, setUnlocked] = useState(false)
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set())
   const [filter, setFilter] = useState<'all' | 'healing' | 'nervous-system' | 'identity'>('all')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [showError, setShowError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const filteredCards = filter === 'all' ? CARDS : CARDS.filter(c => c.category === filter)
 
-  function unlockDeck() {
+  async function unlockDeck() {
     const nameParts = name.trim().split(/\s+/)
     if (nameParts.length < 2 || !nameParts[1] || !email.trim() || !email.includes('@')) {
       setShowError(true)
       return
     }
     setShowError(false)
+    setLoading(true)
+    // Save lead — non-blocking: unlock regardless of API result
+    fetch('/api/leads/wellness', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+    }).catch(() => {})
+    setLoading(false)
     setUnlocked(true)
   }
 
@@ -212,8 +223,8 @@ export default function ResourcesPage() {
                     Please enter your full name and a valid email to continue.
                   </div>
                 )}
-                <button className="gate-btn" onClick={unlockDeck}>
-                  Unlock My Card Deck →
+                <button className="gate-btn" onClick={unlockDeck} disabled={loading}>
+                  {loading ? 'Unlocking…' : 'Unlock My Card Deck →'}
                 </button>
                 <div className="gate-privacy">
                   Your privacy is sacred here. No spam — ever.<br />
@@ -329,7 +340,7 @@ export default function ResourcesPage() {
               understanding how your earliest relationships shaped who you are —
               and how healing is truly possible.
             </p>
-            <button className="cta-btn">Explore The Relational Blueprint →</button>
+            <button className="cta-btn" onClick={() => router.push('/courses')}>Explore The Relational Blueprint →</button>
           </div>
 
         </div>

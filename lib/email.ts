@@ -169,7 +169,7 @@ export async function sendEnrollmentConfirmationEmail(
           <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #7a7065; margin: 0 0 8px;">${PLATFORM}</p>
         </div>
         <div style="padding: 40px;">
-          <h1 style="font-weight: 300; font-size: 32px; margin: 0 0 16px;">You're enrolled!</h1>
+          <h1 style="font-weight: 300; font-size: 32px; margin: 0 0 16px;">You're enrolled, ${name}!</h1>
           <p style="color: #7a7065; line-height: 1.7; margin: 0 0 16px;">
             Welcome to <strong style="color: #1a1a1a;">${courseTitle}</strong>. You can start learning right away at your own pace.
           </p>
@@ -211,6 +211,39 @@ export async function sendPaymentFailedEmail(to: string, name: string, courseTit
         </div>
         <div style="background: #F7F4F2; padding: 20px 40px; text-align: center; border-top: 1px solid #EAE2D7;">
           <p style="font-size: 12px; color: #7a7065; margin: 0;">© ${new Date().getFullYear()} ${PLATFORM}</p>
+        </div>
+      </div>
+    `,
+  })
+}
+
+export async function sendWellnessLeadWelcomeEmail(to: string, firstName: string) {
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `Your Healing Cards are ready — The Wellness Collection`,
+    html: `
+      <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; color: #1a1a1a;">
+        <div style="background: #D1C8BF; padding: 32px 40px; text-align: center;">
+          <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #7a7065; margin: 0;">The Wellness Collection</p>
+        </div>
+        <div style="padding: 40px;">
+          <h1 style="font-weight: 300; font-size: 32px; margin: 0 0 8px;">Your cards are waiting, ${firstName}.</h1>
+          <p style="color: #c8922a; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 28px;">Affirmation &amp; Grounding Cards</p>
+          <p style="color: #7a7065; line-height: 1.85; margin: 0 0 28px;">
+            We're so glad you're here. Your free deck of 21 truth-based affirmation and grounding cards — rooted in trauma recovery, attachment healing, and nervous system care — is now unlocked and waiting for you.
+          </p>
+          <a href="${BASE_URL}/resources" style="display: inline-block; background: #EDE0DC; color: #1a1a1a; padding: 14px 32px; text-decoration: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #D1C8BF;">
+            Open My Card Deck →
+          </a>
+          <p style="color: #7a7065; font-size: 13px; margin-top: 36px; line-height: 1.7;">
+            When you're ready to go deeper, explore our full psychoeducational courses — designed to help you understand your patterns, heal your relationships, and move forward with clarity.
+          </p>
+          <a href="${BASE_URL}/courses" style="font-size: 13px; color: #7a7065; letter-spacing: 0.04em;">Explore the courses →</a>
+        </div>
+        <div style="background: #F7F4F2; padding: 20px 40px; text-align: center; border-top: 1px solid #EAE2D7;">
+          <p style="font-size: 12px; color: #7a7065; margin: 0 0 4px;">© ${new Date().getFullYear()} ${PLATFORM}</p>
+          <p style="font-size: 11px; color: #aaa; margin: 0;">You're receiving this because you requested free resources. No spam — ever.</p>
         </div>
       </div>
     `,

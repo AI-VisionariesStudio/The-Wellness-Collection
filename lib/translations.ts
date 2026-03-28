@@ -58,7 +58,7 @@ export const t = {
     // About page
     about: {
       title: 'About',
-      body: 'Content coming soon.',
+      body: 'Gracefully Redefined was built for people navigating one of life\'s most complex passages — separation, co-parenting, and the quiet but urgent work of healing what came before. Our psychoeducational courses are grounded in attachment theory, trauma-informed care, and nervous system science, designed not to tell you what to do, but to help you understand why you feel, react, and relate the way you do. We believe that insight is the beginning of change — and that every person, regardless of where they are in their story, deserves access to knowledge that genuinely helps.',
     },
 
     // Resources page
@@ -70,7 +70,7 @@ export const t = {
     // Workbooks page
     workbooks: {
       title: 'Workbooks',
-      body: 'Content coming soon.',
+      body: 'Printable companion workbooks for each course are on the way. These guided tools will let you carry your learning beyond the screen — with reflection prompts, frameworks, and exercises designed to help you integrate what you\'re discovering about yourself.',
     },
 
     // Contact page
@@ -389,7 +389,7 @@ export const t = {
     // About page
     about: {
       title: 'אודות',
-      body: 'תוכן בקרוב.',
+      body: 'גרייספולי רידיפיינד נבנתה עבור אנשים המנווטים באחד ממסעות החיים המורכבים ביותר — פרידה, הורות משותפת, והעבודה השקטה אך הדחופה של ריפוי מה שהיה לפני כן. הקורסים הפסיכוחינוכיים שלנו מושרשים בתיאוריית ההתקשרות, טיפול מודע לטראומה ומדע מערכת העצבים, ומיועדים לא לומר לך מה לעשות, אלא לעזור לך להבין מדוע אתה מרגיש, מגיב ומתייחס כפי שאתה עושה.',
     },
 
     // Resources page
@@ -401,7 +401,7 @@ export const t = {
     // Workbooks page
     workbooks: {
       title: 'חוברות עבודה',
-      body: 'תוכן בקרוב.',
+      body: 'חוברות עבודה להדפסה לכל קורס בדרך. כלים מודרכים אלה יאפשרו לך לשאת את הלמידה מעבר למסך — עם שאלות לרפלקציה, מסגרות ותרגילים שיעזרו לך לשלב את מה שאתה מגלה על עצמך.',
     },
 
     // Contact page

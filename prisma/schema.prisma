@@ -165,6 +165,13 @@ model ReflectionPulse {
   user            User            @relation(fields: [userId], references: [id])
 }
 
+model WellnessLead {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now())
+}
+
 enum Role {
   STUDENT
   ADMIN

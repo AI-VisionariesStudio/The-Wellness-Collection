@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
+import { audit } from '@/lib/audit'
 
 // GET /api/admin/enrollments?courseId=xxx  — list enrollments for a course
 export async function GET(req: Request) {
@@ -55,6 +56,7 @@ export async function POST(req: Request) {
       data: { userId, courseId, paidAmount: 0 },
       include: { user: { select: { name: true, email: true } }, course: { select: { title: true } } },
     })
+    audit('admin.enrollment.grant', { userId: (session.user as any).id, metadata: { targetUserId: userId, courseId } })
     return NextResponse.json(enrollment)
   } catch (err) {
     console.error('[POST /api/admin/enrollments]', err)
@@ -76,6 +78,7 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ error: 'userId and courseId are required.' }, { status: 400 })
 
     await prisma.enrollment.delete({ where: { userId_courseId: { userId, courseId } } })
+    audit('admin.enrollment.revoke', { userId: (session.user as any).id, metadata: { targetUserId: userId, courseId } })
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('[DELETE /api/admin/enrollments]', err)

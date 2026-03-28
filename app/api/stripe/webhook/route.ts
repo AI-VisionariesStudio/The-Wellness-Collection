@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { prisma } from '@/lib/prisma'
 import { sendEnrollmentConfirmationEmail, sendPaymentFailedEmail, sendRefundEmail } from '@/lib/email'
+import { audit } from '@/lib/audit'
 
 export async function POST(req: NextRequest) {
   const body = await req.text()
@@ -46,6 +47,8 @@ export async function POST(req: NextRequest) {
             },
           })
 
+          audit('payment.enrollment_created', { userId, metadata: { courseId, paidAmount, stripeId: session.payment_intent ?? session.id } })
+
           const [user, course] = await Promise.all([
             prisma.user.findUnique({ where: { id: userId } }),
             prisma.course.findUnique({ where: { id: courseId } }),
@@ -68,6 +71,7 @@ export async function POST(req: NextRequest) {
           include: { user: true, course: true },
         })
         if (enrollment) {
+          audit('payment.failed', { userId: enrollment.userId, metadata: { courseId: enrollment.courseId, stripeId: pi.id } })
           await sendPaymentFailedEmail(enrollment.user.email, enrollment.user.name, enrollment.course.title)
         }
       } catch (err) {
@@ -88,6 +92,7 @@ export async function POST(req: NextRequest) {
             include: { user: true, course: true },
           })
           if (enrollment) {
+            audit('payment.refunded', { userId: enrollment.userId, metadata: { courseId: enrollment.courseId, refundAmount, stripeId: paymentIntentId } })
             await sendRefundEmail(
               enrollment.user.email,
               enrollment.user.name,

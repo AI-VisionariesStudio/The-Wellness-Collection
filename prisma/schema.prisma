@@ -172,6 +172,19 @@ model WellnessLead {
   createdAt DateTime @default(now())
 }
 
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  userId    String?
+  ip        String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
 enum Role {
   STUDENT
   ADMIN

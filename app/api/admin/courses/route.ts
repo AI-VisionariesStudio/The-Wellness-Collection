@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
+import { audit } from '@/lib/audit'
 
 export async function GET() {
   try {
@@ -39,6 +40,7 @@ export async function POST(req: Request) {
         isComingSoon: body.isComingSoon ?? false,
       }
     })
+    audit('admin.course.create', { userId: (session.user as any).id, metadata: { courseId: course.id, title: course.title } })
     return NextResponse.json(course)
   } catch (err) {
     console.error('[POST /api/admin/courses]', err)

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { parseBody, resetPasswordSchema } from '@/lib/validate'
+import { audit } from '@/lib/audit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,6 +27,7 @@ export async function POST(req: NextRequest) {
       data: { password: hashed, resetToken: null, resetTokenExpiry: null },
     })
 
+    audit('user.password_reset_complete', { userId: user.id })
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('[POST /api/auth/reset-password]', err)

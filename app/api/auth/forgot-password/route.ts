@@ -5,6 +5,7 @@ import crypto from 'crypto'
 import { sendPasswordResetEmail } from '@/lib/email'
 import { checkRateLimit } from '@/lib/ratelimit'
 import { parseBody, forgotPasswordSchema } from '@/lib/validate'
+import { audit, getIp } from '@/lib/audit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,6 +33,7 @@ export async function POST(req: NextRequest) {
       console.error('Password reset email failed:', err)
     )
 
+    audit('user.password_reset_request', { userId: user.id, ip: getIp(req) })
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('[POST /api/auth/forgot-password]', err)

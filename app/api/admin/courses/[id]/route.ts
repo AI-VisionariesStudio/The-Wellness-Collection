@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
+import { audit } from '@/lib/audit'
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
   try {
@@ -44,6 +45,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
         ...(body.order !== undefined && { order: body.order }),
       }
     })
+    audit('admin.course.update', { userId: (session.user as any).id, metadata: { courseId: params.id } })
     return NextResponse.json(course)
   } catch (err) {
     console.error('[PATCH /api/admin/courses/[id]]', err)
@@ -62,6 +64,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     await prisma.enrollment.deleteMany({ where: { courseId: params.id } })
     await prisma.certificate.deleteMany({ where: { courseId: params.id } })
     await prisma.course.delete({ where: { id: params.id } })
+    audit('admin.course.delete', { userId: (session.user as any).id, metadata: { courseId: params.id } })
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('[DELETE /api/admin/courses/[id]]', err)

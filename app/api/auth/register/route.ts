@@ -6,6 +6,7 @@ import crypto from 'crypto'
 import { sendVerificationEmail } from '@/lib/email'
 import { checkRateLimit } from '@/lib/ratelimit'
 import { parseBody, registerSchema } from '@/lib/validate'
+import { audit, getIp } from '@/lib/audit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -39,6 +40,7 @@ export async function POST(req: NextRequest) {
       console.error('Verification email failed:', err)
     )
 
+    audit('user.register', { userId: user.id, ip: getIp(req), metadata: { email: user.email } })
     return NextResponse.json({ success: true, userId: user.id })
   } catch (err) {
     console.error('[POST /api/auth/register]', err)

@@ -346,14 +346,18 @@ export default function LessonPlayer({
                     onDismiss={() => setShowPrePulse(false)}
                   />
                 )}
-                <div style={{
-                  position: 'relative',
-                  paddingTop: '56.25%',
-                  border: '1px solid var(--border)',
-                  borderRadius: showPrePulse ? '0 0 var(--radius-lg) var(--radius-lg)' : 'var(--radius-lg)',
-                  overflow: 'hidden',
-                  boxShadow: '0 4px 24px rgba(180,160,140,0.12)',
-                }}>
+                <div
+                  onContextMenu={(e) => e.preventDefault()}
+                  style={{
+                    position: 'relative',
+                    paddingTop: '56.25%',
+                    border: '1px solid var(--border)',
+                    borderRadius: showPrePulse ? '0 0 var(--radius-lg) var(--radius-lg)' : 'var(--radius-lg)',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 24px rgba(180,160,140,0.12)',
+                    userSelect: 'none',
+                  }}
+                >
                   <iframe
                     ref={iframeRef}
                     src={embedUrl}

@@ -10,7 +10,7 @@ export default async function AdminPage() {
   if (!session?.user || (session.user as any).role !== 'ADMIN') redirect('/dashboard')
 
   try {
-    const [users, courses, certificates, enrollments] = await Promise.all([
+    const [users, courses, certificates, enrollments, auditLogs] = await Promise.all([
       prisma.user.findMany({ where: { role: 'STUDENT' }, orderBy: { createdAt: 'desc' } }),
       prisma.course.findMany({
         orderBy: { order: 'asc' },
@@ -24,6 +24,7 @@ export default async function AdminPage() {
       }),
       prisma.certificate.findMany({ include: { user: true, course: true }, orderBy: { issuedAt: 'desc' }, take: 20 }),
       prisma.enrollment.findMany({ include: { user: true, course: true }, orderBy: { enrolledAt: 'desc' }, take: 20 }),
+      prisma.auditLog.findMany({ orderBy: { createdAt: 'desc' }, take: 50 }),
     ])
 
     const stats = {
@@ -153,6 +154,40 @@ export default async function AdminPage() {
                   )}
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Audit Log */}
+          <section style={{ marginBottom: '48px' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Audit Log <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— last 50 events</span></h2>
+            <div className="card" style={{ overflow: 'hidden' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ background: '#f8f9fa', borderBottom: '1px solid var(--border)' }}>
+                    {['Time', 'Action', 'User ID', 'IP', 'Details'].map(h => (
+                      <th key={h} style={{ padding: '14px 20px', textAlign: 'left', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500 }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {auditLogs.map(log => (
+                    <tr key={log.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                      <td style={{ padding: '12px 20px', color: 'var(--text-muted)', fontSize: '12px', whiteSpace: 'nowrap' }}>{new Date(log.createdAt).toLocaleString()}</td>
+                      <td style={{ padding: '12px 20px' }}>
+                        <code style={{ fontSize: '12px', background: '#f0f0f0', padding: '3px 7px', borderRadius: '4px' }}>{log.action}</code>
+                      </td>
+                      <td style={{ padding: '12px 20px', color: 'var(--text-muted)', fontSize: '12px', fontFamily: 'monospace' }}>{log.userId ?? '—'}</td>
+                      <td style={{ padding: '12px 20px', color: 'var(--text-muted)', fontSize: '12px' }}>{log.ip ?? '—'}</td>
+                      <td style={{ padding: '12px 20px', color: 'var(--text-muted)', fontSize: '12px', maxWidth: '260px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {log.metadata ? JSON.stringify(log.metadata) : '—'}
+                      </td>
+                    </tr>
+                  ))}
+                  {auditLogs.length === 0 && (
+                    <tr><td colSpan={5} style={{ padding: '20px', color: 'var(--text-muted)', textAlign: 'center' }}>No audit events yet.</td></tr>
+                  )}
+                </tbody>
+              </table>
             </div>
           </section>
 

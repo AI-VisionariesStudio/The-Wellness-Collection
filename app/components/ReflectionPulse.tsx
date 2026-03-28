@@ -149,16 +149,20 @@ function PreStrip({ lessonId, lessonTitle, moduleTitle, onDismiss }: Omit<Props,
           justifyContent: 'space-between',
           gap: '16px',
         }}>
-          <p style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '13px',
-            color: 'var(--text-muted)',
-            lineHeight: 1.6,
-            margin: 0,
-            flex: 1,
-          }}>
-            {aiText}
-          </p>
+          <div style={{ flex: 1 }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '13px',
+              color: 'var(--text-muted)',
+              lineHeight: 1.6,
+              margin: '0 0 6px',
+            }}>
+              {aiText}
+            </p>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0, opacity: 0.7 }}>
+              {DISCLAIMER}
+            </p>
+          </div>
           <button
             onClick={onDismiss}
             className="btn btn-outline"

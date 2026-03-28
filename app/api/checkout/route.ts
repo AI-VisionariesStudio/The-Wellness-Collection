@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma'
 import { stripe } from '@/lib/stripe'
 import { checkRateLimit } from '@/lib/ratelimit'
 import { parseBody, checkoutSchema } from '@/lib/validate'
+import { audit, getIp } from '@/lib/audit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -58,6 +59,7 @@ export async function POST(req: NextRequest) {
       cancel_url: `${baseUrl}/courses/${courseId}`,
     })
 
+    audit('checkout.initiated', { userId, ip: getIp(req), metadata: { courseId, courseTitle: course.title } })
     return NextResponse.json({ url: checkoutSession.url })
   } catch (err) {
     console.error('[POST /api/checkout]', err)

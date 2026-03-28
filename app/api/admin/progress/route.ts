@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { audit } from '@/lib/audit'
 
 // DELETE /api/admin/progress — reset a lesson's completion status
 export async function DELETE(req: NextRequest) {
@@ -20,6 +21,7 @@ export async function DELETE(req: NextRequest) {
       where: { userId, lessonId },
     })
 
+    audit('admin.progress.reset', { userId: (session.user as any).id, metadata: { targetUserId: userId, lessonId } })
     return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('[DELETE /api/admin/progress]', err)

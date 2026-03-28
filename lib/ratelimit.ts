@@ -28,10 +28,12 @@ type LimitConfig = {
 }
 
 const configs: Record<string, LimitConfig> = {
-  register:        { limit: 5,  window: 600 }, // 5 per 10 min
-  'forgot-password': { limit: 3,  window: 600 }, // 3 per 10 min
-  checkout:        { limit: 10, window: 60  }, // 10 per min
-  contact:         { limit: 3,  window: 600 }, // 3 per 10 min
+  register:           { limit: 5,  window: 600 }, // 5 per 10 min
+  'forgot-password':  { limit: 3,  window: 600 }, // 3 per 10 min
+  checkout:           { limit: 10, window: 60  }, // 10 per min
+  contact:            { limit: 3,  window: 600 }, // 3 per 10 min
+  'ai-companion':     { limit: 20, window: 60  }, // 20 per min
+  'ai-reflection':    { limit: 10, window: 60  }, // 10 per min
 }
 
 function getIp(req: NextRequest): string {

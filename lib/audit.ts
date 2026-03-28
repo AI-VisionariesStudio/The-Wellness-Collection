@@ -22,7 +22,7 @@ export function audit(
         action,
         userId: options?.userId ?? null,
         ip: options?.ip ?? null,
-        metadata: options?.metadata ?? undefined,
+        metadata: options?.metadata ? JSON.parse(JSON.stringify(options.metadata)) : undefined,
       },
     })
     .catch(err => console.error('[audit]', action, err))

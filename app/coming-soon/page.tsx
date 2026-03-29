@@ -184,16 +184,9 @@ export default function ComingSoonPage() {
       {/* ── Trust strip ── */}
       <section style={{ background: 'var(--blush)', padding: '32px 40px' }}>
         <div className="cs-strips" style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '48px', flexWrap: 'wrap' }}>
-          {[
-            'Attachment-informed',
-            'Trauma-aware',
-            'Nervous system grounded',
-          ].map(item => (
-            <span key={item} style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ display: 'inline-block', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--mid)', flexShrink: 0 }} />
-              {item}
-            </span>
-          ))}
+          <span style={{ fontSize: '14px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+            The Wellness Collection
+          </span>
         </div>
       </section>
 

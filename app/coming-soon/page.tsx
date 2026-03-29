@@ -26,17 +26,50 @@ export default function ComingSoonPage() {
     <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)' }}>
       <style>{`
         @media (max-width: 640px) {
-          .cs-logo { height: 130px !important; margin-bottom: -55px !important; }
-          .cs-body { padding: 72px 28px 64px !important; }
-          .cs-title { font-size: 38px !important; }
-          .cs-form { flex-direction: column !important; }
-          .cs-form input { width: 100% !important; }
-          .cs-strips { flex-direction: column !important; gap: 20px !important; }
+          .cs-logo {
+            height: 120px !important;
+            margin-bottom: -50px !important;
+          }
+          .cs-body {
+            padding: 68px 24px 52px !important;
+          }
+          .cs-title {
+            font-size: clamp(22px, 7vw, 40px) !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+          }
+          .cs-wordmark {
+            width: 200px !important;
+          }
+          .cs-form {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .cs-form input {
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .cs-form button {
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .cs-strips {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+            padding: 0 !important;
+          }
+          .cs-success {
+            padding: 24px 20px !important;
+          }
         }
       `}</style>
 
+      {/* ── Above-fold wrapper: hero + trust strip fill exactly the viewport ── */}
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
+      <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center', flex: 1 }}>
         <img
           src="/GR-LOGO-OVAL.JPG"
           alt="Gracefully Redefined"
@@ -48,7 +81,7 @@ export default function ComingSoonPage() {
 
             {/* Wordmark */}
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-              <div style={{ width: '240px', height: '40px', overflow: 'hidden' }}>
+              <div className="cs-wordmark" style={{ width: '240px', height: '40px', overflow: 'hidden' }}>
                 <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
               </div>
             </div>
@@ -59,20 +92,16 @@ export default function ComingSoonPage() {
 
             <h1
               className="cs-title"
-              style={{ fontFamily: 'var(--font-display)', fontSize: '54px', fontWeight: 300, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0' }}
+              style={{ fontFamily: 'var(--font-display)', fontSize: '54px', fontWeight: 300, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0', whiteSpace: 'nowrap' as const }}
             >
-              Something beautiful<br />is coming.
+              Something beautiful is coming.
             </h1>
 
             <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto' }} />
 
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '52px' }}>
-              A psychoeducational platform for healing, clarity,<br />and moving forward with intention.
-            </p>
-
             {/* Email capture */}
             {status === 'done' ? (
-              <div style={{ background: 'var(--blush)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: '28px 36px' }}>
+              <div className="cs-success" style={{ background: 'var(--blush)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: '28px 36px' }}>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, color: 'var(--text)', margin: '0 0 8px' }}>
                   You're on the list.
                 </p>
@@ -167,6 +196,8 @@ export default function ComingSoonPage() {
           ))}
         </div>
       </section>
+
+      </div>{/* ── end above-fold wrapper ── */}
 
       {/* ── Quote ── */}
       <section style={{ background: '#fff', padding: '100px 40px', textAlign: 'center' }}>

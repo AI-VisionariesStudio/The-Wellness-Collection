@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 const faqs = [
   {
@@ -25,8 +26,11 @@ const faqs = [
 ]
 
 export default function FloatingHelp() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<number | null>(null)
+
+  if (pathname === '/coming-soon') return null
 
   return (
     <>

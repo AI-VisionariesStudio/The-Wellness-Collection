@@ -214,26 +214,6 @@ export default function ComingSoonPage() {
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer style={{ background: '#fff', padding: '48px 40px', textAlign: 'center', borderTop: '1px solid var(--border-light)' }}>
-        <div style={{ marginBottom: '20px', overflow: 'hidden', height: '36px', display: 'flex', justifyContent: 'center' }}>
-          <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ height: '48px', opacity: 0.4, display: 'block' }} />
-        </div>
-        <p style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--mid)', margin: '0 0 16px' }}>
-          © {new Date().getFullYear()} Gracefully Redefined · The Wellness Collection
-        </p>
-        <div style={{ display: 'flex', gap: '32px', justifyContent: 'center' }}>
-          {[
-            { href: '/privacy', label: 'Privacy' },
-            { href: '/terms', label: 'Terms' },
-            { href: '/contact', label: 'Contact' },
-          ].map(link => (
-            <a key={link.href} href={link.href} style={{ color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none' }}>
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </footer>
     </div>
   )
 }

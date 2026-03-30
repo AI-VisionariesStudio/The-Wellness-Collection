@@ -25,10 +25,10 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
       {/* ── Hero: oval logo floating above cream body ── */}
       <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
         <img
-          src="/GR-LOGO-OVAL.JPG"
+          src="/twc-logo.png"
           alt="Gracefully Redefined"
           className="hero-logo"
-          style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+          style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
         />
         <div className="hero-body" style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>

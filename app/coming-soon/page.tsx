@@ -71,10 +71,10 @@ export default function ComingSoonPage() {
       {/* ── Hero ── */}
       <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center', flex: 1 }}>
         <img
-          src="/GR-LOGO-OVAL.JPG"
+          src="/twc-logo.png"
           alt="Gracefully Redefined"
           className="cs-logo"
-          style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+          style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
         />
         <div className="cs-body" style={{ background: 'var(--cream)', padding: '110px 60px 88px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '600px', margin: '0 auto' }}>

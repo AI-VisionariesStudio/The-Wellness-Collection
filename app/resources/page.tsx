@@ -179,7 +179,7 @@ export default function ResourcesPage() {
               <div className="gate-card-header">
                 <img
                   className="gate-oval"
-                  src="/GR-LOGO-OVAL.JPG"
+                  src="/twc-logo.png"
                   alt="Gracefully Redefined"
                 />
                 <div className="gate-eyebrow">The Wellness Collection</div>
@@ -244,9 +244,9 @@ export default function ResourcesPage() {
           {/* ── HERO SECTION ── */}
           <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
             <img
-              src="/GR-LOGO-OVAL.JPG"
+              src="/twc-logo.png"
               alt="Gracefully Redefined"
-              style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+              style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
             />
             <div style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
               <div style={{ maxWidth: '640px', margin: '0 auto' }}>

@@ -12,7 +12,6 @@ export default function Nav() {
   const router = useRouter()
   const { lang } = useLanguage()
 
-  if (pathname === '/coming-soon') return null
   const T = t[lang].nav
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -45,6 +44,8 @@ export default function Nav() {
     { label: T.contact, href: '/contact' },
   ]
 
+  if (pathname === '/coming-soon') return null
+
   return (
     <nav style={{ background: 'rgba(247, 244, 242, 0.88)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid rgba(224, 216, 208, 0.5)' }}>
       <style>{`
@@ -61,7 +62,7 @@ export default function Nav() {
         }
       `}</style>
       <Link href="/" className="nav-logo">
-        <img src="/gr-logo.png" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
+        <img src="/twc-logo.png" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
       </Link>
       {/* Desktop title */}
       <Link href="/" className="nav-title-desktop" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>

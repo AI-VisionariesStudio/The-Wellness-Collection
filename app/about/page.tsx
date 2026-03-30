@@ -15,9 +15,9 @@ export default function AboutPage() {
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
         <Link href="/">
           <img
-            src="/GR-LOGO-OVAL.JPG"
+            src="/twc-logo.png"
             alt="Gracefully Redefined"
-            style={{ height: '130px', objectFit: 'contain', mixBlendMode: 'multiply', marginBottom: '28px' }}
+            style={{ height: '130px', objectFit: 'contain', marginBottom: '28px' }}
           />
         </Link>
         <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>

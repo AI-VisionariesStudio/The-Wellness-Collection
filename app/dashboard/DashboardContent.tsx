@@ -57,9 +57,9 @@ export default function DashboardContent({ certificates, enrollments, progress, 
       {/* ── Hero ── */}
       <section style={{ background: '#fff', paddingTop: '70px', textAlign: 'center' }}>
         <img
-          src="/GR-LOGO-OVAL.JPG"
+          src="/twc-logo.png"
           alt="Gracefully Redefined"
-          style={{ height: '180px', objectFit: 'contain', display: 'block', margin: '0 auto -72px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+          style={{ height: '180px', objectFit: 'contain', display: 'block', margin: '0 auto -72px', position: 'relative', zIndex: 2 }}
         />
         <div style={{ background: 'var(--cream)', padding: '80px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
@@ -164,7 +164,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                     <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
                     <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
-                      <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain', mixBlendMode: 'multiply' as const }} />
+                      <img src="/twc-logo.png" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain' }} />
                     </div>
                   )}
 

@@ -1,5 +1,5 @@
-# Co-Parenting Academy Platform
-### Court-Approved Online Course Platform
+# The Wellness Collection
+### A Psychoeductional Learning Management System
 
 ---
 

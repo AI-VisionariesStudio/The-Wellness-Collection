@@ -113,6 +113,11 @@ export default function Nav() {
                 Admin Panel
               </Link>
             )}
+            {(session?.user as any)?.role === 'ADMIN' && (
+              <Link href="/checklist" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--gold)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
+                Checklist
+              </Link>
+            )}
             {session ? (
               <button
                 onClick={() => { setOpen(false); handleLogout() }}

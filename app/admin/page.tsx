@@ -191,6 +191,43 @@ export default async function AdminPage() {
             </div>
           </section>
 
+          {/* Infrastructure */}
+          <section style={{ marginBottom: '48px' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Infrastructure</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+              {[
+                { name: 'Vercel', role: 'Hosting & Deployment', url: 'https://vercel.com/dashboard', color: '#000' },
+                { name: 'Supabase', role: 'Database (PostgreSQL)', url: 'https://supabase.com/dashboard', color: '#3ECF8E' },
+                { name: 'Stripe', role: 'Payments & Billing', url: 'https://dashboard.stripe.com', color: '#635BFF' },
+                { name: 'Resend', role: 'Transactional Email', url: 'https://resend.com/overview', color: '#000' },
+                { name: 'Anthropic / Claude AI', role: 'AI Features', url: 'https://console.anthropic.com', color: '#D4A853' },
+                { name: 'Upstash Redis', role: 'Rate Limiting & Cache', url: 'https://console.upstash.com', color: '#00E9A3' },
+                { name: 'Sentry', role: 'Error Monitoring', url: 'https://sentry.io', color: '#362D59' },
+                { name: 'Vimeo', role: 'Video Hosting', url: 'https://vimeo.com/manage', color: '#1AB7EA' },
+                { name: 'BetterStack', role: 'Uptime & Log Management', url: 'https://betterstack.com/dashboard', color: '#2563EB' },
+                { name: 'GitHub', role: 'Source Code Repository', url: 'https://github.com/AI-VisionariesStudio', color: '#24292F' },
+                { name: 'Netlify', role: 'Checklist App Hosting', url: 'https://app.netlify.com', color: '#00C7B7' },
+              ].map(service => (
+                <a
+                  key={service.name}
+                  href={service.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <div className="card" style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: '16px', transition: 'box-shadow 0.15s', cursor: 'pointer' }}>
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: service.color, flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text)', marginBottom: '2px' }}>{service.name}</div>
+                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.03em' }}>{service.role}</div>
+                    </div>
+                    <div style={{ marginLeft: 'auto', fontSize: '12px', color: 'var(--mid)' }}>↗</div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
           {/* Certificates Issued */}
           <section>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Certificates Issued</h2>

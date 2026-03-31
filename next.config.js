@@ -29,7 +29,7 @@ const securityHeaders = [
       "img-src 'self' data: blob: https:",
       "font-src 'self'",
       // iframes: Vimeo videos, Google Docs, Office Online, Stripe
-      "frame-src 'self' https://player.vimeo.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com",
+      "frame-src 'self' https://player.vimeo.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com https://thewellnesscollectionchecklist.netlify.app",
       // API connections: Sentry error reporting, Vercel analytics
       "connect-src 'self' https://*.ingest.sentry.io https://vitals.vercel-insights.com",
       // No plugins

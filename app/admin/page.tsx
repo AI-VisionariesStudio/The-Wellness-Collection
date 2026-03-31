@@ -88,7 +88,7 @@ export default async function AdminPage() {
 
           {/* Recent Students */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Recent Students</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Recent Students</h2>
             <div className="card" style={{ overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
@@ -113,7 +113,7 @@ export default async function AdminPage() {
 
           {/* Manual Enrollment */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Manual Enrollment</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Manual Enrollment</h2>
             <ManualEnrollment
               users={users.map(u => ({ id: u.id, name: u.name, email: u.email }))}
               courses={courses.map(c => ({ id: c.id, title: c.title }))}
@@ -122,7 +122,7 @@ export default async function AdminPage() {
 
           {/* Enrolled Clients by Course */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Enrolled Clients by Course</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Enrolled Clients by Course</h2>
             <div style={{ display: 'grid', gap: '24px' }}>
               {courses.map((course: any) => (
                 <div key={course.id} className="card" style={{ overflow: 'hidden' }}>
@@ -159,7 +159,7 @@ export default async function AdminPage() {
 
           {/* Audit Log */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Audit Log <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— last 50 events</span></h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Audit Log <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— last 50 events</span></h2>
             <div className="card" style={{ overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
@@ -193,7 +193,7 @@ export default async function AdminPage() {
 
           {/* Infrastructure */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Infrastructure</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Infrastructure</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
               {[
                 { name: 'Vercel', role: 'Hosting & Deployment', url: 'https://vercel.com/dashboard', color: '#000' },
@@ -230,7 +230,7 @@ export default async function AdminPage() {
 
           {/* Certificates Issued */}
           <section>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Certificates Issued</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Certificates Issued</h2>
             <div className="card" style={{ overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>

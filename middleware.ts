@@ -26,9 +26,10 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
 
-  // ── Coming Soon gate ─────────────────────────────────────────────────────
+  // ── Coming Soon gate — only admins can access the platform ─────────────────
   if (process.env.COMING_SOON?.trim() === 'true') {
-    if (!isComingSoonAllowed(pathname) && !token) {
+    const isAdmin = token?.role === 'ADMIN'
+    if (!isComingSoonAllowed(pathname) && !isAdmin) {
       return NextResponse.redirect(new URL('/coming-soon', req.url))
     }
   }

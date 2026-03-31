@@ -46,9 +46,9 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
       {/* ── Hero ── */}
       <section style={{ background: '#fff', paddingTop: '80px', textAlign: 'center' }}>
         <img
-          src="/GR-LOGO-OVAL.JPG"
+          src="/twc-logo.png"
           alt="Gracefully Redefined"
-          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
+          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
         />
         <div style={{ background: 'var(--cream)', padding: '72px 60px 48px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>

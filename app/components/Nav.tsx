@@ -44,6 +44,8 @@ export default function Nav() {
     { label: T.contact, href: '/contact' },
   ]
 
+  if (pathname === '/coming-soon') return null
+
   return (
     <nav style={{ background: 'var(--bg)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid var(--border-light)' }}>
       <style>{`
@@ -60,7 +62,7 @@ export default function Nav() {
         }
       `}</style>
       <Link href="/" className="nav-logo">
-        <img src="/gr-logo.png" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
+        <img src="/twc-logo.png" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
       </Link>
       {/* Desktop title */}
       <Link href="/" className="nav-title-desktop" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>

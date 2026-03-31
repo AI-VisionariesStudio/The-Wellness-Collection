@@ -30,7 +30,7 @@ export default function ForgotPasswordPage() {
       <div style={{ width: '100%', maxWidth: '440px' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <Link href="/">
-            <img src="/gr-logo.png" alt="Logo" style={{ height: '100px', objectFit: 'contain' }} />
+            <img src="/twc-logo.png" alt="Logo" style={{ height: '100px', objectFit: 'contain' }} />
           </Link>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 300, color: 'var(--text)', marginTop: '24px', marginBottom: '8px' }}>
             {T.heading}

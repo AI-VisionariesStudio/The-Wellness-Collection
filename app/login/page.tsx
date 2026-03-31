@@ -45,7 +45,7 @@ function LoginPageContent() {
       {/* Header band */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
         <Link href="/">
-          <img src="/gr-logo.png" alt="Logo" style={{ height: '110px', objectFit: 'contain', marginBottom: '28px' }} />
+          <img src="/twc-logo.png" alt="Logo" style={{ height: '110px', objectFit: 'contain', marginBottom: '28px' }} />
         </Link>
         <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
           The Wellness Collection

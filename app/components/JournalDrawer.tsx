@@ -19,7 +19,8 @@ export default function JournalDrawer({ lessonId, lessonTitle }: Props) {
   const [body, setBody] = useState('')
   const [saved, setSaved] = useState(true)
   const [loading, setLoading] = useState(false)
-  const [prompt] = useState(() => PROMPTS[Math.floor(Math.random() * PROMPTS.length)])
+  const [prompt, setPrompt] = useState(PROMPTS[0])
+  useEffect(() => { setPrompt(PROMPTS[Math.floor(Math.random() * PROMPTS.length)]) }, [])
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 

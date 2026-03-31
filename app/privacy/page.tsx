@@ -30,9 +30,9 @@ export default function PrivacyPolicy() {
         <div style={{ maxWidth: '640px', margin: '0 auto' }}>
           <Link href="/">
             <img
-              src="/GR-LOGO-OVAL.JPG"
+              src="/twc-logo.png"
               alt="Gracefully Redefined"
-              style={{ height: '120px', objectFit: 'contain', mixBlendMode: 'multiply', marginBottom: '32px' }}
+              style={{ height: '120px', objectFit: 'contain', marginBottom: '32px' }}
             />
           </Link>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px' }}>

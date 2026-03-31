@@ -29,6 +29,7 @@ const TAG_COLORS: Record<string, string> = {
 export default function ChecklistClient({ sections, initial }: { sections: Section[]; initial: StateMap }) {
   const [states, setStates] = useState<StateMap>(initial)
   const [saving, setSaving] = useState<Record<string, boolean>>({})
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
   const [editingNote, setEditingNote] = useState<string | null>(null)
   const [noteText, setNoteText] = useState('')
   const [checkerName, setCheckerName] = useState(() => {
@@ -117,19 +118,24 @@ export default function ChecklistClient({ sections, initial }: { sections: Secti
         {/* Sections */}
         {sections.map(section => {
           const sectionChecked = section.items.filter(i => states[i.key]?.checked).length
+          const isCollapsed = collapsed[section.key] ?? false
           return (
-            <div key={section.key} style={{ marginBottom: '32px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px', paddingBottom: '10px', borderBottom: '1px solid var(--border-light)' }}>
+            <div key={section.key} style={{ marginBottom: '16px', border: '1px solid var(--border-light)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
+              <button
+                onClick={() => setCollapsed(prev => ({ ...prev, [section.key]: !isCollapsed }))}
+                style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 18px', background: sectionChecked === section.items.length ? 'var(--cream)' : 'var(--bg)', border: 'none', cursor: 'pointer', textAlign: 'left' }}
+              >
                 <span style={{ fontSize: '18px' }}>{section.icon}</span>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 400, color: 'var(--text)', margin: 0, flex: 1 }}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', margin: 0, flex: 1 }}>
                   {section.title}
                 </h2>
-                <span style={{ fontSize: '12px', color: sectionChecked === section.items.length ? '#16a34a' : 'var(--text-muted)' }}>
+                <span style={{ fontSize: '12px', color: sectionChecked === section.items.length ? '#16a34a' : 'var(--text-muted)', marginRight: '10px' }}>
                   {sectionChecked}/{section.items.length}
                 </span>
-              </div>
+                <span style={{ fontSize: '12px', color: 'var(--text-muted)', transition: 'transform 0.2s', display: 'inline-block', transform: isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)' }}>▾</span>
+              </button>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {!isCollapsed && <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 12px 12px' }}>
                 {section.items.map(item => {
                   const st = states[item.key]
                   const isChecked = st?.checked ?? false
@@ -202,7 +208,7 @@ export default function ChecklistClient({ sections, initial }: { sections: Secti
                     </div>
                   )
                 })}
-              </div>
+              </div>}
             </div>
           )
         })}

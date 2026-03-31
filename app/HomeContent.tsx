@@ -10,7 +10,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
   const dir = isHe ? 'rtl' : 'ltr'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', fontFamily: 'var(--font-body)', direction: dir }}>
 
       <style>{`
         @media (max-width: 640px) {
@@ -23,10 +23,10 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
       `}</style>
 
       {/* ── Hero: oval logo floating above cream body ── */}
-      <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: '100px', textAlign: 'center' }}>
         <img
-          src="/GR-LOGO-OVAL.JPG"
-          alt="Gracefully Redefined"
+          src="/uploads/TWC1.png"
+          alt="Gracefully Redefined — The Wellness Collection"
           className="hero-logo"
           style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2, mixBlendMode: 'multiply' }}
         />

@@ -472,28 +472,26 @@ export default function ReflectionCheckIn({ courseId }: { courseId: string }) {
 
 function ReflectionPdf() {
   const pdfPath = '/Module_01_Reflection_CheckIn.pdf'
-  const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-  const absoluteUrl = typeof window !== 'undefined' ? `${window.location.origin}${pdfPath}` : pdfPath
-  const googleUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteUrl)}&embedded=true`
 
   return (
     <div style={{ marginBottom: '52px' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 10px', fontWeight: 600 }}>
-        Module 01 — Reflection &amp; Check-In Sheet
-      </p>
-      {isLocal ? (
-        <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '24px', background: 'var(--header)', textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', margin: 0, fontStyle: 'italic' }}>
-            PDF preview available in production.
-          </p>
-        </div>
-      ) : (
-        <iframe
-          src={googleUrl}
-          title="Module 01 Reflection Check-In"
-          style={{ width: '100%', height: '70vh', minHeight: '500px', border: '1px solid var(--border)', borderRadius: 'var(--radius)' }}
-        />
-      )}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0, fontWeight: 600 }}>
+          Module 01 — Reflection &amp; Check-In Sheet
+        </p>
+        <a
+          href={pdfPath}
+          download
+          style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}
+        >
+          Download ↓
+        </a>
+      </div>
+      <iframe
+        src={pdfPath}
+        title="Module 01 Reflection Check-In"
+        style={{ width: '100%', height: '70vh', minHeight: '500px', border: '1px solid var(--border)', borderRadius: 'var(--radius)' }}
+      />
     </div>
   )
 }

@@ -9,6 +9,46 @@ export default async function AdminPage() {
   const session = await getServerSession(authOptions)
   if (!session?.user || (session.user as any).role !== 'ADMIN') redirect('/dashboard')
 
+  // Infrastructure live data — failures are isolated so they never break the page
+  const [vercelRes, githubRes, upstashRes, vimeoRes, betterRes] = await Promise.allSettled([
+    fetch(
+      `https://api.vercel.com/v6/deployments?projectId=${process.env.VERCEL_PROJECT_ID}&limit=1`,
+      { headers: { Authorization: `Bearer ${process.env.VERCEL_TOKEN}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      `https://api.github.com/repos/${process.env.GITHUB_REPO}`,
+      { headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 'User-Agent': 'TWC-Admin' }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      `${process.env.UPSTASH_REDIS_REST_URL}/dbsize`,
+      { headers: { Authorization: `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      'https://api.vimeo.com/me/videos?per_page=1&fields=uri',
+      { headers: { Authorization: `Bearer ${process.env.VIMEO_ACCESS_TOKEN}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      'https://uptime.betterstack.com/api/v2/monitors',
+      { headers: { Authorization: `Bearer ${process.env.BETTERSTACK_API_KEY}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+  ])
+
+  const vercel  = vercelRes.status  === 'fulfilled' ? vercelRes.value  : null
+  const github  = githubRes.status  === 'fulfilled' ? githubRes.value  : null
+  const upstash = upstashRes.status === 'fulfilled' ? upstashRes.value : null
+  const vimeo   = vimeoRes.status   === 'fulfilled' ? vimeoRes.value   : null
+  const better  = betterRes.status  === 'fulfilled' ? betterRes.value  : null
+
+  const latestDeploy   = vercel?.deployments?.[0]
+  const deployState    = latestDeploy?.state ?? null
+  const deployTime     = latestDeploy?.created ? new Date(latestDeploy.created).toLocaleString() : null
+  const deployUrl      = latestDeploy?.url ? `https://${latestDeploy.url}` : null
+  const githubPushedAt = github?.pushed_at ? new Date(github.pushed_at).toLocaleString() : null
+  const redisKeys      = upstash?.result ?? null
+  const vimeoTotal     = vimeo?.total ?? null
+  const betterMonitors: any[] = better?.data ?? []
+  const monitorsUp     = betterMonitors.filter((m: any) => m.attributes?.status === 'up').length
+
   try {
     const [users, courses, certificates, enrollments, auditLogs] = await Promise.all([
       prisma.user.findMany({ where: { role: 'STUDENT' }, orderBy: { createdAt: 'desc' } }),
@@ -195,26 +235,20 @@ export default async function AdminPage() {
           {(() => {
             const supabaseRef = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? '').replace('https://', '').replace('.supabase.co', '')
             const githubRepo = process.env.GITHUB_REPO ?? 'AI-VisionariesStudio/The-Wellness-Collection'
-            const vercelProjectId = process.env.VERCEL_PROJECT_ID ?? ''
-            const upstashUrl = process.env.UPSTASH_REDIS_REST_URL ?? ''
-            const upstashDb = upstashUrl.replace('https://', '')
-            const emailFrom = process.env.EMAIL_FROM ?? ''
-            const resendKey = process.env.RESEND_API_KEY ?? ''
-            const anthropicKey = process.env.ANTHROPIC_API_KEY ?? ''
-            const vimeoToken = process.env.VIMEO_ACCESS_TOKEN ?? ''
-            const betterKey = process.env.BETTERSTACK_API_KEY ?? ''
             const sentryOrg = process.env.SENTRY_ORG ?? ''
             const sentryProject = process.env.SENTRY_PROJECT ?? ''
+            const deployStateColor = deployState === 'READY' ? '#16a34a' : deployState === 'ERROR' ? '#dc2626' : '#d97706'
 
             const services = [
               {
                 name: 'Vercel',
                 role: 'Hosting & Deployment',
                 color: '#000',
-                url: `https://vercel.com/dashboard`,
+                url: deployUrl ?? 'https://vercel.com/dashboard',
                 details: [
-                  { label: 'Project ID', value: vercelProjectId },
-                  { label: 'Repo', value: githubRepo },
+                  { label: 'Last Deploy', value: deployTime ?? '—' },
+                  { label: 'Status', value: deployState ?? '—', valueColor: deployState ? deployStateColor : undefined },
+                  { label: 'Project ID', value: process.env.VERCEL_PROJECT_ID ?? '—' },
                 ],
               },
               {
@@ -223,8 +257,8 @@ export default async function AdminPage() {
                 color: '#3ECF8E',
                 url: `https://supabase.com/dashboard/project/${supabaseRef}`,
                 details: [
-                  { label: 'Project Ref', value: supabaseRef },
-                  { label: 'Host', value: `${supabaseRef}.supabase.co` },
+                  { label: 'Project Ref', value: supabaseRef || '—' },
+                  { label: 'Host', value: supabaseRef ? `${supabaseRef}.supabase.co` : '—' },
                   { label: 'Region', value: 'us-west-2 (AWS)' },
                 ],
               },
@@ -234,7 +268,8 @@ export default async function AdminPage() {
                 color: '#635BFF',
                 url: 'https://dashboard.stripe.com',
                 details: [
-                  { label: 'Mode', value: 'Test' },
+                  { label: 'Mode', value: (process.env.STRIPE_SECRET_KEY ?? '').startsWith('sk_live') ? 'Live' : 'Test' },
+                  { label: 'Webhook', value: process.env.STRIPE_WEBHOOK_SECRET ? 'Configured' : 'Not set' },
                 ],
               },
               {
@@ -243,8 +278,8 @@ export default async function AdminPage() {
                 color: '#000',
                 url: 'https://resend.com/emails',
                 details: [
-                  { label: 'From', value: emailFrom },
-                  { label: 'API Key', value: resendKey ? resendKey.slice(0, 12) + '…' : '—' },
+                  { label: 'From Address', value: process.env.EMAIL_FROM ?? '—' },
+                  { label: 'API Key', value: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.slice(0, 12) + '…' : '—' },
                 ],
               },
               {
@@ -253,7 +288,7 @@ export default async function AdminPage() {
                 color: '#D4A853',
                 url: 'https://console.anthropic.com',
                 details: [
-                  { label: 'API Key', value: anthropicKey ? anthropicKey.slice(0, 18) + '…' : '—' },
+                  { label: 'API Key', value: process.env.ANTHROPIC_API_KEY ? process.env.ANTHROPIC_API_KEY.slice(0, 18) + '…' : '—' },
                 ],
               },
               {
@@ -262,7 +297,8 @@ export default async function AdminPage() {
                 color: '#00E9A3',
                 url: 'https://console.upstash.com',
                 details: [
-                  { label: 'Database', value: upstashDb },
+                  { label: 'Keys Stored', value: redisKeys !== null ? String(redisKeys) : '—' },
+                  { label: 'Host', value: (process.env.UPSTASH_REDIS_REST_URL ?? '').replace('https://', '') || '—' },
                 ],
               },
               {
@@ -281,7 +317,8 @@ export default async function AdminPage() {
                 color: '#1AB7EA',
                 url: 'https://vimeo.com/manage/videos',
                 details: [
-                  { label: 'Access Token', value: vimeoToken ? vimeoToken.slice(0, 12) + '…' : '—' },
+                  { label: 'Total Videos', value: vimeoTotal !== null ? String(vimeoTotal) : '—' },
+                  { label: 'Token', value: process.env.VIMEO_ACCESS_TOKEN ? process.env.VIMEO_ACCESS_TOKEN.slice(0, 12) + '…' : '—' },
                 ],
               },
               {
@@ -290,7 +327,8 @@ export default async function AdminPage() {
                 color: '#2563EB',
                 url: 'https://uptime.betterstack.com',
                 details: [
-                  { label: 'API Key', value: betterKey ? betterKey.slice(0, 12) + '…' : '—' },
+                  { label: 'Monitors', value: betterMonitors.length > 0 ? String(betterMonitors.length) : '—' },
+                  { label: 'Up', value: betterMonitors.length > 0 ? `${monitorsUp} / ${betterMonitors.length}` : '—', valueColor: monitorsUp === betterMonitors.length && betterMonitors.length > 0 ? '#16a34a' : undefined },
                 ],
               },
               {
@@ -300,15 +338,17 @@ export default async function AdminPage() {
                 url: `https://github.com/${githubRepo}`,
                 details: [
                   { label: 'Repo', value: githubRepo },
+                  { label: 'Last Push', value: githubPushedAt ?? '—' },
+                  { label: 'Open Issues', value: github?.open_issues_count !== undefined ? String(github.open_issues_count) : '—' },
                 ],
               },
               {
                 name: 'Netlify',
-                role: 'Checklist App Hosting',
+                role: 'Checklist App',
                 color: '#00C7B7',
                 url: 'https://thewellnesscollectionchecklist.netlify.app/',
                 details: [
-                  { label: 'App', value: 'thewellnesscollectionchecklist.netlify.app' },
+                  { label: 'App URL', value: 'thewellnesscollectionchecklist.netlify.app' },
                 ],
               },
             ]
@@ -336,9 +376,9 @@ export default async function AdminPage() {
                       </div>
                       <div style={{ padding: '12px 20px' }}>
                         {service.details.map(d => (
-                          <div key={d.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 0', borderBottom: '1px solid var(--border-light)' }}>
+                          <div key={d.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0', borderBottom: '1px solid var(--border-light)' }}>
                             <span style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{d.label}</span>
-                            <code style={{ fontSize: '11px', color: 'var(--text)', background: '#f5f5f5', padding: '2px 6px', borderRadius: '3px', maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.value}</code>
+                            <code style={{ fontSize: '11px', color: (d as any).valueColor ?? 'var(--text)', background: '#f5f5f5', padding: '2px 6px', borderRadius: '3px', maxWidth: '210px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.value}</code>
                           </div>
                         ))}
                       </div>

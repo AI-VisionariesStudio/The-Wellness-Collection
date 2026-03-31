@@ -185,6 +185,15 @@ model AuditLog {
   @@index([createdAt])
 }
 
+model ChecklistState {
+  itemKey   String    @id
+  checked   Boolean   @default(false)
+  checkedBy String?
+  checkedAt DateTime?
+  note      String?
+  updatedAt DateTime  @updatedAt
+}
+
 enum Role {
   STUDENT
   ADMIN

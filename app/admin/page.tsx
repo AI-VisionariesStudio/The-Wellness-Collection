@@ -343,6 +343,16 @@ export default async function AdminPage() {
                 ],
               },
               {
+                name: 'GitHub Codespaces',
+                role: 'Cloud Dev Environment',
+                color: '#0969DA',
+                url: `https://github.com/codespaces/new?repo=${githubRepo}`,
+                details: [
+                  { label: 'Repo', value: githubRepo },
+                  { label: 'Devcontainer', value: 'Configured' },
+                ],
+              },
+              {
                 name: 'Netlify',
                 role: 'Checklist App',
                 color: '#00C7B7',

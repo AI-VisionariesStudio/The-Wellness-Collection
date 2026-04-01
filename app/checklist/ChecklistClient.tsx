@@ -85,7 +85,7 @@ export default function ChecklistClient({ sections, initial }: { sections: Secti
           <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>
             Gracefully Redefined · The Wellness Collection
           </p>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '42px', fontWeight: 300, color: 'var(--text)', marginBottom: '6px' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '42px', fontWeight: 400, color: 'var(--text)', marginBottom: '6px' }}>
             Pre-Launch Checklist
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '28px' }}>

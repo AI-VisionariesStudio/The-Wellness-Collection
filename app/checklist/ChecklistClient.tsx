@@ -29,7 +29,9 @@ const TAG_COLORS: Record<string, string> = {
 export default function ChecklistClient({ sections, initial }: { sections: Section[]; initial: StateMap }) {
   const [states, setStates] = useState<StateMap>(initial)
   const [saving, setSaving] = useState<Record<string, boolean>>({})
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(
+    () => Object.fromEntries(sections.map(s => [s.key, true]))
+  )
   const [editingNote, setEditingNote] = useState<string | null>(null)
   const [noteText, setNoteText] = useState('')
   const [checkerName, setCheckerName] = useState(() => {
@@ -75,23 +77,23 @@ export default function ChecklistClient({ sections, initial }: { sections: Secti
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', fontFamily: 'var(--font-body)', padding: '48px 40px' }}>
-      <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', fontFamily: 'var(--font-body)' }}>
 
-        {/* Header */}
-        <div style={{ marginBottom: '40px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '12px' }}>
+      {/* Hero — cream card matching home page */}
+      <div style={{ background: 'var(--cream)', borderBottom: '1px solid var(--border-light)', padding: '56px 40px 48px', marginBottom: '0' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>
             Gracefully Redefined · The Wellness Collection
           </p>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '40px', fontWeight: 300, color: 'var(--text)', marginBottom: '8px' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '42px', fontWeight: 300, color: 'var(--text)', marginBottom: '6px' }}>
             Pre-Launch Checklist
           </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '24px' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '28px' }}>
             {checkedCount} of {totalItems} items complete
           </p>
 
           {/* Progress bar */}
-          <div style={{ height: '6px', background: 'var(--border)', borderRadius: '99px', overflow: 'hidden', marginBottom: '12px' }}>
+          <div style={{ height: '5px', background: 'var(--border)', borderRadius: '99px', overflow: 'hidden', marginBottom: '10px' }}>
             <div style={{ height: '100%', width: `${pct}%`, background: pct === 100 ? '#16a34a' : 'var(--gold)', borderRadius: '99px', transition: 'width 0.3s ease' }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -114,6 +116,19 @@ export default function ChecklistClient({ sections, initial }: { sections: Secti
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Blush accent strip */}
+      <div style={{ background: 'var(--blush)', borderBottom: '1px solid var(--border-light)', padding: '10px 40px' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <span style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--mid)' }}>
+            The Wellness Collection
+          </span>
+        </div>
+      </div>
+
+      {/* Checklist body */}
+      <div style={{ maxWidth: '860px', margin: '0 auto', padding: '40px 40px 80px' }}>
 
         {/* Sections */}
         {sections.map(section => {

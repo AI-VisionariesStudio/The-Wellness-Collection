@@ -31,7 +31,7 @@ export default function ComingSoonPage() {
                   <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
                 </div>
               </div>
-              <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 300, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0', whiteSpace: 'nowrap' as const }}>
+              <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 300, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0' }}>
                 Something beautiful is coming.
               </h1>
               <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto' }} />

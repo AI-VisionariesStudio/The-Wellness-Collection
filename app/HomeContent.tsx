@@ -142,7 +142,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
           <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '24px' }}>
             {T.beginToday}
           </p>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '48px', fontWeight: 300, color: 'var(--text)', lineHeight: 1.15, marginBottom: '24px', whiteSpace: 'nowrap' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '48px', fontWeight: 300, color: 'var(--text)', lineHeight: 1.15, marginBottom: '24px', whiteSpace: 'normal' }}>
             {T.ctaHeading}
           </h2>
           <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '52px' }}>

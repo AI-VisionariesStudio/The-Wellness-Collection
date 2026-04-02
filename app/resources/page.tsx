@@ -179,7 +179,7 @@ export default function ResourcesPage() {
               <div className="gate-card-header">
                 <img
                   className="gate-oval"
-                  src="/twc-logo.png"
+                  src="/twc-logo.svg"
                   alt="Gracefully Redefined"
                 />
                 <div className="gate-eyebrow">The Wellness Collection</div>
@@ -244,7 +244,7 @@ export default function ResourcesPage() {
           {/* ── HERO SECTION ── */}
           <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
             <img
-              src="/twc-logo.png"
+              src="/twc-logo.svg"
               alt="Gracefully Redefined"
               style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
             />

@@ -47,7 +47,7 @@ function DocumentViewer({ viewUrl, name }: { viewUrl: string; name: string }) {
     return (
       <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius)', overflow: 'hidden', textAlign: 'center' }}>
         <div style={{ padding: '32px 32px 24px', background: 'var(--bg)' }}>
-          <img src="/GR-LOGO-OVAL.JPG" alt="Gracefully Redefined"
+          <img src="/GR-LOGO-OVAL.svg" alt="Gracefully Redefined"
             style={{ width: '90px', height: 'auto', borderRadius: '50%', mixBlendMode: 'multiply' }} />
         </div>
         <div style={{ padding: '24px 32px 32px', background: 'var(--header)' }}>

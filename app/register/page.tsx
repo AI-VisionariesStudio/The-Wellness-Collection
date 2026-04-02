@@ -44,7 +44,7 @@ export default function RegisterPage() {
       <div style={{ width: '100%', maxWidth: '520px' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <Link href="/">
-            <img src="/twc-logo.png" alt="Gracefully Redefined" style={{ height: '120px', objectFit: 'contain' }} />
+            <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ height: '120px', objectFit: 'contain' }} />
           </Link>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', color: 'var(--navy)', marginTop: '24px', marginBottom: '8px', fontWeight: 500 }}>
             {T.heading}

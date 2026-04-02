@@ -36,7 +36,7 @@ export default async function ProfilePage() {
       {/* ── Hero ── */}
       <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
         <img
-          src="/twc-logo.png"
+          src="/twc-logo.svg"
           alt="Gracefully Redefined"
           style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
         />

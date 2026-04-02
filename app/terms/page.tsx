@@ -33,7 +33,7 @@ export default function TermsOfService() {
         <div style={{ maxWidth: '640px', margin: '0 auto' }}>
           <Link href="/">
             <img
-              src="/twc-logo.png"
+              src="/twc-logo.svg"
               alt="Gracefully Redefined"
               style={{ height: '120px', objectFit: 'contain', marginBottom: '32px' }}
             />

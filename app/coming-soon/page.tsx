@@ -19,7 +19,7 @@ export default function ComingSoonPage() {
         {/* ── Hero ── */}
         <section style={{ flex: 1, background: 'var(--bg)', paddingTop: '100px', textAlign: 'center' }}>
           <img
-            src="/twc-logo.png"
+            src="/twc-logo.svg"
             alt="Gracefully Redefined — The Wellness Collection"
             className="hero-logo"
             style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}

@@ -13,8 +13,8 @@ export default function ComingSoonPage() {
         }
       `}</style>
 
-      {/* ── Above-fold: hero + blush strip fill exactly the viewport ── */}
-      <div style={{ height: 'calc(100vh - 140px)', display: 'flex', flexDirection: 'column' }}>
+      {/* ── Above-fold: hero fills exactly the viewport ── */}
+      <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
 
         {/* ── Hero ── */}
         <section style={{ flex: 1, background: 'var(--bg)', paddingTop: '100px', textAlign: 'center' }}>
@@ -40,13 +40,6 @@ export default function ComingSoonPage() {
               </p>
             </div>
           </div>
-        </section>
-
-        {/* ── Trust strip — pinned to bottom of viewport ── */}
-        <section style={{ background: 'var(--blush)', padding: '36px 40px', textAlign: 'center' }}>
-          <span style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-            The Wellness Collection
-          </span>
         </section>
 
       </div>{/* ── end above-fold ── */}
@@ -81,6 +74,12 @@ export default function ComingSoonPage() {
         </div>
       </section>
 
+      {/* ── Blush strip — bottom of page ── */}
+      <section style={{ background: 'var(--blush)', padding: '36px 40px', textAlign: 'center' }}>
+        <span style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+          The Wellness Collection
+        </span>
+      </section>
 
     </div>
   )

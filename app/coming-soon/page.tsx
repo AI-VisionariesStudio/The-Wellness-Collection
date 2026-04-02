@@ -8,7 +8,7 @@ export default function ComingSoonPage() {
         @media (max-width: 640px) {
           .hero-logo { height: 140px !important; margin-bottom: -60px !important; }
           .hero-body { padding: 80px 32px 60px !important; }
-          .hero-title { font-size: 40px !important; }
+          .hero-title { font-size: 40px !important; white-space: normal !important; }
           .strip-row { flex-direction: column !important; align-items: center !important; gap: 16px !important; }
         }
       `}</style>
@@ -31,7 +31,7 @@ export default function ComingSoonPage() {
                   <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
                 </div>
               </div>
-              <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 300, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0' }}>
+              <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 300, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0', whiteSpace: 'nowrap' }}>
                 Something beautiful is coming.
               </h1>
               <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto' }} />

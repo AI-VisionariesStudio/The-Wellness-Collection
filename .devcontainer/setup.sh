@@ -80,3 +80,11 @@ npm install
 
 echo ""
 echo "✓ Setup complete. Run: npm run dev"
+echo ""
+echo "──────────────────────────────────────────────────────────────────────────────"
+echo "💡 Copilot Agent Ready: @wellness-fixes"
+echo ""
+echo "   For platform fixes, use: @wellness-fixes"
+echo "   Scope: Features, pages, components (no auth/middleware/Stripe changes)"
+echo "   See: .github/agents/wellness-fixes.agent.md"
+echo "──────────────────────────────────────────────────────────────────────────────"

@@ -178,7 +178,7 @@ export default function HomeContent({ coursesHref }: { coursesHref: string }) {
       <section className="reveal" style={{ background: 'var(--cream)', padding: '100px 40px' }}>
         <div style={{ maxWidth: '560px', margin: '0 auto' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '24px', textAlign: 'center' }}>
-            {T.stayConnected || 'Stay Connected'}
+            Stay Connected
           </p>
           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 300, color: 'var(--text)', lineHeight: 1.15, marginBottom: '32px', textAlign: 'center' }}>
             Join Our Community

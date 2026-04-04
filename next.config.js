@@ -24,7 +24,7 @@ const securityHeaders = [
       // Next.js requires unsafe-inline for hydration scripts
       "script-src 'self' 'unsafe-inline' https://js.stripe.com",
       // Next.js uses inline styles
-      "style-src 'self' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       // Images: self + data URIs + HTTPS (thumbnails may be hosted anywhere)
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.googleapis.com",

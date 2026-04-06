@@ -181,6 +181,14 @@ export default function ComingSoonPage() {
         <span style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
           The Wellness Collection
         </span>
+        <div style={{ marginTop: '16px' }}>
+          <a
+            href="/login"
+            style={{ fontSize: '11px', letterSpacing: '0.12em', color: 'var(--text-muted)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+          >
+            Team Sign In
+          </a>
+        </div>
       </section>
 
     </div>

@@ -124,6 +124,7 @@ export default function LessonPlayer({
   const [completed, setCompleted] = useState(initialCompleted)
   const [marking, setMarking] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [companionOpen, setCompanionOpen] = useState(false)
   const [resetting, setResetting] = useState<string | null>(null)
   const [showPrePulse, setShowPrePulse] = useState(true)
   const [showPostPulse, setShowPostPulse] = useState(false)
@@ -213,7 +214,7 @@ export default function LessonPlayer({
         </button>
       </div>
 
-      {/* ── Body: sidebar + main content side by side ── */}
+      {/* ── Body: sidebar + main content + companion panel ── */}
       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
 
         {/* Sidebar — sticky, stays at top-left as user scrolls */}
@@ -300,11 +301,11 @@ export default function LessonPlayer({
         )}
 
         {/* ── Main content column ── */}
-        <main style={{ flex: 1, minWidth: 0 }}>
+        <main style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
           <div style={{ maxWidth: '760px', marginLeft: sidebarOpen ? 'max(0px, calc(50vw - 640px))' : 'auto', marginRight: 'auto', padding: '32px 28px 64px' }}>
 
-            {/* Lesson title + Mark Complete — always at the top */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', marginBottom: '28px', flexWrap: 'wrap' }}>
+            {/* Lesson title + actions row */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', marginBottom: '28px', flexWrap: 'wrap' }}>
               <div>
                 <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 300, color: 'var(--text)', margin: '0 0 4px', lineHeight: 1.3 }}>
                   {lesson.title}
@@ -313,19 +314,27 @@ export default function LessonPlayer({
                   {Math.floor(lesson.duration / 60)} min
                 </p>
               </div>
-              <button
-                onClick={markComplete}
-                disabled={completed || marking}
-                className="btn btn-primary"
-                style={{
-                  background: completed ? 'var(--success)' : undefined,
-                  color: completed ? 'white' : undefined,
-                  opacity: marking ? 0.7 : 1,
-                  flexShrink: 0,
-                }}
-              >
-                {completed ? '✓ Completed' : marking ? 'Saving…' : nextLessonId ? 'Mark Complete & Next →' : 'Mark Complete ✓'}
-              </button>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0, flexWrap: 'wrap' }}>
+                <button
+                  onClick={() => setCompanionOpen(o => !o)}
+                  className="btn btn-outline"
+                  style={{ fontSize: '11px', padding: '10px 18px', letterSpacing: '0.1em', background: companionOpen ? 'var(--blush)' : undefined }}
+                >
+                  ✦ Ask AI
+                </button>
+                <button
+                  onClick={markComplete}
+                  disabled={completed || marking}
+                  className="btn btn-primary"
+                  style={{
+                    background: completed ? 'var(--success)' : undefined,
+                    color: completed ? 'white' : undefined,
+                    opacity: marking ? 0.7 : 1,
+                  }}
+                >
+                  {completed ? '✓ Completed' : marking ? 'Saving…' : nextLessonId ? 'Mark Complete & Next →' : 'Mark Complete ✓'}
+                </button>
+              </div>
             </div>
 
             {lesson.description && (
@@ -416,6 +425,17 @@ export default function LessonPlayer({
 
           </div>
         </main>
+
+        {/* ── Course Companion — sticky right column ── */}
+        <CourseCompanion
+          courseTitle={course.title}
+          moduleTitle={moduleTitle}
+          lessonTitle={lesson.title}
+          lessonDescription={lesson.description}
+          backedResearch={lesson.backedResearch}
+          open={companionOpen}
+          onClose={() => setCompanionOpen(false)}
+        />
       </div>
 
       {/* POST Reflection Pulse — full-screen modal, triggered when video finishes */}
@@ -428,15 +448,6 @@ export default function LessonPlayer({
           onDismiss={() => setShowPostPulse(false)}
         />
       )}
-
-      {/* Course Companion — floating AI chat, bottom-left */}
-      <CourseCompanion
-        courseTitle={course.title}
-        moduleTitle={moduleTitle}
-        lessonTitle={lesson.title}
-        lessonDescription={lesson.description}
-        backedResearch={lesson.backedResearch}
-      />
     </div>
   )
 }

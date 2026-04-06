@@ -1,13 +1,12 @@
 'use client'
 import { useState, Suspense } from 'react'
 import { signIn } from 'next-auth/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useLanguage } from '@/app/LanguageContext'
 import { t } from '@/lib/translations'
 
 function LoginPageContent() {
-  const router = useRouter()
   const params = useSearchParams()
   const registered = params.get('registered')
   const reset = params.get('reset')
@@ -40,7 +39,7 @@ function LoginPageContent() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
+    <div suppressHydrationWarning style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* Header band */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>

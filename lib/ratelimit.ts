@@ -34,6 +34,7 @@ const configs: Record<string, LimitConfig> = {
   contact:            { limit: 3,  window: 600 }, // 3 per 10 min
   'ai-companion':     { limit: 20, window: 60  }, // 20 per min
   'ai-reflection':    { limit: 10, window: 60  }, // 10 per min
+  'faq-chat':         { limit: 15, window: 60  }, // 15 per min (public)
 }
 
 function getIp(req: NextRequest): string {

@@ -86,13 +86,13 @@ function LoginPageContent() {
 
           <div style={{ padding: '40px' }}>
             <form suppressHydrationWarning onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div suppressHydrationWarning className="form-group">
                 <label>{T.labelEmail}</label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required data-lpignore="true" />
+                <input suppressHydrationWarning type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required data-lpignore="true" />
               </div>
-              <div className="form-group" style={{ marginBottom: '8px' }}>
+              <div suppressHydrationWarning className="form-group" style={{ marginBottom: '8px' }}>
                 <label>{T.labelPassword}</label>
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required data-lpignore="true" />
+                <input suppressHydrationWarning type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required data-lpignore="true" />
               </div>
               <div style={{ textAlign: 'right', marginBottom: '28px' }}>
                 <Link href="/forgot-password" style={{ fontSize: '13px', color: 'var(--text-muted)' }}>

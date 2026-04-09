@@ -5,7 +5,7 @@ export const t = {
       home: 'Home',
       about: 'About',
       courses: 'Courses',
-      resources: 'Free Resources',
+      resources: 'Resources',
       workbooks: 'Workbooks',
       disclaimers: 'Disclaimers',
       contact: 'Contact',
@@ -63,7 +63,7 @@ export const t = {
 
     // Resources page
     resources: {
-      title: 'Free Resources',
+      title: 'Resources',
       body: 'Content coming soon.',
     },
 
@@ -336,7 +336,7 @@ export const t = {
       home: 'בית',
       about: 'אודות',
       courses: 'קורסים',
-      resources: 'משאבים חינמיים',
+      resources: 'משאבים',
       workbooks: 'חוברות עבודה',
       disclaimers: 'הצהרות',
       contact: 'צור קשר',
@@ -394,7 +394,7 @@ export const t = {
 
     // Resources page
     resources: {
-      title: 'משאבים חינמיים',
+      title: 'משאבים',
       body: 'תוכן בקרוב.',
     },
 

@@ -184,9 +184,9 @@ export default function ComingSoonPage() {
         <div style={{ marginTop: '16px' }}>
           <a
             href="/login"
-            style={{ fontSize: '11px', letterSpacing: '0.12em', color: 'var(--text-muted)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+            style={{ fontSize: '11px', color: 'var(--text-muted)', textDecoration: 'none', opacity: 0.35 }}
           >
-            Team Sign In
+            –
           </a>
         </div>
       </section>

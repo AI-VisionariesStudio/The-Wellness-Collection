@@ -34,6 +34,12 @@ export default function ResourcesPage() {
     <div style={{ minHeight: '100vh', background: 'var(--bg)', fontFamily: 'var(--font-body)' }}>
 
       <style>{`
+        @media (max-width: 640px) {
+          .hero-logo { height: 140px !important; margin-bottom: -60px !important; }
+          .hero-body { padding: 80px 32px 60px !important; }
+          .hero-title { font-size: 40px !important; }
+        }
+
         .resources-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -43,34 +49,49 @@ export default function ResourcesPage() {
           padding: 64px 40px 100px;
         }
         .resource-card {
-          background: #fff;
-          border: 1px solid var(--border-light);
+          border: 1px solid var(--border);
           border-radius: var(--radius-lg);
-          padding: 40px 36px;
+          overflow: hidden;
           display: flex;
           flex-direction: column;
-          gap: 16px;
           transition: box-shadow 0.2s ease;
         }
         .resource-card:hover {
-          box-shadow: var(--shadow-lg);
+          box-shadow: 0 6px 28px rgba(0,0,0,0.10);
         }
-        .resource-card.free {
+        .card-top {
+          background: var(--blush);
+          padding: 28px 32px 24px;
+        }
+        .card-top.free-top {
+          background: var(--mid);
+        }
+        .card-mid {
           background: var(--cream);
-          border-color: var(--border);
+          padding: 24px 32px;
+          flex: 1;
+        }
+        .card-bot {
+          background: var(--bg);
+          padding: 18px 32px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-top: 1px solid var(--border-light);
         }
         .resource-badge {
           font-size: 10px;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: var(--mid);
+          color: var(--text-muted);
+          margin: 0 0 14px;
         }
-        .resource-badge.free-badge {
-          color: var(--gold);
+        .free-badge {
+          color: var(--text);
         }
         .resource-title {
           font-family: var(--font-display);
-          font-size: 20px;
+          font-size: 19px;
           font-weight: 300;
           color: var(--text);
           line-height: 1.4;
@@ -80,16 +101,7 @@ export default function ResourcesPage() {
           font-size: 13px;
           color: var(--text-muted);
           line-height: 1.75;
-          flex: 1;
           margin: 0;
-        }
-        .resource-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 16px;
-          border-top: 1px solid var(--border-light);
-          margin-top: auto;
         }
         .resource-price {
           font-family: var(--font-display);
@@ -98,12 +110,11 @@ export default function ResourcesPage() {
           color: var(--text);
         }
         .resource-price.free-price {
-          font-size: 14px;
-          letter-spacing: 0.1em;
+          font-size: 13px;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
           color: var(--gold);
           font-family: var(--font-body);
-          font-weight: 400;
         }
         .resource-btn {
           font-size: 11px;
@@ -138,21 +149,24 @@ export default function ResourcesPage() {
       `}</style>
 
       {/* Hero */}
-      <section style={{ background: '#fff', paddingTop: '100px', textAlign: 'center' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: '100px', textAlign: 'center' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
+          className="hero-logo"
           style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
         />
-        <div style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <p style={{ fontSize: '10px', letterSpacing: '0.38em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '28px' }}>
-              The Wellness Collection
-            </p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(38px, 5.5vw, 56px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '24px' }}>
+        <div className="hero-body" style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+              <div style={{ width: '260px', height: '44px', overflow: 'hidden' }}>
+                <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
+              </div>
+            </div>
+            <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(38px, 5.5vw, 56px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
               Resources
             </h1>
-            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto' }} />
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, maxWidth: '480px', margin: '0 auto' }}>
               Thoughtfully crafted tools to support your healing — at your own pace, in your own time.
             </p>
@@ -160,16 +174,39 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      {/* Trust strip — matches home page */}
+      <section style={{ background: 'var(--blush)', padding: '36px 40px' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '48px', flexWrap: 'wrap' }}>
+          {['Trauma-Informed', 'Attachment-Based', 'Evidence-Grounded'].map(item => (
+            <span key={item} style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ display: 'inline-block', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--mid)', flexShrink: 0 }} />
+              {item}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <div style={{ height: '1px', background: 'var(--border-light)', maxWidth: '560px', margin: '0 auto' }} />
+
       {/* Card Grid */}
       <div className="resources-grid">
 
-        {/* Paid resource cards */}
         {PAID_RESOURCES.map(resource => (
           <div key={resource.id} className="resource-card">
-            <p className="resource-badge">Digital Resource</p>
-            <h2 className="resource-title">{resource.title}</h2>
-            <p className="resource-desc">{resource.description}</p>
-            <div className="resource-footer">
+            <div className="card-top">
+              <p className="resource-badge" style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="0.9" y="5.6" width="9.2" height="6.5" rx="1.3" stroke="currentColor" strokeWidth="1.1"/>
+                  <path d="M2.8 5.6V3.8a2.7 2.7 0 0 1 5.4 0v1.8" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+                </svg>
+                Digital Resource
+              </p>
+              <h2 className="resource-title">{resource.title}</h2>
+            </div>
+            <div className="card-mid">
+              <p className="resource-desc">{resource.description}</p>
+            </div>
+            <div className="card-bot">
               <span className="resource-price">{resource.price}</span>
               <button className="resource-btn" disabled title="Coming soon">
                 Available soon
@@ -178,14 +215,18 @@ export default function ResourcesPage() {
           </div>
         ))}
 
-        {/* Free resource card */}
-        <div className="resource-card free">
-          <p className="resource-badge free-badge">Complimentary</p>
-          <h2 className="resource-title">21 Affirmation &amp; Grounding Cards</h2>
-          <p className="resource-desc">
-            Truth-based affirmations rooted in trauma recovery, attachment healing, and nervous system care — yours to explore freely.
-          </p>
-          <div className="resource-footer">
+        {/* Free card */}
+        <div className="resource-card">
+          <div className="card-top free-top">
+            <p className="resource-badge free-badge">Complimentary</p>
+            <h2 className="resource-title">21 Affirmation &amp; Grounding Cards</h2>
+          </div>
+          <div className="card-mid">
+            <p className="resource-desc">
+              Truth-based affirmations rooted in trauma recovery, attachment healing, and nervous system care — yours to explore freely.
+            </p>
+          </div>
+          <div className="card-bot">
             <span className="resource-price free-price">Free</span>
             <Link href="/resources/affirmation-cards" className="resource-btn available">
               Explore the deck

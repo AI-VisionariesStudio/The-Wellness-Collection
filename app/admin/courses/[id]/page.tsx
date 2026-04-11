@@ -192,7 +192,7 @@ export default function AdminCourseEditorPage() {
                         <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           Spotlightr Video URL
                           <a
-                            href="https://app.spotlightr.com"
+                            href="https://projects.spotlightr.com/videos"
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 400 }}

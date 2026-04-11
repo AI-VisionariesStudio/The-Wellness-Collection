@@ -189,7 +189,17 @@ export default function AdminCourseEditorPage() {
                         />
                       </div>
                       <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
-                        <label>Spotlightr Video URL</label>
+                        <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          Spotlightr Video URL
+                          <a
+                            href="https://app.spotlightr.com/manage/videos"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 400 }}
+                          >
+                            Open Spotlightr ↗
+                          </a>
+                        </label>
                         <input
                           value={lesson.videoUrl || ''}
                           placeholder="https://subdomain.cdn.spotlightr.com/watch/ABC123"

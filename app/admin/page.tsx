@@ -4,7 +4,6 @@ import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import ManualEnrollment from './ManualEnrollment'
-import StudentsTable from './StudentsTable'
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions)

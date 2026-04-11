@@ -1,12 +1,12 @@
 'use client'
-import { useState, Suspense } from 'react'
+import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useLanguage } from '@/app/LanguageContext'
 import { t } from '@/lib/translations'
 
-function LoginPageContent() {
+export default function LoginPageContent() {
   const params = useSearchParams()
   const registered = params.get('registered')
   const reset = params.get('reset')
@@ -86,13 +86,13 @@ function LoginPageContent() {
 
           <div style={{ padding: '40px' }}>
             <form suppressHydrationWarning onSubmit={handleSubmit}>
-              <div suppressHydrationWarning className="form-group">
+              <div className="form-group" suppressHydrationWarning>
                 <label>{T.labelEmail}</label>
-                <input suppressHydrationWarning type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required data-lpignore="true" />
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required data-lpignore="true" />
               </div>
-              <div suppressHydrationWarning className="form-group" style={{ marginBottom: '8px' }}>
+              <div className="form-group" style={{ marginBottom: '8px' }} suppressHydrationWarning>
                 <label>{T.labelPassword}</label>
-                <input suppressHydrationWarning type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required data-lpignore="true" />
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required data-lpignore="true" />
               </div>
               <div style={{ textAlign: 'right', marginBottom: '28px' }}>
                 <Link href="/forgot-password" style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
@@ -116,13 +116,5 @@ function LoginPageContent() {
 
       </div>
     </div>
-  )
-}
-
-export default function LoginPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LoginPageContent />
-    </Suspense>
   )
 }

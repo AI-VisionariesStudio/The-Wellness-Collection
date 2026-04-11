@@ -46,7 +46,7 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
       {/* ── Hero ── */}
       <section style={{ background: '#fff', paddingTop: '80px', textAlign: 'center' }}>
         <img
-          src="/twc-logo.png"
+          src="/twc-logo.svg"
           alt="Gracefully Redefined"
           style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
         />

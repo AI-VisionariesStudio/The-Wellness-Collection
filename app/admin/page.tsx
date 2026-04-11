@@ -9,6 +9,46 @@ export default async function AdminPage() {
   const session = await getServerSession(authOptions)
   if (!session?.user || (session.user as any).role !== 'ADMIN') redirect('/dashboard')
 
+  // Infrastructure live data — failures are isolated so they never break the page
+  const [vercelRes, githubRes, upstashRes, vimeoRes, betterRes] = await Promise.allSettled([
+    fetch(
+      `https://api.vercel.com/v6/deployments?projectId=${process.env.VERCEL_PROJECT_ID}&limit=1`,
+      { headers: { Authorization: `Bearer ${process.env.VERCEL_TOKEN}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      `https://api.github.com/repos/${process.env.GITHUB_REPO}`,
+      { headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 'User-Agent': 'TWC-Admin' }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      `${process.env.UPSTASH_REDIS_REST_URL}/dbsize`,
+      { headers: { Authorization: `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      'https://api.vimeo.com/me/videos?per_page=1&fields=uri',
+      { headers: { Authorization: `Bearer ${process.env.VIMEO_ACCESS_TOKEN}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+    fetch(
+      'https://uptime.betterstack.com/api/v2/monitors',
+      { headers: { Authorization: `Bearer ${process.env.BETTERSTACK_API_KEY}` }, next: { revalidate: 60 } }
+    ).then(r => r.json()),
+  ])
+
+  const vercel  = vercelRes.status  === 'fulfilled' ? vercelRes.value  : null
+  const github  = githubRes.status  === 'fulfilled' ? githubRes.value  : null
+  const upstash = upstashRes.status === 'fulfilled' ? upstashRes.value : null
+  const vimeo   = vimeoRes.status   === 'fulfilled' ? vimeoRes.value   : null
+  const better  = betterRes.status  === 'fulfilled' ? betterRes.value  : null
+
+  const latestDeploy   = vercel?.deployments?.[0]
+  const deployState    = latestDeploy?.state ?? null
+  const deployTime     = latestDeploy?.created ? new Date(latestDeploy.created).toLocaleString() : null
+  const deployUrl      = latestDeploy?.url ? `https://${latestDeploy.url}` : null
+  const githubPushedAt = github?.pushed_at ? new Date(github.pushed_at).toLocaleString() : null
+  const redisKeys      = upstash?.result ?? null
+  const vimeoTotal     = vimeo?.total ?? null
+  const betterMonitors: any[] = better?.data ?? []
+  const monitorsUp     = betterMonitors.filter((m: any) => m.attributes?.status === 'up').length
+
   try {
     const [users, courses, certificates, enrollments, auditLogs] = await Promise.all([
       prisma.user.findMany({ where: { role: 'STUDENT' }, orderBy: { createdAt: 'desc' } }),
@@ -88,7 +128,7 @@ export default async function AdminPage() {
 
           {/* Recent Students */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Recent Students</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Recent Students</h2>
             <div className="card" style={{ overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
@@ -113,7 +153,7 @@ export default async function AdminPage() {
 
           {/* Manual Enrollment */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Manual Enrollment</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Manual Enrollment</h2>
             <ManualEnrollment
               users={users.map(u => ({ id: u.id, name: u.name, email: u.email }))}
               courses={courses.map(c => ({ id: c.id, title: c.title }))}
@@ -122,7 +162,7 @@ export default async function AdminPage() {
 
           {/* Enrolled Clients by Course */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Enrolled Clients by Course</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Enrolled Clients by Course</h2>
             <div style={{ display: 'grid', gap: '24px' }}>
               {courses.map((course: any) => (
                 <div key={course.id} className="card" style={{ overflow: 'hidden' }}>
@@ -159,7 +199,7 @@ export default async function AdminPage() {
 
           {/* Audit Log */}
           <section style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Audit Log <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— last 50 events</span></h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Audit Log <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— last 50 events</span></h2>
             <div className="card" style={{ overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
@@ -191,9 +231,177 @@ export default async function AdminPage() {
             </div>
           </section>
 
+          {/* Infrastructure */}
+          {(() => {
+            const supabaseRef = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? '').replace('https://', '').replace('.supabase.co', '')
+            const githubRepo = process.env.GITHUB_REPO ?? 'AI-VisionariesStudio/The-Wellness-Collection'
+            const sentryOrg = process.env.SENTRY_ORG ?? ''
+            const sentryProject = process.env.SENTRY_PROJECT ?? ''
+            const deployStateColor = deployState === 'READY' ? '#16a34a' : deployState === 'ERROR' ? '#dc2626' : '#d97706'
+
+            const services = [
+              {
+                name: 'Vercel',
+                role: 'Hosting & Deployment',
+                color: '#000',
+                url: deployUrl ?? 'https://vercel.com/dashboard',
+                details: [
+                  { label: 'Last Deploy', value: deployTime ?? '—' },
+                  { label: 'Status', value: deployState ?? '—', valueColor: deployState ? deployStateColor : undefined },
+                  { label: 'Project ID', value: process.env.VERCEL_PROJECT_ID ?? '—' },
+                ],
+              },
+              {
+                name: 'Supabase',
+                role: 'Database (PostgreSQL)',
+                color: '#3ECF8E',
+                url: `https://supabase.com/dashboard/project/${supabaseRef}`,
+                details: [
+                  { label: 'Project Ref', value: supabaseRef || '—' },
+                  { label: 'Host', value: supabaseRef ? `${supabaseRef}.supabase.co` : '—' },
+                  { label: 'Region', value: 'us-west-2 (AWS)' },
+                ],
+              },
+              {
+                name: 'Stripe',
+                role: 'Payments & Billing',
+                color: '#635BFF',
+                url: 'https://dashboard.stripe.com',
+                details: [
+                  { label: 'Mode', value: (process.env.STRIPE_SECRET_KEY ?? '').startsWith('sk_live') ? 'Live' : 'Test' },
+                  { label: 'Webhook', value: process.env.STRIPE_WEBHOOK_SECRET ? 'Configured' : 'Not set' },
+                ],
+              },
+              {
+                name: 'Resend',
+                role: 'Transactional Email',
+                color: '#000',
+                url: 'https://resend.com/emails',
+                details: [
+                  { label: 'From Address', value: process.env.EMAIL_FROM ?? '—' },
+                  { label: 'API Key', value: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.slice(0, 12) + '…' : '—' },
+                ],
+              },
+              {
+                name: 'Anthropic / Claude AI',
+                role: 'AI Features',
+                color: '#D4A853',
+                url: 'https://console.anthropic.com',
+                details: [
+                  { label: 'API Key', value: process.env.ANTHROPIC_API_KEY ? process.env.ANTHROPIC_API_KEY.slice(0, 18) + '…' : '—' },
+                ],
+              },
+              {
+                name: 'Upstash Redis',
+                role: 'Rate Limiting & Cache',
+                color: '#00E9A3',
+                url: 'https://console.upstash.com',
+                details: [
+                  { label: 'Keys Stored', value: redisKeys !== null ? String(redisKeys) : '—' },
+                  { label: 'Host', value: (process.env.UPSTASH_REDIS_REST_URL ?? '').replace('https://', '') || '—' },
+                ],
+              },
+              {
+                name: 'Sentry',
+                role: 'Error Monitoring',
+                color: '#362D59',
+                url: sentryOrg && sentryProject ? `https://sentry.io/organizations/${sentryOrg}/projects/${sentryProject}/` : 'https://sentry.io',
+                details: [
+                  { label: 'Org', value: sentryOrg || '—' },
+                  { label: 'Project', value: sentryProject || '—' },
+                ],
+              },
+              {
+                name: 'Vimeo',
+                role: 'Video Hosting',
+                color: '#1AB7EA',
+                url: 'https://vimeo.com/manage/videos',
+                details: [
+                  { label: 'Total Videos', value: vimeoTotal !== null ? String(vimeoTotal) : '—' },
+                  { label: 'Token', value: process.env.VIMEO_ACCESS_TOKEN ? process.env.VIMEO_ACCESS_TOKEN.slice(0, 12) + '…' : '—' },
+                ],
+              },
+              {
+                name: 'BetterStack',
+                role: 'Uptime & Log Management',
+                color: '#2563EB',
+                url: 'https://uptime.betterstack.com',
+                details: [
+                  { label: 'Monitors', value: betterMonitors.length > 0 ? String(betterMonitors.length) : '—' },
+                  { label: 'Up', value: betterMonitors.length > 0 ? `${monitorsUp} / ${betterMonitors.length}` : '—', valueColor: monitorsUp === betterMonitors.length && betterMonitors.length > 0 ? '#16a34a' : undefined },
+                ],
+              },
+              {
+                name: 'GitHub',
+                role: 'Source Code Repository',
+                color: '#24292F',
+                url: `https://github.com/${githubRepo}`,
+                details: [
+                  { label: 'Repo', value: githubRepo },
+                  { label: 'Last Push', value: githubPushedAt ?? '—' },
+                  { label: 'Open Issues', value: github?.open_issues_count !== undefined ? String(github.open_issues_count) : '—' },
+                ],
+              },
+              {
+                name: 'GitHub Codespaces',
+                role: 'Cloud Dev Environment',
+                color: '#0969DA',
+                url: `https://github.com/codespaces/new?repo=${githubRepo}`,
+                details: [
+                  { label: 'Repo', value: githubRepo },
+                  { label: 'Devcontainer', value: 'Configured' },
+                ],
+              },
+              {
+                name: 'Netlify',
+                role: 'Checklist App',
+                color: '#00C7B7',
+                url: 'https://thewellnesscollectionchecklist.netlify.app/',
+                details: [
+                  { label: 'App URL', value: 'thewellnesscollectionchecklist.netlify.app' },
+                ],
+              },
+            ]
+
+            return (
+              <section style={{ marginBottom: '48px' }}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Infrastructure</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+                  {services.map(service => (
+                    <div key={service.name} className="card" style={{ overflow: 'hidden' }}>
+                      <div style={{ padding: '16px 20px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: service.color, flexShrink: 0 }} />
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontWeight: 500, fontSize: '14px', color: 'var(--text)' }}>{service.name}</div>
+                          <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.03em' }}>{service.role}</div>
+                        </div>
+                        <a
+                          href={service.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}
+                        >
+                          Open ↗
+                        </a>
+                      </div>
+                      <div style={{ padding: '12px 20px' }}>
+                        {service.details.map(d => (
+                          <div key={d.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0', borderBottom: '1px solid var(--border-light)' }}>
+                            <span style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{d.label}</span>
+                            <code style={{ fontSize: '11px', color: (d as any).valueColor ?? 'var(--text)', background: '#f5f5f5', padding: '2px 6px', borderRadius: '3px', maxWidth: '210px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.value}</code>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )
+          })()}
+
           {/* Certificates Issued */}
           <section>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '20px' }}>Certificates Issued</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>Certificates Issued</h2>
             <div className="card" style={{ overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>

@@ -26,7 +26,7 @@ export default function VerifyPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream)', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '80px 40px', direction: dir }}>
-      <Link href="/" style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--navy)', fontWeight: 600, marginBottom: '60px' }}>
+      <Link href="/" style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--navy)', fontWeight: 400, marginBottom: '60px' }}>
         Gracefully Redefined
       </Link>
 

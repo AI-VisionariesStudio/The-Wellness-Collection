@@ -47,7 +47,7 @@ export default function Nav() {
   if (pathname === '/coming-soon') return null
 
   return (
-    <nav style={{ background: 'rgba(247, 244, 242, 0.88)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid rgba(224, 216, 208, 0.5)' }}>
+    <nav style={{ background: 'var(--bg)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid var(--border-light)' }}>
       <style>{`
         @media (max-width: 640px) {
           .nav-logo { display: none !important; }
@@ -62,7 +62,7 @@ export default function Nav() {
         }
       `}</style>
       <Link href="/" className="nav-logo">
-        <img src="/twc-logo.png" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
+        <img src="/twc-logo.svg" alt="Logo" style={{ height: '56px', width: '56px', objectFit: 'contain' }} />
       </Link>
       {/* Desktop title */}
       <Link href="/" className="nav-title-desktop" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', textDecoration: 'none' }}>
@@ -82,7 +82,7 @@ export default function Nav() {
           The Wellness Collection
         </p>
       </Link>
-      <div ref={menuRef} style={{ position: 'relative', flexShrink: 0 }}>
+      <div ref={menuRef} style={{ position: 'relative', flexShrink: 0, visibility: pathname === '/coming-soon' ? 'hidden' : 'visible' }}>
         <button
           onClick={() => setOpen(o => !o)}
           style={{ cursor: 'pointer', padding: '10px 20px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontSize: '13px', fontFamily: 'var(--font-body)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', background: 'transparent' }}
@@ -111,6 +111,11 @@ export default function Nav() {
             {(session?.user as any)?.role === 'ADMIN' && (
               <Link href="/admin" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--gold)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
                 Admin Panel
+              </Link>
+            )}
+            {(session?.user as any)?.role === 'ADMIN' && (
+              <Link href="/checklist" onClick={() => setOpen(false)} style={{ display: 'block', padding: '14px 24px', color: 'var(--gold)', fontSize: '14px', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', borderBottom: '1px solid var(--border-light)', direction: lang === 'he' ? 'rtl' : 'ltr' }}>
+                Checklist
               </Link>
             )}
             {session ? (

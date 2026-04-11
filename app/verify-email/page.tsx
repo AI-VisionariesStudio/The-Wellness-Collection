@@ -36,7 +36,7 @@ function VerifyEmailContent() {
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', background: 'var(--cream)', direction: dir }}>
       <div style={{ width: '100%', maxWidth: '440px', textAlign: 'center' }}>
         <Link href="/">
-          <img src="/twc-logo.png" alt="Logo" style={{ height: '100px', objectFit: 'contain', marginBottom: '32px' }} />
+          <img src="/twc-logo.svg" alt="Logo" style={{ height: '100px', objectFit: 'contain', marginBottom: '32px' }} />
         </Link>
         {sent && !token && (
           <div className="card" style={{ padding: '40px' }}>

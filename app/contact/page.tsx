@@ -42,7 +42,7 @@ export default function ContactPage() {
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
         <Link href="/">
           <img
-            src="/twc-logo.png"
+            src="/twc-logo.svg"
             alt="Gracefully Redefined"
             style={{ height: '130px', objectFit: 'contain', marginBottom: '28px' }}
           />

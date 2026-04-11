@@ -28,8 +28,8 @@ const securityHeaders = [
       // Images: self + data URIs + HTTPS (thumbnails may be hosted anywhere)
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
-      // iframes: Vimeo videos, Google Docs, Office Online, Stripe
-      "frame-src 'self' https://player.vimeo.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com https://thewellnesscollectionchecklist.netlify.app",
+      // iframes: Spotlightr videos, Google Docs, Office Online, Stripe
+      "frame-src 'self' https://*.cdn.spotlightr.com https://app.spotlightr.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com https://thewellnesscollectionchecklist.netlify.app",
       // API connections: Sentry error reporting, Vercel analytics
       "connect-src 'self' https://*.ingest.sentry.io https://vitals.vercel-insights.com",
       // No plugins

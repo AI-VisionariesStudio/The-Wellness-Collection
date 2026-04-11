@@ -97,15 +97,15 @@ function DocumentViewer({ viewUrl, name }: { viewUrl: string; name: string }) {
   )
 }
 
-// ── Vimeo embed URL builder ────────────────────────────────────────────────────
-function vimeoEmbedUrl(rawUrl: string): string | null {
-  const embedMatch = rawUrl.match(/player\.vimeo\.com\/video\/(\d+)/)
-  if (embedMatch) return `https://player.vimeo.com/video/${embedMatch[1]}?color=c8922a&byline=0&portrait=0&title=0&api=1`
-  const match = rawUrl.match(/vimeo\.com\/(?:video\/|manage\/videos\/|channels\/[^/]+\/)?(\d+)/)
-  if (!match) return null
-  const hashMatch = rawUrl.match(/vimeo\.com\/\d+\/([a-f0-9]+)/)
-  const hash = hashMatch ? `&h=${hashMatch[1]}` : ''
-  return `https://player.vimeo.com/video/${match[1]}?color=c8922a&byline=0&portrait=0&title=0&api=1${hash}`
+// ── Spotlightr embed URL builder ───────────────────────────────────────────────
+function spotlightrEmbedUrl(rawUrl: string): string | null {
+  // Already a full embed src (e.g. https://subdomain.cdn.spotlightr.com/watch/ABC123)
+  const cdnMatch = rawUrl.match(/https?:\/\/[^/]+\.cdn\.spotlightr\.com\/watch\/[^?&\s]+/)
+  if (cdnMatch) return cdnMatch[0]
+  // app.spotlightr.com/watch/[id]
+  const appMatch = rawUrl.match(/https?:\/\/app\.spotlightr\.com\/watch\/([^?&\s]+)/)
+  if (appMatch) return `https://app.spotlightr.com/watch/${appMatch[1]}`
+  return null
 }
 
 // ── Main component ─────────────────────────────────────────────────────────────
@@ -130,33 +130,22 @@ export default function LessonPlayer({
   const [showPostPulse, setShowPostPulse] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  const embedUrl = lesson.videoUrl ? vimeoEmbedUrl(lesson.videoUrl) : null
+  const embedUrl = lesson.videoUrl ? spotlightrEmbedUrl(lesson.videoUrl) : null
   const currentModule = course.modules.find(m => m.lessons.some(l => l.id === lesson.id))
   const moduleTitle = currentModule?.title ?? ''
 
-  // Vimeo postMessage — listens for video finish to trigger POST pulse
+  // Spotlightr postMessage — listens for video finish to trigger POST pulse
   useEffect(() => {
     if (!embedUrl) return
     const onMessage = (e: MessageEvent) => {
-      if (!String(e.origin).includes('vimeo.com')) return
+      if (!String(e.origin).includes('spotlightr.com')) return
       try {
         const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
-        if (data?.event === 'finish') setShowPostPulse(true)
+        if (data?.event === 'onEnded' || data?.event === 'vooPlayerEnded') setShowPostPulse(true)
       } catch { /* ignore non-JSON */ }
     }
-    const onIframeLoad = () => {
-      iframeRef.current?.contentWindow?.postMessage(
-        JSON.stringify({ method: 'addEventListener', value: 'finish' }),
-        'https://player.vimeo.com'
-      )
-    }
     window.addEventListener('message', onMessage)
-    const iframe = iframeRef.current
-    iframe?.addEventListener('load', onIframeLoad)
-    return () => {
-      window.removeEventListener('message', onMessage)
-      iframe?.removeEventListener('load', onIframeLoad)
-    }
+    return () => window.removeEventListener('message', onMessage)
   }, [embedUrl])
 
   const resetLesson = useCallback(async (lessonId: string) => {
@@ -371,7 +360,7 @@ export default function LessonPlayer({
                     ref={iframeRef}
                     src={embedUrl}
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                    allow="autoplay; fullscreen; picture-in-picture"
+                    allow="autoplay; fullscreen"
                     allowFullScreen
                   />
                   {showPrePulse && (

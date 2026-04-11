@@ -189,10 +189,10 @@ export default function AdminCourseEditorPage() {
                         />
                       </div>
                       <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
-                        <label>Vimeo Video URL</label>
+                        <label>Spotlightr Video URL</label>
                         <input
                           value={lesson.videoUrl || ''}
-                          placeholder="https://vimeo.com/123456789"
+                          placeholder="https://subdomain.cdn.spotlightr.com/watch/ABC123"
                           onChange={e => handleLessonChange(lesson.id, module.id, 'videoUrl', e.target.value)}
                           onBlur={e => updateLesson(lesson.id, module.id, 'videoUrl', e.target.value)}
                         />

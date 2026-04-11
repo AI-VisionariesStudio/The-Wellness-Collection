@@ -74,7 +74,7 @@ const SECTIONS: Section[] = [
     title: 'Courses & Content',
     items: [
       { key: 'courses-1', title: '"Your Attachment Style" course live and accessible', subtitle: 'Post-purchase enrollment flow tested', tag: 'content' },
-      { key: 'courses-2', title: 'Vimeo videos domain-locked to live domain', subtitle: 'gracefullyredefined-thewellnescollection.com', tag: 'content' },
+      { key: 'courses-2', title: 'Spotlightr videos domain-locked to live domain', subtitle: 'gracefullyredefined-thewellnescollection.com', tag: 'content' },
       { key: 'courses-3', title: 'Video right-click / Save As disabled', subtitle: 'Content protection active', tag: 'security' },
       { key: 'courses-4', title: 'Certificate generation working', subtitle: 'UUID serial number, /verify endpoint live', tag: 'content' },
       { key: 'courses-5', title: 'All nav pages live: Home, About, Courses, Free Resources, Workbooks, Disclaimers, Contact', subtitle: 'No 404s on menu items', tag: 'critical' },

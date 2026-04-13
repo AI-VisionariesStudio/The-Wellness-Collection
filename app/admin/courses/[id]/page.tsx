@@ -190,25 +190,6 @@ export default function AdminCourseEditorPage() {
                       </div>
                       <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
                         <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          Spotlightr Video URL
-                          <a
-                            href="https://projects.spotlightr.com/videos"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 400 }}
-                          >
-                            Open Spotlightr ↗
-                          </a>
-                        </label>
-                        <input
-                          value={lesson.videoUrl || ''}
-                          placeholder="https://subdomain.cdn.spotlightr.com/watch/ABC123"
-                          onChange={e => handleLessonChange(lesson.id, module.id, 'videoUrl', e.target.value)}
-                          onBlur={e => updateLesson(lesson.id, module.id, 'videoUrl', e.target.value)}
-                        />
-                      </div>
-                      <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
-                        <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           vdoCipher Video ID
                           <a
                             href="https://dashboard.vdocipher.com/dashboard/videos"

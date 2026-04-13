@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import CourseCompanion from '@/app/components/CourseCompanion'
@@ -11,7 +11,6 @@ interface Lesson {
   title: string
   description?: string | null
   backedResearch?: string | null
-  videoUrl?: string | null
   vdoCipherId?: string | null
   documentUrl?: string | null
   documentName?: string | null
@@ -99,17 +98,6 @@ function DocumentViewer({ viewUrl, name }: { viewUrl: string; name: string }) {
   )
 }
 
-// ── Spotlightr embed URL builder ───────────────────────────────────────────────
-function spotlightrEmbedUrl(rawUrl: string): string | null {
-  // Already a full embed src (e.g. https://subdomain.cdn.spotlightr.com/watch/ABC123)
-  const cdnMatch = rawUrl.match(/https?:\/\/[^/]+\.cdn\.spotlightr\.com\/watch\/[^?&\s]+/)
-  if (cdnMatch) return cdnMatch[0]
-  // app.spotlightr.com/watch/[id]
-  const appMatch = rawUrl.match(/https?:\/\/app\.spotlightr\.com\/watch\/([^?&\s]+)/)
-  if (appMatch) return `https://app.spotlightr.com/watch/${appMatch[1]}`
-  return null
-}
-
 // ── Main component ─────────────────────────────────────────────────────────────
 export default function LessonPlayer({
   course,
@@ -130,25 +118,8 @@ export default function LessonPlayer({
   const [resetting, setResetting] = useState<string | null>(null)
   const [showPrePulse, setShowPrePulse] = useState(true)
   const [showPostPulse, setShowPostPulse] = useState(false)
-  const iframeRef = useRef<HTMLIFrameElement>(null)
-
-  const embedUrl = lesson.videoUrl ? spotlightrEmbedUrl(lesson.videoUrl) : null
   const currentModule = course.modules.find(m => m.lessons.some(l => l.id === lesson.id))
   const moduleTitle = currentModule?.title ?? ''
-
-  // Spotlightr postMessage — listens for video finish to trigger POST pulse
-  useEffect(() => {
-    if (!embedUrl) return
-    const onMessage = (e: MessageEvent) => {
-      if (!String(e.origin).includes('spotlightr.com')) return
-      try {
-        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
-        if (data?.event === 'onEnded' || data?.event === 'vooPlayerEnded') setShowPostPulse(true)
-      } catch { /* ignore non-JSON */ }
-    }
-    window.addEventListener('message', onMessage)
-    return () => window.removeEventListener('message', onMessage)
-  }, [embedUrl])
 
   const resetLesson = useCallback(async (lessonId: string) => {
     setResetting(lessonId)
@@ -335,7 +306,7 @@ export default function LessonPlayer({
             )}
 
             {/* PRE pulse + video */}
-            {(lesson.vdoCipherId || embedUrl) && (
+            {lesson.vdoCipherId && (
               <div>
                 {showPrePulse && (
                   <ReflectionPulse
@@ -347,34 +318,11 @@ export default function LessonPlayer({
                   />
                 )}
                 <div style={{ position: 'relative', borderRadius: showPrePulse ? '0 0 var(--radius-lg) var(--radius-lg)' : 'var(--radius-lg)', overflow: 'hidden' }}>
-                  {lesson.vdoCipherId ? (
-                    <VdoCipherPlayer
-                      videoId={lesson.vdoCipherId}
-                      lessonId={lesson.id}
-                      onEnded={() => setShowPostPulse(true)}
-                    />
-                  ) : (
-                    <div
-                      onContextMenu={(e) => e.preventDefault()}
-                      style={{
-                        position: 'relative',
-                        paddingTop: '56.25%',
-                        border: '1px solid var(--border)',
-                        borderRadius: 'var(--radius-lg)',
-                        overflow: 'hidden',
-                        boxShadow: '0 4px 24px rgba(180,160,140,0.12)',
-                        userSelect: 'none',
-                      }}
-                    >
-                      <iframe
-                        ref={iframeRef}
-                        src={embedUrl!}
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                        allow="autoplay; fullscreen"
-                        allowFullScreen
-                      />
-                    </div>
-                  )}
+                  <VdoCipherPlayer
+                    videoId={lesson.vdoCipherId}
+                    lessonId={lesson.id}
+                    onEnded={() => setShowPostPulse(true)}
+                  />
                   {showPrePulse && (
                     <div style={{ position: 'absolute', inset: 0, zIndex: 2, cursor: 'default' }} />
                   )}

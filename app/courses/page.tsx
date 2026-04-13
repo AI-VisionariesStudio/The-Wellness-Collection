@@ -1,10 +1,12 @@
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 
 export default async function CoursesPage() {
   const session = await getServerSession(authOptions).catch(() => null)
+  if (!session?.user) redirect('/login')
   const userId = (session?.user as any)?.id ?? null
 
   const courses = await prisma.course.findMany({

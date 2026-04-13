@@ -28,12 +28,12 @@ export default function ComingSoonPage() {
       <style>{`
         @media (max-width: 640px) {
           .hero-logo { height: 140px !important; margin-bottom: -60px !important; }
-          .hero-body { padding: 80px 32px 60px !important; }
+          .hero-body { padding: 60px 32px 28px !important; margin-left: -20px !important; margin-right: -20px !important; }
           .hero-title { font-size: 40px !important; white-space: normal !important; }
           .cs-form { flex-direction: column !important; }
           .cs-form input { width: 100% !important; }
           .cs-footer-label { display: block !important; text-align: center !important; text-indent: 0.22em !important; }
-          .cs-form-area { padding: 32px 24px 40px !important; }
+          .cs-form-area { padding: 20px 24px 24px !important; }
         }
       `}</style>
 

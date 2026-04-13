@@ -20,10 +20,17 @@ function ResetPasswordContent() {
 
   if (!token) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--cream)', direction: dir }}>
-        <div className="card" style={{ padding: '40px', maxWidth: '440px', textAlign: 'center' }}>
-          <p style={{ color: 'var(--text-muted)', marginBottom: '20px' }}>{T.invalidLink}</p>
-          <Link href="/forgot-password" className="btn btn-outline">{T.requestNew}</Link>
+      <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
+        <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+          <Link href="/" style={{ display: 'block' }}>
+            <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
+          </Link>
+        </div>
+        <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px', display: 'flex', justifyContent: 'center', padding: '100px 40px 80px' }}>
+          <div className="card" style={{ padding: '40px', maxWidth: '440px', width: '100%', textAlign: 'center' }}>
+            <p style={{ color: 'var(--text-muted)', marginBottom: '20px' }}>{T.invalidLink}</p>
+            <Link href="/forgot-password" className="btn btn-outline">{T.requestNew}</Link>
+          </div>
         </div>
       </div>
     )
@@ -50,36 +57,44 @@ function ResetPasswordContent() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', background: 'var(--cream)', direction: dir }}>
-      <div style={{ width: '100%', maxWidth: '440px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <Link href="/" style={{ display: 'block' }}>
-            <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 28px' }} />
-          </Link>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 300, color: 'var(--text)', marginTop: '24px', marginBottom: '8px' }}>
-            {T.heading}
-          </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '15px' }}>{T.subtext}</p>
-        </div>
-        <div className="card" style={{ padding: '40px' }}>
-          {error && (
-            <div style={{ background: '#fef2f2', color: '#c0392b', padding: '12px 16px', borderRadius: 'var(--radius)', marginBottom: '20px', fontSize: '14px' }}>
-              {error}
-            </div>
-          )}
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>{T.labelNew}</label>
-              <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder={T.placeholderNew} minLength={8} required />
-            </div>
-            <div className="form-group">
-              <label>{T.labelConfirm}</label>
-              <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)} placeholder={T.placeholderConfirm} minLength={8} required />
-            </div>
-            <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center' }}>
-              {loading ? T.saving : T.submit}
-            </button>
-          </form>
+    <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
+
+      {/* White top — logo layers into cream below */}
+      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+        <Link href="/" style={{ display: 'block' }}>
+          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
+        </Link>
+      </div>
+
+      {/* Cream body */}
+      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '440px', padding: '0 40px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 300, color: 'var(--text)', marginBottom: '8px' }}>
+              {T.heading}
+            </h1>
+            <p style={{ color: 'var(--text-muted)', fontSize: '15px' }}>{T.subtext}</p>
+          </div>
+          <div className="card" style={{ padding: '40px' }}>
+            {error && (
+              <div style={{ background: '#fef2f2', color: '#c0392b', padding: '12px 16px', borderRadius: 'var(--radius)', marginBottom: '20px', fontSize: '14px' }}>
+                {error}
+              </div>
+            )}
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>{T.labelNew}</label>
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder={T.placeholderNew} minLength={8} required />
+              </div>
+              <div className="form-group">
+                <label>{T.labelConfirm}</label>
+                <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)} placeholder={T.placeholderConfirm} minLength={8} required />
+              </div>
+              <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center' }}>
+                {loading ? T.saving : T.submit}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

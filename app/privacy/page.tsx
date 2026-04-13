@@ -23,18 +23,22 @@ export default function PrivacyPolicy() {
   const lastUpdated = 'March 2025'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#fff', fontFamily: 'var(--font-body)', direction: dir }}>
+    <div style={{ minHeight: '100vh', background: 'var(--cream)', fontFamily: 'var(--font-body)', direction: dir }}>
 
-      {/* Header */}
-      <section style={{ background: 'var(--header)', padding: '72px 40px 64px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-          <Link href="/" style={{ display: 'block' }}>
-            <img
-              src="/twc-logo.svg"
-              alt="Gracefully Redefined"
-              style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 32px' }}
-            />
-          </Link>
+      {/* White top — logo layers into cream below */}
+      <section style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+        <Link href="/" style={{ display: 'block' }}>
+          <img
+            src="/twc-logo.svg"
+            alt="Gracefully Redefined"
+            style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }}
+          />
+        </Link>
+      </section>
+
+      {/* Cream content */}
+      <section style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '100px', paddingLeft: '40px', paddingRight: '40px' }}>
+        <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center', marginBottom: '56px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px' }}>
             {T.legal}
           </p>
@@ -46,10 +50,6 @@ export default function PrivacyPolicy() {
           </p>
           <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '28px auto 0' }} />
         </div>
-      </section>
-
-      {/* Content */}
-      <section style={{ padding: '72px 40px 100px' }}>
         <div style={{ maxWidth: '720px', margin: '0 auto' }}>
 
           {/* Intro */}

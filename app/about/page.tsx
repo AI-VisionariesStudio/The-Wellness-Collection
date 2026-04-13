@@ -11,26 +11,29 @@ export default function AboutPage() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
-      {/* Header band */}
-      <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
+      {/* White top — logo layers into cream below */}
+      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
         <Link href="/" style={{ display: 'block' }}>
           <img
             src="/twc-logo.svg"
             alt="Gracefully Redefined"
-            style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 28px' }}
+            style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }}
           />
         </Link>
-        <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
-          The Wellness Collection
-        </p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', marginBottom: '0', lineHeight: 1.1 }}>
-          {T.title}
-        </h1>
-        <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 0' }} />
       </div>
 
-      {/* Body */}
-      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '64px 40px 80px' }}>
+      {/* Cream body */}
+      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
+            The Wellness Collection
+          </p>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', marginBottom: '0', lineHeight: 1.1 }}>
+            {T.title}
+          </h1>
+          <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 0' }} />
+        </div>
+        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 40px' }}>
         <div style={{ background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
           <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '18px 40px' }}>
             <p style={{ fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
@@ -47,6 +50,7 @@ export default function AboutPage() {
             Questions?{' '}
             <Link href="/contact" style={{ color: 'var(--text)', fontWeight: 500 }}>Get in touch →</Link>
           </p>
+        </div>
         </div>
       </div>
 

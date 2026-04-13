@@ -33,41 +33,49 @@ function VerifyEmailContent() {
   }, [token])
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', background: 'var(--cream)', direction: dir }}>
-      <div style={{ width: '100%', maxWidth: '440px', textAlign: 'center' }}>
-        <Link href="/">
-          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 32px' }} />
+    <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
+
+      {/* White top — logo layers into cream below */}
+      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+        <Link href="/" style={{ display: 'block' }}>
+          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
         </Link>
-        {sent && !token && (
-          <div className="card" style={{ padding: '40px' }}>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>
-              {T.sentHeading}
-            </h1>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '24px' }}>{T.sentBody}</p>
-            <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-              {T.sentFooter}{' '}
-              <Link href="/login" style={{ color: 'var(--text)', fontWeight: 500 }}>{T.returnToLogin}</Link>.
-            </p>
-          </div>
-        )}
-        {status === 'success' && (
-          <div className="card" style={{ padding: '40px' }}>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>
-              {T.successHeading}
-            </h1>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '28px' }}>{T.successBody}</p>
-            <Link href="/login" className="btn btn-primary" style={{ display: 'inline-block' }}>{T.signIn}</Link>
-          </div>
-        )}
-        {status === 'error' && (
-          <div className="card" style={{ padding: '40px' }}>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>
-              {T.errorHeading}
-            </h1>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '28px' }}>{message}</p>
-            <Link href="/login" className="btn btn-outline" style={{ display: 'inline-block' }}>{T.backToLogin}</Link>
-          </div>
-        )}
+      </div>
+
+      {/* Cream body */}
+      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '440px', padding: '0 40px', textAlign: 'center' }}>
+          {sent && !token && (
+            <div className="card" style={{ padding: '40px' }}>
+              <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>
+                {T.sentHeading}
+              </h1>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '24px' }}>{T.sentBody}</p>
+              <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
+                {T.sentFooter}{' '}
+                <Link href="/login" style={{ color: 'var(--text)', fontWeight: 500 }}>{T.returnToLogin}</Link>.
+              </p>
+            </div>
+          )}
+          {status === 'success' && (
+            <div className="card" style={{ padding: '40px' }}>
+              <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>
+                {T.successHeading}
+              </h1>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '28px' }}>{T.successBody}</p>
+              <Link href="/login" className="btn btn-primary" style={{ display: 'inline-block' }}>{T.signIn}</Link>
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="card" style={{ padding: '40px' }}>
+              <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>
+                {T.errorHeading}
+              </h1>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '28px' }}>{message}</p>
+              <Link href="/login" className="btn btn-outline" style={{ display: 'inline-block' }}>{T.backToLogin}</Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

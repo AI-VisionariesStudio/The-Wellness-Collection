@@ -41,23 +41,26 @@ function LoginPageContent() {
   return (
     <div suppressHydrationWarning style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
-      {/* Header band */}
-      <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
+      {/* White top — logo layers into cream below */}
+      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
         <Link href="/" style={{ display: 'block' }}>
-          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 28px' }} />
+          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
         </Link>
-        <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
-          The Wellness Collection
-        </p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', marginBottom: '0', lineHeight: 1.1 }}>
-          {T.heading}
-        </h1>
-        <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 16px' }} />
-        <p style={{ color: 'var(--text-muted)', fontSize: '15px' }}>{T.subtext}</p>
       </div>
 
-      {/* Body */}
-      <div style={{ maxWidth: '480px', margin: '0 auto', padding: '56px 40px 80px' }}>
+      {/* Cream body */}
+      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
+            The Wellness Collection
+          </p>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', marginBottom: '0', lineHeight: 1.1 }}>
+            {T.heading}
+          </h1>
+          <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 16px' }} />
+          <p style={{ color: 'var(--text-muted)', fontSize: '15px' }}>{T.subtext}</p>
+        </div>
+        <div style={{ maxWidth: '480px', margin: '0 auto', padding: '0 40px' }}>
 
         {registered && (
           <div style={{ background: '#e8f5ec', color: '#2d6a3f', padding: '14px 18px', marginBottom: '24px', fontSize: '14px', lineHeight: 1.6, border: '1px solid #c3e6cb' }}>
@@ -114,6 +117,7 @@ function LoginPageContent() {
           </p>
         </div>
 
+        </div>
       </div>
     </div>
   )

@@ -116,7 +116,7 @@ export default function LessonPlayer({
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [companionOpen, setCompanionOpen] = useState(false)
   const [resetting, setResetting] = useState<string | null>(null)
-  const [showPrePulse, setShowPrePulse] = useState(!isAdmin)
+  const [showPrePulse, setShowPrePulse] = useState(true)
   const [showPostPulse, setShowPostPulse] = useState(false)
   const currentModule = course.modules.find(m => m.lessons.some(l => l.id === lesson.id))
   const moduleTitle = currentModule?.title ?? ''
@@ -323,7 +323,7 @@ export default function LessonPlayer({
                     lessonId={lesson.id}
                     onEnded={() => setShowPostPulse(true)}
                   />
-                  {showPrePulse && (
+                  {showPrePulse && !isAdmin && (
                     <div style={{ position: 'absolute', inset: 0, zIndex: 2, cursor: 'default' }} />
                   )}
                 </div>

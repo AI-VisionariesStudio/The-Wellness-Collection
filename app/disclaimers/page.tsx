@@ -18,7 +18,7 @@ export default function Disclaimers() {
             <img
               src="/twc-logo.svg"
               alt="Gracefully Redefined"
-              style={{ height: '130px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 32px' }}
+              style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 32px' }}
             />
           </Link>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px' }}>

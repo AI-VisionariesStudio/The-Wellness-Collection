@@ -36,15 +36,15 @@ function VerifyEmailContent() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+      <div className="overlay-top">
         <Link href="/" style={{ display: 'block' }}>
-          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
+          <img src="/twc-logo.svg" alt="Logo" className="overlay-logo" />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '440px', padding: '0 40px', textAlign: 'center' }}>
+      <div className="overlay-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '440px', padding: '0 20px', textAlign: 'center' }}>
           {sent && !token && (
             <div className="card" style={{ padding: '40px' }}>
               <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 300, color: 'var(--text)', marginBottom: '12px' }}>

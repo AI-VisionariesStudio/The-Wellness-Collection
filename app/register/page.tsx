@@ -43,15 +43,15 @@ export default function RegisterPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+      <div className="overlay-top">
         <Link href="/" style={{ display: 'block' }}>
-          <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
+          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '520px', padding: '0 40px' }}>
+      <div className="overlay-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '520px', padding: '0 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', color: 'var(--text)', marginBottom: '8px', fontWeight: 300 }}>
               {T.heading}

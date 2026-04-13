@@ -26,18 +26,14 @@ export default function PrivacyPolicy() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', fontFamily: 'var(--font-body)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <section style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+      <section className="overlay-top">
         <Link href="/" style={{ display: 'block' }}>
-          <img
-            src="/twc-logo.svg"
-            alt="Gracefully Redefined"
-            style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }}
-          />
+          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" />
         </Link>
       </section>
 
       {/* Cream content */}
-      <section style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '100px', paddingLeft: '40px', paddingRight: '40px' }}>
+      <section className="overlay-body" style={{ paddingLeft: '40px', paddingRight: '40px', paddingBottom: '100px' }}>
         <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center', marginBottom: '56px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px' }}>
             {T.legal}

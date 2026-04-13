@@ -42,14 +42,14 @@ function LoginPageContent() {
     <div suppressHydrationWarning style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+      <div className="overlay-top">
         <Link href="/" style={{ display: 'block' }}>
-          <img src="/twc-logo.svg" alt="Logo" style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }} />
+          <img src="/twc-logo.svg" alt="Logo" className="overlay-logo" />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px' }}>
+      <div className="overlay-body">
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
             The Wellness Collection
@@ -60,7 +60,7 @@ function LoginPageContent() {
           <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 16px' }} />
           <p style={{ color: 'var(--text-muted)', fontSize: '15px' }}>{T.subtext}</p>
         </div>
-        <div style={{ maxWidth: '480px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ maxWidth: '480px', margin: '0 auto', padding: '0 20px' }}>
 
         {registered && (
           <div style={{ background: '#e8f5ec', color: '#2d6a3f', padding: '14px 18px', marginBottom: '24px', fontSize: '14px', lineHeight: 1.6, border: '1px solid #c3e6cb' }}>

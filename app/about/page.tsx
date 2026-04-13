@@ -12,18 +12,14 @@ export default function AboutPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div style={{ background: '#fff', padding: '64px 40px 0', textAlign: 'center' }}>
+      <div className="overlay-top">
         <Link href="/" style={{ display: 'block' }}>
-          <img
-            src="/twc-logo.svg"
-            alt="Gracefully Redefined"
-            style={{ height: '180px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto -80px', position: 'relative', zIndex: 2 }}
-          />
+          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div style={{ background: 'var(--cream)', paddingTop: '100px', paddingBottom: '80px' }}>
+      <div className="overlay-body">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
             The Wellness Collection
@@ -33,7 +29,7 @@ export default function AboutPage() {
           </h1>
           <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 0' }} />
         </div>
-        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 20px' }}>
         <div style={{ background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
           <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '18px 40px' }}>
             <p style={{ fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>

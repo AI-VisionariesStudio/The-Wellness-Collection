@@ -10,33 +10,28 @@ export default async function AdminPage() {
   if (!session?.user || (session.user as any).role !== 'ADMIN') redirect('/dashboard')
 
   // Infrastructure live data — failures are isolated so they never break the page
-  const [vercelRes, githubRes, upstashRes, vimeoRes, betterRes] = await Promise.allSettled([
+  const [vercelRes, githubRes, upstashRes, betterRes] = await Promise.allSettled([
     fetch(
       `https://api.vercel.com/v6/deployments?projectId=${process.env.VERCEL_PROJECT_ID}&limit=1`,
       { headers: { Authorization: `Bearer ${process.env.VERCEL_TOKEN}` }, next: { revalidate: 60 } }
-    ).then(r => r.json()),
+    ).then(r => r.ok ? r.json() : Promise.resolve(null)),
     fetch(
       `https://api.github.com/repos/${process.env.GITHUB_REPO}`,
       { headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 'User-Agent': 'TWC-Admin' }, next: { revalidate: 60 } }
-    ).then(r => r.json()),
+    ).then(r => r.ok ? r.json() : Promise.resolve(null)),
     fetch(
       `${process.env.UPSTASH_REDIS_REST_URL}/dbsize`,
       { headers: { Authorization: `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}` }, next: { revalidate: 60 } }
-    ).then(r => r.json()),
-    fetch(
-      'https://api.vimeo.com/me/videos?per_page=1&fields=uri',
-      { headers: { Authorization: `Bearer ${process.env.VIMEO_ACCESS_TOKEN}` }, next: { revalidate: 60 } }
-    ).then(r => r.json()),
+    ).then(r => r.ok ? r.json() : Promise.resolve(null)),
     fetch(
       'https://uptime.betterstack.com/api/v2/monitors',
       { headers: { Authorization: `Bearer ${process.env.BETTERSTACK_API_KEY}` }, next: { revalidate: 60 } }
-    ).then(r => r.json()),
+    ).then(r => r.ok ? r.json() : Promise.resolve(null)),
   ])
 
   const vercel  = vercelRes.status  === 'fulfilled' ? vercelRes.value  : null
   const github  = githubRes.status  === 'fulfilled' ? githubRes.value  : null
   const upstash = upstashRes.status === 'fulfilled' ? upstashRes.value : null
-  const vimeo   = vimeoRes.status   === 'fulfilled' ? vimeoRes.value   : null
   const better  = betterRes.status  === 'fulfilled' ? betterRes.value  : null
 
   const latestDeploy   = vercel?.deployments?.[0]
@@ -45,7 +40,6 @@ export default async function AdminPage() {
   const deployUrl      = latestDeploy?.url ? `https://${latestDeploy.url}` : null
   const githubPushedAt = github?.pushed_at ? new Date(github.pushed_at).toLocaleString() : null
   const redisKeys      = upstash?.result ?? null
-  const vimeoTotal     = vimeo?.total ?? null
   const betterMonitors: any[] = better?.data ?? []
   const monitorsUp     = betterMonitors.filter((m: any) => m.attributes?.status === 'up').length
 
@@ -312,16 +306,6 @@ export default async function AdminPage() {
                 ],
               },
               {
-                name: 'Vimeo',
-                role: 'Video Hosting',
-                color: '#1AB7EA',
-                url: 'https://vimeo.com/manage/videos',
-                details: [
-                  { label: 'Total Videos', value: vimeoTotal !== null ? String(vimeoTotal) : '—' },
-                  { label: 'Token', value: process.env.VIMEO_ACCESS_TOKEN ? process.env.VIMEO_ACCESS_TOKEN.slice(0, 12) + '…' : '—' },
-                ],
-              },
-              {
                 name: 'BetterStack',
                 role: 'Uptime & Log Management',
                 color: '#2563EB',
@@ -350,15 +334,6 @@ export default async function AdminPage() {
                 details: [
                   { label: 'Repo', value: githubRepo },
                   { label: 'Devcontainer', value: 'Configured' },
-                ],
-              },
-              {
-                name: 'Netlify',
-                role: 'Checklist App',
-                color: '#00C7B7',
-                url: 'https://thewellnesscollectionchecklist.netlify.app/',
-                details: [
-                  { label: 'App URL', value: 'thewellnesscollectionchecklist.netlify.app' },
                 ],
               },
             ]

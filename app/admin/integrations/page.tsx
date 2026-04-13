@@ -345,6 +345,57 @@ function BetterstackCard({ data }: { data: any }) {
   )
 }
 
+// ── Sentry card ───────────────────────────────────────────────────────────────
+function SentryCard({ data }: { data: any }) {
+  if (data.status === 'unconfigured') return <UnconfiguredCard title="Sentry" vars={['NEXT_PUBLIC_SENTRY_DSN']} />
+
+  const levelColor = (level: string) => {
+    if (level === 'fatal' || level === 'error') return '#dc2626'
+    if (level === 'warning') return '#d97706'
+    return '#9ca3af'
+  }
+
+  const sentryUrl = data.org
+    ? `https://sentry.io/organizations/${data.org}/issues/`
+    : 'https://sentry.io'
+
+  return (
+    <ServiceCard title="Sentry" status={data.status} href={sentryUrl}>
+      <InfoRow label="Organization" value={data.org} />
+      <InfoRow label="Project" value={data.project} />
+      <InfoRow label="DSN" value={data.dsnConfigured ? 'Configured ✓' : 'Not set'} />
+
+      {data.issues !== null && data.issues.length === 0 && (
+        <div style={{ marginTop: '14px', color: '#4a7a5a', fontSize: '13px' }}>No unresolved issues.</div>
+      )}
+
+      {data.issues !== null && data.issues.length > 0 && (
+        <>
+          <div style={{ marginTop: '16px', marginBottom: '8px', fontSize: '12px', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Unresolved Issues
+          </div>
+          {data.issues.map((issue: any) => (
+            <div key={issue.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '6px 0', borderBottom: '1px solid var(--border-light, #f0f0f0)', fontSize: '12px' }}>
+              <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: levelColor(issue.level), flexShrink: 0, display: 'inline-block' }} />
+              <span style={{ flex: 1, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{issue.title}</span>
+              <span style={{ color: 'var(--text-muted)', flexShrink: 0 }}>{issue.count}×</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '11px', flexShrink: 0 }}>{timeAgo(issue.lastSeen)}</span>
+            </div>
+          ))}
+        </>
+      )}
+
+      {data.issues === null && (
+        <div style={{ marginTop: '14px', background: '#f8f9fa', borderRadius: '8px', padding: '12px 14px', fontSize: '12px', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+          Add <code style={{ background: '#f0f0f0', padding: '1px 5px', borderRadius: '3px' }}>SENTRY_AUTH_TOKEN</code>,{' '}
+          <code style={{ background: '#f0f0f0', padding: '1px 5px', borderRadius: '3px' }}>SENTRY_ORG</code>, and{' '}
+          <code style={{ background: '#f0f0f0', padding: '1px 5px', borderRadius: '3px' }}>SENTRY_PROJECT</code> to unlock issue tracking.
+        </div>
+      )}
+    </ServiceCard>
+  )
+}
+
 // ── Anthropic card ────────────────────────────────────────────────────────────
 function AnthropicCard({ data }: { data: any }) {
   if (data.status === 'unconfigured') return <UnconfiguredCard title="Anthropic" vars={['ANTHROPIC_API_KEY']} />
@@ -455,6 +506,7 @@ export default function IntegrationsDashboard() {
               <ResendCard data={data.resend} />
               <UpstashCard data={data.upstash} />
               <BetterstackCard data={data.betterstack} />
+              <SentryCard data={data.sentry} />
               <AnthropicCard data={data.anthropic} />
             </>
           ) : (

@@ -23,14 +23,19 @@ async function fetchGitHub() {
       fetch(`https://api.github.com/repos/${repo}/actions/runs?per_page=3`, { headers, cache: 'no-store' }),
     ])
 
+    if (!repoRes.ok) {
+      const err = await repoRes.json().catch(() => ({}))
+      return { status: 'error', message: `GitHub ${repoRes.status}: ${err.message ?? repoRes.statusText}` }
+    }
+
     const [repoData, commitsData, runsData] = await Promise.all([
       repoRes.json(),
-      commitsRes.json(),
-      runsRes.json(),
+      commitsRes.ok ? commitsRes.json() : Promise.resolve([]),
+      runsRes.ok ? runsRes.json() : Promise.resolve({}),
     ])
 
     const repoInfo = {
-      name: repoData.name,
+      name: repoData.full_name ?? repoData.name,
       open_issues_count: repoData.open_issues_count,
       pushed_at: repoData.pushed_at,
       default_branch: repoData.default_branch,
@@ -76,14 +81,19 @@ async function fetchVercel() {
       fetch(`https://api.vercel.com/v6/deployments?projectId=${projectId}&limit=5`, { headers, cache: 'no-store' }),
     ])
 
+    if (!projectRes.ok) {
+      const err = await projectRes.json().catch(() => ({}))
+      return { status: 'error', message: `Vercel ${projectRes.status}: ${err.error?.message ?? projectRes.statusText}` }
+    }
+
     const [projectData, deploymentsData] = await Promise.all([
       projectRes.json(),
-      deploymentsRes.json(),
+      deploymentsRes.ok ? deploymentsRes.json() : Promise.resolve({}),
     ])
 
     const project = {
       name: projectData.name,
-      framework: projectData.framework,
+      framework: projectData.framework ?? 'nextjs',
     }
 
     const deployments = Array.isArray(deploymentsData?.deployments)
@@ -146,6 +156,12 @@ async function fetchResend() {
       headers: { Authorization: `Bearer ${apiKey}` },
       cache: 'no-store',
     })
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}))
+      return { status: 'error', message: `Resend ${res.status}: ${err.message ?? res.statusText}` }
+    }
+
     const data = await res.json()
     return {
       status: 'ok',
@@ -171,9 +187,14 @@ async function fetchUpstash() {
       fetch(`${url}/dbsize`, { headers, cache: 'no-store' }),
     ])
 
+    if (!infoRes.ok) {
+      const err = await infoRes.json().catch(() => ({}))
+      return { status: 'error', message: `Upstash ${infoRes.status}: ${err.error ?? infoRes.statusText}` }
+    }
+
     const [infoData, dbsizeData] = await Promise.all([
       infoRes.json(),
-      dbsizeRes.json(),
+      dbsizeRes.ok ? dbsizeRes.json() : Promise.resolve({}),
     ])
 
     // infoData.result is a long string with "key:value\r\n" pairs
@@ -211,6 +232,12 @@ async function fetchBetterstack() {
       headers: { Authorization: `Bearer ${apiKey}` },
       cache: 'no-store',
     })
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}))
+      return { status: 'error', message: `BetterStack ${res.status}: ${err.errors?.[0]?.detail ?? res.statusText}` }
+    }
+
     const data = await res.json()
     const monitors = Array.isArray(data?.data)
       ? data.data.map((m: any) => ({
@@ -222,6 +249,68 @@ async function fetchBetterstack() {
         }))
       : []
     return { status: 'ok', monitors }
+  } catch (err: any) {
+    return { status: 'error', message: err.message }
+  }
+}
+
+// ── Sentry ────────────────────────────────────────────────────────────────────
+async function fetchSentry() {
+  const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN ?? process.env.SENTRY_DSN
+  const authToken = process.env.SENTRY_AUTH_TOKEN
+  const org = process.env.SENTRY_ORG
+  const project = process.env.SENTRY_PROJECT
+
+  if (!dsn) return { status: 'unconfigured' }
+
+  // DSN is set but no auth token — show configured state only
+  if (!authToken || !org || !project) {
+    return {
+      status: 'ok',
+      dsnConfigured: true,
+      org: org ?? null,
+      project: project ?? null,
+      issues: null,
+    }
+  }
+
+  try {
+    const [projectRes, issuesRes] = await Promise.all([
+      fetch(`https://sentry.io/api/0/projects/${org}/${project}/`, {
+        headers: { Authorization: `Bearer ${authToken}` },
+        cache: 'no-store',
+      }),
+      fetch(`https://sentry.io/api/0/projects/${org}/${project}/issues/?limit=5&query=is:unresolved`, {
+        headers: { Authorization: `Bearer ${authToken}` },
+        cache: 'no-store',
+      }),
+    ])
+
+    if (!projectRes.ok) {
+      return { status: 'error', message: `Sentry ${projectRes.status}: ${projectRes.statusText}` }
+    }
+
+    const [projectData, issuesData] = await Promise.all([
+      projectRes.json(),
+      issuesRes.ok ? issuesRes.json() : Promise.resolve([]),
+    ])
+
+    return {
+      status: 'ok',
+      dsnConfigured: true,
+      org,
+      project: projectData.slug ?? project,
+      platform: projectData.platform,
+      issues: Array.isArray(issuesData)
+        ? issuesData.slice(0, 5).map((i: any) => ({
+            id: i.id,
+            title: i.title,
+            level: i.level,
+            count: i.count,
+            lastSeen: i.lastSeen,
+          }))
+        : [],
+    }
   } catch (err: any) {
     return { status: 'error', message: err.message }
   }
@@ -253,6 +342,7 @@ export async function GET() {
     resendResult,
     upstashResult,
     betterstackResult,
+    sentryResult,
   ] = await Promise.allSettled([
     fetchGitHub(),
     fetchVercel(),
@@ -260,6 +350,7 @@ export async function GET() {
     fetchResend(),
     fetchUpstash(),
     fetchBetterstack(),
+    fetchSentry(),
   ])
 
   const unwrap = (r: PromiseSettledResult<any>) =>
@@ -272,6 +363,7 @@ export async function GET() {
     resend: unwrap(resendResult),
     upstash: unwrap(upstashResult),
     betterstack: unwrap(betterstackResult),
+    sentry: unwrap(sentryResult),
     anthropic: fetchAnthropic(),
     fetchedAt: new Date().toISOString(),
   })

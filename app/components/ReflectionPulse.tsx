@@ -37,9 +37,13 @@ function PreStrip({ lessonId, lessonTitle, moduleTitle, onDismiss }: Omit<Props,
         body: JSON.stringify({ score, stage: 'PRE', lessonTitle, moduleTitle, lessonId }),
       })
       const data = await res.json()
-      setAiText(data.text || null)
+      const text = data.text || null
+      setAiText(text)
+      // Auto-dismiss after showing the AI response — no second click needed
+      if (text) setTimeout(onDismiss, 3000)
     } catch {
-      setAiText(null)
+      // AI failed — surface a Begin button immediately so user is never stuck
+      setAiText('__error__')
     } finally {
       setLoading(false)
     }
@@ -150,18 +154,16 @@ function PreStrip({ lessonId, lessonTitle, moduleTitle, onDismiss }: Omit<Props,
           gap: '16px',
         }}>
           <div style={{ flex: 1 }}>
-            <p style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '13px',
-              color: 'var(--text-muted)',
-              lineHeight: 1.6,
-              margin: '0 0 6px',
-            }}>
-              {aiText}
-            </p>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0, opacity: 0.7 }}>
-              {DISCLAIMER}
-            </p>
+            {aiText !== '__error__' && (
+              <>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.6, margin: '0 0 6px' }}>
+                  {aiText}
+                </p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0, opacity: 0.7 }}>
+                  {DISCLAIMER}
+                </p>
+              </>
+            )}
           </div>
           <button
             onClick={onDismiss}

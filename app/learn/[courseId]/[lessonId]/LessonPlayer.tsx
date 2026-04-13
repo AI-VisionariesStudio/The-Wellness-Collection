@@ -116,7 +116,7 @@ export default function LessonPlayer({
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [companionOpen, setCompanionOpen] = useState(false)
   const [resetting, setResetting] = useState<string | null>(null)
-  const [showPrePulse, setShowPrePulse] = useState(true)
+  const [showPrePulse, setShowPrePulse] = useState(!isAdmin)
   const [showPostPulse, setShowPostPulse] = useState(false)
   const currentModule = course.modules.find(m => m.lessons.some(l => l.id === lesson.id))
   const moduleTitle = currentModule?.title ?? ''

@@ -1,0 +1,148 @@
+/*
+ * GLOBAL CSS — The Wellness Collection
+ * ======================================
+ * CSS custom properties derived from design-tokens.ts.
+ * These provide the bridge between tokens and Tailwind/components.
+ *
+ * GOVERNANCE:
+ *   - No raw color/spacing values anywhere in this file or the codebase.
+ *   - Every property references a token.
+ *   - !important is BANNED. If you think you need it, the architecture is wrong.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Brand Colors (HSL for opacity flexibility) ── */
+    --color-primary-50:  30 56% 96%;
+    --color-primary-100: 30 48% 90%;
+    --color-primary-200: 30 42% 80%;
+    --color-primary-300: 28 38% 68%;
+    --color-primary-400: 27 40% 57%;
+    --color-primary-500: 27 44% 48%;
+    --color-primary-600: 27 44% 41%;
+    --color-primary-700: 27 42% 34%;
+    --color-primary-800: 27 40% 27%;
+    --color-primary-900: 27 35% 20%;
+
+    --color-accent-50:  153 33% 95%;
+    --color-accent-100: 153 32% 89%;
+    --color-accent-200: 153 30% 78%;
+    --color-accent-300: 153 30% 64%;
+    --color-accent-400: 153 35% 51%;
+    --color-accent-500: 153 42% 41%;
+    --color-accent-600: 153 42% 34%;
+    --color-accent-700: 153 42% 27%;
+    --color-accent-800: 153 42% 21%;
+    --color-accent-900: 153 40% 16%;
+
+    /* ── Neutral / Surface ── */
+    --color-bg:          40 10% 97%;
+    --color-surface:     40 8% 95%;
+    --color-surface-alt: 40 6% 92%;
+    --color-border:      35 8% 82%;
+    --color-text:        40 8% 11%;
+    --color-text-muted:  35 6% 45%;
+
+    /* ── Typography ── */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body:    'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+
+    /* ── Spacing (locked values) ── */
+    --container-px-mobile:  1rem;
+    --container-px-tablet:  2rem;
+    --container-px-desktop: 4rem;
+    --section-gap-mobile:   3rem;
+    --section-gap-tablet:   4rem;
+    --section-gap-desktop:  6rem;
+
+    /* ── Layout ── */
+    --max-w-content: 1280px;
+    --max-w-narrow:  768px;
+    --max-w-wide:    1536px;
+
+    /* ── Transitions ── */
+    --transition-fast:    150ms ease;
+    --transition-default: 250ms ease;
+    --transition-slow:    400ms ease;
+
+    /* ── Borders ── */
+    --radius-sm:   4px;
+    --radius-md:   8px;
+    --radius-lg:   12px;
+    --radius-xl:   16px;
+    --radius-full: 9999px;
+  }
+
+  /* ── Base resets ── */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: hsl(var(--color-text));
+    background-color: hsl(var(--color-bg));
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.15;
+    color: hsl(var(--color-text));
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Focus visible for accessibility ── */
+  :focus-visible {
+    outline: 2px solid hsl(var(--color-accent-500));
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* ── Utility layer: locked responsive containers ── */
+@layer utilities {
+  .container-wellness {
+    width: 100%;
+    max-width: var(--max-w-content);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-px-mobile);
+    padding-right: var(--container-px-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .container-wellness {
+      padding-left: var(--container-px-tablet);
+      padding-right: var(--container-px-tablet);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-wellness {
+      padding-left: var(--container-px-desktop);
+      padding-right: var(--container-px-desktop);
+    }
+  }
+}

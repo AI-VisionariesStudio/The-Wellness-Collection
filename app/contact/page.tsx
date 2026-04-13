@@ -40,11 +40,11 @@ export default function ContactPage() {
 
       {/* Header band */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '56px 40px', textAlign: 'center' }}>
-        <Link href="/">
+        <Link href="/" style={{ display: 'block' }}>
           <img
             src="/twc-logo.svg"
             alt="Gracefully Redefined"
-            style={{ height: '130px', objectFit: 'contain', marginBottom: '28px' }}
+            style={{ height: '130px', width: 'auto', objectFit: 'contain', display: 'block', margin: '0 auto 28px' }}
           />
         </Link>
         <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>

@@ -1,0 +1,33 @@
+name: CSS Governance
+
+on:
+  pull_request:
+    paths:
+      - 'app/**/*.tsx'
+      - 'app/**/*.ts'
+      - 'app/**/*.css'
+      - 'components/**/*.tsx'
+      - 'components/**/*.ts'
+      - 'lib/design-tokens.ts'
+      - 'tailwind.config.ts'
+
+jobs:
+  lint:
+    name: CSS Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Tailwind lint
+        run: npm run lint:css
+
+      - name: Stylelint
+        run: npm run lint:styles

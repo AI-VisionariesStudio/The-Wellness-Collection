@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding Your Attachment Style — Gracefully Redefined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #D5CEC8;
+      padding: 48px 24px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* ── PAGE BASE ── */
+    .page {
+      width: 850px;
+      min-height: 1100px;
+      margin: 0 auto 48px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── COVER PAGE ── */
+    .cover {
+      background: #3C3028;
+      overflow: hidden;
+    }
+
+    .cover-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .cover-inner {
+      position: absolute;
+      inset: 0;
+      padding: 52px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .cover-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .cover-brand-line {
+      width: 2px;
+      height: 72px;
+      background: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .cover-brand-text {
+      color: rgba(255,255,255,0.92);
+      font-size: 10.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      line-height: 2.1;
+    }
+
+    .cover-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0 0 32px;
+    }
+
+    .cover-pre {
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
+    }
+
+    .cover-h1 {
+      font-size: 76px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 0.95;
+      margin-bottom: 36px;
+      letter-spacing: -0.01em;
+    }
+
+    .cover-rule {
+      width: 380px;
+      height: 1px;
+      background: rgba(255,255,255,0.28);
+      margin-bottom: 36px;
+    }
+
+    .cover-desc {
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .cover-credit {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.80);
+    }
+
+    .cover-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cover-footer-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cover-footer-line {
+      width: 80px;
+      height: 1px;
+      background: rgba(255,255,255,0.22);
+    }
+
+    .cover-footer-diamond {
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.38);
+      transform: rotate(45deg);
+    }
+
+    .cover-footer-tagline {
+      font-size: 9px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+    }
+
+    .cover-copyright {
+      font-size: 10px;
+      color: rgba(255,255,255,0.62);
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    /* ── INNER PAGES ── */
+    .inner {
+      background: #F4EFEA;
+    }
+
+    .corner { position: absolute; width: 22px; height: 22px; }
+    .corner-tl { top: 16px; left: 16px; border-top: 1px solid #C0B8AE; border-left: 1px solid #C0B8AE; }
+    .corner-tr { top: 16px; right: 16px; border-top: 1px solid #C0B8AE; border-right: 1px solid #C0B8AE; }
+    .corner-bl { bottom: 16px; left: 16px; border-bottom: 1px solid #C0B8AE; border-left: 1px solid #C0B8AE; }
+    .corner-br { bottom: 16px; right: 16px; border-bottom: 1px solid #C0B8AE; border-right: 1px solid #C0B8AE; }
+
+    /* Page body */
+    .page-body {
+      flex: 1;
+      padding: 56px 84px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .centered .page-body {
+      justify-content: center;
+    }
+
+    /* Page footer */
+    .page-footer {
+      padding: 0 84px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pf-num { font-size: 11px; letter-spacing: 0.1em; color: #9E9089; }
+    .pf-brand { font-size: 10px; letter-spacing: 0.1em; color: #B0A89E; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow {
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #9E9089;
+      margin-bottom: 6px;
+    }
+
+    .page-title {
+      font-size: 42px;
+      font-weight: 400;
+      font-style: italic;
+      color: #2E2620;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .title-rule {
+      width: 76px;
+      height: 1px;
+      background: #C8C0B6;
+      margin-bottom: 26px;
+    }
+
+    .body-p {
+      font-size: 15px;
+      color: #2E2620;
+      line-height: 1.78;
+      margin-bottom: 16px;
+    }
+
+    .body-italic {
+      font-size: 16px;
+      font-style: italic;
+      color: #2E2620;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .bold-lead {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2E2620;
+      margin-bottom: 8px;
+    }
+
+    .footnote {
+      font-size: 14px;
+      font-style: italic;
+      color: #7a7065;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    /* ── QUOTE BOX ── */
+    .quote-box {
+      background: #F0EBE5;
+      border: 1px solid #E0D8D0;
+      border-radius: 8px;
+      padding: 26px 30px;
+      margin: 18px 0;
+    }
+    .quote-box p {
+      font-size: 16px;
+      font-style: italic;
+      color: #2E2620;
+      line-height: 1.75;
+    }
+
+    /* ── KEY INSIGHT ── */
+    .insight-box {
+      background: #EDE0DC;
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin: 18px 0;
+    }
+    .insight-label {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #9E9089;
+      margin-bottom: 12px;
+    }
+    .insight-box p {
+      font-size: 16px;
+      font-style: italic;
+      color: #2E2620;
+      line-height: 1.75;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 22px 0;
+    }
+    .divider-line { flex: 1; height: 1px; background: #D8D0C8; }
+    .divider-diamond { width: 6px; height: 6px; background: #C8C0B6; transform: rotate(45deg); flex-shrink: 0; }
+
+    /* ── CENTER DIVIDER ── */
+    .center-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0 24px;
+    }
+    .center-diamond { width: 6px; height: 6px; background: #C8C0B6; transform: rotate(45deg); }
+
+    /* ── STYLE CARDS (Page 4) ── */
+    .style-card {
+      border-left: 3px solid #D8D0C8;
+      background: #F7F4F2;
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+    .style-card-title { font-size: 16px; font-weight: 600; color: #2E2620; margin-bottom: 5px; }
+    .style-card-tag { font-size: 14px; font-style: italic; color: #7a7065; margin-bottom: 9px; }
+    .style-card-text { font-size: 14px; color: #2E2620; line-height: 1.68; }
+
+    /* ── PROMPT BOXES (Page 5) ── */
+    .prompt-box {
+      background: #F7F4F2;
+      border-radius: 8px;
+      border: 1px solid #E8E2DC;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+    .prompt-q { font-size: 15px; font-style: italic; color: #2E2620; margin-bottom: 12px; }
+    .prompt-opt { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 7px; font-size: 14px; color: #2E2620; line-height: 1.5; }
+    .prompt-circle { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #C8C0B6; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── ORIGIN CARDS (Page 6) ── */
+    .origin-card {
+      background: #F7F4F2;
+      border-radius: 6px;
+      padding: 14px 20px;
+      margin-bottom: 10px;
+    }
+    .origin-title { font-size: 14px; font-weight: 600; color: #2E2620; margin-bottom: 5px; }
+    .origin-text { font-size: 14px; color: #2E2620; line-height: 1.68; }
+
+    /* ── PATTERN CARDS (Page 7) ── */
+    .pattern-card {
+      background: #F7F4F2;
+      border-radius: 8px;
+      border: 1px solid #E8E2DC;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+    .pattern-title { font-size: 16px; font-weight: 600; color: #2E2620; margin-bottom: 12px; }
+    .pattern-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; font-size: 14px; color: #9E9089; line-height: 1.5; }
+    .p-diamond { color: #C8C0B6; font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+
+    /* ── STEP ROWS (Page 8) ── */
+    .step-row { display: flex; align-items: flex-start; gap: 20px; padding: 14px 0; border-bottom: 1px solid #E8E2DC; }
+    .step-num { font-size: 32px; font-weight: 300; color: #D8D0C8; line-height: 1; min-width: 54px; flex-shrink: 0; }
+    .step-title { font-size: 15px; font-weight: 600; color: #2E2620; margin-bottom: 5px; }
+    .step-text { font-size: 14px; color: #2E2620; line-height: 1.65; }
+
+    /* ── REFLECTION LINES (Page 9) ── */
+    .refl-q { font-size: 16px; font-style: italic; color: #2E2620; margin-bottom: 14px; margin-top: 26px; }
+    .refl-line { border-bottom: 1px dashed #C8C0B6; margin-bottom: 18px; }
+
+    /* ── DARK BOX (Page 10) ── */
+    .dark-box {
+      background: #3C3028;
+      border-radius: 12px;
+      padding: 44px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .dark-box-circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.055); }
+    .dark-box-inner { position: relative; z-index: 1; }
+    .db-eyebrow { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .db-title { font-size: 26px; font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 4px; }
+    .db-rule { width: 60px; height: 1px; background: rgba(255,255,255,0.28); margin: 16px auto; }
+    .db-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.78; max-width: 460px; margin: 0 auto 14px; }
+    .db-tagline { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+
+    /* ── REMEMBERING LIST (Page 10) ── */
+    .rem-title {
+      font-size: 26px;
+      font-weight: 400;
+      font-style: italic;
+      color: #2E2620;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .rem-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; font-size: 14px; color: #2E2620; line-height: 1.72; }
+    .rem-diamond { color: #C8C0B6; font-size: 9px; margin-top: 5px; flex-shrink: 0; }
+
+    /* ── CLOSING ── */
+    .closing-italic { font-size: 17px; font-style: italic; color: #2E2620; text-align: center; margin-bottom: 6px; }
+    .closing-brand { font-size: 18px; font-style: italic; font-weight: 500; color: #2E2620; text-align: center; }
+    .closing-legal { font-size: 11px; color: #9E9089; text-align: center; line-height: 1.9; margin-top: 18px; }
+
+    /* ── WELCOME PAGE SPECIFICS ── */
+    .welcome-label { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #9E9089; text-align: center; margin-bottom: 6px; }
+    .welcome-title { font-size: 52px; font-weight: 400; font-style: italic; color: #2E2620; text-align: center; }
+
+    @page { size: 8.5in 11in; margin: 0 !important; }
+
+    @media print {
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        width: 8.5in;
+      }
+      .page {
+        width: 8.5in !important;
+        height: 11in !important;
+        min-height: unset !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+      /* Tighten spacing so content fits within each page */
+      .page-body { padding: 44px 68px 28px !important; }
+      .page-footer { padding: 0 68px 18px !important; }
+      .title-rule { margin-bottom: 18px !important; }
+      .body-p { margin-bottom: 12px !important; }
+      .body-italic { margin-bottom: 12px !important; }
+      .prompt-box { padding: 13px 18px !important; margin-bottom: 9px !important; }
+      .prompt-opt { margin-bottom: 5px !important; }
+      .style-card { padding: 14px 18px !important; margin-bottom: 10px !important; }
+      .origin-card { padding: 11px 16px !important; margin-bottom: 8px !important; }
+      .pattern-card { padding: 14px 18px !important; margin-bottom: 9px !important; }
+      .step-row { padding: 11px 0 !important; }
+      .insight-box { padding: 18px 22px !important; margin: 14px 0 !important; }
+      .quote-box { padding: 20px 24px !important; margin: 14px 0 !important; }
+      .refl-q { margin-top: 20px !important; margin-bottom: 10px !important; }
+      .refl-line { margin-bottom: 14px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 1: COVER                                          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page cover">
+  <!-- Decorative circles -->
+  <div class="cover-circle" style="width:340px;height:340px;top:-80px;right:-60px;"></div>
+  <div class="cover-circle" style="width:220px;height:220px;top:300px;right:-40px;"></div>
+  <div class="cover-circle" style="width:380px;height:380px;bottom:-140px;left:-100px;"></div>
+  <div class="cover-circle" style="width:200px;height:200px;bottom:60px;right:40px;"></div>
+
+  <div class="cover-inner">
+    <!-- Top branding -->
+    <div class="cover-top">
+      <div class="cover-brand-line"></div>
+      <div class="cover-brand-text">
+        GRACEFULLY REDEFINED<br>
+        THE WELLNESS COLLECTION
+      </div>
+    </div>
+
+    <!-- Title block -->
+    <div class="cover-body">
+      <div class="cover-pre">Understanding Your</div>
+      <div class="cover-h1">Attachment<br>Style</div>
+      <div class="cover-rule"></div>
+      <div class="cover-desc">
+        A Psychoeducational Guide to<br>
+        How You Love, Connect &amp; Protect
+      </div>
+      <div class="cover-credit">Designed by a Licensed Mental Health Therapist</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="cover-footer">
+      <div class="cover-footer-divider">
+        <div class="cover-footer-line"></div>
+        <div class="cover-footer-diamond"></div>
+        <div class="cover-footer-line"></div>
+      </div>
+      <div class="cover-footer-tagline">Research-Grounded &nbsp;·&nbsp; Reflectively Designed &nbsp;·&nbsp; Clinically Responsible</div>
+      <div class="cover-copyright">© Gracefully Redefined | The Wellness Collection. All rights reserved.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 2: WELCOME                                        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="welcome-label">Before You Begin</div>
+    <div class="welcome-title">Welcome</div>
+    <div class="center-divider"><div class="center-diamond"></div></div>
+
+    <p class="body-italic">Dear reader,</p>
+    <p class="body-italic">You did not arrive here by accident.</p>
+
+    <p class="body-p">Something brought you to this page — maybe a quiet question you have been carrying for a long time. Maybe a pattern in your relationships that you cannot seem to break no matter how hard you try. Maybe a feeling that closeness always seems to come with a cost.</p>
+
+    <p class="body-p">Whatever brought you here, I want you to know something before we begin:</p>
+
+    <div class="quote-box">
+      <p>There is nothing wrong with you.</p>
+      <p>&nbsp;</p>
+      <p>This is not a test. There are no wrong answers.</p>
+      <p>&nbsp;</p>
+      <p>Your patterns are not flaws — they are adaptations.</p>
+      <p>&nbsp;</p>
+      <p>And understanding them is the first step toward changing them.</p>
+    </div>
+
+    <p class="body-p">This guide was created to help you understand your attachment style — the way you were wired to love, connect, and protect yourself based on your earliest experiences. It is written with the same care I bring to my clinical practice: grounded in research, wrapped in compassion, and designed to meet you exactly where you are.</p>
+
+    <p class="body-p">Take what resonates. Leave what does not. And be gentle with yourself along the way.</p>
+
+    <p class="body-italic" style="margin-top:12px;margin-bottom:4px;">Warmly,</p>
+    <p class="body-italic" style="font-weight:500;margin-bottom:4px;">Gracefully Redefined | The Wellness Collection</p>
+    <p style="font-size:13px;color:#9E9089;font-style:normal;">Created by a Licensed Mental Health Therapist</p>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">2 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 3: WHAT IS ATTACHMENT THEORY?                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow">Page 03</div>
+    <div class="page-title">What Is Attachment Theory?</div>
+    <div class="title-rule"></div>
+
+    <p class="body-p">In the 1950s, psychiatrist John Bowlby observed something that changed our understanding of human connection forever: the bond between a child and their primary caregiver shapes how that child will relate to others for the rest of their life.</p>
+
+    <p class="body-p">Later, developmental psychologist Mary Ainsworth expanded on this work by identifying distinct patterns in how children respond to separation and reunion with their caregivers. These patterns — which she called attachment styles — do not just disappear when we grow up.</p>
+
+    <p class="body-italic">They follow us into our adult relationships.</p>
+
+    <div class="insight-box">
+      <div class="insight-label">Key Insight</div>
+      <p>Attachment theory tells us that the way we were loved as children becomes the blueprint for how we expect to be loved as adults. It shapes what we reach for, what we run from, and what we believe we deserve.</p>
+    </div>
+
+    <p class="bold-lead">Here is what makes this so important:</p>
+    <p class="body-p">Your attachment style is not your fault. You did not choose it. It was shaped by the environment you grew up in — by how consistently your emotional needs were met, how safe it felt to express your feelings, and whether the people closest to you were a source of comfort or a source of fear.</p>
+
+    <p class="bold-lead">But here is the hopeful part:</p>
+    <p class="body-p">Attachment styles are not permanent. With awareness, understanding, and intentional work, you can move toward what researchers call earned secure attachment — a way of connecting that is rooted in safety, trust, and emotional availability.</p>
+
+    <p class="body-italic">That journey begins with understanding where you are right now.</p>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">3 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 4: THE FOUR ATTACHMENT STYLES                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow">Page 04</div>
+    <div class="page-title">The Four Attachment Styles</div>
+    <div class="title-rule"></div>
+
+    <p class="body-p">Each attachment style developed as your nervous system's best strategy for staying safe and connected in the environment you grew up in. None of them are "bad" — they were adaptive. Read each one with curiosity, not judgment.</p>
+
+    <div style="margin-top:8px;">
+      <div class="style-card">
+        <div class="style-card-title">Secure Attachment</div>
+        <div class="style-card-tag">"I trust that I am worthy of love, and I trust that you will be there."</div>
+        <div class="style-card-text">You feel comfortable with closeness and independence. You can express your needs clearly, tolerate disagreement without panic, and trust that relationships can weather difficult moments. You likely grew up with caregivers who were consistently responsive and emotionally available.</div>
+      </div>
+
+      <div class="style-card" style="background:#EDE0DC;">
+        <div class="style-card-title">Anxious-Preoccupied Attachment</div>
+        <div class="style-card-tag">"I need to know you are not going to leave. Please do not leave."</div>
+        <div class="style-card-text">You crave closeness but worry constantly about whether your partner truly loves you. You may find yourself seeking reassurance, overanalyzing texts, or feeling like you give more than you receive. This often develops when caregiving was inconsistent — sometimes warm, sometimes unavailable.</div>
+      </div>
+
+      <div class="style-card">
+        <div class="style-card-title">Dismissive-Avoidant Attachment</div>
+        <div class="style-card-tag">"I am fine on my own. I do not need anyone."</div>
+        <div class="style-card-text">You value independence and may feel uncomfortable when relationships become too close or emotional. You might pull away when things get serious, prioritize logic over feelings, or struggle to ask for help. This often develops when emotional needs were met with dismissal or when you learned early that depending on others was not safe.</div>
+      </div>
+
+      <div class="style-card" style="background:#EDE0DC;">
+        <div class="style-card-title">Fearful-Avoidant (Disorganized)</div>
+        <div class="style-card-tag">"I want you close, but closeness terrifies me."</div>
+        <div class="style-card-text">You experience a push-pull in relationships — deeply wanting connection but feeling overwhelmed or frightened by it. You may swing between anxious pursuit and avoidant withdrawal. This often develops in environments where caregivers were both the source of comfort and the source of fear.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">4 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 5: RECOGNIZING YOUR PATTERNS                     -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow">Page 05</div>
+    <div class="page-title">Recognizing Your Patterns</div>
+    <div class="title-rule"></div>
+
+    <p class="body-p">This is not a clinical assessment — it is an invitation to notice. Read each prompt slowly. For each one, notice which response feels most familiar in your body — not which one you think is "correct."</p>
+
+    <div class="prompt-box">
+      <div class="prompt-q">When someone I love pulls away, I tend to...</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Reach out more — call, text, seek reassurance</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Pull away too — tell myself I do not need them</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Feel confused — wanting to reach out and withdraw at the same time</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Feel hurt but trust it will work out</div>
+    </div>
+
+    <div class="prompt-box" style="background:#EDE0DC;">
+      <div class="prompt-q">When conflict arises in a relationship, I usually...</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Worry it means the relationship is ending</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Shut down or need space before I can talk</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Oscillate between pursuing and retreating</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Feel able to express my feelings and listen to theirs</div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-q">When I think about being truly seen by another person, I feel...</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Desperate for it — it is what I want most</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Uncomfortable — vulnerability feels dangerous</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Both longing and terror at the same time</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>Safe — it feels like connection</div>
+    </div>
+
+    <div class="prompt-box" style="background:#EDE0DC;">
+      <div class="prompt-q">The story I carry about love is...</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>"I have to earn it, and it can always be taken away"</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>"If I let people in, they will disappoint or hurt me"</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>"Love is unpredictable and I never know where I stand"</div>
+      <div class="prompt-opt"><div class="prompt-circle"></div>"Love is imperfect but I trust it will hold"</div>
+    </div>
+
+    <p class="footnote">If you noticed yourself drawn to the first option most often, you may lean anxious. The second, avoidant. The third, disorganized. The fourth, secure. Most people are a blend.</p>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">5 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 6: WHERE YOUR STYLE COMES FROM                   -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow">Page 06</div>
+    <div class="page-title">Where Your Style Comes From</div>
+    <div class="title-rule"></div>
+
+    <p class="body-italic">Your attachment style was not a choice. It was your nervous system's best attempt to stay safe in the environment you were given.</p>
+
+    <p class="body-p">As children, we are completely dependent on our caregivers — not just for food and shelter, but for emotional regulation. When a baby cries, they are not just hungry or tired. They are asking a fundamental question:</p>
+
+    <p style="font-size:24px;font-style:italic;color:#2E2620;text-align:center;margin:20px 0;line-height:1.4;">"Are you there? Do I matter? Am I safe?"</p>
+
+    <p class="body-p">The answer they receive — not in words, but in the caregiver's consistent behavior — becomes the foundation of their attachment style.</p>
+
+    <div style="margin-top:8px;">
+      <div class="origin-card">
+        <div class="origin-title">If caregiving was consistently warm and responsive...</div>
+        <div class="origin-text">you likely developed secure attachment — a belief that you are worthy of love and that others can be trusted.</div>
+      </div>
+      <div class="origin-card" style="background:#EDE0DC;">
+        <div class="origin-title">If caregiving was inconsistent — sometimes present, sometimes absent...</div>
+        <div class="origin-text">you may have developed anxious attachment — a deep hunger for reassurance and a fear that love can disappear without warning.</div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-title">If emotional needs were dismissed or met with discomfort...</div>
+        <div class="origin-text">you may have developed avoidant attachment — a belief that independence is the only safe strategy.</div>
+      </div>
+      <div class="origin-card" style="background:#EDE0DC;">
+        <div class="origin-title">If your caregiver was both the source of comfort and the source of fear...</div>
+        <div class="origin-text">you may have developed disorganized attachment — a simultaneous longing for and terror of closeness.</div>
+      </div>
+    </div>
+
+    <div class="quote-box" style="margin-top:16px;">
+      <p>This is not about blaming your parents. Many caregivers did the best they could with what they had. Understanding your origin story is about empowering yourself — not assigning fault.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">6 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 7: HOW ATTACHMENT SHOWS UP IN RELATIONSHIPS      -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow">Page 07</div>
+    <div class="page-title">How Attachment Shows Up<br>in Relationships</div>
+    <div class="title-rule"></div>
+
+    <p class="body-p">Attachment styles do not just live in our heads — they show up in real, tangible behaviors. You may recognize yourself in some of these patterns:</p>
+
+    <div class="pattern-card">
+      <div class="pattern-title">The Pursuer &nbsp; <span style="font-weight:400;font-size:14px;color:#7a7065;">(often anxious attachment)</span></div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Texting multiple times when you do not hear back</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Interpreting silence as rejection</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Giving more and more to try to earn love</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Difficulty being alone without anxiety</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Saying "I'm fine" when you are not, then resenting it</div>
+    </div>
+
+    <div class="pattern-card" style="background:#EDE0DC;">
+      <div class="pattern-title">The Withdrawer &nbsp; <span style="font-weight:400;font-size:14px;color:#7a7065;">(often avoidant attachment)</span></div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Needing space when things get emotional</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Feeling suffocated by a partner's emotional needs</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Keeping conversations surface-level to avoid vulnerability</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Prioritizing work or independence over connection</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Leaving relationships when they feel "too much"</div>
+    </div>
+
+    <div class="pattern-card">
+      <div class="pattern-title">The Push-Pull &nbsp; <span style="font-weight:400;font-size:14px;color:#7a7065;">(often disorganized attachment)</span></div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Craving closeness intensely, then sabotaging it</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Testing your partner to see if they will stay</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Swinging between "I love you" and "I need to leave"</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Difficulty trusting even when someone is trustworthy</div>
+      <div class="pattern-item"><div class="p-diamond">◆</div>Feeling "too much" and "not enough" simultaneously</div>
+    </div>
+
+    <p class="footnote">If you saw yourself in more than one pattern, that is common. Most people are not purely one style — and your attachment style can shift depending on the relationship and context.</p>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">7 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 8: THE PATH TOWARD EARNED SECURE ATTACHMENT      -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner centered">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow">Page 08</div>
+    <div class="page-title">The Path Toward<br>Earned Secure Attachment</div>
+    <div class="title-rule"></div>
+
+    <p class="bold-lead">Here is the part that changes everything:</p>
+    <p class="body-italic">Your attachment style is not a life sentence.</p>
+
+    <p class="body-p">Decades of research in attachment theory and neuroscience have shown that the brain remains capable of forming new relational patterns throughout life. Psychologists call this earned secure attachment — a secure way of relating that was not given to you in childhood but that you build through awareness, intentional practice, and healing relationships.</p>
+
+    <p class="body-p">The path toward earned security involves several key shifts:</p>
+
+    <div style="margin-top:4px;">
+      <div class="step-row">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Awareness</div>
+          <div class="step-text">Recognizing your patterns without judgment. You cannot change what you cannot see. The fact that you are reading this guide means you have already taken this step.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Understanding Your Story</div>
+          <div class="step-text">Connecting your current patterns to your earliest relational experiences. Not to blame, but to make sense of the adaptations your nervous system created.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Learning to Self-Regulate</div>
+          <div class="step-text">Developing the ability to soothe your own nervous system when attachment wounds get activated — so you can respond from choice rather than react from fear.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Corrective Relationships</div>
+          <div class="step-text">Surrounding yourself with people who offer consistency, safety, and emotional availability. These experiences slowly rewire what your nervous system expects from love.</div>
+        </div>
+      </div>
+      <div class="step-row" style="border-bottom:none;">
+        <div class="step-num">05</div>
+        <div>
+          <div class="step-title">Seeking Support</div>
+          <div class="step-text">Whether through psychoeducational resources, guided courses, or therapy — healing happens in relationship, and you do not have to do it alone.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="body-italic" style="margin-top:20px;">Healing is not about becoming a different person. It is about giving yourself permission to love and be loved in ways that your childhood may not have taught you were possible.</p>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">8 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 9: GENTLE REFLECTION SPACE                       -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow" style="text-align:center;">Page 09</div>
+    <div class="page-title" style="text-align:center;font-size:46px;">Gentle Reflection Space</div>
+    <div class="center-divider" style="margin-bottom:6px;"><div class="center-diamond"></div></div>
+
+    <p class="body-italic" style="text-align:center;margin-bottom:32px;">Take a moment. There is no rush. Use the space below to write whatever came up for you.</p>
+
+    <div class="refl-q">What did you recognize about yourself today?</div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+
+    <div class="refl-q">What felt hard to read — and what might that mean?</div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+
+    <div class="refl-q">What is one thing you want to remember from this guide?</div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+
+    <div class="refl-q">If you could say one compassionate thing to the child you once were, what would it be?</div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+    <div class="refl-line"></div>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">9 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 10: YOUR HEALING CONTINUES HERE                  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page inner">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="page-body">
+    <div class="eyebrow" style="text-align:center;">Page 10</div>
+    <div class="page-title" style="text-align:center;font-size:44px;">Your Healing Continues Here</div>
+    <div class="title-rule" style="margin:10px auto 0;"></div>
+
+    <p class="body-p" style="text-align:center;margin-top:20px;">If this guide resonated with you — if something in these pages made you feel seen, understood, or hopeful for the first time in a while — know that this is just the beginning.</p>
+
+    <!-- Dark promotional box -->
+    <div class="dark-box">
+      <div class="dark-box-circle" style="width:280px;height:280px;top:-80px;right:-60px;"></div>
+      <div class="dark-box-circle" style="width:200px;height:200px;bottom:-60px;left:-40px;"></div>
+      <div class="dark-box-inner">
+        <div class="db-eyebrow">Explore</div>
+        <div class="db-title">Gracefully Redefined &nbsp;|&nbsp; The Wellness Collection</div>
+        <div class="db-rule"></div>
+        <div class="db-text">Psychoeducational courses, guided journals, and self-paced resources all created by a licensed mental health therapist to support self-understanding, deeper reflection, and intentional growth.</div>
+        <div class="db-tagline">Research-Grounded &nbsp;·&nbsp; Reflectively Designed &nbsp;·&nbsp; Clinically Responsible</div>
+      </div>
+    </div>
+
+    <!-- A Few Things Worth Remembering -->
+    <div class="rem-title">A Few Things Worth Remembering</div>
+
+    <div class="rem-item">
+      <div class="rem-diamond">◆</div>
+      <div>Your attachment style is not a diagnosis — it is a description of how your nervous system learned to protect you. Understanding it is an act of self-compassion, not self-criticism.</div>
+    </div>
+    <div class="rem-item">
+      <div class="rem-diamond">◆</div>
+      <div>Awareness is not a small thing. Research consistently shows that the ability to reflect on your own relational patterns is one of the strongest predictors of positive change.</div>
+    </div>
+    <div class="rem-item">
+      <div class="rem-diamond">◆</div>
+      <div>Growth is not linear. You may revisit old patterns even after gaining new understanding. That is not failure — it is the nature of learning.</div>
+    </div>
+    <div class="rem-item">
+      <div class="rem-diamond">◆</div>
+      <div>You deserve relationships where you feel safe enough to be fully known. That possibility exists for you, regardless of where you are starting from.</div>
+    </div>
+
+    <!-- Closing -->
+    <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+    <p class="closing-italic">Thank you for trusting this guide with your reflection.</p>
+    <p class="closing-brand">Gracefully Redefined | The Wellness Collection</p>
+
+    <div class="closing-legal">
+      © Gracefully Redefined | The Wellness Collection. All rights reserved.<br>
+      This guide is for personal use only. Reproduction, redistribution, or resale is prohibited.<br>
+      This resource is not a substitute for professional mental health treatment.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-num">10 of 10</div>
+    <div class="pf-brand">Gracefully Redefined | The Wellness Collection</div>
+  </div>
+</div>
+
+</body>
+</html>

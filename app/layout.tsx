@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Providers } from './providers'
+import { Analytics } from '@vercel/analytics/next'
 import Nav from '@/app/components/Nav'
 import FloatingHelp from '@/app/components/FloatingHelp'
 import DirectionManager from '@/app/components/DirectionManager'
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <FloatingHelp />
           <ScrollReveal />
+          <Analytics />
         </Providers>
       </body>
     </html>

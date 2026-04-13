@@ -1,0 +1,13 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "declaration-no-important": true,
+    "comment-empty-line-before": null,
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["tailwind", "apply", "layer", "screen"]
+    }],
+    "no-descending-specificity": true,
+    "selector-class-pattern": null,
+    "custom-property-pattern": null
+  }
+}

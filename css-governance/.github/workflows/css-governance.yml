@@ -1,0 +1,109 @@
+# ================================================
+# CSS GOVERNANCE CI — The Wellness Collection
+# ================================================
+# Runs on every PR to main. Blocks merge if:
+#   1. Tailwind class conflicts detected (ESLint)
+#   2. !important used in CSS (Stylelint)
+#   3. Visual screenshots differ from baselines (Playwright)
+#   4. Horizontal overflow detected at any breakpoint
+#   5. Font sizes below minimum on mobile
+
+name: CSS Governance
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      # Only run when CSS-relevant files change
+      - '**/*.css'
+      - '**/*.tsx'
+      - '**/*.ts'
+      - 'tailwind.config.*'
+      - 'postcss.config.*'
+      - 'package.json'
+
+  # Allow manual trigger for baseline updates
+  workflow_dispatch:
+    inputs:
+      update_snapshots:
+        description: 'Update visual regression baselines'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  # ──────────────────────────────────────────
+  # LINT: Static analysis
+  # ──────────────────────────────────────────
+  lint:
+    name: CSS Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: ESLint — Tailwind class conflicts
+        run: npx eslint --max-warnings=0 'app/**/*.{ts,tsx}' 'components/**/*.{ts,tsx}'
+
+      - name: Stylelint — CSS rules
+        run: npx stylelint '**/*.css' --ignore-path .gitignore
+
+  # ──────────────────────────────────────────
+  # VISUAL: Screenshot regression
+  # ──────────────────────────────────────────
+  visual:
+    name: Visual Regression
+    runs-on: ubuntu-latest
+    needs: lint  # only run if lint passes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build application
+        run: npm run build
+        env:
+          # Add your env vars here or use GitHub secrets
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: Start server & run visual tests
+        run: |
+          npm run start &
+          sleep 5
+          npx playwright test e2e/visual-regression.spec.ts e2e/spacing-consistency.spec.ts
+        env:
+          BASE_URL: http://localhost:3000
+          CI: true
+
+      - name: Upload test results on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-regression-report
+          path: |
+            e2e/test-results/
+            playwright-report/
+          retention-days: 14
+
+      - name: Upload baseline snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-baselines
+          path: e2e/snapshots/
+          retention-days: 30

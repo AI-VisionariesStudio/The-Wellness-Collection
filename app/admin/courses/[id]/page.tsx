@@ -208,6 +208,25 @@ export default function AdminCourseEditorPage() {
                         />
                       </div>
                       <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
+                        <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          vdoCipher Video ID
+                          <a
+                            href="https://dashboard.vdocipher.com/dashboard/videos"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 400 }}
+                          >
+                            Open vdoCipher ↗
+                          </a>
+                        </label>
+                        <input
+                          value={lesson.vdoCipherId || ''}
+                          placeholder="e.g. a1b2c3d4e5f6 (from vdoCipher dashboard)"
+                          onChange={e => handleLessonChange(lesson.id, module.id, 'vdoCipherId', e.target.value)}
+                          onBlur={e => updateLesson(lesson.id, module.id, 'vdoCipherId', e.target.value || null)}
+                        />
+                      </div>
+                      <div className="form-group" style={{ marginBottom: 0, gridColumn: '1 / -1' }}>
                         <label>Document Attachment</label>
                         {lesson.documentUrl ? (
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '11px 16px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', background: 'var(--white)' }}>

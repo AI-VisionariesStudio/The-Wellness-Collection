@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import CourseCompanion from '@/app/components/CourseCompanion'
 import ReflectionPulse from '@/app/components/ReflectionPulse'
+import VdoCipherPlayer from '@/app/components/VdoCipherPlayer'
 
 interface Lesson {
   id: string
@@ -11,6 +12,7 @@ interface Lesson {
   description?: string | null
   backedResearch?: string | null
   videoUrl?: string | null
+  vdoCipherId?: string | null
   documentUrl?: string | null
   documentName?: string | null
   duration: number
@@ -333,7 +335,7 @@ export default function LessonPlayer({
             )}
 
             {/* PRE pulse + video */}
-            {embedUrl && (
+            {(lesson.vdoCipherId || embedUrl) && (
               <div>
                 {showPrePulse && (
                   <ReflectionPulse
@@ -344,25 +346,35 @@ export default function LessonPlayer({
                     onDismiss={() => setShowPrePulse(false)}
                   />
                 )}
-                <div
-                  onContextMenu={(e) => e.preventDefault()}
-                  style={{
-                    position: 'relative',
-                    paddingTop: '56.25%',
-                    border: '1px solid var(--border)',
-                    borderRadius: showPrePulse ? '0 0 var(--radius-lg) var(--radius-lg)' : 'var(--radius-lg)',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 24px rgba(180,160,140,0.12)',
-                    userSelect: 'none',
-                  }}
-                >
-                  <iframe
-                    ref={iframeRef}
-                    src={embedUrl}
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                  />
+                <div style={{ position: 'relative', borderRadius: showPrePulse ? '0 0 var(--radius-lg) var(--radius-lg)' : 'var(--radius-lg)', overflow: 'hidden' }}>
+                  {lesson.vdoCipherId ? (
+                    <VdoCipherPlayer
+                      videoId={lesson.vdoCipherId}
+                      lessonId={lesson.id}
+                      onEnded={() => setShowPostPulse(true)}
+                    />
+                  ) : (
+                    <div
+                      onContextMenu={(e) => e.preventDefault()}
+                      style={{
+                        position: 'relative',
+                        paddingTop: '56.25%',
+                        border: '1px solid var(--border)',
+                        borderRadius: 'var(--radius-lg)',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 24px rgba(180,160,140,0.12)',
+                        userSelect: 'none',
+                      }}
+                    >
+                      <iframe
+                        ref={iframeRef}
+                        src={embedUrl!}
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                        allow="autoplay; fullscreen"
+                        allowFullScreen
+                      />
+                    </div>
+                  )}
                   {showPrePulse && (
                     <div style={{ position: 'absolute', inset: 0, zIndex: 2, cursor: 'default' }} />
                   )}

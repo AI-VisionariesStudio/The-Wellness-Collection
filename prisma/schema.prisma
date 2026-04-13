@@ -62,6 +62,7 @@ model Lesson {
   description      String?
   backedResearch   String?
   videoUrl         String?
+  vdoCipherId      String?
   slideUrl         String?
   documentUrl      String?
   documentName     String?

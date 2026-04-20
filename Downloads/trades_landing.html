@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>One Page Loft — For Licensed Tradespeople</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#070D1C;font-family:'Cormorant Garamond','Georgia',serif;color:#F6F4EF;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:#0A1828;border-bottom:1px solid rgba(141,170,162,0.4)}
+.n-brand{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;color:#8DAAA2;font-weight:400;text-transform:uppercase}
+.n-back{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:3px;color:#8DAAA2;border:1px solid rgba(141,170,162,0.25);padding:9px 22px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.3s}
+.n-back:hover{background:rgba(141,170,162,0.08)}
+.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;background:radial-gradient(ellipse at 50% 42%,#0E2A1A 0%,#081A10 52%,#070D1C 100%);position:relative;border-bottom:2px solid rgba(141,170,162,0.4)}
+.h-eye{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:6px;color:rgba(141,170,162,0.7);text-transform:uppercase;margin-bottom:48px;font-weight:300}
+.h-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,62px);letter-spacing:0.2em;color:#F6F4EF;font-weight:300;text-transform:uppercase;line-height:1.1;margin-bottom:20px}
+.h-rule{display:flex;align-items:center;gap:14px;width:min(420px,80vw);margin:0 auto 20px}
+.h-rule-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(141,170,162,0.4),transparent)}
+.h-rule-diamond{width:4px;height:4px;background:rgba(141,170,162,0.7);transform:rotate(45deg);flex-shrink:0}
+.h-sub{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:5px;color:rgba(141,170,162,0.7);text-transform:uppercase;font-weight:300;margin-bottom:40px}
+.h-body{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:rgba(246,244,239,0.52);line-height:1.9;max-width:520px;margin:0 auto 48px}
+.h-btn{font-family:'Helvetica Neue',sans-serif;font-size:9px;letter-spacing:4px;color:#000000;background:#8DAAA2;padding:16px 48px;text-transform:uppercase;cursor:pointer;border:1px solid #8DAAA2;transition:all 0.35s;text-decoration:none;display:inline-block}
+.h-btn:hover{opacity:0.88}
+section{position:relative}
+.si{max-width:1000px;margin:0 auto;padding:88px 52px}
+.s-eye{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:5px;color:rgba(141,170,162,0.7);text-transform:uppercase;margin-bottom:18px;font-weight:300}
+.s-head{font-family:'Cormorant Garamond',serif;font-size:38px;letter-spacing:0.3px;color:#F6F4EF;line-height:1.25;font-weight:300;margin-bottom:0}
+.s-rule{width:44px;height:1px;background:linear-gradient(90deg,rgba(141,170,162,0.4),transparent);margin:18px 0 44px}
+.why{background:#8DAAA2}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.why-body{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:2;color:rgba(246,244,239,0.52);font-weight:300}
+.pain-cards{display:flex;flex-direction:column;gap:10px}
+.pain-card{padding:22px 26px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.32)}
+.pain-label{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(141,170,162,0.7);text-transform:uppercase;margin-bottom:8px;font-weight:400}
+.pain-txt{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(246,244,239,0.52);line-height:1.8;font-weight:300}
+.steps-sec{background:#070D1C}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.step{padding:44px 32px;background:rgba(255,255,255,0.32);border:1px solid rgba(0,0,0,0.1)}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:56px;color:#8DAAA2;letter-spacing:2px;margin-bottom:18px;line-height:1;font-weight:300}
+.step-acc{width:20px;height:1px;background:rgba(141,170,162,0.4);margin-bottom:18px}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:#F6F4EF;margin-bottom:12px;font-weight:400}
+.step-body{font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.85;color:rgba(246,244,239,0.52);font-weight:300}
+.cta-sec{background:radial-gradient(ellipse at 50% 42%,#0E2A1A 0%,#081A10 52%,#070D1C 100%);text-align:center;border-top:2px solid rgba(141,170,162,0.4)}
+.c-sub{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:6px;color:rgba(141,170,162,0.7);text-transform:uppercase;margin-bottom:20px;font-weight:300}
+.c-head{font-family:'Cormorant Garamond',serif;font-size:52px;letter-spacing:2px;color:#F6F4EF;margin-bottom:14px;line-height:1.1;font-weight:300}
+.c-body{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(246,244,239,0.52);margin-bottom:40px;font-weight:300;line-height:1.9;max-width:380px;margin-left:auto;margin-right:auto}
+.c-form{display:flex;gap:0;max-width:480px;margin:0 auto 18px}
+.c-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(141,170,162,0.25);border-right:none;color:#F6F4EF;font-family:'Cormorant Garamond',serif;font-size:16px;padding:15px 20px;outline:none;font-style:italic}
+.c-input::placeholder{color:rgba(246,244,239,0.52)}
+.c-submit{background:#8DAAA2;color:#000000;font-family:'Helvetica Neue',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:15px 28px;border:none;cursor:pointer;white-space:nowrap;font-weight:400}
+.c-fine{font-family:'Helvetica Neue',sans-serif;font-size:7px;color:rgba(246,244,239,0.52);letter-spacing:2px;text-transform:uppercase;font-weight:300}
+footer{padding:36px 52px;background:#0A1828;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(141,170,162,0.4)}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;color:rgba(246,244,239,0.52);text-transform:uppercase;font-weight:300}
+.f-copy{font-family:'Helvetica Neue',sans-serif;font-size:7px;color:rgba(246,244,239,0.52);letter-spacing:1px;font-weight:300}
+@media(max-width:768px){.why-grid,.steps{grid-template-columns:1fr}nav,footer{padding-left:24px;padding-right:24px}.si{padding:64px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="n-brand">One Page Loft</div>
+  <a class="n-back" href="landings_at_the_loft.html">&#8592; Back to main site</a>
+</nav>
+<section class="hero">
+  <div class="h-eye">One Page Loft &nbsp;&middot;&nbsp; For Licensed Trades</div>
+  <h1 class="h-title">Your Skills Are
+Legendary.
+Now Be Found.</h1>
+  <div class="h-rule"><div class="h-rule-line"></div><div class="h-rule-diamond"></div><div class="h-rule-line"></div></div>
+  <div class="h-sub">Electricians &middot; Plumbers &middot; HVAC &middot; Contractors &middot; Welders</div>
+  <p class="h-body">You built a business on grit and expertise. We build the one page that makes sure the next client finds you before they find anyone else.</p>
+  <a class="h-btn" href="#cta">Claim my trades page</a>
+</section>
+<section class="why">
+<div class="si">
+  <div class="why-grid">
+    <div>
+      <div class="s-eye">The reality</div>
+      <h2 class="s-head">The best trades businesses are invisible online.
+Not because they aren&#8217;t great.</h2>
+      <div class="s-rule"></div>
+      <p class="why-body">Most trades businesses were built on word of mouth. That worked — until the next generation started searching online before calling anyone. If they can't find you in 10 seconds, they call someone else. It's that simple.</p>
+    </div>
+    <div class="pain-cards">
+      <div class="pain-card"><div class="pain-label">No online presence</div><div class="pain-txt">When someone searches for an electrician in your area, you don't show up. That's a job you didn't know you lost.</div></div>
+      <div class="pain-card"><div class="pain-label">Word of mouth has a ceiling</div><div class="pain-txt">Referrals dry up. Slow seasons hit. A single landing page works for you 24 hours a day — without making a single call.</div></div>
+      <div class="pain-card"><div class="pain-label">DIY looks like DIY</div><div class="pain-txt">A Wix page put together in an afternoon communicates exactly that. Clients read quality of presence as quality of work.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<section class="steps-sec">
+<div class="si" style="text-align:center">
+  <div class="s-eye" style="text-align:center">How it works</div>
+  <h2 class="s-head" style="text-align:center">Three steps. One perfect page.</h2>
+  <div class="s-rule" style="margin:18px auto 44px"></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-acc"></div><div class="step-title">Tell us your story</div><div class="step-body">Tell us your trade, your service area, and what makes your business different. No tech knowledge needed — just 10 minutes of your time.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-acc"></div><div class="step-title">AI builds the draft</div><div class="step-body">Our AI builds a custom page for your trade — optimized for local search, built to earn trust fast, and written in language your clients actually use.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-acc"></div><div class="step-title">We perfect it together</div><div class="step-body">One revision round to get it perfect. Then your page is live — and the next person searching for your service finds you first.</div></div>
+  </div>
+</div>
+</section>
+<section class="cta-sec" id="cta">
+<div class="si">
+  <div class="c-sub">Ready?</div>
+  <h2 class="c-head">Stop losing jobs
+you don't know
+you're losing.</h2>
+  <p class="c-body">Enter your email. We'll send everything you need to get your trades page live in 48 hours.</p>
+  <div class="c-form"><input class="c-input" type="email" placeholder="your@email.com"/><button class="c-submit">Claim my page</button></div>
+  <div class="c-fine">Delivered in 48 hours &nbsp;&middot;&nbsp; No website required &nbsp;&middot;&nbsp; Satisfaction guaranteed</div>
+</div>
+</section>
+<footer>
+  <div class="f-logo">One Page Loft</div>
+  <div class="f-copy">&copy; 2025 One Page Loft &nbsp;&middot;&nbsp; All rights reserved</div>
+</footer>
+</body>
+</html>

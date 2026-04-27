@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Page Loft — Premium Landing Pages for Professionals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ─── PALETTE ─────────────────────────────────────────────── */
+:root {
+  --abyss:        #060F1E;
+  --deep-navy:    #0A1628;
+  --navy-mid:     #132448;
+  --cashmere:     #C8B4A0;
+  --parchment:    #D4C4B4;
+  --linen:        #E8DDD4;
+  --ivory:        #F2EDE8;
+  --alabaster:    #F8F5F1;
+  --white:        #FFFFFF;
+  --warm-gold:    #BFA882;
+  --amber:        #C4873C;
+  --card-bg:      #FFFFFF;
+  --card-border:  rgba(191,168,130,0.18);
+  --card-shadow:  0 2px 20px rgba(10,22,40,0.07);
+  --card-hover:   0 12px 40px rgba(10,22,40,0.13);
+  --divider:      rgba(191,168,130,0.22);
+  --text-dark:    #0A1628;
+  --text-mid:     rgba(10,22,40,0.55);
+  --text-soft:    rgba(10,22,40,0.35);
+}
+
+/* ─── RESET ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--alabaster);
+  color: var(--text-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; line-height: 1.06; letter-spacing: 0.02em;
+}
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--deep-navy);
+  border-bottom: 1px solid rgba(191,168,130,0.12);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled {
+  box-shadow: 0 2px 28px rgba(0,0,0,0.30);
+}
+
+.nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+.nav-logo-mark {
+  width: 26px; height: 26px;
+  border: 1px solid var(--warm-gold);
+  display: flex; align-items: center; justify-content: center;
+  transform: rotate(45deg); flex-shrink: 0;
+}
+.nav-logo-mark-inner { width: 7px; height: 7px; background: var(--cashmere); }
+.nav-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--deep-navy); letter-spacing: 0.08em;
+}
+.nav-logo-text span { color: var(--warm-gold); font-style: italic; }
+
+.nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 9.5px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(232,221,212,0.52); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ivory); }
+
+.nav-cta {
+  padding: 9px 22px;
+  background: var(--cashmere); color: var(--deep-navy) !important;
+  font-size: 9px !important; letter-spacing: 0.28em !important;
+  text-transform: uppercase; text-decoration: none;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--parchment) !important; }
+
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu {
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  padding-top: 12px;
+  min-width: 210px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.18s, visibility 0.18s;
+  z-index: 200;
+}
+.nav-dropdown-menu-inner {
+  background: var(--deep-navy);
+  border: 1px solid rgba(191,168,130,0.18);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.32);
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1; visibility: visible;
+}
+.nav-dropdown-menu a {
+  display: block; padding: 12px 22px;
+  font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(232,221,212,0.52); text-decoration: none;
+  border-bottom: 1px solid rgba(191,168,130,0.10);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { color: var(--ivory); background: rgba(255,255,255,0.06); }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--ivory);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; padding: 130px 48px 100px; overflow: hidden;
+}
+
+.hero-corner {
+  position: absolute; width: 30px; height: 30px; pointer-events: none;
+}
+.hero-corner.tl { top: 52px; left: 52px; border-top: 1px solid var(--warm-gold); border-left: 1px solid var(--warm-gold); opacity: 0.35; }
+.hero-corner.tr { top: 52px; right: 52px; border-top: 1px solid var(--warm-gold); border-right: 1px solid var(--warm-gold); opacity: 0.35; }
+.hero-corner.bl { bottom: 52px; left: 52px; border-bottom: 1px solid var(--warm-gold); border-left: 1px solid var(--warm-gold); opacity: 0.35; }
+.hero-corner.br { bottom: 52px; right: 52px; border-bottom: 1px solid var(--warm-gold); border-right: 1px solid var(--warm-gold); opacity: 0.35; }
+
+.hero-inner { max-width: 820px; text-align: center; position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 9px; letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--warm-gold); margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.1s both;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; width: 28px; height: 1px; background: var(--warm-gold); opacity: 0.45;
+}
+
+h1.hero-title {
+  font-size: clamp(54px, 8.5vw, 100px);
+  color: var(--deep-navy); margin-bottom: 16px;
+  animation: fadeUp 0.9s 0.2s both;
+}
+h1.hero-title em { font-style: italic; color: var(--warm-gold); }
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300; font-style: italic; color: var(--text-mid);
+  margin-bottom: 20px; animation: fadeUp 0.9s 0.3s both;
+}
+
+.hero-body {
+  font-size: 12.5px; line-height: 2; letter-spacing: 0.07em; color: var(--text-mid);
+  max-width: 500px; margin: 0 auto 48px;
+  animation: fadeUp 0.9s 0.4s both;
+}
+
+.hero-actions {
+  display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.9s 0.5s both;
+}
+
+.btn-navy {
+  padding: 14px 38px; background: var(--deep-navy); color: var(--ivory);
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  text-decoration: none; font-weight: 400; display: inline-block;
+  transition: background 0.22s, transform 0.2s;
+}
+.btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); }
+
+.btn-outline {
+  padding: 13px 38px; border: 1px solid var(--cashmere); color: var(--deep-navy);
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  text-decoration: none; display: inline-block;
+  transition: border-color 0.22s, background 0.22s;
+}
+.btn-outline:hover { border-color: var(--deep-navy); background: rgba(10,22,40,0.04); }
+
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 7px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--text-soft); animation: fadeUp 1s 1.1s both;
+}
+.scroll-line {
+  width: 1px; height: 32px;
+  background: linear-gradient(to bottom, var(--warm-gold), transparent);
+  animation: scrollPulse 2.2s infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:.8} }
+
+/* ─── STRIP ───────────────────────────────────────────────── */
+.strip {
+  background: var(--deep-navy); padding: 17px 0; overflow: hidden;
+}
+.strip-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
+.strip-item {
+  padding: 0 44px; font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #ffffff; white-space: nowrap;
+  display: flex; align-items: center; gap: 18px;
+}
+.strip-item::after { content:'·'; color: var(--warm-gold); font-size: 18px; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ─── SECTION SHARED ──────────────────────────────────────── */
+.section-label {
+  font-size: 8px; letter-spacing: 0.44em; text-transform: uppercase;
+  color: var(--deep-navy);
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+}
+.section-label::after { content:''; width:40px; height:1px; background:var(--warm-gold); opacity:0.7; }
+
+.section-title { font-size: clamp(36px,5vw,58px); color: var(--deep-navy); margin-bottom: 16px; }
+.section-title em { font-style: italic; color: var(--warm-gold); }
+.section-body { font-size: 12px; line-height: 1.95; letter-spacing: 0.06em; color: var(--text-mid); max-width: 460px; }
+
+/* ─── WHAT — ALABASTER ────────────────────────────────────── */
+.what { background: var(--alabaster); padding: 110px 48px; }
+.what-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.what-left { padding-top: 6px; }
+.what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.feature-card {
+  background: var(--white); border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow); padding: 28px 22px 24px;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+}
+.feature-card:hover {
+  box-shadow: var(--card-hover); transform: translateY(-3px);
+  border-color: rgba(191,168,130,0.38);
+}
+.feature-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; color: var(--warm-gold);
+  letter-spacing: 0.15em; margin-bottom: 12px; display: block;
+}
+.feature-name {
+  font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--deep-navy); font-weight: 400; margin-bottom: 9px;
+}
+.feature-desc { font-size: 10.5px; line-height: 1.8; letter-spacing: 0.04em; color: var(--text-mid); }
+
+/* ─── FEATURE CARD COLORS ──────────────────────────────────── */
+.what-grid .feature-card:nth-child(1) { background: #0A1628; border-color: rgba(255,255,255,0.10); box-shadow: none; }
+.what-grid .feature-card:nth-child(1) .feature-num { color: #BFA882; }
+.what-grid .feature-card:nth-child(1) .feature-name { color: #F2EDE8; }
+.what-grid .feature-card:nth-child(1) .feature-desc { color: rgba(242,237,232,0.65); }
+
+.what-grid .feature-card:nth-child(2) { background: #ffffff; border-color: rgba(10,22,40,0.10); }
+.what-grid .feature-card:nth-child(2) .feature-num { color: #BFA882; }
+.what-grid .feature-card:nth-child(2) .feature-name { color: #0A1628; }
+.what-grid .feature-card:nth-child(2) .feature-desc { color: rgba(10,22,40,0.62); }
+
+.what-grid .feature-card:nth-child(3) { background: #EDE7DC; border-color: rgba(10,22,40,0.10); }
+.what-grid .feature-card:nth-child(3) .feature-num { color: #C4873C; }
+.what-grid .feature-card:nth-child(3) .feature-name { color: #0A1628; }
+.what-grid .feature-card:nth-child(3) .feature-desc { color: rgba(10,22,40,0.62); }
+
+.what-grid .feature-card:nth-child(4) { background: #C8B4A0; border-color: rgba(10,22,40,0.12); }
+.what-grid .feature-card:nth-child(4) .feature-num { color: #6B4E30; }
+.what-grid .feature-card:nth-child(4) .feature-name { color: #0A1628; }
+.what-grid .feature-card:nth-child(4) .feature-desc { color: rgba(10,22,40,0.65); }
+
+/* ─── FEATURE CARD EXPANSION ──────────────────────────────── */
+.feature-card { cursor: pointer; }
+#feature-backdrop {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(5,12,24,0.72);
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.42s ease;
+}
+#feature-backdrop.active { opacity: 1; pointer-events: all; }
+.feature-card.is-expanded { cursor: zoom-out; }
+.feature-card.is-expanded .feature-name { font-size: 13px; margin-bottom: 14px; }
+.feature-card.is-expanded .feature-desc { font-size: 12.5px; line-height: 1.95; }
+
+/* ─── PROCESS — NAVY ──────────────────────────────────────── */
+.process { background: var(--deep-navy); padding: 100px 48px; min-height: 100vh; display: flex; align-items: center; }
+.process-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+.process-header { margin-bottom: 60px; }
+.process .section-label { color: var(--cashmere); opacity: 0.7; }
+.process .section-label::after { background: var(--cashmere); opacity: 0.3; }
+.process .section-title { color: var(--ivory); }
+.process .section-title em { color: var(--cashmere); }
+
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.step {
+  padding: 40px 30px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  position: relative; transition: border-color 0.3s, background 0.3s;
+}
+.step:hover { background: rgba(255,255,255,0.07); border-color: rgba(191,168,130,0.25); }
+.step-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--warm-gold), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.step:hover .step-accent { opacity: 0.7; }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 300; line-height: 1;
+  color: var(--cashmere); opacity: 0.12; margin-bottom: 20px;
+}
+.step-title {
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ivory); font-weight: 400; margin-bottom: 12px;
+}
+.step-body { font-size: 11px; line-height: 1.88; letter-spacing: 0.04em; color: var(--linen); opacity: 0.55; }
+
+/* ─── PROCESS CARDS — individual treatments ───────────────── */
+.steps .step:nth-child(1) { background: #0A1628; border-color: rgba(255,255,255,0.10); }
+.steps .step:nth-child(1) .step-num { color: #ffffff; opacity: 0.10; }
+.steps .step:nth-child(1) .step-title { color: #ffffff; }
+.steps .step:nth-child(1) .step-body { color: #ffffff; opacity: 0.60; }
+
+.steps .step:nth-child(2) { background: #ffffff; border-color: rgba(10,22,40,0.10); }
+.steps .step:nth-child(2):hover { background: #F7F4F0; }
+.steps .step:nth-child(2) .step-num { color: #0A1628; opacity: 0.10; }
+.steps .step:nth-child(2) .step-title { color: #0A1628; }
+.steps .step:nth-child(2) .step-body { color: #0A1628; opacity: 0.62; }
+
+.steps .step:nth-child(3) { background: #E8DDD2; border-color: rgba(26,48,80,0.12); }
+.steps .step:nth-child(3):hover { background: #DDD4C4; }
+.steps .step:nth-child(3) .step-num { color: #1A3050; opacity: 0.12; }
+.steps .step:nth-child(3) .step-title { color: #1A3050; }
+.steps .step:nth-child(3) .step-body { color: #1A3050; opacity: 0.62; }
+
+/* ─── STEP CARD EXPANSION ─────────────────────────────────── */
+.step { cursor: pointer; }
+#step-backdrop {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(5,12,24,0.72);
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.42s ease;
+}
+#step-backdrop.active { opacity: 1; pointer-events: all; }
+.step.is-expanded { cursor: zoom-out; }
+.step.is-expanded .step-num { font-size: 80px; }
+.step.is-expanded .step-accent { opacity: 0.8; }
+.step.is-expanded .step-body { opacity: 0.82; font-size: 12.5px; line-height: 2; }
+
+/* ─── PRICING — LINEN ─────────────────────────────────────── */
+.pricing-wrap { background: var(--linen); padding: 72px 48px; min-height: 100vh; display: flex; align-items: center; }
+.pricing-inner { max-width: 1060px; margin: 0 auto; width: 100%; display: flex; align-items: center; gap: 72px; }
+.pricing-header { flex: 1; margin-bottom: 0; }
+.pricing-grid { flex-shrink: 0; width: 380px; }
+
+.plan {
+  background: var(--deep-navy); border: 1px solid var(--deep-navy);
+  box-shadow: 0 16px 48px rgba(10,22,40,0.18); padding: 38px 40px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  width: 100%; position: relative; overflow: hidden;
+}
+
+.plan-roi {
+  font-size: 8.5px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--warm-gold); margin-bottom: 18px;
+  padding-bottom: 16px; border-bottom: 1px solid rgba(191,168,130,0.2);
+  width: 100%;
+}
+
+.plan-price {
+  font-family: 'Cormorant Garamond', serif; font-size: 70px; font-weight: 300;
+  line-height: 1; color: var(--ivory); margin-bottom: 4px;
+}
+.plan-price sup { font-size: 22px; vertical-align: super; color: var(--cashmere); }
+
+.plan-tagline {
+  font-size: 10px; letter-spacing: 0.07em; color: rgba(232,221,212,0.5);
+  margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  width: 100%;
+}
+
+.plan-features { list-style: none; flex: 1; margin-bottom: 26px; width: 100%; }
+.plan-features li {
+  font-size: 10.5px; letter-spacing: 0.05em; line-height: 1.6; color: var(--linen);
+  opacity: 0.8; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.plan-features li::before { content:'—'; color: var(--warm-gold); flex-shrink:0; font-size:10px; line-height:1.6; }
+
+.plan-btn {
+  display: block; text-align: center; text-decoration: none; width: 100%;
+  padding: 14px 28px; background: var(--cashmere); color: var(--deep-navy);
+  font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.plan-btn:hover { background: var(--parchment); }
+
+/* ─── TESTIMONIALS — WHITE ────────────────────────────────── */
+.testimonials {
+  background: var(--white); padding: 100px 48px;
+  border-top: 1px solid var(--divider);
+}
+.testi-inner { max-width: 1100px; margin: 0 auto; }
+.testi-header { margin-bottom: 60px; }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+
+.testi-card {
+  background: var(--alabaster); border: 1px solid var(--card-border);
+  padding: 36px 28px; transition: box-shadow 0.3s, transform 0.3s;
+}
+.testi-card:hover { box-shadow: var(--card-hover); transform: translateY(-3px); }
+.testi-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+.star { color: var(--warm-gold); font-size: 12px; }
+.testi-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-style: italic; font-weight: 300; line-height: 1.55;
+  color: var(--deep-navy); margin-bottom: 24px;
+}
+.testi-author { font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--deep-navy); font-weight: 400; }
+.testi-role { font-size: 9px; letter-spacing: 0.1em; color: var(--text-soft); margin-top: 4px; }
+
+/* ─── TESTIMONIAL CARD COLORS ─────────────────────────────── */
+.testi-grid .testi-card:nth-child(2) { background: #0A1628; border-color: rgba(255,255,255,0.10); }
+.testi-grid .testi-card:nth-child(2) .testi-quote { color: #F2EDE8; }
+.testi-grid .testi-card:nth-child(2) .testi-author { color: #F2EDE8; }
+.testi-grid .testi-card:nth-child(2) .testi-role { color: rgba(242,237,232,0.50); }
+
+.testi-grid .testi-card:nth-child(3) { background: #C8B4A0; border-color: rgba(10,22,40,0.12); }
+.testi-grid .testi-card:nth-child(3) .testi-quote { color: #0A1628; }
+.testi-grid .testi-card:nth-child(3) .testi-author { color: #0A1628; }
+.testi-grid .testi-card:nth-child(3) .testi-role { color: rgba(10,22,40,0.55); }
+
+/* ─── TESTIMONIAL CARD EXPANSION ──────────────────────────── */
+.testi-card { cursor: pointer; }
+#testi-backdrop {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(5,12,24,0.72);
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.42s ease;
+}
+#testi-backdrop.active { opacity: 1; pointer-events: all; }
+.testi-card.is-expanded { cursor: zoom-out; }
+.testi-card.is-expanded .testi-quote { font-size: 23px; }
+
+/* ─── CTA — NAVY ──────────────────────────────────────────── */
+.cta-section {
+  background: var(--deep-navy); padding: 110px 48px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(135deg, rgba(191,168,130,0.20) 0%, transparent 42%),
+    linear-gradient(315deg, rgba(191,168,130,0.12) 0%, transparent 40%);
+  pointer-events: none;
+}
+.cta-inner { position: relative; max-width: 660px; margin: 0 auto; }
+.cta-eyebrow { font-size: 8px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--cashmere); opacity: 0.6; margin-bottom: 22px; }
+.cta-title { font-size: clamp(42px,6vw,72px); color: var(--ivory); margin-bottom: 18px; }
+.cta-title em { color: var(--cashmere); }
+.cta-body { font-size: 12px; line-height: 2; letter-spacing: 0.07em; color: var(--linen); opacity: 0.55; margin-bottom: 44px; }
+
+.btn-cta {
+  display: inline-block; padding: 16px 44px;
+  background: var(--cashmere); color: var(--deep-navy);
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  text-decoration: none; font-weight: 400;
+  transition: background 0.22s, transform 0.2s;
+}
+.btn-cta:hover { background: var(--parchment); transform: translateY(-2px); }
+.cta-location {
+  margin-top: 30px; font-size: 8.5px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--linen); opacity: 0.28;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.cta-location::before, .cta-location::after { content:''; width:20px; height:1px; background:var(--cashmere); opacity:0.3; }
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--cashmere); border-top: 1px solid rgba(10,22,40,0.12);
+  padding: 36px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--deep-navy); letter-spacing: 0.08em; }
+.footer-logo span { color: var(--deep-navy); font-style: italic; }
+.footer-links { display: flex; gap: 30px; list-style: none; }
+.footer-links a { text-decoration: none; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--deep-navy); opacity: 1; transition: opacity 0.2s; }
+.footer-links a:hover { opacity: 0.65; }
+.footer-copy { font-size: 9px; letter-spacing: 0.14em; color: var(--deep-navy); opacity: 0.6; }
+
+/* ─── REVEAL ──────────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── HAMBURGER ───────────────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; padding: 4px;
+  background: none; border: none; cursor: pointer;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1px;
+  background: var(--cashmere);
+  transition: transform 0.25s, opacity 0.2s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--deep-navy);
+  border-bottom: 1px solid rgba(191,168,130,0.14);
+  z-index: 99;
+  padding: 72px 0 24px;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+.nav-mobile.open { transform: translateY(0); }
+.nav-mobile ul { list-style: none; padding: 0; margin: 0; }
+.nav-mobile ul li a {
+  display: block; padding: 14px 28px;
+  font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(232,221,212,0.60); text-decoration: none;
+  border-bottom: 1px solid rgba(191,168,130,0.08);
+  transition: color 0.2s;
+}
+.nav-mobile ul li a:hover { color: var(--ivory); }
+.nav-mobile ul li:last-child a { border-bottom: none; }
+.nav-mobile-cta {
+  display: block; margin: 20px 28px 0;
+  padding: 12px 22px; text-align: center;
+  background: var(--cashmere); color: var(--deep-navy) !important;
+  font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 920px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-mobile { display: block; }
+  .hero, .what, .pricing-wrap, .testimonials, .cta-section, .process { padding-left: 24px; padding-right: 24px; }
+  .what-inner { grid-template-columns: 1fr; gap: 48px; }
+  .what-grid, .steps, .testi-grid { grid-template-columns: 1fr; }
+  .pricing-inner { flex-direction: column; gap: 40px; }
+  .pricing-grid { width: 100%; }
+  footer { padding: 28px 24px; flex-direction: column; gap: 16px; }
+  .hero-corner { display: none; }
+}
+
+/* ─── CHAT WIDGET ─────────────────────────────────────────── */
+#chat-launcher {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9990;
+  width: 54px; height: 54px;
+  background: var(--deep-navy);
+  border: 1px solid rgba(191,168,130,0.32);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(10,22,40,0.30);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.22s, opacity 0.25s;
+}
+#chat-launcher:hover {
+  border-color: rgba(191,168,130,0.68);
+  box-shadow: 0 6px 28px rgba(10,22,40,0.42);
+  transform: scale(1.06);
+}
+#chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(0.82); }
+.chat-pulse {
+  position: absolute; inset: -5px; border-radius: 50%;
+  border: 1px solid rgba(191,168,130,0.28);
+  animation: chatPulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes chatPulse { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(1.6);opacity:0} }
+
+#chat-tip {
+  position: fixed; bottom: 94px; right: 28px; z-index: 9989;
+  background: var(--deep-navy);
+  border: 1px solid rgba(191,168,130,0.18);
+  padding: 10px 16px;
+  font-size: 11px; letter-spacing: 0.06em; color: var(--ivory);
+  white-space: nowrap; cursor: pointer;
+  box-shadow: 0 4px 18px rgba(10,22,40,0.26);
+  opacity: 0; pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.28s, transform 0.28s;
+}
+#chat-tip.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+#chat-tip::after {
+  content: ''; position: absolute; bottom: -6px; right: 18px;
+  width: 10px; height: 10px; background: var(--deep-navy);
+  border-right: 1px solid rgba(191,168,130,0.18);
+  border-bottom: 1px solid rgba(191,168,130,0.18);
+  transform: rotate(45deg);
+}
+
+#chat-window {
+  position: fixed; bottom: 94px; right: 28px; z-index: 9990;
+  width: 360px; background: var(--alabaster);
+  border: 1px solid rgba(191,168,130,0.16);
+  box-shadow: 0 12px 52px rgba(10,22,40,0.22);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transform: translateY(12px) scale(0.97);
+  transform-origin: bottom right;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+#chat-window.active { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+
+#chat-header {
+  background: var(--deep-navy); padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  border-bottom: 1px solid rgba(191,168,130,0.10);
+}
+.chat-av { position: relative; flex-shrink: 0; }
+.chat-av img {
+  width: 42px; height: 42px; border-radius: 50%;
+  object-fit: cover; object-position: center;
+  border: 1.5px solid rgba(191,168,130,0.42); display: block;
+  transition: opacity 0.2s;
+}
+.chat-av-dot {
+  position: absolute; bottom: 1px; right: 1px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #5CB85C; border: 1.5px solid var(--deep-navy);
+}
+.chat-meta { flex: 1; min-width: 0; }
+.chat-meta .chat-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  font-weight: 400; color: var(--ivory); letter-spacing: 0.04em; line-height: 1.2;
+}
+.chat-meta .chat-role {
+  font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--cashmere); opacity: 0.62; margin-top: 2px;
+}
+#chat-close {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: var(--cashmere); opacity: 0.45; font-size: 22px; line-height: 1; flex-shrink: 0;
+  transition: opacity 0.18s;
+}
+#chat-close:hover { opacity: 1; }
+
+#chat-body {
+  flex: 1; overflow-y: auto;
+  padding: 18px 16px;
+  display: flex; flex-direction: column; gap: 9px;
+  max-height: 360px; min-height: 160px;
+  scroll-behavior: smooth;
+}
+#chat-body::-webkit-scrollbar { width: 3px; }
+#chat-body::-webkit-scrollbar-thumb { background: rgba(191,168,130,0.28); }
+
+@keyframes cmIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+
+.cmsg-group { display: flex; flex-direction: column; gap: 3px; animation: cmIn 0.22s ease both; }
+.cmsg-sender {
+  font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-soft); padding-left: 2px;
+}
+.cmsg-bubble {
+  align-self: flex-start; max-width: 84%;
+  background: var(--white); color: var(--deep-navy);
+  padding: 10px 14px;
+  font-size: 11.5px; line-height: 1.72; letter-spacing: 0.03em;
+  border: 1px solid rgba(191,168,130,0.14);
+  box-shadow: 0 1px 5px rgba(10,22,40,0.05);
+}
+.cmsg-bubble.typing {
+  display: flex; align-items: center; gap: 5px;
+  padding: 12px 16px; min-width: 52px;
+}
+.cmsg-bubble.typing span {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--cashmere); opacity: 0.5;
+  animation: tDot 1.2s ease-in-out infinite;
+}
+.cmsg-bubble.typing span:nth-child(2) { animation-delay: 0.2s; }
+.cmsg-bubble.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes tDot { 0%,80%,100%{transform:scale(1);opacity:.5} 40%{transform:scale(1.35);opacity:1} }
+
+.cmsg-user {
+  align-self: flex-end; max-width: 84%;
+  background: var(--deep-navy); color: var(--ivory);
+  padding: 10px 14px;
+  font-size: 11.5px; line-height: 1.72; letter-spacing: 0.03em;
+  animation: cmIn 0.22s ease both;
+}
+
+.cchips {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  align-self: flex-start; max-width: 100%;
+  animation: cmIn 0.22s ease both;
+}
+.cchip {
+  padding: 6px 12px; background: transparent;
+  border: 1px solid rgba(191,168,130,0.42); color: var(--deep-navy);
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 0.14em;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.16s, border-color 0.16s, color 0.16s;
+}
+.cchip:hover { background: var(--deep-navy); border-color: var(--deep-navy); color: var(--ivory); }
+
+#chat-footer { border-top: 1px solid rgba(191,168,130,0.13); background: var(--white); flex-shrink: 0; }
+.chat-input-row { display: flex; align-items: center; padding: 11px 16px; gap: 10px; }
+#chat-input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.04em;
+  color: var(--deep-navy);
+}
+#chat-input::placeholder { color: rgba(10,22,40,0.32); }
+#chat-send {
+  width: 30px; height: 30px; background: var(--deep-navy); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background 0.16s;
+}
+#chat-send:hover { background: var(--navy-mid); }
+.chat-powered {
+  text-align: center; padding: 6px 0 9px;
+  font-size: 7.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(10,22,40,0.28);
+}
+
+@media (max-width: 460px) {
+  #chat-window { right: 10px; left: 10px; width: auto; bottom: 78px; }
+  #chat-launcher { right: 16px; bottom: 16px; }
+  #chat-tip { right: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="4,30 16,12 28,30" stroke="#BFA882" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <line x1="4" y1="36" x2="28" y2="36" stroke="#C8B4A0" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="16" y1="30" x2="16" y2="36" stroke="#BFA882" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+      <text x="36" y="24" font-family="Cormorant Garamond, serif" font-size="16" font-weight="400" fill="#F2EDE8" letter-spacing="0.8">One Page</text>
+      <line x1="36" y1="28" x2="100" y2="28" stroke="#BFA882" stroke-width="0.5" stroke-linecap="round" opacity="0.28"/>
+      <text x="37" y="38" font-family="Cormorant Garamond, serif" font-size="10" font-weight="300" font-style="italic" fill="#BFA882" letter-spacing="3.5">Loft</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">What's Included</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Our Work &#8964;</a>
+      <div class="nav-dropdown-menu">
+        <div class="nav-dropdown-menu-inner">
+          <a href="attorney.html">Estate Attorney</a>
+          <a href="cpa.html">CPA Firm</a>
+          <a href="contractor.html">General Contractor</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="#start" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="#what" class="nav-mobile-link">What's Included</a></li>
+    <li><a href="#process" class="nav-mobile-link">Process</a></li>
+    <li><a href="#pricing" class="nav-mobile-link">Pricing</a></li>
+    <li><a href="attorney.html" class="nav-mobile-link">Our Work — Estate Attorney</a></li>
+    <li><a href="cpa.html" class="nav-mobile-link">Our Work — CPA Firm</a></li>
+    <li><a href="contractor.html" class="nav-mobile-link">Our Work — General Contractor</a></li>
+  </ul>
+  <a href="#start" class="nav-mobile-cta nav-mobile-link">Get Started</a>
+</div>
+
+<!-- HERO — WHITE -->
+<section class="hero" id="home">
+  <div class="hero-corner tl"></div>
+  <div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div>
+  <div class="hero-corner br"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Serving Raleigh · Durham · Chapel Hill</p>
+    <h1 class="hero-title">Your clients are<br>searching. Are you <em>visible?</em></h1>
+    <p class="hero-sub">A single, stunning page that works while you work.</p>
+    <p class="hero-body">
+      You built a practice worth finding. But if your online presence doesn't reflect that —
+      you're losing clients to someone who looks the part.<br><br>
+      One Page Loft builds polished, conversion-ready landing pages for attorneys,
+      CPAs, contractors, and consultants across the Triangle. Live in 72 hours.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-navy">See Pricing</a>
+      <a href="#process" class="btn-outline">How It Works</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- STRIP — IVORY -->
+<div class="strip">
+  <div class="strip-track">
+    <span class="strip-item">Live in 72 Hours</span>
+    <span class="strip-item">Built for Your Profession</span>
+    <span class="strip-item">Clients Find You First</span>
+    <span class="strip-item">Triangle's Go-To Studio</span>
+    <span class="strip-item">No Monthly Fees. Ever.</span>
+    <span class="strip-item">You Own It Outright</span>
+    <span class="strip-item">One Flat Rate. No Surprises.</span>
+    <span class="strip-item">Live in 72 Hours</span>
+    <span class="strip-item">Built for Your Profession</span>
+    <span class="strip-item">Clients Find You First</span>
+    <span class="strip-item">Triangle's Go-To Studio</span>
+    <span class="strip-item">No Monthly Fees. Ever.</span>
+    <span class="strip-item">You Own It Outright</span>
+    <span class="strip-item">One Flat Rate. No Surprises.</span>
+  </div>
+</div>
+
+<!-- WHAT — ALABASTER (light) -->
+<section class="what" id="what">
+  <div class="what-inner">
+    <div class="what-left reveal">
+      <p class="section-label">01 — What You Get</p>
+      <h2 class="section-title">A page that<br>earns its <em>keep.</em></h2>
+      <p class="section-body" style="margin-top:18px;">
+        Most professionals have a website that exists. We build one that works —
+        designed to earn trust in the first five seconds and turn visitors into calls.
+        No fluff. No filler. Just the things that actually move the needle for your practice.
+      </p>
+    </div>
+    <div class="what-grid">
+      <div class="feature-card reveal"><span class="feature-num">01</span><div class="feature-name">Built for Your Profession</div><p class="feature-desc">An attorney's page should feel nothing like a contractor's. Every element is designed around how your specific clients think, search, and decide.</p></div>
+      <div class="feature-card reveal"><span class="feature-num">02</span><div class="feature-name">Live in 72 Hours</div><p class="feature-desc">Not six weeks. Not "we'll follow up soon." From your 30-minute brief to a live, professional page — delivered in three business days.</p></div>
+      <div class="feature-card reveal"><span class="feature-num">03</span><div class="feature-name">Ready to Convert</div><p class="feature-desc">Click-to-call, a contact form that actually gets submitted, your location on the map, and a clear next step — so visitors become clients.</p></div>
+      <div class="feature-card reveal"><span class="feature-num">04</span><div class="feature-name">Yours. No Strings.</div><p class="feature-desc">No monthly subscription. No held-hostage hosting. You own the code, the domain, and the page — completely and permanently.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS — NAVY (dark) -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <p class="section-label">02 — How It Works</p>
+      <h2 class="section-title">Simple enough<br>to <em>actually happen.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-accent"></div><div class="step-num">01</div><div class="step-title">Tell Us About Your Practice</div><p class="step-body">One 30-minute call. We learn your specialty, your ideal client, what makes you different, and what you want them to do when they land on your page. You talk. We listen. That's our brief.</p></div>
+      <div class="step reveal"><div class="step-accent"></div><div class="step-num">02</div><div class="step-title">We Build. You Approve.</div><p class="step-body">Within 48 hours you'll see a fully designed, copy-written, mobile-ready page built around your practice. Review it, request changes, and we refine until it's exactly right — included, no extra charge.</p></div>
+      <div class="step reveal"><div class="step-accent"></div><div class="step-num">03</div><div class="step-title">Go Live. Start Getting Found.</div><p class="step-body">We launch on your domain, submit your site to Google, set up your Business Profile, and hand over the keys. From first call to live page — 72 hours. Your job is to answer the phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING — LINEN (light) -->
+<section class="pricing-wrap" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header reveal">
+      <p class="section-label">03 — Investment</p>
+      <h2 class="section-title">One price.<br><em>No surprises.</em></h2>
+      <p class="section-body" style="margin-top:16px;">
+        One new client pays for this page instantly. After that, every call it generates is pure return.
+      </p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan reveal">
+        <div class="plan-roi">One new client covers this. Everything after that is profit.</div>
+        <div class="plan-price"><sup>$</sup>97</div>
+        <p class="plan-tagline">Your complete professional web presence — done in 72 hours.</p>
+        <ul class="plan-features">
+          <li>Single-page custom design</li>
+          <li>Mobile-optimized layout</li>
+          <li>Click-to-call + contact form</li>
+          <li>Delivered in 72 hours</li>
+          <li>One revision included</li>
+        </ul>
+        <a href="#start" class="plan-btn">Claim Your Page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — WHITE (light) -->
+<section class="testimonials" id="reviews">
+  <div class="testi-inner">
+    <div class="testi-header reveal">
+      <p class="section-label">04 — What Clients Say</p>
+      <h2 class="section-title">Don't take<br>our <em>word for it.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"I went from invisible on Google to getting three calls in the first week. My old agency charged me twice this for half the result."</p>
+        <div class="testi-author">Michael R.</div><div class="testi-role">Estate Attorney · Raleigh, NC</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"As a CPA, first impressions are everything. This page made me look like a firm three times my size. Clients mention it constantly."</p>
+        <div class="testi-author">Sandra T.</div><div class="testi-role">Certified Public Accountant · Durham, NC</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"I was ready to spend $5,000 on a full website. This did everything I actually needed for a fraction of the cost — and it was live in two days."</p>
+        <div class="testi-author">James K.</div><div class="testi-role">Licensed General Contractor · Chapel Hill, NC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — NAVY (dark accent) -->
+<section class="cta-section" id="start">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Let's Build Yours</p>
+    <h2 class="cta-title">Your next client<br>is <em>searching right now.</em></h2>
+    <p class="cta-body">
+      Every day without a professional online presence is a day
+      someone else gets that call. The good news: this is a 30-minute
+      conversation and 72 hours away from being solved — permanently.
+    </p>
+    <a href="mailto:chris@onepageloft.com" class="btn-cta">Book Your Free 30-Minute Call</a>
+    <p class="cta-location">Proudly Serving the Triangle · Raleigh · Durham · Chapel Hill</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg width="140" height="34" viewBox="0 0 140 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="3,26 13,10 23,26" stroke="#BFA882" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="3" y1="31" x2="23" y2="31" stroke="#C8B4A0" stroke-width="0.8" stroke-linecap="round"/>
+    <text x="30" y="20" font-family="Cormorant Garamond, serif" font-size="14" font-weight="400" fill="#0A1628" letter-spacing="0.6">One Page</text>
+    <text x="31" y="31" font-family="Cormorant Garamond, serif" font-size="8.5" font-weight="300" font-style="italic" fill="#132448" letter-spacing="3">Loft</text>
+  </svg>
+  <ul class="footer-links">
+    <li><a href="#what">What's Included</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="attorney.html">Our Work</a></li>
+    <li><a href="mailto:chris@onepageloft.com">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 One Page Loft · Triangle, NC</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 75);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+(function () {
+  const btn = document.getElementById('nav-hamburger');
+  const menu = document.getElementById('nav-mobile');
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', () => {
+    const opening = !menu.classList.contains('open');
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = opening ? 'hidden' : '';
+  });
+  document.querySelectorAll('.nav-mobile-link').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+})();
+
+(function () {
+  const steps = document.querySelectorAll('.step');
+  const backdrop = document.createElement('div');
+  backdrop.id = 'step-backdrop';
+  document.body.appendChild(backdrop);
+
+  let active = null;
+  let ghost = null;
+
+  function open(step) {
+    if (active) return;
+    const r = step.getBoundingClientRect();
+
+    ghost = document.createElement('div');
+    ghost.style.cssText = 'visibility:hidden;pointer-events:none;width:' + r.width + 'px;height:' + r.height + 'px;';
+    step.parentNode.insertBefore(ghost, step);
+
+    Object.assign(step.style, {
+      position: 'fixed',
+      top: r.top + 'px',
+      left: r.left + 'px',
+      width: r.width + 'px',
+      margin: '0',
+      padding: '40px 30px',
+      zIndex: '1000',
+      transform: 'translate(0,0)',
+      transition: 'none'
+    });
+
+    void step.offsetHeight;
+
+    const w = Math.min(560, window.innerWidth * 0.88);
+    Object.assign(step.style, {
+      transition: 'top .45s cubic-bezier(.4,0,.2,1), left .45s cubic-bezier(.4,0,.2,1), width .45s cubic-bezier(.4,0,.2,1), padding .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1), box-shadow .45s ease',
+      top: '50%',
+      left: '50%',
+      width: w + 'px',
+      padding: '60px 52px',
+      transform: 'translate(-50%, -50%)',
+      boxShadow: '0 40px 100px rgba(5,12,24,0.60)'
+    });
+    step.classList.add('is-expanded');
+    backdrop.classList.add('active');
+    active = step;
+  }
+
+  function close() {
+    if (!active) return;
+    const step = active;
+    const r = ghost.getBoundingClientRect();
+
+    Object.assign(step.style, {
+      transition: 'top .4s cubic-bezier(.4,0,.2,1), left .4s cubic-bezier(.4,0,.2,1), width .4s cubic-bezier(.4,0,.2,1), padding .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s ease',
+      top: r.top + 'px',
+      left: r.left + 'px',
+      width: r.width + 'px',
+      padding: '40px 30px',
+      transform: 'translate(0,0)',
+      boxShadow: ''
+    });
+    step.classList.remove('is-expanded');
+    backdrop.classList.remove('active');
+    active = null;
+
+    step.addEventListener('transitionend', () => {
+      step.removeAttribute('style');
+      if (ghost) { ghost.remove(); ghost = null; }
+    }, { once: true });
+  }
+
+  steps.forEach(step => step.addEventListener('click', () =>
+    step.classList.contains('is-expanded') ? close() : open(step)
+  ));
+
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+(function () {
+  const cards = document.querySelectorAll('.feature-card');
+  const backdrop = document.createElement('div');
+  backdrop.id = 'feature-backdrop';
+  document.body.appendChild(backdrop);
+
+  let active = null;
+  let ghost = null;
+
+  function open(card) {
+    if (active) return;
+    const r = card.getBoundingClientRect();
+
+    ghost = document.createElement('div');
+    ghost.style.cssText = 'visibility:hidden;pointer-events:none;width:' + r.width + 'px;height:' + r.height + 'px;';
+    card.parentNode.insertBefore(ghost, card);
+
+    Object.assign(card.style, {
+      position: 'fixed',
+      top: r.top + 'px',
+      left: r.left + 'px',
+      width: r.width + 'px',
+      margin: '0',
+      padding: '28px 22px 24px',
+      zIndex: '1000',
+      transform: 'translate(0,0)',
+      transition: 'none'
+    });
+
+    void card.offsetHeight;
+
+    const w = Math.min(520, window.innerWidth * 0.88);
+    Object.assign(card.style, {
+      transition: 'top .45s cubic-bezier(.4,0,.2,1), left .45s cubic-bezier(.4,0,.2,1), width .45s cubic-bezier(.4,0,.2,1), padding .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1), box-shadow .45s ease',
+      top: '50%',
+      left: '50%',
+      width: w + 'px',
+      padding: '52px 48px',
+      transform: 'translate(-50%, -50%)',
+      boxShadow: '0 40px 100px rgba(5,12,24,0.60)'
+    });
+    card.classList.add('is-expanded');
+    backdrop.classList.add('active');
+    active = card;
+  }
+
+  function close() {
+    if (!active) return;
+    const card = active;
+    const r = ghost.getBoundingClientRect();
+
+    Object.assign(card.style, {
+      transition: 'top .4s cubic-bezier(.4,0,.2,1), left .4s cubic-bezier(.4,0,.2,1), width .4s cubic-bezier(.4,0,.2,1), padding .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s ease',
+      top: r.top + 'px',
+      left: r.left + 'px',
+      width: r.width + 'px',
+      padding: '28px 22px 24px',
+      transform: 'translate(0,0)',
+      boxShadow: ''
+    });
+    card.classList.remove('is-expanded');
+    backdrop.classList.remove('active');
+    active = null;
+
+    card.addEventListener('transitionend', () => {
+      card.removeAttribute('style');
+      if (ghost) { ghost.remove(); ghost = null; }
+    }, { once: true });
+  }
+
+  cards.forEach(card => card.addEventListener('click', () =>
+    card.classList.contains('is-expanded') ? close() : open(card)
+  ));
+
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+(function () {
+  const cards = document.querySelectorAll('.testi-card');
+  const backdrop = document.createElement('div');
+  backdrop.id = 'testi-backdrop';
+  document.body.appendChild(backdrop);
+
+  let active = null;
+  let ghost = null;
+
+  function open(card) {
+    if (active) return;
+    const r = card.getBoundingClientRect();
+
+    ghost = document.createElement('div');
+    ghost.style.cssText = 'visibility:hidden;pointer-events:none;width:' + r.width + 'px;height:' + r.height + 'px;';
+    card.parentNode.insertBefore(ghost, card);
+
+    Object.assign(card.style, {
+      position: 'fixed',
+      top: r.top + 'px',
+      left: r.left + 'px',
+      width: r.width + 'px',
+      margin: '0',
+      padding: '36px 28px',
+      zIndex: '1000',
+      transform: 'translate(0,0)',
+      transition: 'none'
+    });
+
+    void card.offsetHeight;
+
+    const w = Math.min(540, window.innerWidth * 0.88);
+    Object.assign(card.style, {
+      transition: 'top .45s cubic-bezier(.4,0,.2,1), left .45s cubic-bezier(.4,0,.2,1), width .45s cubic-bezier(.4,0,.2,1), padding .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1), box-shadow .45s ease',
+      top: '50%',
+      left: '50%',
+      width: w + 'px',
+      padding: '52px 44px',
+      transform: 'translate(-50%, -50%)',
+      boxShadow: '0 40px 100px rgba(5,12,24,0.60)'
+    });
+    card.classList.add('is-expanded');
+    backdrop.classList.add('active');
+    active = card;
+  }
+
+  function close() {
+    if (!active) return;
+    const card = active;
+    const r = ghost.getBoundingClientRect();
+
+    Object.assign(card.style, {
+      transition: 'top .4s cubic-bezier(.4,0,.2,1), left .4s cubic-bezier(.4,0,.2,1), width .4s cubic-bezier(.4,0,.2,1), padding .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s ease',
+      top: r.top + 'px',
+      left: r.left + 'px',
+      width: r.width + 'px',
+      padding: '36px 28px',
+      transform: 'translate(0,0)',
+      boxShadow: ''
+    });
+    card.classList.remove('is-expanded');
+    backdrop.classList.remove('active');
+    active = null;
+
+    card.addEventListener('transitionend', () => {
+      card.removeAttribute('style');
+      if (ghost) { ghost.remove(); ghost = null; }
+    }, { once: true });
+  }
+
+  cards.forEach(card => card.addEventListener('click', () =>
+    card.classList.contains('is-expanded') ? close() : open(card)
+  ));
+
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+
+<!-- ─── CHAT WIDGET ────────────────────────────────────────── -->
+<div id="chat-tip">Chat with Erin — we're online now</div>
+
+<div id="chat-launcher" role="button" aria-label="Open chat">
+  <div class="chat-pulse"></div>
+  <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+    <polyline points="3,17 11,4 19,17" stroke="#BFA882" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="3" y1="20" x2="19" y2="20" stroke="#C8B4A0" stroke-width="0.9" stroke-linecap="round"/>
+    <line x1="11" y1="17" x2="11" y2="20" stroke="#BFA882" stroke-width="0.7" stroke-linecap="round" opacity="0.35"/>
+  </svg>
+</div>
+
+<div id="chat-window">
+  <div id="chat-header">
+    <div class="chat-av">
+      <img src="Erin.png" alt="Erin">
+      <div class="chat-av-dot"></div>
+    </div>
+    <div class="chat-meta">
+      <div class="chat-name">One Page Loft</div>
+      <div class="chat-role">Design Team · Online now</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">&#215;</button>
+  </div>
+  <div id="chat-body"></div>
+  <div id="chat-footer">
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Ask a question or reply…" autocomplete="off">
+      <button id="chat-send" aria-label="Send">
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
+          <path d="M1 6h12M7.5 1l5.5 5-5.5 5" stroke="#F2EDE8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="chat-powered">One Page Loft · Triangle, NC</div>
+  </div>
+</div>
+
+<script>
+(function () {
+
+  // ── RESPONSE LIBRARY ─────────────────────────────────────
+  // Both agents know the same things — different voices.
+  // Erin: warm, conversational, reassuring.
+  // Michael: direct, confident, results-focused.
+  var SAY = {
+    greeting: {
+      erin:    "Welcome to One Page Loft — how can I help you today?",
+      michael: "Welcome to One Page Loft. What can I help you with today?"
+    },
+    explain_opl: {
+      erin:    "We build premium single-page landing pages for professionals across the Triangle — attorneys, CPAs, contractors, and consultants. One flat rate of $97, live in 72 hours, and you own it completely. No monthly fees, ever.",
+      michael: "One Page Loft builds polished, conversion-ready landing pages for Triangle professionals. Flat $97. Live in 72 hours. You own it outright — no subscriptions, no lock-in."
+    },
+    explain_follow: {
+      erin:    "Think of it as your digital first impression — designed to earn trust and turn visitors into calls. What type of professional are you?",
+      michael: "It works while you work. What type of work do you do?"
+    },
+    ready: {
+      erin:    "Wonderful — you're in exactly the right place. Let's start with the basics. What type of professional are you?",
+      michael: "Let's get you set up. What type of work do you do?"
+    },
+    browsing: {
+      erin:    "Of course — take your time. I'm happy to answer anything at all.",
+      michael: "No problem. Ask us anything — we're here."
+    },
+    ask_profession: {
+      erin:    "What type of professional are you?",
+      michael: "What type of work do you do?"
+    },
+    pitch_attorney: {
+      erin:    "Attorneys win on credibility and trust — and your page will reflect both. Practice areas front and center, a clear path to contact, and a first impression that says exactly who you are.",
+      michael: "Legal clients decide fast. Your page leads with authority, your practice areas, and a direct line to you. That's what converts."
+    },
+    pitch_cpa: {
+      erin:    "CPAs tell us their old pages looked like everyone else's. Yours will look like a firm twice your size — polished, authoritative, and built to convert clients year-round, not just tax season.",
+      michael: "Clean, credible, built to convert. Your page will look like a firm twice your size — without the overhead."
+    },
+    pitch_contractor: {
+      erin:    "Contractors do serious work — and your page should show it. Project quality front and center, services clearly listed, and click-to-call one tap away.",
+      michael: "Show the work, make it easy to call. That's what converts for contractors. We know exactly how to build it."
+    },
+    pitch_consultant: {
+      erin:    "Consultants win on authority and connection. Your page will immediately establish your expertise and give every prospect a confident next step.",
+      michael: "Authority and clarity — that's what converts for consultants. Your page will have both."
+    },
+    ask_name: {
+      erin:    "I'd love to follow up with you personally. What's your first name?",
+      michael: "Let's get your information down. What's your first name?"
+    },
+    ask_email: {
+      erin:    "Lovely to meet you, {name}. What's the best email address to reach you?",
+      michael: "Good to meet you, {name}. What's your email?"
+    },
+    email_error: {
+      erin:    "Hmm, that email doesn't look quite right — could you double-check it for me?",
+      michael: "That email doesn't look right. Mind trying again?"
+    },
+    ask_phone: {
+      erin:    "One optional step — would you like to share a phone number? We can text you when your page preview is ready. Standard messaging rates may apply, but it's entirely your call.",
+      michael: "Optional — want to add a phone number? We'll text you when your preview is ready. Standard messaging rates may apply."
+    },
+    ask_phone_num: {
+      erin:    "What's the best number to reach you? We keep it strictly to your project — nothing else.",
+      michael: "What number works best? Project updates only — no spam, ever."
+    },
+    finish_1: {
+      erin:    "You're all set, {name} — it was a pleasure. We'll be in touch within 24 hours with next steps.",
+      michael: "Done, {name}. We'll reach out within 24 hours. Looking forward to working with you."
+    },
+    finish_2: {
+      erin:    "In the meantime, take a look at how we've built pages for other Triangle professionals:",
+      michael: "Take a look at some of our live work while you wait:"
+    },
+    done_followup: {
+      erin:    "We have everything we need, {name}. We'll be in touch very soon!",
+      michael: "You're all set. We'll reach out shortly."
+    },
+    faq_price: {
+      erin:    "Great question — it's a flat $97, paid once. No monthly fees, no surprises. One new client and it's already paid for itself.",
+      michael: "$97. One time. No monthly fees, no subscriptions. One new client covers it within the first week."
+    },
+    faq_time: {
+      erin:    "We move quickly — from your 30-minute intake call to a live page in 72 hours. Design, copy, and launch — we handle all of it.",
+      michael: "72 hours from your intake call to a live page. Design, copy, launch — all handled."
+    },
+    faq_include: {
+      erin:    "Everything you need to be found and trusted online — custom design, mobile layout, click-to-call, contact form, Google Business setup, and one revision. You own it outright, no hosting fees ever.",
+      michael: "Custom design, mobile-optimized, click-to-call, contact form, Google Business setup, one revision. Yours to keep — no platform fees, ever."
+    },
+    faq_area: {
+      erin:    "We proudly serve the Triangle — Raleigh, Durham, and Chapel Hill, along with surrounding areas like Cary, Apex, and Wake Forest.",
+      michael: "The Triangle — Raleigh, Durham, Chapel Hill. Plus Cary, Apex, Wake Forest and the surrounding area."
+    },
+    faq_revision: {
+      erin:    "One full revision is included — we refine until it's exactly right. No extra charges, no surprises.",
+      michael: "One revision is included. We get it right."
+    },
+    faq_own: {
+      erin:    "You own it completely — the files, the domain, everything. No monthly subscription, no platform lock-in, ever.",
+      michael: "It's yours. Files, domain, everything. No subscriptions, no lock-in."
+    },
+    faq_who: {
+      erin:    "We work with all types of service professionals — attorneys, CPAs, contractors, consultants, and more. Every page is crafted around how your specific clients think and decide.",
+      michael: "Attorneys, CPAs, contractors, consultants — we build for all of them. Every page is profession-specific, not a template."
+    },
+    faq_unclear: {
+      erin:    "I want to make sure I help you in the right way — could you tell me a little more about what you're looking for?",
+      michael: "Help me understand — what are you looking for specifically?"
+    }
+  };
+
+  function say(key, agent, data) {
+    var text = (SAY[key] && SAY[key][agent]) || '';
+    if (data) Object.keys(data).forEach(function (k) { text = text.replace('{' + k + '}', data[k]); });
+    return text;
+  }
+
+  var AGENTS = {
+    erin:    { name: 'Erin'    },
+    michael: { name: 'Michael' }
+  };
+
+  var launcher   = document.getElementById('chat-launcher');
+  var chatWin    = document.getElementById('chat-window');
+  var chatBody   = document.getElementById('chat-body');
+  var chatInput  = document.getElementById('chat-input');
+  var sendBtn    = document.getElementById('chat-send');
+  var closeBtn   = document.getElementById('chat-close');
+  var chatTip    = document.getElementById('chat-tip');
+
+  var launched   = false;
+  var chatState  = 'GREETING';
+  var lastSender = null;
+  var turn       = 'michael'; // Erin always opens; Michael responds first
+  var lead = { name: '', email: '', phone: '', textOk: null, profession: '' };
+
+  function nextAgent() {
+    var a = turn;
+    turn = (turn === 'erin') ? 'michael' : 'erin';
+    return a;
+  }
+
+  // ── OPEN / CLOSE ──────────────────────────────────────────
+  function openChat() {
+    chatWin.classList.add('active');
+    launcher.classList.add('hidden');
+    chatTip.classList.remove('visible');
+    if (!launched) { launched = true; setTimeout(startConvo, 600); }
+    else chatInput.focus();
+  }
+
+  function closeChat() {
+    chatWin.classList.remove('active');
+    launcher.classList.remove('hidden');
+  }
+
+  // ── MESSAGES ─────────────────────────────────────────────
+  function agentMsg(agent, text, extraDelay) {
+    extraDelay = extraDelay || 0;
+    var av = AGENTS[agent] || AGENTS.erin;
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        // Typing indicator
+        var typingGroup = document.createElement('div');
+        typingGroup.className = 'cmsg-group';
+        if (agent !== lastSender) {
+          var lbl = document.createElement('div');
+          lbl.className = 'cmsg-sender';
+          lbl.textContent = av.name;
+          typingGroup.appendChild(lbl);
+        }
+        var typing = document.createElement('div');
+        typing.className = 'cmsg-bubble typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        typingGroup.appendChild(typing);
+        chatBody.appendChild(typingGroup);
+        scrollDown();
+
+        var readDelay = Math.min(text.length * 17 + 380, 1900);
+        setTimeout(function () {
+          typingGroup.remove();
+          var group = document.createElement('div');
+          group.className = 'cmsg-group';
+          if (agent !== lastSender) {
+            var label = document.createElement('div');
+            label.className = 'cmsg-sender';
+            label.textContent = av.name;
+            group.appendChild(label);
+            lastSender = agent;
+          }
+          var bubble = document.createElement('div');
+          bubble.className = 'cmsg-bubble';
+          bubble.textContent = text;
+          group.appendChild(bubble);
+          chatBody.appendChild(group);
+          scrollDown();
+          resolve();
+        }, readDelay);
+      }, extraDelay);
+    });
+  }
+
+  function userMsg(text) {
+    lastSender = null;
+    var msg = document.createElement('div');
+    msg.className = 'cmsg-user';
+    msg.textContent = text;
+    chatBody.appendChild(msg);
+    scrollDown();
+  }
+
+  function showChips(opts) {
+    var row = document.createElement('div');
+    row.className = 'cchips';
+    opts.forEach(function (opt) {
+      var el = document.createElement(opt.href ? 'a' : 'button');
+      el.className = 'cchip';
+      el.textContent = opt.label;
+      if (opt.href) { el.href = opt.href; el.target = '_blank'; }
+      else el.addEventListener('click', function () { row.remove(); handleInput(opt.value || opt.label); });
+      row.appendChild(el);
+    });
+    chatBody.appendChild(row);
+    scrollDown();
+  }
+
+  function scrollDown() { chatBody.scrollTop = chatBody.scrollHeight; }
+
+  // ── FAQ MATCHING ─────────────────────────────────────────
+  var FAQ_PATTERNS = [
+    [/\b(price|cost|how much|\$97|\$|fee|charge)\b/i,       'faq_price'   ],
+    [/\b(how long|time|fast|72|hours|days|quick|when)\b/i,  'faq_time'    ],
+    [/\b(include|what.?s in|what do i get|features)\b/i,    'faq_include' ],
+    [/\b(area|location|serve|where|raleigh|durham|chapel|triangle|cary)\b/i, 'faq_area'],
+    [/\b(revision|change|edit|tweak)\b/i,                   'faq_revision'],
+    [/\b(own|domain|hosting|keep|mine|subscription)\b/i,    'faq_own'     ],
+    [/\b(who|what.*(do|does|is|are)|attorney|lawyer|cpa|contractor|consultant)\b/i, 'faq_who']
+  ];
+
+  function checkFAQ(text, agent) {
+    for (var i = 0; i < FAQ_PATTERNS.length; i++) {
+      if (FAQ_PATTERNS[i][0].test(text)) return say(FAQ_PATTERNS[i][1], agent);
+    }
+    return null;
+  }
+
+  // ── CONVERSATION ─────────────────────────────────────────
+  async function startConvo() {
+    chatState = 'GREETING';
+    await agentMsg('erin', say('greeting', 'erin'));
+    showChips([
+      { label: "Tell me about One Page Loft" },
+      { label: "I need a landing page"       },
+      { label: "Just browsing"               }
+    ]);
+    chatInput.focus();
+  }
+
+  var COLLECT_STATES = ['NAME', 'EMAIL', 'PHONE', 'PHONE_NUM', 'DONE'];
+
+  async function handleInput(raw) {
+    var text = (raw || '').trim();
+    if (!text) return;
+
+    chatBody.querySelectorAll('.cchips').forEach(function (c) { c.remove(); });
+    userMsg(text);
+    chatInput.value = '';
+
+    var agent = nextAgent();
+    var t = text.toLowerCase();
+
+    // FAQ check (skip during data collection)
+    if (COLLECT_STATES.indexOf(chatState) === -1) {
+      var faqAns = checkFAQ(text, agent);
+      if (faqAns) {
+        await agentMsg(agent, faqAns);
+        if (chatState === 'GREETING') {
+          showChips([
+            { label: "Tell me about One Page Loft" },
+            { label: "I need a landing page"       },
+            { label: "Just browsing"               }
+          ]);
+        } else if (chatState === 'PROFESSION') {
+          showChips([
+            { label: "Attorney / Legal"   },
+            { label: "CPA / Accounting"   },
+            { label: "Contractor / Trades"},
+            { label: "Consultant / Other" }
+          ]);
+        }
+        return;
+      }
+    }
+
+    // ── GREETING ──────────────────────────────────────────
+    if (chatState === 'GREETING') {
+      if (/tell me|about|what|learn|services|do you|how does/i.test(t)) {
+        await agentMsg(agent, say('explain_opl', agent));
+        chatState = 'PROFESSION';
+        var agent2 = nextAgent();
+        await agentMsg(agent2, say('explain_follow', agent2));
+        showChips([
+          { label: "Attorney / Legal"   },
+          { label: "CPA / Accounting"   },
+          { label: "Contractor / Trades"},
+          { label: "Consultant / Other" }
+        ]);
+      } else if (/need|want|ready|start|page|website|get started/i.test(t)) {
+        chatState = 'PROFESSION';
+        await agentMsg(agent, say('ready', agent));
+        showChips([
+          { label: "Attorney / Legal"   },
+          { label: "CPA / Accounting"   },
+          { label: "Contractor / Trades"},
+          { label: "Consultant / Other" }
+        ]);
+      } else if (/browsing|looking|just|explore/i.test(t)) {
+        await agentMsg(agent, say('browsing', agent));
+      } else {
+        await agentMsg(agent, say('faq_unclear', agent));
+        showChips([
+          { label: "Tell me about One Page Loft" },
+          { label: "I need a landing page"       },
+          { label: "Just browsing"               }
+        ]);
+      }
+
+    // ── PROFESSION ────────────────────────────────────────
+    } else if (chatState === 'PROFESSION') {
+      lead.profession = text;
+      var pitchKey;
+      if (/attorney|legal|lawyer/i.test(t))            pitchKey = 'pitch_attorney';
+      else if (/cpa|account|tax/i.test(t))             pitchKey = 'pitch_cpa';
+      else if (/contractor|trade|build|electric|hvac/i.test(t)) pitchKey = 'pitch_contractor';
+      else                                              pitchKey = 'pitch_consultant';
+      await agentMsg(agent, say(pitchKey, agent));
+      chatState = 'NAME';
+      var agent2 = nextAgent();
+      await agentMsg(agent2, say('ask_name', agent2));
+
+    // ── NAME ──────────────────────────────────────────────
+    } else if (chatState === 'NAME') {
+      lead.name = text.split(' ')[0];
+      chatState = 'EMAIL';
+      await agentMsg(agent, say('ask_email', agent, { name: lead.name }));
+
+    // ── EMAIL ─────────────────────────────────────────────
+    } else if (chatState === 'EMAIL') {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) {
+        await agentMsg(agent, say('email_error', agent));
+        return;
+      }
+      lead.email = text;
+      chatState = 'PHONE';
+      await agentMsg(agent, say('ask_phone', agent));
+      showChips([
+        { label: "Yes, feel free to text me" },
+        { label: "Email only is fine"        }
+      ]);
+
+    // ── PHONE ─────────────────────────────────────────────
+    } else if (chatState === 'PHONE') {
+      if (/email only|no|skip|just email/i.test(t)) {
+        lead.textOk = false;
+        await finish(agent);
+      } else if (/yes|text|sure|ok|yeah/i.test(t)) {
+        lead.textOk = true;
+        chatState = 'PHONE_NUM';
+        await agentMsg(agent, say('ask_phone_num', agent));
+      } else {
+        lead.phone = text; lead.textOk = true;
+        await finish(agent);
+      }
+
+    // ── PHONE NUMBER ──────────────────────────────────────
+    } else if (chatState === 'PHONE_NUM') {
+      lead.phone = text; lead.textOk = true;
+      await finish(agent);
+
+    // ── DONE ──────────────────────────────────────────────
+    } else if (chatState === 'DONE') {
+      await agentMsg(agent, say('done_followup', agent, { name: lead.name || 'there' }));
+    }
+  }
+
+  async function finish(agent) {
+    chatState = 'DONE';
+    await agentMsg(agent, say('finish_1', agent, { name: lead.name }));
+    var agent2 = nextAgent();
+    await agentMsg(agent2, say('finish_2', agent2));
+    showChips([
+      { label: "Estate Attorney", href: "attorney.html"    },
+      { label: "CPA Firm",        href: "cpa.html"         },
+      { label: "Contractor",      href: "contractor.html"  }
+    ]);
+    var inputRow = document.querySelector('.chat-input-row');
+    if (inputRow) inputRow.style.display = 'none';
+    submitLead();
+  }
+
+  function submitLead() {
+    fetch('https://formsubmit.co/ajax/christophervincenthooks@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Name':        lead.name,
+        'Email':       lead.email,
+        'Phone':       lead.phone || 'Not provided',
+        'OK to Text':  lead.textOk ? 'Yes' : 'No',
+        'Profession':  lead.profession,
+        '_subject':    'New OPL Lead — ' + lead.name + ' (' + lead.profession + ')',
+        '_template':   'table',
+        '_captcha':    'false'
+      })
+    }).catch(function () {});
+    try {
+      var stored = JSON.parse(localStorage.getItem('opl_leads') || '[]');
+      stored.push(Object.assign({}, lead, { ts: new Date().toISOString() }));
+      localStorage.setItem('opl_leads', JSON.stringify(stored));
+    } catch (e) {}
+  }
+
+  // ── EVENTS ───────────────────────────────────────────────
+  launcher.addEventListener('click', openChat);
+  closeBtn.addEventListener('click', closeChat);
+  sendBtn.addEventListener('click', function () { handleInput(chatInput.value); });
+  chatInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') handleInput(chatInput.value); });
+  chatTip.addEventListener('click', openChat);
+
+  // Show tooltip at 6s, auto-open at 14s
+  setTimeout(function () { if (!launched) chatTip.classList.add('visible'); }, 6000);
+  setTimeout(function () { if (!launched) { chatTip.classList.remove('visible'); openChat(); } }, 14000);
+})();
+</script>
+</body>
+</html>

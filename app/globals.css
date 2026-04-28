@@ -63,7 +63,7 @@
 .twc-ticker-track {
   display: flex;
   white-space: nowrap;
-  animation: twc-ticker 40s linear infinite;
+  animation: twc-ticker 80s linear infinite;
   will-change: transform;
 }
 .twc-ticker-track:hover {

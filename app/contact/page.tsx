@@ -143,7 +143,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <TickerBanner />
+      <TickerBanner bg="#fff" />
     </div>
   )
 }

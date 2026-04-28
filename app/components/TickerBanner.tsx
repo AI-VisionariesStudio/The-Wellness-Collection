@@ -7,7 +7,7 @@ const ITEMS = [
   'Research-Grounded',
 ]
 
-const DOUBLED = [...ITEMS, ...ITEMS]
+const TRACK = Array.from({ length: 8 }, () => ITEMS).flat()
 
 export default function TickerBanner() {
   return (
@@ -24,7 +24,7 @@ export default function TickerBanner() {
       }}
     >
 <div className="twc-ticker-track" aria-hidden="true">
-        {DOUBLED.map((item, i) => (
+        {TRACK.map((item, i) => (
           <span key={i} className="twc-ticker-item">
             <span className="twc-ticker-dot" />
             {item}

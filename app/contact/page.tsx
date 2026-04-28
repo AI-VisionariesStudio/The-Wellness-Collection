@@ -40,35 +40,32 @@ export default function ContactPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div className="overlay-top" style={{ padding: '40px 40px 0' }}>
+      <div className="overlay-top" style={{ padding: '20px 40px 0' }}>
         <Link href="/" style={{ display: 'block' }}>
-          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" style={{ height: '140px', marginBottom: '-64px' }} />
+          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" style={{ height: '90px', marginBottom: '-44px' }} />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div className="overlay-body" style={{ paddingTop: '76px', paddingBottom: '32px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>
+      <div className="overlay-body" style={{ paddingTop: '52px', paddingBottom: '0' }}>
+        <div style={{ textAlign: 'center', marginBottom: '12px' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>
             {T.heading}
           </p>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '34px', fontWeight: 300, color: 'var(--text)', marginBottom: '10px', lineHeight: 1.1 }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 300, color: 'var(--text)', marginBottom: '8px', lineHeight: 1.1 }}>
             Get in Touch
           </h1>
-          <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '0 auto 14px' }} />
-          <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: 1.6, maxWidth: '400px', margin: '0 auto' }}>
-            {T.subtext}
-          </p>
+          <div style={{ width: '32px', height: '1px', background: 'var(--border)', margin: '0 auto' }} />
         </div>
 
-        <div style={{ maxWidth: '560px', margin: '0 auto', padding: '0 20px' }}>
+        <div style={{ maxWidth: '520px', margin: '0 auto', padding: '0 20px' }}>
           {sent ? (
-            <div style={{ textAlign: 'center', padding: '48px', background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--blush)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: '20px', color: 'var(--text)' }}>✓</div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 300, color: 'var(--text)', marginBottom: '10px' }}>
+            <div style={{ textAlign: 'center', padding: '40px', background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'var(--blush)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '18px', color: 'var(--text)' }}>✓</div>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 300, color: 'var(--text)', marginBottom: '8px' }}>
                 {T.successHeading}
               </h2>
-              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '28px' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
                 {T.successBody}
               </p>
               <Link href="/" className="btn btn-outline" style={{ fontSize: '11px', letterSpacing: '0.12em' }}>
@@ -78,45 +75,45 @@ export default function ContactPage() {
           ) : (
             <>
               {error && (
-                <div style={{ background: '#fef2f2', color: '#c0392b', padding: '10px 14px', borderRadius: '4px', marginBottom: '16px', fontSize: '13px' }}>
+                <div style={{ background: '#fef2f2', color: '#c0392b', padding: '8px 12px', borderRadius: '4px', marginBottom: '10px', fontSize: '13px' }}>
                   {error}
                 </div>
               )}
 
               <div style={{ background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
-                <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '14px 28px' }}>
+                <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '10px 22px' }}>
                   <p style={{ fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
                     Send a Message
                   </p>
                 </div>
 
-                <div style={{ padding: '24px 28px' }}>
+                <div style={{ padding: '16px 22px' }}>
                   <form onSubmit={handleSubmit}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
                       <div className="form-group" style={{ margin: 0 }}>
-                        <label>{T.labelName}</label>
-                        <input type="text" value={form.name} onChange={set('name')} placeholder={T.placeholderName} required />
+                        <label style={{ marginBottom: '3px' }}>{T.labelName}</label>
+                        <input type="text" value={form.name} onChange={set('name')} placeholder={T.placeholderName} required style={{ padding: '9px 12px' }} />
                       </div>
                       <div className="form-group" style={{ margin: 0 }}>
-                        <label>{T.labelEmail}</label>
-                        <input type="email" value={form.email} onChange={set('email')} placeholder={T.placeholderEmail} required />
+                        <label style={{ marginBottom: '3px' }}>{T.labelEmail}</label>
+                        <input type="email" value={form.email} onChange={set('email')} placeholder={T.placeholderEmail} required style={{ padding: '9px 12px' }} />
                       </div>
                     </div>
 
-                    <div className="form-group" style={{ marginBottom: '14px' }}>
-                      <label>{T.labelSubject}</label>
-                      <input type="text" value={form.subject} onChange={set('subject')} placeholder={T.placeholderSubject} required />
+                    <div className="form-group" style={{ marginBottom: '10px' }}>
+                      <label style={{ marginBottom: '3px' }}>{T.labelSubject}</label>
+                      <input type="text" value={form.subject} onChange={set('subject')} placeholder={T.placeholderSubject} required style={{ padding: '9px 12px' }} />
                     </div>
 
-                    <div className="form-group" style={{ marginBottom: '16px' }}>
-                      <label>{T.labelMessage}</label>
+                    <div className="form-group" style={{ marginBottom: '12px' }}>
+                      <label style={{ marginBottom: '3px' }}>{T.labelMessage}</label>
                       <textarea
                         value={form.message}
                         onChange={set('message')}
                         placeholder={T.placeholderMessage}
                         required
-                        rows={3}
-                        style={{ resize: 'none' }}
+                        rows={2}
+                        style={{ resize: 'none', padding: '9px 12px' }}
                       />
                     </div>
 
@@ -124,7 +121,7 @@ export default function ContactPage() {
                       type="submit"
                       className="btn btn-primary"
                       disabled={loading}
-                      style={{ width: '100%', justifyContent: 'center', fontSize: '11px', letterSpacing: '0.14em' }}
+                      style={{ width: '100%', justifyContent: 'center', fontSize: '11px', letterSpacing: '0.14em', padding: '10px' }}
                     >
                       {loading ? T.sending : T.send}
                     </button>
@@ -132,9 +129,9 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div style={{ padding: '18px 28px', background: 'var(--header)', border: '1px solid var(--border)', borderTop: 'none', textAlign: 'center' }}>
-                <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px', letterSpacing: '0.04em' }}>{T.orEmail}</p>
-                <a href="mailto:support@gracefullyredefined.com" style={{ fontSize: '13px', color: 'var(--text)', letterSpacing: '0.04em', fontWeight: 500 }}>
+              <div style={{ padding: '12px 22px', background: 'var(--header)', border: '1px solid var(--border)', borderTop: 'none', textAlign: 'center' }}>
+                <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '2px', letterSpacing: '0.04em' }}>{T.orEmail}</p>
+                <a href="mailto:support@gracefullyredefined.com" style={{ fontSize: '12px', color: 'var(--text)', letterSpacing: '0.04em', fontWeight: 500 }}>
                   support@gracefullyredefined.com
                 </a>
               </div>

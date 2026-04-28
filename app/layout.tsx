@@ -3,6 +3,7 @@ import './globals.css'
 import { Providers } from './providers'
 import { Analytics } from '@vercel/analytics/next'
 import Nav from '@/app/components/Nav'
+import TickerBanner from '@/app/components/TickerBanner'
 import FloatingHelp from '@/app/components/FloatingHelp'
 import DirectionManager from '@/app/components/DirectionManager'
 import ScrollReveal from '@/app/components/ScrollReveal'
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <DirectionManager />
           <Nav />
+          <TickerBanner />
           {children}
           <FloatingHelp />
           <ScrollReveal />

@@ -53,14 +53,14 @@ export default async function ProfilePage() {
       <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '24px 32px 32px' }}>
 
         {/* ── Three cards horizontal ── */}
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '24px', alignItems: 'stretch', flexWrap: 'wrap' }}>
 
           {/* Account Info */}
-          <div style={{ flex: '1 1 240px' }}>
+          <div style={{ flex: '1 1 280px' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Account
             </h2>
-            <div className="card" style={{ padding: '18px 22px', borderRadius: 0 }}>
+            <div className="card" style={{ padding: '18px 22px', borderRadius: 0, height: 'calc(100% - 46px)' }}>
               <div style={{ display: 'grid', gap: '12px' }}>
                 <div>
                   <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Name</div>
@@ -79,12 +79,12 @@ export default async function ProfilePage() {
           </div>
 
           {/* Enrolled Courses */}
-          <div style={{ flex: '2 1 320px' }}>
+          <div style={{ flex: '1 1 280px' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Enrolled Courses
             </h2>
             {user.enrollments.length === 0 ? (
-              <div className="card" style={{ padding: '24px', textAlign: 'center', borderRadius: 0 }}>
+              <div className="card" style={{ padding: '24px', textAlign: 'center', borderRadius: 0, height: 'calc(100% - 46px)' }}>
                 <p style={{ color: 'var(--text-muted)', marginBottom: '16px', fontSize: '14px' }}>You haven&apos;t enrolled in any courses yet.</p>
                 <Link href="/dashboard" className="btn btn-primary">Browse Courses</Link>
               </div>
@@ -138,11 +138,11 @@ export default async function ProfilePage() {
           </div>
 
           {/* Security */}
-          <div style={{ flex: '1 1 200px' }}>
+          <div style={{ flex: '1 1 280px' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Security
             </h2>
-            <div className="card" style={{ padding: '18px 22px', borderRadius: 0 }}>
+            <div className="card" style={{ padding: '18px 22px', borderRadius: 0, height: 'calc(100% - 46px)' }}>
               <div style={{ fontWeight: 500, color: 'var(--text)', marginBottom: '4px', fontSize: '14px' }}>Password</div>
               <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '14px' }}>Change your account password</div>
               <Link href="/forgot-password" className="btn btn-outline" style={{ fontSize: '12px', padding: '8px 16px', display: 'inline-block' }}>

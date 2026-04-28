@@ -40,14 +40,14 @@ export default function ContactPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div className="overlay-top" style={{ padding: '20px 40px 0' }}>
+      <div className="overlay-top" style={{ padding: '32px 40px 0' }}>
         <Link href="/" style={{ display: 'block' }}>
-          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" style={{ height: '90px', marginBottom: '-44px' }} />
+          <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" style={{ height: '130px', marginBottom: '-60px' }} />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div className="overlay-body" style={{ paddingTop: '52px', paddingBottom: '0' }}>
+      <div className="overlay-body" style={{ paddingTop: '68px', paddingBottom: '20px' }}>
         <div style={{ textAlign: 'center', marginBottom: '12px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>
             {T.heading}

@@ -4,10 +4,7 @@ const ITEMS = [
   'Evidence-Grounded',
   'Clinically Responsible',
   'Reflectively Designed',
-  'Nervous System Aware',
   'Research-Grounded',
-  'Compassion-Centred',
-  'Developmentally Informed',
 ]
 
 const DOUBLED = [...ITEMS, ...ITEMS]

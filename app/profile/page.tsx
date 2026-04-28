@@ -56,7 +56,7 @@ export default async function ProfilePage() {
         <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
 
           {/* Account Info */}
-          <div className="card" style={{ flex: '1 1 240px', padding: '24px' }}>
+          <div className="card" style={{ flex: '1 1 240px', padding: '24px', borderRadius: 0 }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Account
             </h2>
@@ -82,7 +82,7 @@ export default async function ProfilePage() {
               Enrolled Courses
             </h2>
             {user.enrollments.length === 0 ? (
-              <div className="card" style={{ padding: '24px', textAlign: 'center' }}>
+              <div className="card" style={{ padding: '24px', textAlign: 'center', borderRadius: 0 }}>
                 <p style={{ color: 'var(--text-muted)', marginBottom: '16px', fontSize: '14px' }}>You haven&apos;t enrolled in any courses yet.</p>
                 <Link href="/dashboard" className="btn btn-primary">Browse Courses</Link>
               </div>
@@ -97,7 +97,7 @@ export default async function ProfilePage() {
                   const cert = user.certificates.find(c => c.courseId === enrollment.courseId)
 
                   return (
-                    <div key={enrollment.id} className="card" style={{ padding: '18px 22px' }}>
+                    <div key={enrollment.id} className="card" style={{ padding: '18px 22px', borderRadius: 0 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
                         <div style={{ flex: 1 }}>
                           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '17px', fontWeight: 400, color: 'var(--text)', marginBottom: '6px' }}>
@@ -136,7 +136,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* Security */}
-          <div className="card" style={{ flex: '1 1 200px', padding: '24px' }}>
+          <div className="card" style={{ flex: '1 1 200px', padding: '24px', borderRadius: 0 }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Security
             </h2>
@@ -152,7 +152,7 @@ export default async function ProfilePage() {
         </div>
       </main>
 
-      <TickerBanner />
+      <TickerBanner bg="#fff" />
     </div>
   )
 }

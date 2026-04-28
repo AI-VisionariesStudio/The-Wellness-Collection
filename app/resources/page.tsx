@@ -197,7 +197,7 @@ export default function ResourcesPage() {
       <TickerBanner bg="#fff" />
 
       {/* Card Grid */}
-      <div className="resources-grid" style={{ paddingTop: '80px' }}>
+      <div className="resources-grid" style={{ paddingTop: '220px' }}>
 
         {PAID_RESOURCES.map(resource => (
           <div key={resource.id} className="resource-card">

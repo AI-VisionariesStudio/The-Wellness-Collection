@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import TickerBanner from '@/app/components/TickerBanner'
 
 const PAID_RESOURCES = [
   {
@@ -193,8 +194,10 @@ export default function ResourcesPage() {
       </section>
 
 
+      <TickerBanner bg="#fff" />
+
       {/* Card Grid */}
-      <div className="resources-grid">
+      <div className="resources-grid" style={{ paddingTop: '80px' }}>
 
         {PAID_RESOURCES.map(resource => (
           <div key={resource.id} className="resource-card">

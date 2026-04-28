@@ -50,28 +50,30 @@ export default async function ProfilePage() {
         </div>
       </section>
 
-      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '48px 32px 64px' }}>
+      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '24px 32px 32px' }}>
 
         {/* ── Three cards horizontal ── */}
         <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
 
           {/* Account Info */}
-          <div className="card" style={{ flex: '1 1 240px', padding: '24px', borderRadius: 0 }}>
+          <div style={{ flex: '1 1 240px' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Account
             </h2>
-            <div style={{ display: 'grid', gap: '12px' }}>
-              <div>
-                <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Name</div>
-                <div style={{ fontSize: '15px', color: 'var(--text)' }}>{user.name}</div>
-              </div>
-              <div>
-                <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Email</div>
-                <div style={{ fontSize: '14px', color: 'var(--text)', wordBreak: 'break-all' }}>{user.email}</div>
-              </div>
-              <div style={{ paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
-                <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Member Since</div>
-                <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+            <div className="card" style={{ padding: '18px 22px', borderRadius: 0 }}>
+              <div style={{ display: 'grid', gap: '12px' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Name</div>
+                  <div style={{ fontSize: '15px', color: 'var(--text)' }}>{user.name}</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Email</div>
+                  <div style={{ fontSize: '14px', color: 'var(--text)', wordBreak: 'break-all' }}>{user.email}</div>
+                </div>
+                <div style={{ paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>Member Since</div>
+                  <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -136,11 +138,11 @@ export default async function ProfilePage() {
           </div>
 
           {/* Security */}
-          <div className="card" style={{ flex: '1 1 200px', padding: '24px', borderRadius: 0 }}>
+          <div style={{ flex: '1 1 200px' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 400, color: 'var(--text)', marginBottom: '16px' }}>
               Security
             </h2>
-            <div style={{ marginBottom: '12px' }}>
+            <div className="card" style={{ padding: '18px 22px', borderRadius: 0 }}>
               <div style={{ fontWeight: 500, color: 'var(--text)', marginBottom: '4px', fontSize: '14px' }}>Password</div>
               <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '14px' }}>Change your account password</div>
               <Link href="/forgot-password" className="btn btn-outline" style={{ fontSize: '12px', padding: '8px 16px', display: 'inline-block' }}>

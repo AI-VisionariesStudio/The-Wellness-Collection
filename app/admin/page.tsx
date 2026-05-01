@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import ManualEnrollment from './ManualEnrollment'
+import LeadsTable from './LeadsTable'
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions)
@@ -93,30 +94,7 @@ export default async function AdminPage() {
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>
               Waitlist Leads <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— coming soon sign-ups</span>
             </h2>
-            <div className="card" style={{ overflow: 'hidden' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ background: '#f8f9fa', borderBottom: '1px solid var(--border)' }}>
-                    {['Name', 'Email', 'Signed Up'].map(h => (
-                      <th key={h} style={{ padding: '14px 20px', textAlign: 'left', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500 }}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {wellnessLeads.length === 0 ? (
-                    <tr><td colSpan={3} style={{ padding: '20px', color: 'var(--text-muted)', textAlign: 'center', fontSize: '14px' }}>No leads yet.</td></tr>
-                  ) : (
-                    wellnessLeads.map(lead => (
-                      <tr key={lead.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                        <td style={{ padding: '16px 20px', fontWeight: 500 }}>{lead.name}</td>
-                        <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{lead.email}</td>
-                        <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{new Date(lead.createdAt).toLocaleDateString()}</td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
+            <LeadsTable leads={wellnessLeads} />
           </section>
 
           {/* Courses */}

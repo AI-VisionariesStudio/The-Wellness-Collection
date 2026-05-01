@@ -81,7 +81,13 @@ export default function ComingSoonPage() {
                   <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', margin: '0 0 28px', lineHeight: 1.75 }}>
                     We&apos;ll be in touch the moment we open our doors.
                   </p>
-                  <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto' }} />
+                  <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
+                  <button
+                    onClick={() => { setStatus('idle'); setName(''); setEmail('') }}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.55 }}
+                  >
+                    ← Use a different email
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>

@@ -34,7 +34,7 @@ body { font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: 
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.06; letter-spacing: 0.02em; }
 
 .m-nav { padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(150,64,48,0.25); background: #2A2018; }
-.m-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 0.06em; font-weight: 400; color: #ECDECE; }
+.m-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 0.06em; font-weight: 400; color: #ECDECE; text-decoration: none; }
 .m-logo em { font-style: italic; color: #B46040; }
 .m-nav-links { display: flex; gap: 30px; list-style: none; }
 .m-nav-links a { text-decoration: none; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(236,222,206,0.52); transition: color 0.2s; }
@@ -105,9 +105,11 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-he
 .m-footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--m-footer-text); letter-spacing: 0.08em; }
 .m-footer-logo em { font-style: italic; color: var(--m-footer-accent); }
 .m-footer-copy { font-size: 8.5px; letter-spacing: 0.12em; color: var(--m-footer-text); opacity: 0.28; }
-.m-footer-opl { display: flex; align-items: center; gap: 10px; text-decoration: none; opacity: 0.65; transition: opacity 0.2s; }
-.m-footer-opl:hover { opacity: 1; }
-.m-footer-opl-by { font-size: 7.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--m-footer-text); white-space: nowrap; }
+.m-footer-opl { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; padding: 10px 20px; border: 1px solid rgba(191,168,130,0.32); transition: border-color 0.22s, background 0.22s, transform 0.22s; }
+.m-footer-opl:hover { border-color: rgba(191,168,130,0.72); background: rgba(191,168,130,0.07); transform: translateX(-3px); }
+.m-footer-opl-arrow { font-size: 14px; color: #BFA882; line-height: 1; transition: transform 0.22s; }
+.m-footer-opl:hover .m-footer-opl-arrow { transform: translateX(-2px); }
+.m-footer-opl-by { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: #BFA882; white-space: nowrap; }
 
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -124,7 +126,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-he
 <body>
 
 <nav class="m-nav">
-  <div class="m-logo">Meridian <em>Build</em></div>
+  <a href="index.html" class="m-logo">Meridian <em>Build</em></a>
   <ul class="m-nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#services">Our Work</a></li>
@@ -231,15 +233,8 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-he
     <div class="m-footer-copy">© 2025 Meridian Build LLC · Chapel Hill, NC · NC License #85412</div>
   </div>
   <a href="index.html" class="m-footer-opl">
-    <span class="m-footer-opl-by">Designed by</span>
-    <svg width="90" height="22" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="4,30 16,12 28,30" stroke="#BFA882" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <line x1="4" y1="36" x2="28" y2="36" stroke="#C8B4A0" stroke-width="0.9" stroke-linecap="round"/>
-      <line x1="16" y1="30" x2="16" y2="36" stroke="#BFA882" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
-      <text x="36" y="24" font-family="Cormorant Garamond, serif" font-size="16" font-weight="400" fill="#F2EDE8" letter-spacing="0.8">One Page</text>
-      <line x1="36" y1="28" x2="100" y2="28" stroke="#BFA882" stroke-width="0.5" stroke-linecap="round" opacity="0.28"/>
-      <text x="37" y="38" font-family="Cormorant Garamond, serif" font-size="10" font-weight="300" font-style="italic" fill="#BFA882" letter-spacing="3.5">Loft</text>
-    </svg>
+    <span class="m-footer-opl-arrow">&#8592;</span>
+    <span class="m-footer-opl-by">One Page Loft</span>
   </a>
 </footer>
 

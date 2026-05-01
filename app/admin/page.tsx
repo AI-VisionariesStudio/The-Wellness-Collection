@@ -44,7 +44,7 @@ export default async function AdminPage() {
   const monitorsUp     = betterMonitors.filter((m: any) => m.attributes?.status === 'up').length
 
   try {
-    const [users, courses, certificates, enrollments, auditLogs] = await Promise.all([
+    const [users, courses, certificates, enrollments, auditLogs, wellnessLeads] = await Promise.all([
       prisma.user.findMany({ where: { role: 'STUDENT' }, orderBy: { createdAt: 'desc' } }),
       prisma.course.findMany({
         orderBy: { order: 'asc' },
@@ -59,6 +59,7 @@ export default async function AdminPage() {
       prisma.certificate.findMany({ include: { user: true, course: true }, orderBy: { issuedAt: 'desc' }, take: 20 }),
       prisma.enrollment.findMany({ include: { user: true, course: true }, orderBy: { enrolledAt: 'desc' }, take: 20 }),
       prisma.auditLog.findMany({ orderBy: { createdAt: 'desc' }, take: 50 }),
+      prisma.wellnessLead.findMany({ orderBy: { createdAt: 'desc' } }),
     ])
 
     const stats = {
@@ -72,8 +73,9 @@ export default async function AdminPage() {
       <div style={{ minHeight: '100vh', background: '#fff' }}>
         <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px' }}>
           {/* Stats */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '48px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px', marginBottom: '48px' }}>
             {[
+              { label: 'Waitlist Leads', value: wellnessLeads.length },
               { label: 'Total Students', value: stats.totalUsers },
               { label: 'Enrollments', value: stats.totalEnrollments },
               { label: 'Certificates Issued', value: stats.totalCertificates },
@@ -85,6 +87,37 @@ export default async function AdminPage() {
               </div>
             ))}
           </div>
+
+          {/* Waitlist Leads */}
+          <section style={{ marginBottom: '48px' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 400, color: 'var(--text)', marginBottom: '20px' }}>
+              Waitlist Leads <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>— coming soon sign-ups</span>
+            </h2>
+            <div className="card" style={{ overflow: 'hidden' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ background: '#f8f9fa', borderBottom: '1px solid var(--border)' }}>
+                    {['Name', 'Email', 'Signed Up'].map(h => (
+                      <th key={h} style={{ padding: '14px 20px', textAlign: 'left', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500 }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {wellnessLeads.length === 0 ? (
+                    <tr><td colSpan={3} style={{ padding: '20px', color: 'var(--text-muted)', textAlign: 'center', fontSize: '14px' }}>No leads yet.</td></tr>
+                  ) : (
+                    wellnessLeads.map(lead => (
+                      <tr key={lead.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                        <td style={{ padding: '16px 20px', fontWeight: 500 }}>{lead.name}</td>
+                        <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{lead.email}</td>
+                        <td style={{ padding: '16px 20px', color: 'var(--text-muted)', fontSize: '14px' }}>{new Date(lead.createdAt).toLocaleDateString()}</td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
           {/* Courses */}
           <section style={{ marginBottom: '48px' }}>

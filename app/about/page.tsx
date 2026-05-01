@@ -19,8 +19,8 @@ export default function AboutPage() {
       </div>
 
       {/* Cream body */}
-      <div className="overlay-body">
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+      <div className="overlay-body" style={{ paddingTop: '72px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
             The Wellness Collection
           </p>

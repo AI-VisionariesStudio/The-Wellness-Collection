@@ -175,7 +175,7 @@ export default function ResourcesPage() {
           className="hero-logo"
           style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
         />
-        <div className="hero-body" style={{ background: 'var(--cream)', padding: '70px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="hero-body" style={{ background: 'var(--cream)', padding: '70px 60px 90px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
               <div style={{ width: '260px', height: '44px', overflow: 'hidden' }}>

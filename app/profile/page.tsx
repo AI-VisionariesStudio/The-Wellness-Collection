@@ -41,7 +41,7 @@ export default async function ProfilePage() {
           alt="Gracefully Redefined"
           style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
         />
-        <div style={{ background: 'var(--cream)', padding: '110px 60px 60px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div style={{ background: 'var(--cream)', padding: '110px 60px 130px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '24px' }}>The Wellness Collection</p>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>My Profile</h1>

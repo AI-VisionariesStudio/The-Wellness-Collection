@@ -4,18 +4,19 @@ import TickerBanner from '@/app/components/TickerBanner'
 
 export default function ComingSoonPage() {
   const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim() || !email.trim()) return
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) return
     setStatus('loading')
     try {
       const res = await fetch('/api/leads/wellness', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+        body: JSON.stringify({ name: `${firstName.trim()} ${lastName.trim()}`, email: email.trim() }),
       })
       setStatus(res.ok ? 'done' : 'error')
     } catch {
@@ -61,7 +62,10 @@ export default function ComingSoonPage() {
               </h1>
               <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto' }} />
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '0' }}>
-                Structured courses for self-awareness, relational clarity, and becoming who you want to be.
+                Therapist-created psychoeducation on attachment, the ways you've learned to protect yourself, and who you are becoming in your relationships.
+              </p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, color: 'var(--text-muted)', lineHeight: 1.75, marginTop: '18px', marginBottom: '0' }}>
+                Be the first to know when the doors open — and receive an introduction to the work as we prepare to begin.
               </p>
             </div>
           </div>
@@ -83,7 +87,7 @@ export default function ComingSoonPage() {
                   </p>
                   <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
                   <button
-                    onClick={() => { setStatus('idle'); setName(''); setEmail('') }}
+                    onClick={() => { setStatus('idle'); setFirstName(''); setLastName(''); setEmail('') }}
                     style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.55 }}
                   >
                     ← Use a different email
@@ -94,9 +98,9 @@ export default function ComingSoonPage() {
                   <div className="cs-form" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '14px' }}>
                     <input
                       type="text"
-                      placeholder="Your first name"
-                      value={name}
-                      onChange={e => setName(e.target.value)}
+                      placeholder="First name"
+                      value={firstName}
+                      onChange={e => setFirstName(e.target.value)}
                       required
                       style={{
                         padding: '13px 20px',
@@ -107,7 +111,25 @@ export default function ComingSoonPage() {
                         color: 'var(--text)',
                         background: '#fff',
                         outline: 'none',
-                        width: '180px',
+                        width: '160px',
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Last name"
+                      value={lastName}
+                      onChange={e => setLastName(e.target.value)}
+                      required
+                      style={{
+                        padding: '13px 20px',
+                        border: '1px solid var(--border)',
+                        borderRadius: 'var(--radius)',
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '13px',
+                        color: 'var(--text)',
+                        background: '#fff',
+                        outline: 'none',
+                        width: '160px',
                       }}
                     />
                     <input
@@ -125,7 +147,7 @@ export default function ComingSoonPage() {
                         color: 'var(--text)',
                         background: '#fff',
                         outline: 'none',
-                        width: '240px',
+                        width: '220px',
                       }}
                     />
                     <button
@@ -144,7 +166,7 @@ export default function ComingSoonPage() {
                         cursor: status === 'loading' ? 'default' : 'pointer',
                       }}
                     >
-                      {status === 'loading' ? 'Saving…' : 'Notify Me →'}
+                      {status === 'loading' ? 'Saving…' : 'Join the waitlist'}
                     </button>
                   </div>
                   {status === 'error' && (
@@ -153,7 +175,7 @@ export default function ComingSoonPage() {
                     </p>
                   )}
                   <p style={{ fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.04em', marginTop: '6px' }}>
-                    No spam. Ever. Just a note when we open the doors.
+                    You'll receive meaningful emails. Never noise. Unsubscribe anytime.
                   </p>
                 </form>
               )}

@@ -12,15 +12,15 @@ export default function AboutPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div className="overlay-top">
+      <div className="overlay-top" style={{ padding: '28px 40px 0' }}>
         <Link href="/" style={{ display: 'block' }}>
           <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div className="overlay-body" style={{ paddingTop: '44px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '10px' }}>
+      <div className="overlay-body" style={{ paddingTop: '108px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '6px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>
             The Wellness Collection
           </p>

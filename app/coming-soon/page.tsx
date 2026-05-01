@@ -70,13 +70,18 @@ export default function ComingSoonPage() {
           <div className="cs-form-area" style={{ background: 'var(--bg)', padding: '52px 60px 80px', textAlign: 'center' }}>
             <div style={{ maxWidth: '700px', margin: '0 auto' }}>
               {status === 'done' ? (
-                <div style={{ background: 'var(--blush)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: '28px 36px' }}>
-                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, color: 'var(--text)', margin: '0 0 8px' }}>
-                    You're on the list.
+                <div style={{ textAlign: 'center', padding: '8px 0' }}>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', margin: '0 0 20px' }}>
+                    Gracefully Redefined
                   </p>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '13px', margin: 0, lineHeight: 1.6 }}>
-                    We'll reach out as soon as we launch. Thank you for being here.
+                  <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 300, color: 'var(--text)', margin: '0 0 16px', lineHeight: 1.2 }}>
+                    You&apos;re on the list.
                   </p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', margin: '0 0 28px', lineHeight: 1.75 }}>
+                    We&apos;ll be in touch the moment we open our doors.
+                  </p>
+                  <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto' }} />
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>

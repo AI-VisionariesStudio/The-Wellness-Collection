@@ -1,13 +1,11 @@
 const ITEMS = [
-  'Trauma-Informed',
   'Attachment-Based',
   'Evidence-Grounded',
-  'Clinically Responsible',
   'Reflectively Designed',
   'Research-Grounded',
 ]
 
-const TRACK = Array.from({ length: 8 }, () => ITEMS).flat()
+const TRACK = Array.from({ length: 12 }, () => ITEMS).flat()
 
 export default function TickerBanner({ bg }: { bg?: string }) {
   return (

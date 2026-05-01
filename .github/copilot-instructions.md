@@ -1,4 +1,4 @@
-# Wellness Collection — Copilot Workspace Instructions
+# The Wellness Collection — Copilot Workspace Instructions
 
 You are working in **The Wellness Collection** — a Next.js 14 platform (Supabase, Prisma, Stripe, Vercel) for wellness courses and healing.
 

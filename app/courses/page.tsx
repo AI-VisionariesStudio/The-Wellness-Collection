@@ -22,19 +22,19 @@ export default async function CoursesPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
 
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', paddingTop: '40px', textAlign: 'center' }}>
+      <section style={{ background: '#fff', paddingTop: '28px', textAlign: 'center' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
           style={{ height: '120px', objectFit: 'contain', display: 'block', margin: '0 auto -48px', position: 'relative', zIndex: 2 }}
         />
-        <div style={{ background: 'var(--cream)', padding: '32px 60px 10px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div style={{ background: 'var(--cream)', padding: '76px 60px 10px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '10px' }}>The Wellness Collection</p>
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '4px' }}>The Wellness Collection</p>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
               The Wellness Courses
             </h1>
-            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '14px auto 12px' }} />
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '10px auto 10px' }} />
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.7 }}>
               Psychoeducational journeys rooted in trauma recovery, attachment healing, and nervous system care.
             </p>
@@ -43,7 +43,7 @@ export default async function CoursesPage() {
       </section>
 
       {/* ── Course Grid ── */}
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '16px 40px 80px' }}>
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '8px 40px 80px' }}>
         {courses.length === 0 ? (
           <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '16px' }}>Courses coming soon.</p>
         ) : (

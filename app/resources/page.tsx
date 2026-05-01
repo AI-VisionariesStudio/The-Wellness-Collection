@@ -1,31 +1,50 @@
 'use client'
 
 import Link from 'next/link'
+import TickerBanner from '@/app/components/TickerBanner'
 
 const PAID_RESOURCES = [
   {
-    id: 'attachment-style',
-    title: 'How Your Attachment Style Shows Up In Relationships',
+    id: 'understanding-attachment-style',
+    title: 'Understanding Your Attachment Style',
+    subtitle: 'A Psychoeducational Guide to How You Love, Connect & Protect',
     price: '$6.99',
-    description: 'A gentle guide to understanding the patterns you carry into connection — and why they make so much sense.',
+    description: 'A compassionate exploration of how your earliest experiences shaped the way you love — and how those patterns can change.',
+  },
+  {
+    id: 'how-attachment-shows-up',
+    title: 'How Your Attachment Style Shows Up in Relationships',
+    subtitle: 'A Guide to Your Communication, Conflict & Intimacy Patterns',
+    price: '$6.99',
+    description: 'Move from awareness to recognition — see exactly how your attachment style lives in your daily communication, conflict, and closeness.',
   },
   {
     id: 'wounds-we-carry',
     title: 'The Wounds We Carry',
+    subtitle: 'How Early Childhood Experiences Shape Adult Relationships',
     price: '$6.99',
-    description: 'An honest, compassionate look at how early pain shapes the way we move through the world today.',
+    description: 'Gently trace the thread between who you were asked to be as a child and the patterns you carry into relationships today.',
   },
   {
-    id: 'emotional-neglect',
+    id: 'boundaries-and-attachment',
+    title: 'Boundaries and Attachment',
+    subtitle: 'Why Setting Limits Feels So Hard',
+    price: '$6.99',
+    description: 'Understand why saying no activates your nervous system — and how to build boundaries that actually hold.',
+  },
+  {
+    id: 'understanding-emotional-neglect',
     title: 'Understanding Emotional Neglect',
+    subtitle: 'The Wound You Can\'t Always See',
     price: '$6.99',
-    description: 'Exploring the quiet wound of what wasn\'t there — and what that absence may have taught you about yourself.',
+    description: 'Explore the invisible wound of what was never offered — and what that absence may have taught you about yourself.',
   },
   {
-    id: 'trauma-response',
-    title: 'Recognizing Your Trauma Response',
+    id: 'recognizing-trauma-responses',
+    title: 'Recognizing Your Trauma Responses',
+    subtitle: 'A Psychoeducational Guide to Fight, Flight, Freeze & Fawn',
     price: '$6.99',
-    description: 'Learn to name what happens inside you under stress — and meet it with curiosity instead of judgment.',
+    description: 'Learn to name what happens inside you under stress — and meet your nervous system\'s protective patterns with curiosity.',
   },
 ]
 
@@ -174,22 +193,11 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Trust strip — matches home page */}
-      <section style={{ background: 'var(--blush)', padding: '36px 40px' }}>
-        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '48px', flexWrap: 'wrap' }}>
-          {['Trauma-Informed', 'Attachment-Based', 'Evidence-Grounded'].map(item => (
-            <span key={item} style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ display: 'inline-block', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--mid)', flexShrink: 0 }} />
-              {item}
-            </span>
-          ))}
-        </div>
-      </section>
 
-      <div style={{ height: '1px', background: 'var(--border-light)', maxWidth: '560px', margin: '0 auto' }} />
+      <TickerBanner bg="#fff" />
 
       {/* Card Grid */}
-      <div className="resources-grid">
+      <div className="resources-grid" style={{ paddingTop: '220px' }}>
 
         {PAID_RESOURCES.map(resource => (
           <div key={resource.id} className="resource-card">
@@ -202,6 +210,9 @@ export default function ResourcesPage() {
                 Digital Resource
               </p>
               <h2 className="resource-title">{resource.title}</h2>
+              {'subtitle' in resource && (
+                <p style={{ fontSize: '11px', color: 'var(--text-muted)', fontStyle: 'italic', marginTop: '8px', lineHeight: 1.5 }}>{(resource as { subtitle: string }).subtitle}</p>
+              )}
             </div>
             <div className="card-mid">
               <p className="resource-desc">{resource.description}</p>

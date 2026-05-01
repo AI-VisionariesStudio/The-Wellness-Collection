@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import TickerBanner from '@/app/components/TickerBanner'
 
 export default function ComingSoonPage() {
   const [email, setEmail] = useState('')
@@ -148,6 +149,8 @@ export default function ComingSoonPage() {
             </div>
           </div>
         </section>
+
+        <TickerBanner />
 
         {/* ── Blush strip — pinned inside the 100vh container ── */}
         <section style={{ background: 'var(--blush)', padding: '28px 40px', textAlign: 'center', flexShrink: 0 }}>

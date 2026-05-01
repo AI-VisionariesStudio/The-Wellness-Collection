@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hargrove Law — Estate Planning · Raleigh, NC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --m-page-bg:      #DED5C2;
+  --m-white:        #E9E2D4;
+  --m-surface:      #CEBFA8;
+  --m-heading:      #0A1628;
+  --m-text-mid:     rgba(10,22,40,0.62);
+  --m-text-soft:    rgba(10,22,40,0.40);
+  --m-accent:       #2B4E8A;
+  --m-dark:         #0A1628;
+  --m-dark-text:    #CEBFA8;
+  --m-divider:      rgba(43,78,138,0.24);
+  --m-border-mid:   rgba(43,78,138,0.38);
+  --m-shadow:       rgba(10,22,40,0.09);
+  --m-shadow-hover: rgba(10,22,40,0.18);
+  --m-contact-bg:   #BEB09A;
+  --m-footer-bg:    #080E1C;
+  --m-footer-border: rgba(43,78,138,0.24);
+  --m-footer-text:  #8AACD4;
+  --m-footer-accent: #5E88C4;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: 0.04em; overflow-x: hidden; background: var(--m-page-bg); color: var(--m-heading); }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.06; letter-spacing: 0.02em; }
+
+.m-nav { padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(191,168,130,0.12); background: #0A1628; }
+.m-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 0.06em; font-weight: 400; color: #F2EDE8; }
+.m-logo em { font-style: italic; color: #BFA882; }
+.m-nav-links { display: flex; gap: 30px; list-style: none; }
+.m-nav-links a { text-decoration: none; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(232,221,212,0.52); transition: color 0.2s; }
+.m-nav-links a:hover { color: #F2EDE8; }
+.m-nav-cta { padding: 8px 20px; background: #C8B4A0; color: #0A1628; font-size: 8.5px; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+.m-nav-cta:hover { opacity: 0.85; }
+
+.m-hero { background: var(--m-page-bg); padding: 80px 48px 72px; position: relative; overflow: hidden; min-height: 480px; display: flex; align-items: center; }
+.m-hero-inner { position: relative; z-index: 1; max-width: 600px; }
+.m-eyebrow { font-size: 8px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--m-accent); margin-bottom: 22px; display: flex; align-items: center; gap: 12px; }
+.m-eyebrow::before { content:''; width:22px; height:1px; background:var(--m-accent); opacity:0.5; }
+.m-hero h1 { font-size: clamp(38px, 5vw, 64px); color: var(--m-heading); margin-bottom: 16px; }
+.m-hero h1 em { font-style: italic; color: var(--m-accent); }
+.m-hero-sub { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--m-text-mid); margin-bottom: 16px; line-height: 1.5; }
+.m-hero-body { font-size: 11.5px; line-height: 1.95; letter-spacing: 0.06em; color: var(--m-text-mid); margin-bottom: 36px; max-width: 460px; }
+.m-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.m-btn-primary { padding: 12px 30px; background: var(--m-dark); color: var(--m-dark-text); font-size: 8.5px; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: opacity 0.2s, transform 0.2s; }
+.m-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.m-btn-ghost { padding: 11px 30px; border: 1px solid var(--m-border-mid); color: var(--m-heading); font-size: 8.5px; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: border-color 0.2s; }
+.m-btn-ghost:hover { border-color: var(--m-heading); }
+
+.m-hero-accent { position: absolute; right: 0; top: 0; bottom: 0; width: 36%; display: flex; align-items: center; justify-content: center; padding: 48px; }
+.m-badge { overflow: hidden; background: linear-gradient(to bottom, #0A1628 58%, #DED5C2 58%); border: 1px solid rgba(10,22,40,0.18); padding: 36px 28px; text-align: center; width: 100%; max-width: 270px; box-shadow: 0 12px 40px rgba(10,22,40,0.20); }
+.m-badge-mark { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.30); transform: rotate(45deg); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; }
+.m-badge-mark-inner { width: 11px; height: 11px; background: #BFA882; opacity: 0.8; }
+.m-badge-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #F2EDE8; letter-spacing: 0.08em; margin-bottom: 10px; line-height: 1.4; }
+.m-badge-rule { width: 60px; height: 1px; background: #BFA882; opacity: 0.7; margin: 14px auto; }
+.m-badge-detail { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(10,22,40,0.70); line-height: 1.9; }
+
+.m-strip { border-top: 1px solid rgba(191,168,130,0.12); border-bottom: 1px solid rgba(191,168,130,0.12); background: #0A1628; padding: 14px 0; overflow: hidden; }
+.m-strip-inner { display: flex; width: max-content; animation: ticker 26s linear infinite; }
+.m-strip-item { padding: 0 36px; font-size: 7.5px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.62); white-space: nowrap; display: flex; align-items: center; gap: 14px; }
+.m-strip-item::after { content:'·'; color: #BFA882; font-size: 16px; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+.m-services { background: var(--m-page-bg); padding: 80px 48px; }
+.m-services-inner { max-width: 1000px; margin: 0 auto; }
+.m-section-label { font-size: 7.5px; letter-spacing: 0.44em; text-transform: uppercase; color: var(--m-dark); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+.m-section-label::after { content:''; width:30px; height:1px; background:var(--m-accent); opacity:0.7; }
+.m-section-title { font-size: clamp(30px,4vw,48px); color: var(--m-heading); margin-bottom: 48px; }
+.m-section-title em { font-style: italic; color: var(--m-accent); }
+.m-services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.m-card { background: var(--m-white); border: 1px solid var(--m-divider); padding: 32px 26px; box-shadow: 0 2px 18px var(--m-shadow); transition: box-shadow 0.3s, transform 0.3s; }
+.m-card:hover { box-shadow: 0 10px 36px var(--m-shadow-hover); transform: translateY(-3px); }
+.m-card-num { font-family: 'Cormorant Garamond', serif; font-size: 9px; color: var(--m-accent); letter-spacing: 0.14em; margin-bottom: 14px; display: block; }
+.m-card-name { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--m-heading); font-weight: 400; margin-bottom: 10px; }
+.m-card-desc { font-size: 10px; line-height: 1.85; color: var(--m-text-mid); }
+
+.m-quote-band { background: var(--m-dark); padding: 72px 48px; text-align: center; }
+.m-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px,3vw,34px); font-style: italic; font-weight: 300; color: var(--m-dark-text); max-width: 660px; margin: 0 auto 18px; line-height: 1.45; opacity: 0.92; }
+.m-quote-attr { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--m-dark-text); opacity: 0.4; }
+
+.m-contact { background: var(--m-contact-bg); padding: 72px 48px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.m-contact-left { max-width: 460px; }
+.m-contact-eyebrow { font-size: 7.5px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--m-accent); margin-bottom: 14px; }
+.m-contact-title { font-size: clamp(28px,4vw,46px); color: var(--m-heading); margin-bottom: 12px; }
+.m-contact-title em { font-style: italic; color: var(--m-accent); }
+.m-contact-body { font-size: 11px; line-height: 1.9; color: var(--m-text-mid); }
+.m-contact-right { display: flex; flex-direction: column; gap: 10px; min-width: 240px; }
+.m-contact-item { display: flex; align-items: center; gap: 14px; padding: 15px 18px; background: var(--m-white); border: 1px solid var(--m-divider); box-shadow: 0 2px 12px var(--m-shadow); }
+.m-contact-icon { width: 30px; height: 30px; flex-shrink: 0; border: 1px solid var(--m-divider); display: flex; align-items: center; justify-content: center; }
+.m-contact-icon svg { width: 13px; height: 13px; stroke: var(--m-accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.m-contact-label { font-size: 7.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--m-text-soft); }
+.m-contact-val { font-size: 11px; color: var(--m-heading); margin-top: 2px; }
+
+.m-footer { background: var(--m-footer-bg); border-top: 1px solid var(--m-footer-border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.m-footer-left { display: flex; flex-direction: column; gap: 6px; }
+.m-footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--m-footer-text); letter-spacing: 0.08em; }
+.m-footer-logo em { font-style: italic; color: var(--m-footer-accent); }
+.m-footer-copy { font-size: 8.5px; letter-spacing: 0.12em; color: var(--m-footer-text); opacity: 0.28; }
+.m-footer-opl { display: flex; align-items: center; gap: 10px; text-decoration: none; opacity: 0.65; transition: opacity 0.2s; }
+.m-footer-opl:hover { opacity: 1; }
+.m-footer-opl-by { font-size: 7.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--m-footer-text); white-space: nowrap; }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .m-nav, .m-hero, .m-services, .m-quote-band, .m-contact, .m-footer { padding-left: 20px; padding-right: 20px; }
+  .m-hero-accent { display: none; }
+  .m-services-grid { grid-template-columns: 1fr; }
+  .m-contact { flex-direction: column; }
+  .m-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="m-nav">
+  <div class="m-logo">Hargrove <em>Law</em></div>
+  <ul class="m-nav-links">
+    <li><a href="#services">Practice Areas</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="m-nav-cta">Schedule a Consultation</a>
+</nav>
+
+<div class="m-hero">
+  <div class="m-hero-inner">
+    <p class="m-eyebrow">Estate Planning · Raleigh, NC</p>
+    <h1>Protecting what<br>you've <em>built.</em></h1>
+    <p class="m-hero-sub">Trusted estate planning for families across the Triangle.</p>
+    <p class="m-hero-body">
+      You've spent a lifetime building something worth protecting.
+      Hargrove Law provides clear, compassionate estate planning —
+      wills, trusts, and powers of attorney — so your wishes are honored
+      and your family is cared for.
+    </p>
+    <div class="m-hero-actions">
+      <a href="#contact" class="m-btn-primary">Schedule a Consultation</a>
+      <a href="#services" class="m-btn-ghost">Our Practice Areas</a>
+    </div>
+  </div>
+  <div class="m-hero-accent">
+    <div class="m-badge">
+      <div class="m-badge-mark"><div class="m-badge-mark-inner"></div></div>
+      <div class="m-badge-title">20+ Years<br>Serving the Triangle</div>
+      <div class="m-badge-rule"></div>
+      <div class="m-badge-detail">Board Certified<br>Estate Planning Specialist<br>NC State Bar Member</div>
+    </div>
+  </div>
+</div>
+
+<div class="m-strip">
+  <div class="m-strip-inner">
+    <span class="m-strip-item">Wills & Trusts</span>
+    <span class="m-strip-item">Powers of Attorney</span>
+    <span class="m-strip-item">Estate Administration</span>
+    <span class="m-strip-item">Free Initial Consultation</span>
+    <span class="m-strip-item">Raleigh · Durham · Chapel Hill</span>
+    <span class="m-strip-item">Wills & Trusts</span>
+    <span class="m-strip-item">Powers of Attorney</span>
+    <span class="m-strip-item">Estate Administration</span>
+    <span class="m-strip-item">Free Initial Consultation</span>
+    <span class="m-strip-item">Raleigh · Durham · Chapel Hill</span>
+  </div>
+</div>
+
+<div class="m-services" id="services">
+  <div class="m-services-inner">
+    <p class="m-section-label">Practice Areas</p>
+    <h2 class="m-section-title">What we<br><em>handle for you.</em></h2>
+    <div class="m-services-grid">
+      <div class="m-card reveal">
+        <span class="m-card-num">01</span>
+        <div class="m-card-name">Wills & Trusts</div>
+        <p class="m-card-desc">Clear, enforceable documents that express your wishes and protect your family from uncertainty — drafted with precision and explained in plain language.</p>
+      </div>
+      <div class="m-card reveal">
+        <span class="m-card-num">02</span>
+        <div class="m-card-name">Powers of Attorney</div>
+        <p class="m-card-desc">Designate who speaks for you — financially and medically — if you're ever unable to speak for yourself. A document that matters most when it matters most.</p>
+      </div>
+      <div class="m-card reveal">
+        <span class="m-card-num">03</span>
+        <div class="m-card-name">Estate Administration</div>
+        <p class="m-card-desc">We guide your family through the probate process with clarity and compassion at precisely the moment they need steady, experienced guidance.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="m-quote-band" id="about">
+  <p class="m-quote">"Working with Hargrove Law was the first time I felt truly confident that my family would be protected. They made a hard conversation feel simple."</p>
+  <p class="m-quote-attr">Patricia W. · Estate Planning Client · Cary, NC</p>
+</div>
+
+<div class="m-contact" id="contact">
+  <div class="m-contact-left">
+    <p class="m-contact-eyebrow">Get in Touch</p>
+    <h2 class="m-contact-title">Your consultation<br>starts <em>here.</em></h2>
+    <p class="m-contact-body">The first conversation is free. We'll listen, answer your questions, and walk you through exactly what protecting your estate looks like — no pressure, no obligation.</p>
+  </div>
+  <div class="m-contact-right">
+    <div class="m-contact-item">
+      <div class="m-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.63 19.79 19.79 0 01-.001.993 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div><div class="m-contact-label">Phone</div><div class="m-contact-val">(919) 555-0142</div></div>
+    </div>
+    <div class="m-contact-item">
+      <div class="m-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div><div class="m-contact-label">Email</div><div class="m-contact-val">info@hargrovelaw.com</div></div>
+    </div>
+    <div class="m-contact-item">
+      <div class="m-contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div><div class="m-contact-label">Office</div><div class="m-contact-val">Downtown Raleigh, NC</div></div>
+    </div>
+  </div>
+</div>
+
+<footer class="m-footer">
+  <div class="m-footer-left">
+    <div class="m-footer-logo">Hargrove <em>Law</em></div>
+    <div class="m-footer-copy">© 2025 Hargrove Law PLLC · Raleigh, NC · All rights reserved</div>
+  </div>
+  <a href="onepageloft.html" class="m-footer-opl">
+    <span class="m-footer-opl-by">Designed by</span>
+    <svg width="90" height="22" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="4,30 16,12 28,30" stroke="#BFA882" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <line x1="4" y1="36" x2="28" y2="36" stroke="#C8B4A0" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="16" y1="30" x2="16" y2="36" stroke="#BFA882" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+      <text x="36" y="24" font-family="Cormorant Garamond, serif" font-size="16" font-weight="400" fill="#F2EDE8" letter-spacing="0.8">One Page</text>
+      <line x1="36" y1="28" x2="100" y2="28" stroke="#BFA882" stroke-width="0.5" stroke-linecap="round" opacity="0.28"/>
+      <text x="37" y="38" font-family="Cormorant Garamond, serif" font-size="10" font-weight="300" font-style="italic" fill="#BFA882" letter-spacing="3.5">Loft</text>
+    </svg>
+  </a>
+</footer>
+
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

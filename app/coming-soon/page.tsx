@@ -28,13 +28,13 @@ export default function ComingSoonPage() {
 
       <style>{`
         @media (max-width: 640px) {
-          .hero-logo { height: 140px !important; margin-bottom: -60px !important; }
-          .hero-body { padding: 60px 32px 28px !important; margin-left: -20px !important; margin-right: -20px !important; }
-          .hero-title { font-size: 40px !important; white-space: normal !important; }
+          .hero-logo { height: 90px !important; margin-bottom: -38px !important; }
+          .hero-body { padding: 48px 24px 20px !important; }
+          .hero-title { font-size: 28px !important; white-space: normal !important; }
           .cs-form { flex-direction: column !important; }
           .cs-form input { width: 100% !important; }
           .cs-footer-label { display: block !important; text-align: center !important; text-indent: 0.22em !important; }
-          .cs-form-area { padding: 20px 24px 24px !important; }
+          .cs-form-area { padding: 16px 24px 20px !important; }
         }
       `}</style>
 
@@ -42,14 +42,14 @@ export default function ComingSoonPage() {
       <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
 
         {/* ── Hero ── */}
-        <section style={{ flex: 1, minHeight: 0, overflowY: 'auto', background: 'var(--bg)', paddingTop: '100px', textAlign: 'center' }}>
+        <section style={{ flex: 1, minHeight: 0, overflowY: 'auto', background: 'var(--bg)', paddingTop: '64px', textAlign: 'center' }}>
           <img
             src="/twc-logo.svg"
             alt="Gracefully Redefined — The Wellness Collection"
             className="hero-logo"
-            style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
+            style={{ height: '130px', objectFit: 'contain', display: 'block', margin: '0 auto -54px', position: 'relative', zIndex: 2 }}
           />
-          <div className="hero-body" style={{ background: '#fff', padding: '110px 60px 48px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div className="hero-body" style={{ background: '#fff', padding: '64px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
             <div style={{ maxWidth: '700px', margin: '0 auto' }}>
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
                 <div style={{ width: '260px', height: '44px', overflow: 'hidden' }}>
@@ -59,7 +59,7 @@ export default function ComingSoonPage() {
               <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 100, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0', whiteSpace: 'nowrap' }}>
                 Something beautiful is coming.
               </h1>
-              <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto' }} />
+              <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto' }} />
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '0' }}>
                 Structured courses for self-awareness, relational clarity, and becoming who you want to be.
               </p>
@@ -67,7 +67,7 @@ export default function ComingSoonPage() {
           </div>
 
           {/* Email capture ── sits on var(--bg), outside the white block */}
-          <div className="cs-form-area" style={{ background: 'var(--bg)', padding: '52px 60px 80px', textAlign: 'center' }}>
+          <div className="cs-form-area" style={{ background: 'var(--bg)', padding: '28px 60px 40px', textAlign: 'center' }}>
             <div style={{ maxWidth: '700px', margin: '0 auto' }}>
               {status === 'done' ? (
                 <div style={{ textAlign: 'center', padding: '8px 0' }}>

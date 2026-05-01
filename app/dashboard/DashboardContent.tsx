@@ -55,13 +55,13 @@ export default function DashboardContent({ certificates, enrollments, progress, 
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', paddingTop: '70px', textAlign: 'center' }}>
+      <section style={{ background: '#fff', paddingTop: '64px', textAlign: 'center' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
-          style={{ height: '180px', objectFit: 'contain', display: 'block', margin: '0 auto -72px', position: 'relative', zIndex: 2 }}
+          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -56px', position: 'relative', zIndex: 2 }}
         />
-        <div style={{ background: 'var(--cream)', padding: '80px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div style={{ background: 'var(--cream)', padding: '64px 60px 20px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>The Wellness Collection</p>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>Administrative Dashboard</h1>
@@ -72,7 +72,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
 
       <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
 
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '36px 40px 80px' }}>
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '24px 40px 80px' }}>
 
         {/* ── Certificates ── */}
         {certificates.length > 0 && (

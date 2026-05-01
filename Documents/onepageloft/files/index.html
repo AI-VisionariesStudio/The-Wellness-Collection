@@ -406,6 +406,75 @@ h1.hero-title em { font-style: italic; color: var(--warm-gold); }
 }
 .plan-btn:hover { background: var(--parchment); }
 
+/* ─── THREE-TIER PRICING ──────────────────────────────────── */
+.pricing-inner.pricing-inner-three {
+  flex-direction: column; align-items: stretch; gap: 56px;
+}
+.pricing-inner-three .pricing-header {
+  text-align: center; max-width: 720px; margin: 0 auto;
+}
+.pricing-inner-three .pricing-header .section-label {
+  justify-content: center;
+}
+.pricing-inner-three .pricing-header .section-label::after {
+  display: none;
+}
+.pricing-grid-three {
+  flex-shrink: 1; width: 100%;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; align-items: stretch;
+}
+
+.pricing-grid-three .plan {
+  padding: 36px 28px;
+}
+
+.plan-tier {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; color: var(--warm-gold);
+  letter-spacing: 0.06em; margin-bottom: 14px;
+  padding-bottom: 14px; border-bottom: 1px solid rgba(191,168,130,0.2);
+  width: 100%;
+}
+
+.plan-featured {
+  background: var(--abyss);
+  box-shadow: 0 24px 60px rgba(10,22,40,0.32);
+  transform: translateY(-12px);
+  border: 1px solid var(--warm-gold);
+  padding-top: 52px;
+}
+.plan-featured .plan-tier { color: var(--ivory); }
+.plan-featured .plan-btn { background: var(--warm-gold); color: var(--abyss); }
+.plan-featured .plan-btn:hover { background: #D4BD92; }
+
+.plan-badge {
+  position: absolute; top: 16px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--warm-gold); color: var(--abyss);
+  font-size: 7.5px; letter-spacing: 0.28em; text-transform: uppercase;
+  font-weight: 600; padding: 5px 14px;
+  white-space: nowrap;
+}
+
+.plan-btn-ghost {
+  background: transparent; color: var(--cashmere);
+  border: 1px solid rgba(200,180,160,0.4);
+}
+.plan-btn-ghost:hover { background: var(--cashmere); color: var(--deep-navy); border-color: var(--cashmere); }
+
+.plan-limited {
+  font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(232,221,212,0.4); margin-top: 12px; text-align: center;
+}
+
+.pricing-roi {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-style: italic; color: var(--text-mid);
+  text-align: center; max-width: 580px; margin: 0 auto;
+  line-height: 1.5;
+}
+
 /* ─── TESTIMONIALS — WHITE ────────────────────────────────── */
 .testimonials {
   background: var(--white); padding: 100px 48px;
@@ -481,12 +550,50 @@ h1.hero-title em { font-style: italic; color: var(--warm-gold); }
   transition: background 0.22s, transform 0.2s;
 }
 .btn-cta:hover { background: var(--parchment); transform: translateY(-2px); }
+
+.cta-prefer-call {
+  margin-top: 22px; font-size: 10.5px; letter-spacing: 0.06em;
+  color: var(--linen); opacity: 0.45;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+}
+.cta-prefer-call a {
+  color: var(--cashmere); text-decoration: none;
+  border-bottom: 1px solid rgba(200,180,160,0.3);
+  padding-bottom: 1px; transition: opacity 0.2s, border-color 0.2s;
+}
+.cta-prefer-call a:hover { opacity: 1; border-bottom-color: var(--cashmere); }
+
 .cta-location {
   margin-top: 30px; font-size: 8.5px; letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--linen); opacity: 0.28;
   display: flex; align-items: center; justify-content: center; gap: 12px;
 }
 .cta-location::before, .cta-location::after { content:''; width:20px; height:1px; background:var(--cashmere); opacity:0.3; }
+
+/* ─── CONTACT CARDS ───────────────────────────────────────── */
+.cta-cards {
+  display: flex; gap: 16px; justify-content: center;
+  margin-top: 52px; flex-wrap: wrap;
+}
+.cta-card {
+  flex: 1; min-width: 180px; max-width: 220px;
+  background: rgba(19,36,72,0.72);
+  border: 1px solid rgba(191,168,130,0.28);
+  padding: 28px 22px; text-decoration: none;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  transition: border-color 0.22s, background 0.22s, transform 0.22s;
+}
+.cta-card:hover { border-color: var(--warm-gold); background: rgba(19,36,72,0.92); transform: translateY(-3px); }
+.cta-card-icon { font-size: 18px; color: var(--warm-gold); line-height: 1; }
+.cta-card-label {
+  font-size: 7.5px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--cashmere); opacity: 0.6;
+}
+.cta-card-value {
+  font-family: 'Cormorant Garamond', serif; font-size: 15px;
+  font-weight: 400; color: var(--ivory); letter-spacing: 0.04em;
+  line-height: 1.4; text-align: center;
+}
 
 /* ─── FOOTER ──────────────────────────────────────────────── */
 footer {
@@ -565,6 +672,8 @@ footer {
   .what-grid, .steps, .testi-grid { grid-template-columns: 1fr; }
   .pricing-inner { flex-direction: column; gap: 40px; }
   .pricing-grid { width: 100%; }
+  .pricing-grid-three { grid-template-columns: 1fr; gap: 32px; }
+  .plan-featured { transform: none; }
   footer { padding: 28px 24px; flex-direction: column; gap: 16px; }
   .hero-corner { display: none; }
 }
@@ -722,6 +831,66 @@ footer {
 }
 .cchip:hover { background: var(--deep-navy); border-color: var(--deep-navy); color: var(--ivory); }
 
+/* ─── AGENT PICKER (visual two-avatar card layout) ─── */
+.agent-picker {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  align-self: stretch; width: 100%;
+  animation: cmIn 0.28s ease both;
+  margin-top: 4px;
+}
+.agent-card {
+  background: var(--white);
+  border: 1px solid rgba(191,168,130,0.32);
+  padding: 16px 12px 14px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; cursor: pointer;
+  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s, background 0.18s;
+  text-align: center;
+}
+.agent-card:hover {
+  border-color: var(--warm-gold);
+  background: var(--alabaster);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(10,22,40,0.10);
+}
+.agent-card-img {
+  width: 56px !important; height: 56px !important;
+  min-width: 56px; min-height: 56px;
+  max-width: 56px; max-height: 56px;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border: 2px solid var(--warm-gold);
+  background: var(--linen);
+  display: block;
+  flex-shrink: 0;
+}
+.agent-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-weight: 500;
+  color: var(--deep-navy);
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+}
+.agent-card-role {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(10,22,40,0.55);
+  font-weight: 400;
+}
+.agent-card-cta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--warm-gold);
+  font-weight: 500;
+  margin-top: 4px;
+  border-top: 1px solid rgba(191,168,130,0.22);
+  padding-top: 8px;
+  width: 100%;
+}
+
 #chat-footer { border-top: 1px solid rgba(191,168,130,0.13); background: var(--white); flex-shrink: 0; }
 .chat-input-row { display: flex; align-items: center; padding: 11px 16px; gap: 10px; }
 #chat-input {
@@ -748,6 +917,7 @@ footer {
   #chat-tip { right: 10px; }
 }
 </style>
+<script src="https://js.stripe.com/dahlia/stripe.js"></script>
 </head>
 <body>
 
@@ -830,14 +1000,14 @@ footer {
     <span class="strip-item">Triangle's Go-To Studio</span>
     <span class="strip-item">No Monthly Fees. Ever.</span>
     <span class="strip-item">You Own It Outright</span>
-    <span class="strip-item">One Flat Rate. No Surprises.</span>
+    <span class="strip-item">Three Tiers. No Subscriptions.</span>
     <span class="strip-item">Live in 72 Hours</span>
     <span class="strip-item">Built for Your Profession</span>
     <span class="strip-item">Clients Find You First</span>
     <span class="strip-item">Triangle's Go-To Studio</span>
     <span class="strip-item">No Monthly Fees. Ever.</span>
     <span class="strip-item">You Own It Outright</span>
-    <span class="strip-item">One Flat Rate. No Surprises.</span>
+    <span class="strip-item">Three Tiers. No Subscriptions.</span>
   </div>
 </div>
 
@@ -855,7 +1025,7 @@ footer {
     </div>
     <div class="what-grid">
       <div class="feature-card reveal"><span class="feature-num">01</span><div class="feature-name">Built for Your Profession</div><p class="feature-desc">An attorney's page should feel nothing like a contractor's. Every element is designed around how your specific clients think, search, and decide.</p></div>
-      <div class="feature-card reveal"><span class="feature-num">02</span><div class="feature-name">Live in 72 Hours</div><p class="feature-desc">Not six weeks. Not "we'll follow up soon." From your 30-minute brief to a live, professional page — delivered in three business days.</p></div>
+      <div class="feature-card reveal"><span class="feature-num">02</span><div class="feature-name">Live in 72 Hours</div><p class="feature-desc">Not six weeks. Not "we'll follow up soon." From your written brief to a live, professional page — delivered in three business days.</p></div>
       <div class="feature-card reveal"><span class="feature-num">03</span><div class="feature-name">Ready to Convert</div><p class="feature-desc">Click-to-call, a contact form that actually gets submitted, your location on the map, and a clear next step — so visitors become clients.</p></div>
       <div class="feature-card reveal"><span class="feature-num">04</span><div class="feature-name">Yours. No Strings.</div><p class="feature-desc">No monthly subscription. No held-hostage hosting. You own the code, the domain, and the page — completely and permanently.</p></div>
     </div>
@@ -870,7 +1040,7 @@ footer {
       <h2 class="section-title">Simple enough<br>to <em>actually happen.</em></h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="step-accent"></div><div class="step-num">01</div><div class="step-title">Tell Us About Your Practice</div><p class="step-body">One 30-minute call. We learn your specialty, your ideal client, what makes you different, and what you want them to do when they land on your page. You talk. We listen. That's our brief.</p></div>
+      <div class="step reveal"><div class="step-accent"></div><div class="step-num">01</div><div class="step-title">Tell Us About Your Practice</div><p class="step-body">A short written brief — by email or our intake form. We learn your specialty, your ideal client, what makes you different, and what you want them to do when they land on your page. No phone tag. Async by design.</p></div>
       <div class="step reveal"><div class="step-accent"></div><div class="step-num">02</div><div class="step-title">We Build. You Approve.</div><p class="step-body">Within 48 hours you'll see a fully designed, copy-written, mobile-ready page built around your practice. Review it, request changes, and we refine until it's exactly right — included, no extra charge.</p></div>
       <div class="step reveal"><div class="step-accent"></div><div class="step-num">03</div><div class="step-title">Go Live. Start Getting Found.</div><p class="step-body">We launch on your domain, submit your site to Google, set up your Business Profile, and hand over the keys. From first call to live page — 72 hours. Your job is to answer the phone.</p></div>
     </div>
@@ -879,29 +1049,68 @@ footer {
 
 <!-- PRICING — LINEN (light) -->
 <section class="pricing-wrap" id="pricing">
-  <div class="pricing-inner">
+  <div class="pricing-inner pricing-inner-three">
     <div class="pricing-header reveal">
       <p class="section-label">03 — Investment</p>
       <h2 class="section-title">One price.<br><em>No surprises.</em></h2>
       <p class="section-body" style="margin-top:16px;">
-        One new client pays for this page instantly. After that, every call it generates is pure return.
+        Three flat-rate tiers. Pay once. Own outright. No subscriptions, no surprises.
       </p>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid pricing-grid-three">
       <div class="plan reveal">
-        <div class="plan-roi">One new client covers this. Everything after that is profit.</div>
-        <div class="plan-price"><sup>$</sup>97</div>
-        <p class="plan-tagline">Your complete professional web presence — done in 72 hours.</p>
+        <div class="plan-tier">Essential</div>
+        <div class="plan-price"><sup>$</sup>197</div>
+        <p class="plan-tagline">Get found. Get called.</p>
         <ul class="plan-features">
           <li>Single-page custom design</li>
+          <li>5 essential sections</li>
           <li>Mobile-optimized layout</li>
           <li>Click-to-call + contact form</li>
           <li>Delivered in 72 hours</li>
           <li>One revision included</li>
+          <li>Source code delivered — you own it</li>
         </ul>
-        <a href="#start" class="plan-btn">Claim Your Page</a>
+        <button type="button" class="plan-btn plan-btn-ghost" data-tier="essential">Start Essential</button>
+      </div>
+
+      <div class="plan plan-featured reveal">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-tier">Signature</div>
+        <div class="plan-price"><sup>$</sup>497</div>
+        <p class="plan-tagline">Look like the obvious choice.</p>
+        <ul class="plan-features">
+          <li>Everything in Essential, plus:</li>
+          <li>8 refined sections (services, results, FAQ)</li>
+          <li>Custom color palette built for your brand</li>
+          <li>Subtle animations &amp; scroll reveals</li>
+          <li>Testimonial section with photos</li>
+          <li>SEO meta + structured data</li>
+          <li>Two rounds of revisions</li>
+        </ul>
+        <button type="button" class="plan-btn" data-tier="signature">Start Signature</button>
+      </div>
+
+      <div class="plan reveal">
+        <div class="plan-tier">Authority</div>
+        <div class="plan-price"><sup>$</sup>997</div>
+        <p class="plan-tagline">Own your market.</p>
+        <ul class="plan-features">
+          <li>Everything in Signature, plus:</li>
+          <li>Multi-page experience</li>
+          <li>Custom hero illustration direction</li>
+          <li>Calendly or booking integration</li>
+          <li>Lead capture + automated email response</li>
+          <li>NC Bar / NC GC compliance review</li>
+          <li>Three rounds of revisions</li>
+        </ul>
+        <a href="#start" class="plan-btn plan-btn-ghost">Apply for Authority</a>
+        <p class="plan-limited">By application · Limited slots</p>
       </div>
     </div>
+    <p class="pricing-roi reveal">
+      One new client pays for any tier. After that, every call it generates is pure return.
+    </p>
   </div>
 </section>
 
@@ -939,10 +1148,32 @@ footer {
     <h2 class="cta-title">Your next client<br>is <em>searching right now.</em></h2>
     <p class="cta-body">
       Every day without a professional online presence is a day
-      someone else gets that call. The good news: this is a 30-minute
-      conversation and 72 hours away from being solved — permanently.
+      someone else gets that call. The good news: a quick email is
+      all it takes — and your new site is 72 hours away from being live.
     </p>
-    <a href="mailto:chris@onepageloft.com" class="btn-cta">Book Your Free 30-Minute Call</a>
+    <a href="mailto:hello@onepageloft.com?subject=One%20Page%20Loft%20Inquiry&body=Hi%20Chris%2C%0A%0AI%27m%20interested%20in%20the%20following%20tier%3A%20%5BEssential%20%2F%20Signature%20%2F%20Authority%5D%0A%0AMy%20business%3A%20%0AMy%20profession%3A%20%0AMy%20website%20%28if%20any%29%3A%20%0A%0AThanks%2C" class="btn-cta">Start by Email</a>
+    <p class="cta-prefer-call">
+      Prefer a quick call? <a href="mailto:hello@onepageloft.com?subject=Schedule%20a%20Call">Email us to schedule one.</a>
+    </p>
+
+    <div class="cta-cards">
+      <a href="tel:9195909766" class="cta-card">
+        <span class="cta-card-icon">&#9990;</span>
+        <span class="cta-card-label">Call Us</span>
+        <span class="cta-card-value">(919) 590-9766</span>
+      </a>
+      <a href="mailto:hello@onepageloft.com" class="cta-card">
+        <span class="cta-card-icon">&#9993;</span>
+        <span class="cta-card-label">Email Us</span>
+        <span class="cta-card-value">hello@onepageloft.com</span>
+      </a>
+      <div class="cta-card">
+        <span class="cta-card-icon">&#9679;</span>
+        <span class="cta-card-label">We Serve</span>
+        <span class="cta-card-value">Raleigh · Durham · Chapel Hill &amp; Surrounding Areas</span>
+      </div>
+    </div>
+
     <p class="cta-location">Proudly Serving the Triangle · Raleigh · Durham · Chapel Hill</p>
   </div>
 </section>
@@ -960,7 +1191,7 @@ footer {
     <li><a href="#process">Process</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="attorney.html">Our Work</a></li>
-    <li><a href="mailto:chris@onepageloft.com">Contact</a></li>
+    <li><a href="mailto:hello@onepageloft.com">Contact</a></li>
   </ul>
   <p class="footer-copy">© 2025 One Page Loft · Triangle, NC</p>
 </footer>
@@ -1235,7 +1466,7 @@ window.addEventListener('scroll', () => {
 </script>
 
 <!-- ─── CHAT WIDGET ────────────────────────────────────────── -->
-<div id="chat-tip">Chat with Erin — we're online now</div>
+<div id="chat-tip">Questions? Erin or Michael are online now</div>
 
 <div id="chat-launcher" role="button" aria-label="Open chat">
   <div class="chat-pulse"></div>
@@ -1249,12 +1480,12 @@ window.addEventListener('scroll', () => {
 <div id="chat-window">
   <div id="chat-header">
     <div class="chat-av">
-      <img src="Erin.png" alt="Erin">
+      <img id="chat-avatar" src="Erin.png" alt="One Page Loft">
       <div class="chat-av-dot"></div>
     </div>
     <div class="chat-meta">
-      <div class="chat-name">One Page Loft</div>
-      <div class="chat-role">Design Team · Online now</div>
+      <div class="chat-name" id="chat-header-name">One Page Loft</div>
+      <div class="chat-role" id="chat-header-role">Design Team · Online now</div>
     </div>
     <button id="chat-close" aria-label="Close chat">&#215;</button>
   </div>
@@ -1281,12 +1512,12 @@ window.addEventListener('scroll', () => {
   // Michael: direct, confident, results-focused.
   var SAY = {
     greeting: {
-      erin:    "Welcome to One Page Loft — how can I help you today?",
-      michael: "Welcome to One Page Loft. What can I help you with today?"
+      erin:    "Lovely to meet you — I'm Erin. How can I help today? Feel free to ask anything about pricing, the process, or what we build.",
+      michael: "Michael here. What can I help you figure out — pricing, timeline, or how this fits your business?"
     },
     explain_opl: {
-      erin:    "We build premium single-page landing pages for professionals across the Triangle — attorneys, CPAs, contractors, and consultants. One flat rate of $97, live in 72 hours, and you own it completely. No monthly fees, ever.",
-      michael: "One Page Loft builds polished, conversion-ready landing pages for Triangle professionals. Flat $97. Live in 72 hours. You own it outright — no subscriptions, no lock-in."
+      erin:    "We build premium single-page landing pages for professionals across the Triangle — attorneys, CPAs, contractors, and consultants. Three flat-rate tiers — Essential at $197, Signature at $497, or Authority at $997 by application. Live in 72 hours, you own the code outright. No monthly fees, ever.",
+      michael: "One Page Loft builds polished, conversion-ready landing pages for Triangle professionals. Three tiers — $197 Essential, $497 Signature, $997 Authority. Live in 72 hours. You own it outright — no subscriptions, no lock-in."
     },
     explain_follow: {
       erin:    "Think of it as your digital first impression — designed to earn trust and turn visitors into calls. What type of professional are you?",
@@ -1353,36 +1584,148 @@ window.addEventListener('scroll', () => {
       michael: "You're all set. We'll reach out shortly."
     },
     faq_price: {
-      erin:    "Great question — it's a flat $97, paid once. No monthly fees, no surprises. One new client and it's already paid for itself.",
-      michael: "$97. One time. No monthly fees, no subscriptions. One new client covers it within the first week."
+      erin:    "Three flat tiers, paid once. Essential is $197 (single-page essentials). Signature is $497 — most popular, with a custom palette and the full experience. Authority is $997 by application — multi-page with booking integration and compliance review. No monthly fees. One new client and any tier pays for itself.",
+      michael: "Three tiers, all flat-rate, paid once. Essential: $197. Signature: $497 (most popular). Authority: $997 by application. No monthly fees. One new client covers any tier in the first week."
+    },
+    faq_essential: {
+      erin:    "Essential is $197. You get a single-page custom design, mobile-optimized, with click-to-call, contact form, and 5 essential sections — hero, services, about, testimonials, contact. Delivered in 72 hours. One revision round included. You own the code outright.",
+      michael: "$197. Single-page, 5 sections, mobile-optimized, click-to-call, contact form. 72-hour delivery. One revision round. You own it outright."
+    },
+    faq_signature: {
+      erin:    "Signature is $497 — our most popular tier. Everything in Essential plus 8 refined sections (services grid, results, FAQ added), a custom palette built around your brand, subtle animations, testimonial section with photos, SEO-optimized meta data, and Google Business Profile setup help. Two revision rounds included.",
+      michael: "$497. 8 sections including services grid, results, FAQ. Custom palette to your brand. Animations, testimonial photos, SEO-optimized. Two revision rounds. Google Business setup included."
+    },
+    faq_authority: {
+      erin:    "Authority is $997 — by application only, limited slots. Everything in Signature plus a multi-page experience (landing + about + services), custom hero illustration direction, Calendly or booking integration, lead capture with automated email response, NC Bar or NC GC compliance review, and three revision rounds. Delivered in 7 days.",
+      michael: "$997, by application. Multi-page, custom hero direction, Calendly integration, lead capture, NC compliance review, three revision rounds. 7-day delivery."
     },
     faq_time: {
-      erin:    "We move quickly — from your 30-minute intake call to a live page in 72 hours. Design, copy, and launch — we handle all of it.",
-      michael: "72 hours from your intake call to a live page. Design, copy, launch — all handled."
-    },
-    faq_include: {
-      erin:    "Everything you need to be found and trusted online — custom design, mobile layout, click-to-call, contact form, Google Business setup, and one revision. You own it outright, no hosting fees ever.",
-      michael: "Custom design, mobile-optimized, click-to-call, contact form, Google Business setup, one revision. Yours to keep — no platform fees, ever."
-    },
-    faq_area: {
-      erin:    "We proudly serve the Triangle — Raleigh, Durham, and Chapel Hill, along with surrounding areas like Cary, Apex, and Wake Forest.",
-      michael: "The Triangle — Raleigh, Durham, Chapel Hill. Plus Cary, Apex, Wake Forest and the surrounding area."
+      erin:    "Essential and Signature deliver in 72 hours from your written brief. Authority delivers in 7 days due to the multi-page work and custom illustration direction. Once you approve the preview, we deploy live the same day.",
+      michael: "Essential and Signature: 72 hours. Authority: 7 days. Same-day deployment after you approve."
     },
     faq_revision: {
-      erin:    "One full revision is included — we refine until it's exactly right. No extra charges, no surprises.",
-      michael: "One revision is included. We get it right."
+      erin:    "Revisions are by the round — Essential includes 1 round, Signature 2 rounds, Authority 3 rounds. A round means one consolidated batch of feedback (any number of changes in that batch). Beyond that, individual edits are $75 each, or $97/month with the Loft Care plan which includes 2 edits per month plus a performance report.",
+      michael: "Essential: 1 round. Signature: 2 rounds. Authority: 3 rounds. Each round is one consolidated batch of changes. After that, edits are $75 each, or $97/mo for Loft Care with 2 edits monthly."
+    },
+    faq_loftcare: {
+      erin:    "Loft Care is our optional monthly plan at $97/month. You get 2 edits per month, a monthly performance report, priority response, and edits roll over up to 6 months if you don't use them right away. Cancel anytime. Most clients add it after launch — but you absolutely don't have to.",
+      michael: "Loft Care: $97/mo. 2 edits monthly, performance report, priority response. Edits roll over 6 months. Cancel anytime. Optional — never required."
+    },
+    faq_edits: {
+      erin:    "Individual edits are $75 each — text changes, photo swaps, button updates, color tweaks. Turnaround is 48 hours. If you anticipate frequent changes, Loft Care at $97/month is the better value (2 edits included monthly).",
+      michael: "À la carte edits: $75 each. 48-hour turnaround. For frequent changes, Loft Care at $97/mo (2 edits included) is the better value."
+    },
+    faq_refund: {
+      erin:    "Refunds are stage-based and fair. Before you complete intake, full refund. After intake but before we send you a preview, 50% refund (we've spent time on discovery and palette work). Once the preview is delivered, no refund — but we'll add an extra revision round to make sure you're happy. After deployment, the project is considered complete.",
+      michael: "Stage-based refunds. Pre-intake: full refund. After intake, before preview: 50% refund. After preview delivered: no refund, but we add a free revision round. Post-deployment: project complete."
     },
     faq_own: {
-      erin:    "You own it completely — the files, the domain, everything. No monthly subscription, no platform lock-in, ever.",
-      michael: "It's yours. Files, domain, everything. No subscriptions, no lock-in."
+      erin:    "You own everything outright. We deliver the HTML, CSS, and JavaScript files as a downloadable zip plus an optional GitHub repository invite. You can host anywhere — Vercel free tier, Netlify, your own server, anywhere. You can edit the code yourself, hire any developer to update it, or use our optional Loft Care plan. No platform lock-in, no monthly fees required.",
+      michael: "You own it. HTML, CSS, JS files delivered as zip + optional GitHub repo. Host anywhere. Edit yourself, hire any developer, or use Loft Care. No lock-in."
     },
-    faq_who: {
-      erin:    "We work with all types of service professionals — attorneys, CPAs, contractors, consultants, and more. Every page is crafted around how your specific clients think and decide.",
-      michael: "Attorneys, CPAs, contractors, consultants — we build for all of them. Every page is profession-specific, not a template."
+    faq_owndev: {
+      erin:    "Absolutely — you can use any developer you want, anytime. The code is delivered as standard HTML, CSS, and JavaScript that any web developer can work with. Many of our clients have a tech-savvy family member or in-house person who handles updates. If you ever want our help, Loft Care is there at $97/month, but it's entirely optional.",
+      michael: "Yes — your code, your developer. Standard HTML/CSS/JS, any developer can work with it. Use whoever you want. Loft Care is available if you'd rather have us handle it, but it's optional."
+    },
+    faq_hosting: {
+      erin:    "We deploy to Vercel by default — it's fast, secure, and the free tier handles the traffic levels most of our clients see. You'll get a Vercel account in your name, or we can transfer the project to your existing one. If you prefer Netlify, AWS, your own server, or any other host, we'll provide setup instructions. Your annual hosting cost can be $0.",
+      michael: "Default: Vercel free tier — fast, secure, handles typical traffic. Account in your name or transferred to yours. Prefer another host? We'll set it up. Annual hosting can be $0."
+    },
+    faq_domain: {
+      erin:    "Two paths for your domain. If you already own one, we'll provide a step-by-step guide to point it at your new site — totally free. If you'd rather we handle the DNS setup for you, that's a $50 add-on. We don't sell domains directly, but we'll help you pick a name and recommend Namecheap or Google Domains for purchase.",
+      michael: "Two options: self-service DNS guide (free) or assisted setup ($50 add-on). Don't have a domain yet? We'll help you pick a name. Buy through Namecheap or Google Domains."
+    },
+    faq_email: {
+      erin:    "Custom email addresses (like chris@yourfirm.com) are a separate service — we recommend Google Workspace at $6/user/month. You can also use free aliases on a single account. We're happy to point you to the right setup, but the email itself isn't part of the website package.",
+      michael: "Custom email isn't included — Google Workspace at $6/user/month is the standard setup. We can recommend the right configuration. Email service itself is separate from the site."
+    },
+    faq_seo: {
+      erin:    "On-page SEO is included in every tier — proper meta titles, descriptions, structured data, mobile speed optimization, and Google Business Profile setup help. Ongoing monthly SEO services aren't part of the package — that's a different specialty. We focus on a strong foundation that ranks well locally for your name and core terms.",
+      michael: "On-page SEO included: meta tags, structured data, mobile speed, Google Business help. Ongoing monthly SEO is a separate specialty — not included. Foundation is solid for local search."
+    },
+    faq_logo: {
+      erin:    "Logo design isn't included — we focus on website craftsmanship. If you don't have a logo yet, we can recommend a great Triangle-area designer, or you can use a clean wordmark in your custom palette and add a logo later. Either way, we'll make the site look polished from day one.",
+      michael: "Logo design isn't included. We can recommend a Triangle designer or build with a clean wordmark you can swap later. Site looks polished either way."
+    },
+    faq_photos: {
+      erin:    "Bring your own photos if you have professional ones — we'll integrate them beautifully. If you don't, we use high-quality stock from Unsplash (curated, never generic), and we can recommend a Triangle-area photographer if you want a proper professional shoot. Photography itself isn't part of the package, but the design always looks polished regardless.",
+      michael: "Use your photos if you have them. Otherwise, curated Unsplash stock. Triangle photographers available on referral. Photography isn't part of the package."
+    },
+    faq_copy: {
+      erin:    "We polish your copy and structure it for conversion — but we don't write it from scratch. The intake form captures your services, ideal client, and what makes you different, and we transform that into web-ready copy with strong headlines and clear CTAs. If you need full copywriting, we can refer you to a great copywriter.",
+      michael: "We polish and structure your copy for conversion. We don't write from scratch. Intake captures your raw ideas, we shape them. Need full copywriting? We'll refer you."
+    },
+    faq_payment: {
+      erin:    "Payment is via Stripe — secure, instant, and processed in full at the start of the project. You get a receipt immediately. We don't take partial payments or deposits at this price point — keeping it simple keeps prices low.",
+      michael: "Stripe checkout, paid in full upfront. Instant receipt. No partial payments — keeps the process simple and the price flat."
+    },
+    faq_process: {
+      erin:    "Four simple steps. One: you pay and complete a written intake form (10-15 minutes, async). Two: we build your page over 72 hours and send a private preview link. Three: one or more revision rounds depending on your tier. Four: we deploy to your domain and hand over the code. No phone calls required at any point.",
+      michael: "Four steps: pay + intake form (10 min), build (72 hrs), revisions, deploy. All async. No phone calls required."
+    },
+    faq_phone: {
+      erin:    "We work async by design — written brief, email updates, and a preview link you review on your own time. If you'd genuinely prefer a quick call at any point, just email us and we'll set one up. But most of our clients love that they never have to schedule another sales call.",
+      michael: "Async by design. Written brief, email updates, async preview. Want a call? Email us. Most clients prefer no calls at all."
+    },
+    faq_compare: {
+      erin:    "Three differences worth knowing. One: you own the code outright — no platform like Wix or Squarespace can lock you out. Two: we're built specifically for licensed professionals and trades in the Triangle, not generic templates. Three: 72-hour delivery, not 6-week project timelines. We're the opposite of an agency, and the opposite of DIY.",
+      michael: "Three differences vs. Wix/Squarespace/agencies: 1) you own the code, 2) built for Triangle professionals specifically, 3) 72 hours not 6 weeks."
+    },
+    faq_examples: {
+      erin:    "We have three sample client pages live on our site — an estate attorney, a CPA firm, and a general contractor — each with a distinct palette and voice. Same architectural quality, completely different look. That's how we prove every site is custom, not templated.",
+      michael: "Three live samples on our site: estate attorney, CPA firm, general contractor. Same craft, different palette and voice for each. Custom, not templated."
+    },
+    faq_outscope: {
+      erin:    "That's outside what we build — we focus on premium single-page or small multi-page sites for licensed professionals. We don't do e-commerce, custom databases, social media management, or full multi-month branding projects. Happy to refer you to someone great in the Triangle if you'd like a recommendation.",
+      michael: "Outside our scope. We do single-page and small multi-page sites for licensed pros. No e-commerce, no custom databases, no social media management. Happy to refer you elsewhere."
     },
     faq_unclear: {
       erin:    "I want to make sure I help you in the right way — could you tell me a little more about what you're looking for?",
       michael: "Help me understand — what are you looking for specifically?"
+    },
+    faq_what_we_do: {
+      erin:    "We design and build premium single-page websites for licensed professionals and trades in the Triangle — attorneys, CPAs, contractors, and consultants. Each site is custom-designed (not a template), delivered in 72 hours, and you own the code outright. No subscriptions, no platform lock-in. Three flat-rate tiers: Essential at $197, Signature at $497, Authority at $997.",
+      michael: "Custom landing pages for Triangle professionals — attorneys, CPAs, contractors, consultants. 72-hour delivery, you own the code, no subscriptions. Three tiers: $197 / $497 / $997."
+    },
+    faq_need_website: {
+      erin:    "Honestly, yes — for licensed professionals today, not having a website is like not answering your phone. When someone is referred to you, the first thing they do is search your name. A polished single-page site costs less than one new client and pays for itself the moment that first inquiry comes through.",
+      michael: "Yes. When someone's referred to you, they Google your name first. A clean landing page costs less than one client and pays for itself with the first inquiry it generates."
+    },
+    faq_help: {
+      erin:    "I'd love to help you figure out what's right for you. Want me to capture your name and email so our design team can send a personal recommendation within 24 hours? No pressure, no sales call — just a thoughtful response.",
+      michael: "Happy to help you figure out what fits. Drop your name and email and we'll send a personal recommendation within 24 hours. No sales call, no pressure."
+    },
+    faq_not_sure: {
+      erin:    "That's completely normal — most of our clients aren't sure exactly what they need at first. The simplest path: tell us your profession and what kind of clients you want to attract, and we'll recommend a tier that fits. Want me to capture your name and email and we'll send a recommendation?",
+      michael: "Most clients start exactly there. Tell us your profession and target client and we'll recommend the right tier. Want a personal recommendation? Drop your info."
+    },
+    faq_existing_site: {
+      erin:    "If you already have a website, we can absolutely replace it with something that performs better — most of our clients come to us frustrated with a Wix or Squarespace site that doesn't convert. We'll redirect your existing domain to the new site so you don't lose any traffic, and you own the new code outright.",
+      michael: "Already have a site? We replace it with one that converts. We point your existing domain to the new site so you keep your traffic. You own the new code outright."
+    },
+    faq_when_paid: {
+      erin:    "Payment is due upfront via Stripe — that locks your spot in our build queue and starts the 72-hour clock once you complete the brief. You get a receipt immediately. No deposits, no installments — keeping it simple keeps prices flat.",
+      michael: "Upfront via Stripe. Locks your spot, starts the 72-hour clock when you submit your brief. Receipt immediate. No deposits or installments."
+    },
+    faq_handoff: {
+      erin:    "That's a great question and I want to make sure you get the right answer — let's get your name and email and our design team will follow up personally within 24 hours.",
+      michael: "Best handled by our design team directly. Drop your name and email and they'll respond within 24 hours."
+    },
+    faq_handoff_after_confusion: {
+      erin:    "I want to make sure you get a thoughtful answer rather than guess at what you mean. Let's capture your name and email and our design team will respond personally within 24 hours.",
+      michael: "Let me get this to our design team directly so you get the right answer. What's your name and email and we'll respond within 24 hours."
+    },
+    faq_include: {
+      erin:    "Each tier includes different things — could you let me know which tier you're considering, or shall I run through what Essential at $197, Signature at $497, and Authority at $997 each cover?",
+      michael: "Depends on the tier. Want me to break down what's in Essential ($197), Signature ($497), and Authority ($997)?"
+    },
+    faq_area: {
+      erin:    "We proudly serve the Triangle — Raleigh, Durham, and Chapel Hill, along with surrounding areas like Cary, Apex, and Wake Forest. We work with clients outside the area too, but Triangle is our home base.",
+      michael: "The Triangle: Raleigh, Durham, Chapel Hill. Plus Cary, Apex, Wake Forest. Outside-Triangle clients welcome too — Triangle is just home base."
+    },
+    faq_who: {
+      erin:    "We work with licensed professionals and trades — attorneys, CPAs, general contractors, consultants, and similar. Every page is crafted around how your specific clients think and decide. We're selective about who we work with because the craft matters.",
+      michael: "Licensed professionals and trades: attorneys, CPAs, contractors, consultants. Profession-specific design, not generic templates."
     }
   };
 
@@ -1393,8 +1736,8 @@ window.addEventListener('scroll', () => {
   }
 
   var AGENTS = {
-    erin:    { name: 'Erin'    },
-    michael: { name: 'Michael' }
+    erin:    { name: 'Erin',    role: 'Design Concierge · Online',  avatar: 'Erin.png' },
+    michael: { name: 'Michael', role: 'Lead Strategist · Online',   avatar: 'Michael_OnePageLoft.png' }
   };
 
   var launcher   = document.getElementById('chat-launcher');
@@ -1404,17 +1747,29 @@ window.addEventListener('scroll', () => {
   var sendBtn    = document.getElementById('chat-send');
   var closeBtn   = document.getElementById('chat-close');
   var chatTip    = document.getElementById('chat-tip');
+  var chatAvatar = document.getElementById('chat-avatar');
+  var chatHeaderName = document.getElementById('chat-header-name');
+  var chatHeaderRole = document.getElementById('chat-header-role');
 
   var launched   = false;
-  var chatState  = 'GREETING';
+  var chatState  = 'PICK_AGENT';
   var lastSender = null;
-  var turn       = 'michael'; // Erin always opens; Michael responds first
+  var activeAgent = null; // Set once user picks at start, never changes
+  var confusionCount = 0; // Tracks consecutive "I don't understand" responses
   var lead = { name: '', email: '', phone: '', textOk: null, profession: '' };
 
-  function nextAgent() {
-    var a = turn;
-    turn = (turn === 'erin') ? 'michael' : 'erin';
-    return a;
+  function setActiveAgent(key) {
+    activeAgent = key;
+    var meta = AGENTS[key];
+    if (chatAvatar) chatAvatar.src = meta.avatar;
+    if (chatAvatar) chatAvatar.alt = meta.name;
+    if (chatHeaderName) chatHeaderName.textContent = meta.name;
+    if (chatHeaderRole) chatHeaderRole.textContent = meta.role;
+  }
+
+  // No more alternating — single agent owns the conversation
+  function currentAgent() {
+    return activeAgent || 'erin';
   }
 
   // ── OPEN / CLOSE ──────────────────────────────────────────
@@ -1504,17 +1859,103 @@ window.addEventListener('scroll', () => {
   function scrollDown() { chatBody.scrollTop = chatBody.scrollHeight; }
 
   // ── FAQ MATCHING ─────────────────────────────────────────
+  // Order matters: most specific patterns FIRST, generic patterns LAST.
+  // Specificity prevents "essential" being matched by generic "what's included" pattern.
   var FAQ_PATTERNS = [
-    [/\b(price|cost|how much|\$97|\$|fee|charge)\b/i,       'faq_price'   ],
-    [/\b(how long|time|fast|72|hours|days|quick|when)\b/i,  'faq_time'    ],
-    [/\b(include|what.?s in|what do i get|features)\b/i,    'faq_include' ],
-    [/\b(area|location|serve|where|raleigh|durham|chapel|triangle|cary)\b/i, 'faq_area'],
-    [/\b(revision|change|edit|tweak)\b/i,                   'faq_revision'],
-    [/\b(own|domain|hosting|keep|mine|subscription)\b/i,    'faq_own'     ],
-    [/\b(who|what.*(do|does|is|are)|attorney|lawyer|cpa|contractor|consultant)\b/i, 'faq_who']
+    // ── COMPANY EXPLAINER (very high priority) ──
+    [/\b(what (do|does) (you|your company|opl|one page loft) (do|build|make|offer|provide|sell)|what is (your|the) (company|business|service)|what (do|does) you (guys )?do|tell me what you do|explain what you do|who are you guys|what is one page loft|what.s one page loft|never heard|new to this)\b/i, 'faq_what_we_do' ],
+
+    // ── DO I NEED A WEBSITE ──
+    [/\b((do|should) i (really )?need|why (do i|would i) need|is (a )?website (really )?necessary|necessary to have|need (a )?(website|site|landing page)|worth (it|having)|matter (anymore|today))\b/i, 'faq_need_website' ],
+
+    // ── EXISTING SITE / REPLACING ──
+    [/\b((already |currently )?(have|got|own) (a |my own |my )?(website|site|landing page|page)|(replace|swap|switch|migrate|move from) (my|our|the|a) (wix|squarespace|godaddy|website|site)|currently on (wix|squarespace|godaddy)|existing (site|website))\b/i, 'faq_existing_site' ],
+
+    // ── NOT SURE / OVERWHELMED ──
+    [/\b(not sure what|don.?t know what|unsure|confused|overwhelmed|where to start|where do i start|not sure if|never done this|first time|new to (websites|this))\b/i, 'faq_not_sure' ],
+
+    // ── ASK FOR HELP / GUIDANCE ──
+    [/\b(can you help|need help|need guidance|need advice|recommend|recommendation|suggest|suggestion|what should i (do|get|pick|choose)|what.s right for me|what fits|which tier (is right|should i|would you))\b/i, 'faq_help' ],
+
+    // ── WHEN IS PAYMENT DUE ──
+    [/\b(when (do i pay|is payment|do you charge|do you bill)|pay upfront|pay later|invoice|net 30|deposit|down payment|installment|payment plan|spread.*out)\b/i, 'faq_when_paid' ],
+
+    // ── OUT OF SCOPE (high priority) ──
+    [/\b(mobile app|mobile apps|build.*app|build.*apps|build.*mobile|ios app|android app|e-?commerce|shopify|shopping cart|woocommerce|stripe.*store|database|backend|crm|booking system|membership site|paywall|forum|social media management|email marketing|ad campaign|google ads|facebook ads|meta ads|seo campaign|seo service)\b/i, 'faq_outscope' ],
+
+    // ── TIER-SPECIFIC PRICING ──
+    [/\b(essential|\$197|197\b|cheapest|lowest|starter|basic tier)\b/i,                                            'faq_essential' ],
+    [/\b(signature|\$497|497\b|middle|popular|most popular)\b/i,                                                   'faq_signature' ],
+    [/\b(authority|\$997|997\b|premium|highest|application|apply|top tier|top.?of.?the.?line)\b/i,                'faq_authority' ],
+
+    // ── REVISIONS / EDITS ──
+    [/\b(revision|revisions|round|rounds)\b/i,                                                                     'faq_revision'  ],
+    [/\b(loft care|loftcare|monthly plan|subscription plan|maintenance plan|ongoing|caretaker)\b/i,               'faq_loftcare'  ],
+    [/\b(\$75|edit cost|cost.*edit|extra edit|additional edit|change a.*photo|swap.*photo|update.*text|change.*color)\b/i, 'faq_edits'    ],
+
+    // ── REFUNDS / GUARANTEES ──
+    [/\b(refund|refunds|money.?back|guarantee|cancel|cancellation|chargeback|change my mind|back out)\b/i,        'faq_refund'    ],
+
+    // ── OWNERSHIP / DEVELOPER ──
+    [/\b(own.*developer|my.*developer|own.*dev|hire.*developer|hire.*someone|use.*my.*person|in.?house|tech.?savvy)\b/i, 'faq_owndev' ],
+    [/\b(own|ownership|files|code|source|github|zip|mine|keep|lock.?in|wix|squarespace)\b/i,                       'faq_own'       ],
+
+    // ── HOSTING / DOMAIN / EMAIL ──
+    [/\b(hosting|host|vercel|netlify|server|aws|where.*hosted|where.*site.*live)\b/i,                              'faq_hosting'   ],
+    [/\b(domain|dns|namecheap|godaddy|google domain|url|web address|point.*domain|transfer.*domain)\b/i,           'faq_domain'    ],
+    [/\b(custom email|business email|workspace email|chris@my|my.*email.*address|professional email)\b/i,         'faq_email'     ],
+
+    // ── SEO / MARKETING ──
+    [/\b(seo|search engine|google rank|ranking|search rank|keyword|backlink)\b/i,                                  'faq_seo'       ],
+
+    // ── DESIGN ASSETS ──
+    [/\b(logo|logos|branding|brand identity|wordmark|mark)\b/i,                                                    'faq_logo'      ],
+    [/\b(photo|photos|photography|photographer|images|stock|unsplash|headshot|pictures)\b/i,                       'faq_photos'    ],
+    [/\b(copy|copywriting|content|words|writing|writer|text for)\b/i,                                              'faq_copy'      ],
+
+    // ── PROCESS / PAYMENT ──
+    [/\b(payment|pay|stripe|credit card|checkout|invoice|deposit|installment|partial)\b/i,                         'faq_payment'   ],
+    [/\b(process|how.*work|how.*it.*go|step|steps|workflow|next step|after.*pay|after.*payment)\b/i,              'faq_process'   ],
+    [/\b(call|phone call|meeting|zoom|consultation|video call|talk on phone|talk by phone|schedule.*call)\b/i,    'faq_phone'     ],
+
+    // ── COMPARISON / EXAMPLES ──
+    [/\b(compare|comparison|difference|vs|versus|better than|why not|fiverr|upwork|agency|cheaper)\b/i,            'faq_compare'   ],
+    [/\b(example|examples|portfolio|sample|samples|previous work|past work|see.*work|case stud)\b/i,               'faq_examples'  ],
+
+    // ── TIMING ──
+    [/\b(how long|timeline|time.?frame|fast|72|hours|days|quick|when.*deliver|when.*done|when.*ready|delivery time|turnaround|turn around|turn.around|how soon|how quickly|deadline|eta|completion|finished by)\b/i, 'faq_time' ],
+
+    // ── LOCATION / WHO ──
+    [/\b(area|location|serve|where.*located|raleigh|durham|chapel|triangle|cary|apex|wake forest)\b/i,             'faq_area'      ],
+    [/\b(who.*work.*with|attorney|attorneys|lawyer|lawyers|cpa|accountant|contractor|trades?|consultant|professional)\b/i, 'faq_who' ],
+
+    // ── PRICING (general) ──
+    [/\b(price|prices|pricing|cost|costs|how much|tier|tiers|fee|fees|charge|charges|investment)\b/i,             'faq_price'     ],
+
+    // ── INCLUDES (most generic — always last) ──
+    [/\b(include|included|what.?s in|what do i get|features|comes with)\b/i,                                       'faq_include'   ]
   ];
 
+  // Hard-handoff triggers — questions that should NEVER get a scripted answer.
+  // These signal high-value or sensitive prospects; route to lead capture immediately.
+  var HANDOFF_TRIGGERS = [
+    /\b(custom request|special request|negotiate|negotiation|discount|discounts|cheaper|reduce.*price|special deal|haggle)\b/i,
+    /\b(complex|complicated|unique|specific need|outside the box|different than)\b/i,
+    /\b(lawsuit|legal issue|complaint|dispute|disappointed|unhappy|frustrated|sue|sued|lawyer up)\b/i,
+    /\b(white label|reseller|partnership|partner with|wholesale|bulk|multiple sites)\b/i,
+    /\b(rush|urgent|asap|emergency|same day|today|by tomorrow)\b/i
+  ];
+
+  function checkHandoff(text) {
+    for (var i = 0; i < HANDOFF_TRIGGERS.length; i++) {
+      if (HANDOFF_TRIGGERS[i].test(text)) return true;
+    }
+    return false;
+  }
+
   function checkFAQ(text, agent) {
+    // Hard-handoff triggers take priority over scripted answers
+    if (checkHandoff(text)) return say('faq_handoff', agent);
     for (var i = 0; i < FAQ_PATTERNS.length; i++) {
       if (FAQ_PATTERNS[i][0].test(text)) return say(FAQ_PATTERNS[i][1], agent);
     }
@@ -1522,35 +1963,188 @@ window.addEventListener('scroll', () => {
   }
 
   // ── CONVERSATION ─────────────────────────────────────────
+  function showAgentPicker() {
+    var row = document.createElement('div');
+    row.className = 'agent-picker';
+
+    // Erin card
+    var erinCard = document.createElement('button');
+    erinCard.className = 'agent-card';
+    erinCard.type = 'button';
+    erinCard.setAttribute('aria-label', 'Chat with Erin, Design Concierge');
+    erinCard.innerHTML =
+      '<img class="agent-card-img" src="' + AGENTS.erin.avatar + '" alt="Erin">' +
+      '<div class="agent-card-name">Erin</div>' +
+      '<div class="agent-card-role">Design Concierge</div>' +
+      '<div class="agent-card-cta">Chat with Erin →</div>';
+    erinCard.addEventListener('click', function () {
+      row.remove();
+      handleInput('__pick_erin__');
+    });
+    row.appendChild(erinCard);
+
+    // Michael card
+    var michaelCard = document.createElement('button');
+    michaelCard.className = 'agent-card';
+    michaelCard.type = 'button';
+    michaelCard.setAttribute('aria-label', 'Chat with Michael, Lead Strategist');
+    michaelCard.innerHTML =
+      '<img class="agent-card-img" src="' + AGENTS.michael.avatar + '" alt="Michael">' +
+      '<div class="agent-card-name">Michael</div>' +
+      '<div class="agent-card-role">Lead Strategist</div>' +
+      '<div class="agent-card-cta">Chat with Michael →</div>';
+    michaelCard.addEventListener('click', function () {
+      row.remove();
+      handleInput('__pick_michael__');
+    });
+    row.appendChild(michaelCard);
+
+    chatBody.appendChild(row);
+    scrollDown();
+  }
+
   async function startConvo() {
-    chatState = 'GREETING';
-    await agentMsg('erin', say('greeting', 'erin'));
-    showChips([
-      { label: "Tell me about One Page Loft" },
-      { label: "I need a landing page"       },
-      { label: "Just browsing"               }
-    ]);
+    chatState = 'PICK_AGENT';
+    // Neutral system message before agent is picked
+    var sys = document.createElement('div');
+    sys.className = 'cmsg-group';
+    var label = document.createElement('div');
+    label.className = 'cmsg-label';
+    label.textContent = 'One Page Loft';
+    sys.appendChild(label);
+    var bubble = document.createElement('div');
+    bubble.className = 'cmsg-bubble';
+    bubble.textContent = "Welcome — Erin and Michael are both online. Tap whichever feels right and we'll take it from there.";
+    sys.appendChild(bubble);
+    chatBody.appendChild(sys);
+    scrollDown();
+
+    showAgentPicker();
     chatInput.focus();
   }
 
   var COLLECT_STATES = ['NAME', 'EMAIL', 'PHONE', 'PHONE_NUM', 'DONE'];
 
+  // ── INPUT CLASSIFICATION ─────────────────────────────────
+  // Detect when user input is clearly a question, not the data we're asking for.
+  function looksLikeQuestion(text, expectedType) {
+    var t = (text || '').trim();
+    if (!t) return false;
+
+    // Strong question signals override everything
+    var strongQuestion = /\b(how|what|whats|what's|when|where|why|who|which|do you|does|can i|can you|will you|is there|is it|are you|any|tell me about)\b/i;
+    if (strongQuestion.test(t)) return true;
+    if (t.indexOf('?') !== -1) return true;
+
+    // Type-specific validation
+    if (expectedType === 'name') {
+      // Names are 1-3 words, no question marks, no numbers, under 40 chars
+      if (t.length > 40) return true;
+      if (t.split(/\s+/).length > 3) return true;
+      if (/\d/.test(t)) return true;
+      if (/\$|@|\.com|\.net|price|cost|tier|hour|day|refund|edit|policy|turnaround|payment|discount/i.test(t)) return true;
+    }
+    if (expectedType === 'email') {
+      if (!/@/.test(t) && t.length > 4) return true;
+      if (/\s/.test(t) && !/@/.test(t)) return true;
+    }
+    if (expectedType === 'phone_yn') {
+      if (t.split(/\s+/).length > 6) return true;
+    }
+    if (expectedType === 'phone_num') {
+      var digits = t.replace(/\D/g, '');
+      if (digits.length < 7 && t.length > 12) return true;
+    }
+    return false;
+  }
+
   async function handleInput(raw) {
     var text = (raw || '').trim();
     if (!text) return;
 
-    chatBody.querySelectorAll('.cchips').forEach(function (c) { c.remove(); });
+    chatBody.querySelectorAll('.cchips, .agent-picker').forEach(function (c) { c.remove(); });
+
+    // ── AGENT PICKER (first step before anything else) ──
+    if (chatState === 'PICK_AGENT') {
+      if (text === '__pick_erin__' || /\berin\b/i.test(text)) {
+        setActiveAgent('erin');
+        userMsg("Chat with Erin");
+        chatInput.value = '';
+        chatState = 'GREETING';
+        await agentMsg('erin', say('greeting', 'erin'));
+        showChips([
+          { label: "Tell me about One Page Loft" },
+          { label: "I need a landing page"       },
+          { label: "Just browsing"               }
+        ]);
+        chatInput.focus();
+        return;
+      }
+      if (text === '__pick_michael__' || /\bmichael\b/i.test(text)) {
+        setActiveAgent('michael');
+        userMsg("Chat with Michael");
+        chatInput.value = '';
+        chatState = 'GREETING';
+        await agentMsg('michael', say('greeting', 'michael'));
+        showChips([
+          { label: "Tell me about One Page Loft" },
+          { label: "I need a landing page"       },
+          { label: "Just browsing"               }
+        ]);
+        chatInput.focus();
+        return;
+      }
+      // Anything else — gently re-prompt the picker
+      userMsg(text);
+      chatInput.value = '';
+      var sys = document.createElement('div');
+      sys.className = 'cmsg-group';
+      var label = document.createElement('div');
+      label.className = 'cmsg-label';
+      label.textContent = 'One Page Loft';
+      sys.appendChild(label);
+      var bubble = document.createElement('div');
+      bubble.className = 'cmsg-bubble';
+      bubble.textContent = "Just tap one of us to begin — we'll take it from there.";
+      sys.appendChild(bubble);
+      chatBody.appendChild(sys);
+      scrollDown();
+      showAgentPicker();
+      return;
+    }
+
     userMsg(text);
     chatInput.value = '';
 
-    var agent = nextAgent();
+    var agent = currentAgent();
     var t = text.toLowerCase();
 
-    // FAQ check (skip during data collection)
-    if (COLLECT_STATES.indexOf(chatState) === -1) {
+    // ── SMART FAQ CHECK ──────────────────────────────────────
+    var inCollection = COLLECT_STATES.indexOf(chatState) !== -1;
+    var expectedType = null;
+    if (chatState === 'NAME') expectedType = 'name';
+    else if (chatState === 'EMAIL') expectedType = 'email';
+    else if (chatState === 'PHONE') expectedType = 'phone_yn';
+    else if (chatState === 'PHONE_NUM') expectedType = 'phone_num';
+
+    var shouldCheckFAQ = !inCollection || looksLikeQuestion(text, expectedType);
+
+    if (shouldCheckFAQ) {
       var faqAns = checkFAQ(text, agent);
       if (faqAns) {
+        confusionCount = 0; // Successful match resets the strike counter
         await agentMsg(agent, faqAns);
+
+        // If we interrupted collection, gently re-prompt for the data we still need
+        if (inCollection) {
+          if (chatState === 'NAME')        await agentMsg(agent, say('ask_name', agent));
+          else if (chatState === 'EMAIL')  await agentMsg(agent, say('ask_email', agent, lead));
+          else if (chatState === 'PHONE')  await agentMsg(agent, say('ask_phone', agent));
+          else if (chatState === 'PHONE_NUM') await agentMsg(agent, say('ask_phone_num', agent));
+          return;
+        }
+
+        // Outside collection: re-show appropriate chips
         if (chatState === 'GREETING') {
           showChips([
             { label: "Tell me about One Page Loft" },
@@ -1571,18 +2165,19 @@ window.addEventListener('scroll', () => {
 
     // ── GREETING ──────────────────────────────────────────
     if (chatState === 'GREETING') {
-      if (/tell me|about|what|learn|services|do you|how does/i.test(t)) {
+      // "Tell me about" / explain branch — requires intent to learn about the company,
+      // NOT just any sentence containing "do you" or "what"
+      if (/(tell me|tell me about|about (one page loft|opl|the company|you|your company)|learn more|learn about|what (is|are) (one page loft|opl|you guys|your)|services|how does (it|this|opl|one page loft)|how do you work)/i.test(t)) {
         await agentMsg(agent, say('explain_opl', agent));
         chatState = 'PROFESSION';
-        var agent2 = nextAgent();
-        await agentMsg(agent2, say('explain_follow', agent2));
+        await agentMsg(agent, say('explain_follow', agent));
         showChips([
           { label: "Attorney / Legal"   },
           { label: "CPA / Accounting"   },
           { label: "Contractor / Trades"},
           { label: "Consultant / Other" }
         ]);
-      } else if (/need|want|ready|start|page|website|get started/i.test(t)) {
+      } else if (/^(i (need|want|am ready|would like)|need a|want a|ready to|let'?s (start|begin|do|go)|i'?m ready|sign me up|get started|sounds good|i'?m in)/i.test(t)) {
         chatState = 'PROFESSION';
         await agentMsg(agent, say('ready', agent));
         showChips([
@@ -1591,29 +2186,54 @@ window.addEventListener('scroll', () => {
           { label: "Contractor / Trades"},
           { label: "Consultant / Other" }
         ]);
-      } else if (/browsing|looking|just|explore/i.test(t)) {
+      } else if (/^(just )?(browsing|looking|exploring|checking|window shop|kicking the tires)/i.test(t)) {
         await agentMsg(agent, say('browsing', agent));
+        confusionCount = 0;
       } else {
-        await agentMsg(agent, say('faq_unclear', agent));
-        showChips([
-          { label: "Tell me about One Page Loft" },
-          { label: "I need a landing page"       },
-          { label: "Just browsing"               }
-        ]);
+        // Track consecutive confusion — escalate to lead capture after 2 strikes
+        confusionCount++;
+        if (confusionCount >= 2) {
+          confusionCount = 0;
+          await agentMsg(agent, say('faq_handoff_after_confusion', agent));
+          chatState = 'NAME';
+          await agentMsg(agent, say('ask_name', agent));
+        } else {
+          await agentMsg(agent, say('faq_unclear', agent));
+          showChips([
+            { label: "Tell me about One Page Loft" },
+            { label: "I need a landing page"       },
+            { label: "Just browsing"               }
+          ]);
+        }
       }
 
     // ── PROFESSION ────────────────────────────────────────
     } else if (chatState === 'PROFESSION') {
+      // Defensive check: if input looks like a question that slipped past FAQ,
+      // try FAQ once more before treating it as profession choice
+      if (looksLikeQuestion(text, null)) {
+        var faqAns2 = checkFAQ(text, agent);
+        if (faqAns2) {
+          await agentMsg(agent, faqAns2);
+          await agentMsg(agent, "Whenever you're ready — which best describes your work?");
+          showChips([
+            { label: "Attorney / Legal"   },
+            { label: "CPA / Accounting"   },
+            { label: "Contractor / Trades"},
+            { label: "Consultant / Other" }
+          ]);
+          return;
+        }
+      }
       lead.profession = text;
       var pitchKey;
       if (/attorney|legal|lawyer/i.test(t))            pitchKey = 'pitch_attorney';
       else if (/cpa|account|tax/i.test(t))             pitchKey = 'pitch_cpa';
-      else if (/contractor|trade|build|electric|hvac/i.test(t)) pitchKey = 'pitch_contractor';
+      else if (/contractor|trades?|builder|electric|hvac|plumb|roof|construct/i.test(t)) pitchKey = 'pitch_contractor';
       else                                              pitchKey = 'pitch_consultant';
       await agentMsg(agent, say(pitchKey, agent));
       chatState = 'NAME';
-      var agent2 = nextAgent();
-      await agentMsg(agent2, say('ask_name', agent2));
+      await agentMsg(agent, say('ask_name', agent));
 
     // ── NAME ──────────────────────────────────────────────
     } else if (chatState === 'NAME') {
@@ -1663,8 +2283,7 @@ window.addEventListener('scroll', () => {
   async function finish(agent) {
     chatState = 'DONE';
     await agentMsg(agent, say('finish_1', agent, { name: lead.name }));
-    var agent2 = nextAgent();
-    await agentMsg(agent2, say('finish_2', agent2));
+    await agentMsg(agent, say('finish_2', agent));
     showChips([
       { label: "Estate Attorney", href: "attorney.html"    },
       { label: "CPA Firm",        href: "cpa.html"         },
@@ -1676,7 +2295,7 @@ window.addEventListener('scroll', () => {
   }
 
   function submitLead() {
-    fetch('https://formsubmit.co/ajax/christophervincenthooks@gmail.com', {
+    fetch('https://formsubmit.co/ajax/hello@onepageloft.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
@@ -1707,6 +2326,75 @@ window.addEventListener('scroll', () => {
   // Show tooltip at 6s, auto-open at 14s
   setTimeout(function () { if (!launched) chatTip.classList.add('visible'); }, 6000);
   setTimeout(function () { if (!launched) { chatTip.classList.remove('visible'); openChat(); } }, 14000);
+})();
+</script>
+<!-- ─── STRIPE EMBEDDED CHECKOUT MODAL ─── -->
+<div id="stripe-checkout-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(10,22,40,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--ivory); max-width:560px; width:100%; max-height:90vh; overflow-y:auto; position:relative; padding:20px; border:1px solid var(--warm-gold); box-shadow:0 24px 60px rgba(10,22,40,0.4);">
+    <button id="stripe-checkout-close" type="button" aria-label="Close" style="position:absolute; top:12px; right:12px; background:transparent; border:none; font-size:24px; color:var(--deep-navy); cursor:pointer; z-index:10;">&times;</button>
+    <div id="stripe-checkout-container"></div>
+  </div>
+</div>
+
+<style>
+  #stripe-checkout-modal.open { display:flex !important; }
+</style>
+
+<script>
+(function () {
+  var STRIPE_PUBLISHABLE_KEY = 'pk_test_51TRzupRfSnygIsy4kY3CEXhlBzN9KJqi7OBR56sWpiRlHELnZRqjDqLhnwxk0vfaQtSfOT9hw6Dwuxk2sBT7ZnId002vGRAOR';
+
+  var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+  var checkout = null;
+
+  var modal = document.getElementById('stripe-checkout-modal');
+  var container = document.getElementById('stripe-checkout-container');
+  var closeBtn = document.getElementById('stripe-checkout-close');
+
+  function openCheckout(tier) {
+    fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tier: tier })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data.clientSecret) {
+        alert('Sorry — could not start checkout. Please email hello@onepageloft.com and we will help directly.');
+        return;
+      }
+      stripe.createEmbeddedCheckoutPage({ fetchClientSecret: function() { return Promise.resolve(data.clientSecret); } })
+        .then(function (c) {
+          checkout = c;
+          container.innerHTML = '';
+          checkout.mount('#stripe-checkout-container');
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+    })
+    .catch(function (err) {
+      console.error(err);
+      alert('Sorry — could not start checkout. Please email hello@onepageloft.com.');
+    });
+  }
+
+  function closeCheckout() {
+    if (checkout) { checkout.destroy(); checkout = null; }
+    container.innerHTML = '';
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-tier]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openCheckout(btn.getAttribute('data-tier'));
+    });
+  });
+
+  closeBtn.addEventListener('click', closeCheckout);
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeCheckout();
+  });
 })();
 </script>
 </body>

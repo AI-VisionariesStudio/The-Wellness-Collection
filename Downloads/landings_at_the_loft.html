@@ -80,7 +80,7 @@ section{position:relative}
 .s-rule.center{margin:20px auto 52px}
 
 /* ── PROBLEM — MINT ── */
-.problem{background:#8DAAA2;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06)}
+.problem{background:#8DAAA2;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
 .problem .s-eyebrow{color:rgba(0,0,0,0.65)}
 .problem .s-heading{color:#000000}
@@ -92,7 +92,7 @@ section{position:relative}
 .pain-body{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(0,0,0,0.75);line-height:1.85;font-weight:300}
 
 /* ── HOW — BLACK ── */
-.how{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#CACACA 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45)}
+.how{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#CACACA 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .how-inner{text-align:center}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .step{padding:48px 36px;background:rgba(255,255,255,0.52);border:1px solid rgba(141,170,162,0.28);text-align:left;backdrop-filter:blur(4px)}
@@ -107,7 +107,7 @@ section{position:relative}
 .how .s-rule.center{background:linear-gradient(90deg,transparent,rgba(141,170,162,0.7),transparent)}
 
 /* ── EXAMPLES — MINT ── */
-.examples{background:#8DAAA2}
+.examples{background:#8DAAA2;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .examples-inner{text-align:center}
 .examples .s-eyebrow{color:rgba(0,0,0,0.7)}
 .examples .s-heading{color:#000000}
@@ -141,7 +141,7 @@ section{position:relative}
 .ex-lb-tag{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:2.5px;color:rgba(141,170,162,0.5);text-transform:uppercase;font-weight:300;text-align:right;border:1px solid rgba(141,170,162,0.2);padding:8px 14px}
 
 /* ── PRICING — BLACK ── */
-.pricing{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#C8C8C8 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45)}
+.pricing{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#C8C8C8 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .pricing-inner{text-align:center}
 .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:920px;margin:0 auto;text-align:left}
 .p-card{padding:46px 34px;background:rgba(255,255,255,0.55);border:1px solid rgba(141,170,162,0.22);backdrop-filter:blur(4px)}
@@ -165,7 +165,7 @@ section{position:relative}
 .pricing .s-rule.center{background:linear-gradient(90deg,transparent,rgba(141,170,162,0.7),transparent)}
 
 /* ── TESTI — MINT ── */
-.testi{background:#8DAAA2}
+.testi{background:#8DAAA2;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 .testi .s-eyebrow{color:rgba(0,0,0,0.7)}
 .testi .s-heading{color:#000000}
@@ -176,12 +176,12 @@ section{position:relative}
 .t-biz{font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(0,0,0,0.6);letter-spacing:0.3px;margin-top:5px;font-weight:300}
 
 /* ── WHO WE SERVE ── */
-.serve{background:#070D1C;border-top:1px solid rgba(141,170,162,0.15);border-bottom:1px solid rgba(141,170,162,0.15)}
+.serve{background:radial-gradient(ellipse at 50% 35%,#5C5C5C 0%,#3D3D3D 35%,#2A2A2A 65%,#1A1A1A 100%);border-top:1px solid rgba(141,170,162,0.15);border-bottom:1px solid rgba(141,170,162,0.15);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .serve-inner{text-align:center}
 .serve-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:900px;margin:0 auto}
-.serve-card{padding:52px 44px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-align:left;cursor:pointer;transition:border-color 0.4s,background 0.4s;text-decoration:none;display:block}
-.serve-card:hover{border-color:rgba(141,170,162,0.35);background:rgba(141,170,162,0.05)}
-.serve-card.gold:hover{border-color:rgba(203,190,154,0.35);background:rgba(203,190,154,0.04)}
+.serve-card{padding:52px 44px;background:#070D1C;border:1px solid rgba(141,170,162,0.15);text-align:left;cursor:pointer;transition:border-color 0.4s,background 0.4s;text-decoration:none;display:block}
+.serve-card:hover{border-color:rgba(141,170,162,0.35);background:#0A1428}
+.serve-card.gold:hover{border-color:rgba(141,170,162,0.15);background:#070D1C}
 .serve-icon{width:40px;height:40px;margin-bottom:28px;display:block}
 .serve-tag{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:4px;color:rgba(141,170,162,0.7);text-transform:uppercase;font-weight:300;margin-bottom:14px}
 .serve-card.gold .serve-tag{color:rgba(203,190,154,0.7)}
@@ -305,8 +305,8 @@ footer{padding:40px 56px;background:#070D1C;display:flex;align-items:center;just
 <!-- WHO WE SERVE -->
 <section class="serve" id="serve">
 <div class="s-inner serve-inner">
-  <div class="s-eyebrow" style="text-align:center">Who we serve</div>
-  <h2 class="s-heading" style="text-align:center">Two worlds. One standard.</h2>
+  <div class="s-eyebrow" style="text-align:center;color:#FFFFFF">Who we serve</div>
+  <h2 class="s-heading" style="text-align:center;color:#FFFFFF">Two worlds. One standard.</h2>
   <div class="s-rule center"></div>
   <div class="serve-grid">
     <a class="serve-card" href="./trades_landing.html">

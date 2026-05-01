@@ -86,7 +86,7 @@ section{position:relative}
 .s-rule.center{margin:20px auto 52px}
 
 /* ── PROBLEM — MINT ── */
-.problem{background:#8DAAA2;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06)}
+.problem{background:#8DAAA2;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
 .problem .s-eyebrow{color:rgba(0,0,0,0.65)}
 .problem .s-heading{color:#000000}
@@ -98,7 +98,7 @@ section{position:relative}
 .pain-body{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(0,0,0,0.75);line-height:1.85;font-weight:300}
 
 /* ── HOW — BLACK ── */
-.how{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#CACACA 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45)}
+.how{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#CACACA 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .how-inner{text-align:center}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .step{padding:48px 36px;background:rgba(255,255,255,0.52);border:1px solid rgba(141,170,162,0.28);text-align:left;backdrop-filter:blur(4px)}
@@ -113,7 +113,7 @@ section{position:relative}
 .how .s-rule.center{background:linear-gradient(90deg,transparent,rgba(141,170,162,0.7),transparent)}
 
 /* ── EXAMPLES — MINT ── */
-.examples{background:#8DAAA2}
+.examples{background:#8DAAA2;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .examples-inner{text-align:center}
 .examples .s-eyebrow{color:rgba(0,0,0,0.7)}
 .examples .s-heading{color:#000000}
@@ -147,7 +147,7 @@ section{position:relative}
 .ex-lb-tag{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:2.5px;color:rgba(141,170,162,0.5);text-transform:uppercase;font-weight:300;text-align:right;border:1px solid rgba(141,170,162,0.2);padding:8px 14px}
 
 /* ── PRICING — BLACK ── */
-.pricing{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#C8C8C8 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45)}
+.pricing{background:radial-gradient(ellipse at 50% 30%,#E8E8E8 0%,#C8C8C8 100%);border-top:2px solid rgba(141,170,162,0.45);border-bottom:2px solid rgba(141,170,162,0.45);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .pricing-inner{text-align:center}
 .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:920px;margin:0 auto;text-align:left}
 .p-card{padding:46px 34px;background:rgba(255,255,255,0.55);border:1px solid rgba(141,170,162,0.22);backdrop-filter:blur(4px)}
@@ -171,7 +171,7 @@ section{position:relative}
 .pricing .s-rule.center{background:linear-gradient(90deg,transparent,rgba(141,170,162,0.7),transparent)}
 
 /* ── TESTI — MINT ── */
-.testi{background:#8DAAA2}
+.testi{background:#8DAAA2;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 .testi .s-eyebrow{color:rgba(0,0,0,0.7)}
 .testi .s-heading{color:#000000}
@@ -182,12 +182,12 @@ section{position:relative}
 .t-biz{font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(0,0,0,0.6);letter-spacing:0.3px;margin-top:5px;font-weight:300}
 
 /* ── WHO WE SERVE ── */
-.serve{background:#070D1C;border-top:1px solid rgba(141,170,162,0.15);border-bottom:1px solid rgba(141,170,162,0.15)}
+.serve{background:radial-gradient(ellipse at 50% 35%,#5C5C5C 0%,#3D3D3D 35%,#2A2A2A 65%,#1A1A1A 100%);border-top:1px solid rgba(141,170,162,0.15);border-bottom:1px solid rgba(141,170,162,0.15);min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
 .serve-inner{text-align:center}
 .serve-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:900px;margin:0 auto}
-.serve-card{padding:52px 44px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-align:left;cursor:pointer;transition:border-color 0.4s,background 0.4s;text-decoration:none;display:block}
-.serve-card:hover{border-color:rgba(141,170,162,0.35);background:rgba(141,170,162,0.05)}
-.serve-card.gold:hover{border-color:rgba(203,190,154,0.35);background:rgba(203,190,154,0.04)}
+.serve-card{padding:52px 44px;background:#070D1C;border:1px solid rgba(141,170,162,0.15);text-align:left;cursor:pointer;transition:border-color 0.4s,background 0.4s;text-decoration:none;display:block}
+.serve-card:hover{border-color:rgba(141,170,162,0.35);background:#0A1428}
+.serve-card.gold:hover{border-color:rgba(141,170,162,0.15);background:#070D1C}
 .serve-icon{width:40px;height:40px;margin-bottom:28px;display:block}
 .serve-tag{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:4px;color:rgba(141,170,162,0.7);text-transform:uppercase;font-weight:300;margin-bottom:14px}
 .serve-card.gold .serve-tag{color:rgba(203,190,154,0.7)}
@@ -322,8 +322,8 @@ ${css}
 <!-- WHO WE SERVE -->
 <section class="serve" id="serve">
 <div class="s-inner serve-inner">
-  <div class="s-eyebrow" style="text-align:center">Who we serve</div>
-  <h2 class="s-heading" style="text-align:center">Two worlds. One standard.</h2>
+  <div class="s-eyebrow" style="text-align:center;color:#FFFFFF">Who we serve</div>
+  <h2 class="s-heading" style="text-align:center;color:#FFFFFF">Two worlds. One standard.</h2>
   <div class="s-rule center"></div>
   <div class="serve-grid">
     <a class="serve-card" href="./trades_landing.html">
@@ -672,184 +672,8 @@ document.addEventListener('keydown', function(e) {
 </body>
 </html>`;
 
-// ─── SUB-PAGE GENERATOR ────────────────────────────────
-function buildSubPage(t) {
-  const c = t.colors;
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>${t.pageTitle}</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:${c.bg};font-family:'Cormorant Garamond','Georgia',serif;color:${c.text};overflow-x:hidden}
-nav{position:sticky;top:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:${c.navBg};border-bottom:1px solid ${c.border}}
-.n-brand{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;color:${c.accent};font-weight:400;text-transform:uppercase}
-.n-back{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:3px;color:${c.accent};border:1px solid ${c.borderAccent};padding:9px 22px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.3s}
-.n-back:hover{background:${c.accentFaint}}
-.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;background:${c.heroBg};position:relative;border-bottom:2px solid ${c.border}}
-.h-eye{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:6px;color:${c.accentMid};text-transform:uppercase;margin-bottom:48px;font-weight:300}
-.h-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,62px);letter-spacing:0.2em;color:${c.text};font-weight:300;text-transform:uppercase;line-height:1.1;margin-bottom:20px}
-.h-rule{display:flex;align-items:center;gap:14px;width:min(420px,80vw);margin:0 auto 20px}
-.h-rule-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,${c.accentFaint2},transparent)}
-.h-rule-diamond{width:4px;height:4px;background:${c.accentMid};transform:rotate(45deg);flex-shrink:0}
-.h-sub{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:5px;color:${c.accentMid};text-transform:uppercase;font-weight:300;margin-bottom:40px}
-.h-body{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:${c.bodyText};line-height:1.9;max-width:520px;margin:0 auto 48px}
-.h-btn{font-family:'Helvetica Neue',sans-serif;font-size:9px;letter-spacing:4px;color:${c.btnText};background:${c.accent};padding:16px 48px;text-transform:uppercase;cursor:pointer;border:1px solid ${c.accent};transition:all 0.35s;text-decoration:none;display:inline-block}
-.h-btn:hover{opacity:0.88}
-section{position:relative}
-.si{max-width:1000px;margin:0 auto;padding:88px 52px}
-.s-eye{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:5px;color:${c.accentMid};text-transform:uppercase;margin-bottom:18px;font-weight:300}
-.s-head{font-family:'Cormorant Garamond',serif;font-size:38px;letter-spacing:0.3px;color:${c.text};line-height:1.25;font-weight:300;margin-bottom:0}
-.s-rule{width:44px;height:1px;background:linear-gradient(90deg,${c.accentFaint2},transparent);margin:18px 0 44px}
-.why{background:${c.sectionAlt}}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.why-body{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:2;color:${c.bodyText};font-weight:300}
-.pain-cards{display:flex;flex-direction:column;gap:10px}
-.pain-card{padding:22px 26px;border:1px solid ${c.cardBorder};background:${c.cardBg}}
-.pain-label{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:3px;color:${c.accentMid};text-transform:uppercase;margin-bottom:8px;font-weight:400}
-.pain-txt{font-family:'Cormorant Garamond',serif;font-size:16px;color:${c.bodyText};line-height:1.8;font-weight:300}
-.steps-sec{background:${c.bg}}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.step{padding:44px 32px;background:${c.cardBg};border:1px solid ${c.cardBorder}}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:56px;color:${c.accent};letter-spacing:2px;margin-bottom:18px;line-height:1;font-weight:300}
-.step-acc{width:20px;height:1px;background:${c.accentFaint2};margin-bottom:18px}
-.step-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:${c.text};margin-bottom:12px;font-weight:400}
-.step-body{font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.85;color:${c.bodyText};font-weight:300}
-.cta-sec{background:${c.heroBg};text-align:center;border-top:2px solid ${c.border}}
-.c-sub{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:6px;color:${c.accentMid};text-transform:uppercase;margin-bottom:20px;font-weight:300}
-.c-head{font-family:'Cormorant Garamond',serif;font-size:52px;letter-spacing:2px;color:${c.text};margin-bottom:14px;line-height:1.1;font-weight:300}
-.c-body{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:${c.bodyText};margin-bottom:40px;font-weight:300;line-height:1.9;max-width:380px;margin-left:auto;margin-right:auto}
-.c-form{display:flex;gap:0;max-width:480px;margin:0 auto 18px}
-.c-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid ${c.borderAccent};border-right:none;color:${c.text};font-family:'Cormorant Garamond',serif;font-size:16px;padding:15px 20px;outline:none;font-style:italic}
-.c-input::placeholder{color:${c.bodyText}}
-.c-submit{background:${c.accent};color:${c.btnText};font-family:'Helvetica Neue',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:15px 28px;border:none;cursor:pointer;white-space:nowrap;font-weight:400}
-.c-fine{font-family:'Helvetica Neue',sans-serif;font-size:7px;color:${c.bodyText};letter-spacing:2px;text-transform:uppercase;font-weight:300}
-footer{padding:36px 52px;background:${c.navBg};display:flex;align-items:center;justify-content:space-between;border-top:1px solid ${c.border}}
-.f-logo{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;color:${c.bodyText};text-transform:uppercase;font-weight:300}
-.f-copy{font-family:'Helvetica Neue',sans-serif;font-size:7px;color:${c.bodyText};letter-spacing:1px;font-weight:300}
-@media(max-width:768px){.why-grid,.steps{grid-template-columns:1fr}nav,footer{padding-left:24px;padding-right:24px}.si{padding:64px 24px}}
-</style>
-</head>
-<body>
-<nav>
-  <div class="n-brand">One Page Loft</div>
-  <a class="n-back" href="landings_at_the_loft.html">&#8592; Back to main site</a>
-</nav>
-<section class="hero">
-  <div class="h-eye">${t.eyebrow}</div>
-  <h1 class="h-title">${t.heroTitle}</h1>
-  <div class="h-rule"><div class="h-rule-line"></div><div class="h-rule-diamond"></div><div class="h-rule-line"></div></div>
-  <div class="h-sub">${t.heroSub}</div>
-  <p class="h-body">${t.heroBody}</p>
-  <a class="h-btn" href="#cta">${t.heroCta}</a>
-</section>
-<section class="why">
-<div class="si">
-  <div class="why-grid">
-    <div>
-      <div class="s-eye">The reality</div>
-      <h2 class="s-head">${t.whyHead}</h2>
-      <div class="s-rule"></div>
-      <p class="why-body">${t.whyBody}</p>
-    </div>
-    <div class="pain-cards">
-      ${t.pains.map(p => `<div class="pain-card"><div class="pain-label">${p.label}</div><div class="pain-txt">${p.body}</div></div>`).join('\n      ')}
-    </div>
-  </div>
-</div>
-</section>
-<section class="steps-sec">
-<div class="si" style="text-align:center">
-  <div class="s-eye" style="text-align:center">How it works</div>
-  <h2 class="s-head" style="text-align:center">Three steps. One perfect page.</h2>
-  <div class="s-rule" style="margin:18px auto 44px"></div>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-acc"></div><div class="step-title">Tell us your story</div><div class="step-body">${t.step1}</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-acc"></div><div class="step-title">AI builds the draft</div><div class="step-body">${t.step2}</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-acc"></div><div class="step-title">We perfect it together</div><div class="step-body">${t.step3}</div></div>
-  </div>
-</div>
-</section>
-<section class="cta-sec" id="cta">
-<div class="si">
-  <div class="c-sub">Ready?</div>
-  <h2 class="c-head">${t.ctaHead}</h2>
-  <p class="c-body">${t.ctaBody}</p>
-  <div class="c-form"><input class="c-input" type="email" placeholder="your@email.com"/><button class="c-submit">Claim my page</button></div>
-  <div class="c-fine">Delivered in 48 hours &nbsp;&middot;&nbsp; No website required &nbsp;&middot;&nbsp; Satisfaction guaranteed</div>
-</div>
-</section>
-<footer>
-  <div class="f-logo">One Page Loft</div>
-  <div class="f-copy">&copy; 2025 One Page Loft &nbsp;&middot;&nbsp; All rights reserved</div>
-</footer>
-</body>
-</html>`;
-}
 
-// ─── TRADES CONFIG ──────────────────────────────────────
-const tradesConfig = {
-  pageTitle: 'One Page Loft — For Licensed Tradespeople',
-  eyebrow: 'One Page Loft &nbsp;&middot;&nbsp; For Licensed Trades',
-  heroTitle: 'Your Skills Are\nLegendary.\nNow Be Found.',
-  heroSub: 'Electricians &middot; Plumbers &middot; HVAC &middot; Contractors &middot; Welders',
-  heroBody: 'You built a business on grit and expertise. We build the one page that makes sure the next client finds you before they find anyone else.',
-  heroCta: 'Claim my trades page',
-  whyHead: 'The best trades businesses are invisible online.\nNot because they aren&#8217;t great.',
-  whyBody: 'Most trades businesses were built on word of mouth. That worked — until the next generation started searching online before calling anyone. If they can\'t find you in 10 seconds, they call someone else. It\'s that simple.',
-  pains: [
-    { label: 'No online presence', body: 'When someone searches for an electrician in your area, you don\'t show up. That\'s a job you didn\'t know you lost.' },
-    { label: 'Word of mouth has a ceiling', body: 'Referrals dry up. Slow seasons hit. A single landing page works for you 24 hours a day — without making a single call.' },
-    { label: 'DIY looks like DIY', body: 'A Wix page put together in an afternoon communicates exactly that. Clients read quality of presence as quality of work.' }
-  ],
-  step1: 'Tell us your trade, your service area, and what makes your business different. No tech knowledge needed — just 10 minutes of your time.',
-  step2: 'Our AI builds a custom page for your trade — optimized for local search, built to earn trust fast, and written in language your clients actually use.',
-  step3: 'One revision round to get it perfect. Then your page is live — and the next person searching for your service finds you first.',
-  ctaHead: 'Stop losing jobs\nyou don\'t know\nyou\'re losing.',
-  ctaBody: 'Enter your email. We\'ll send everything you need to get your trades page live in 48 hours.',
-  colors: {
-    bg: '#070D1C', navBg: '#0A1828', heroBg: 'radial-gradient(ellipse at 50% 42%,#0E2A1A 0%,#081A10 52%,#070D1C 100%)',
-    text: '#F6F4EF', bodyText: 'rgba(246,244,239,0.52)', accent: '#8DAAA2', btnText: '#000000',
-    accentMid: 'rgba(141,170,162,0.7)', accentFaint: 'rgba(141,170,162,0.08)', accentFaint2: 'rgba(141,170,162,0.4)',
-    border: 'rgba(141,170,162,0.4)', borderAccent: 'rgba(141,170,162,0.25)',
-    sectionAlt: '#8DAAA2', cardBg: 'rgba(255,255,255,0.32)', cardBorder: 'rgba(0,0,0,0.1)'
-  }
-};
-
-// ─── PROFESSIONALS CONFIG ───────────────────────────────
-const prosConfig = {
-  pageTitle: 'One Page Loft — For Licensed Professionals',
-  eyebrow: 'One Page Loft &nbsp;&middot;&nbsp; For Licensed Professionals',
-  heroTitle: 'Your Credentials\nDeserve a\nPresence to Match.',
-  heroSub: 'Attorneys &middot; CPAs &middot; Advisors &middot; Therapists &middot; Practitioners',
-  heroBody: 'You earned your license. You built your practice. The one thing missing is a digital presence that communicates your authority the moment a prospective client finds you.',
-  heroCta: 'Claim my professional page',
-  whyHead: 'Most professional practices have something online.\nAlmost none of it converts.',
-  whyBody: 'A generic template or an outdated website isn\'t just ineffective — it actively undermines your credibility. Clients judge your competence by your presence before they ever speak to you. Your page should reflect the professional you actually are.',
-  pains: [
-    { label: 'Outdated or generic', body: 'A website from 2017 on a shared template communicates that you haven\'t kept pace. That impression sticks before you say a word.' },
-    { label: 'Hard to contact or book', body: 'If a prospective client has to work to reach you, they won\'t. Intake and contact must be effortless.' },
-    { label: 'Missing trust signals', body: 'Credentials, specializations, process, and results need to be front and center — not buried in a wall of text.' }
-  ],
-  step1: 'Walk us through your practice — your credentials, your ideal clients, and the outcome you deliver. We handle everything from there.',
-  step2: 'Our AI crafts sophisticated copy and layout that speaks the language of your field — credibility first, conversion second.',
-  step3: 'One refinement round. Then your page is live: polished, professional, and built to convert informed clients who already trust you.',
-  ctaHead: 'A page that\nmatches the\nprofessional you are.',
-  ctaBody: 'Enter your email and we\'ll send everything you need to launch your professional page in 48 hours.',
-  colors: {
-    bg: '#070D1C', navBg: '#0A1828', heroBg: 'radial-gradient(ellipse at 50% 42%,#1C1A08 0%,#100E04 52%,#070D1C 100%)',
-    text: '#F6F4EF', bodyText: 'rgba(246,244,239,0.52)', accent: '#CBBE9A', btnText: '#000000',
-    accentMid: 'rgba(203,190,154,0.7)', accentFaint: 'rgba(203,190,154,0.08)', accentFaint2: 'rgba(203,190,154,0.4)',
-    border: 'rgba(203,190,154,0.4)', borderAccent: 'rgba(203,190,154,0.25)',
-    sectionAlt: '#8DAAA2', cardBg: 'rgba(255,255,255,0.32)', cardBorder: 'rgba(0,0,0,0.1)'
-  }
-};
-
-fs.writeFileSync('C:/Users/chris/Downloads/trades_landing.html', buildSubPage(tradesConfig));
-fs.writeFileSync('C:/Users/chris/Downloads/professionals_landing.html', buildSubPage(prosConfig));
+// Sub-pages are standalone mockups — edit trades_landing.html / professionals_landing.html directly
 console.log('Sub-pages written.');
 
 fs.writeFileSync('C:/Users/chris/Downloads/landings_at_the_loft.html', html);

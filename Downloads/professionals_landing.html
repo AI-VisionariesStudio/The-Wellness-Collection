@@ -3,118 +3,313 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>One Page Loft — For Licensed Professionals</title>
+<title>Hargrove Law Group — Estate Planning &amp; Business Law · Chicago, IL</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:#070D1C;font-family:'Cormorant Garamond','Georgia',serif;color:#F6F4EF;overflow-x:hidden}
-nav{position:sticky;top:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:#0A1828;border-bottom:1px solid rgba(203,190,154,0.4)}
-.n-brand{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;color:#CBBE9A;font-weight:400;text-transform:uppercase}
-.n-back{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:3px;color:#CBBE9A;border:1px solid rgba(203,190,154,0.25);padding:9px 22px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.3s}
-.n-back:hover{background:rgba(203,190,154,0.08)}
-.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;background:radial-gradient(ellipse at 50% 42%,#1C1A08 0%,#100E04 52%,#070D1C 100%);position:relative;border-bottom:2px solid rgba(203,190,154,0.4)}
-.h-eye{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:6px;color:rgba(203,190,154,0.7);text-transform:uppercase;margin-bottom:48px;font-weight:300}
-.h-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,62px);letter-spacing:0.2em;color:#F6F4EF;font-weight:300;text-transform:uppercase;line-height:1.1;margin-bottom:20px}
-.h-rule{display:flex;align-items:center;gap:14px;width:min(420px,80vw);margin:0 auto 20px}
-.h-rule-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(203,190,154,0.4),transparent)}
-.h-rule-diamond{width:4px;height:4px;background:rgba(203,190,154,0.7);transform:rotate(45deg);flex-shrink:0}
-.h-sub{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:5px;color:rgba(203,190,154,0.7);text-transform:uppercase;font-weight:300;margin-bottom:40px}
-.h-body{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:rgba(246,244,239,0.52);line-height:1.9;max-width:520px;margin:0 auto 48px}
-.h-btn{font-family:'Helvetica Neue',sans-serif;font-size:9px;letter-spacing:4px;color:#000000;background:#CBBE9A;padding:16px 48px;text-transform:uppercase;cursor:pointer;border:1px solid #CBBE9A;transition:all 0.35s;text-decoration:none;display:inline-block}
-.h-btn:hover{opacity:0.88}
-section{position:relative}
-.si{max-width:1000px;margin:0 auto;padding:88px 52px}
-.s-eye{font-family:'Helvetica Neue',sans-serif;font-size:7px;letter-spacing:5px;color:rgba(203,190,154,0.7);text-transform:uppercase;margin-bottom:18px;font-weight:300}
-.s-head{font-family:'Cormorant Garamond',serif;font-size:38px;letter-spacing:0.3px;color:#F6F4EF;line-height:1.25;font-weight:300;margin-bottom:0}
-.s-rule{width:44px;height:1px;background:linear-gradient(90deg,rgba(203,190,154,0.4),transparent);margin:18px 0 44px}
-.why{background:#8DAAA2}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.why-body{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:2;color:rgba(246,244,239,0.52);font-weight:300}
-.pain-cards{display:flex;flex-direction:column;gap:10px}
-.pain-card{padding:22px 26px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.32)}
-.pain-label{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(203,190,154,0.7);text-transform:uppercase;margin-bottom:8px;font-weight:400}
-.pain-txt{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(246,244,239,0.52);line-height:1.8;font-weight:300}
-.steps-sec{background:#070D1C}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.step{padding:44px 32px;background:rgba(255,255,255,0.32);border:1px solid rgba(0,0,0,0.1)}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:56px;color:#CBBE9A;letter-spacing:2px;margin-bottom:18px;line-height:1;font-weight:300}
-.step-acc{width:20px;height:1px;background:rgba(203,190,154,0.4);margin-bottom:18px}
-.step-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:#F6F4EF;margin-bottom:12px;font-weight:400}
-.step-body{font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.85;color:rgba(246,244,239,0.52);font-weight:300}
-.cta-sec{background:radial-gradient(ellipse at 50% 42%,#1C1A08 0%,#100E04 52%,#070D1C 100%);text-align:center;border-top:2px solid rgba(203,190,154,0.4)}
-.c-sub{font-family:'Helvetica Neue',sans-serif;font-size:8px;letter-spacing:6px;color:rgba(203,190,154,0.7);text-transform:uppercase;margin-bottom:20px;font-weight:300}
-.c-head{font-family:'Cormorant Garamond',serif;font-size:52px;letter-spacing:2px;color:#F6F4EF;margin-bottom:14px;line-height:1.1;font-weight:300}
-.c-body{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(246,244,239,0.52);margin-bottom:40px;font-weight:300;line-height:1.9;max-width:380px;margin-left:auto;margin-right:auto}
-.c-form{display:flex;gap:0;max-width:480px;margin:0 auto 18px}
-.c-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(203,190,154,0.25);border-right:none;color:#F6F4EF;font-family:'Cormorant Garamond',serif;font-size:16px;padding:15px 20px;outline:none;font-style:italic}
-.c-input::placeholder{color:rgba(246,244,239,0.52)}
-.c-submit{background:#CBBE9A;color:#000000;font-family:'Helvetica Neue',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:15px 28px;border:none;cursor:pointer;white-space:nowrap;font-weight:400}
-.c-fine{font-family:'Helvetica Neue',sans-serif;font-size:7px;color:rgba(246,244,239,0.52);letter-spacing:2px;text-transform:uppercase;font-weight:300}
-footer{padding:36px 52px;background:#0A1828;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(203,190,154,0.4)}
-.f-logo{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;color:rgba(246,244,239,0.52);text-transform:uppercase;font-weight:300}
-.f-copy{font-family:'Helvetica Neue',sans-serif;font-size:7px;color:rgba(246,244,239,0.52);letter-spacing:1px;font-weight:300}
-@media(max-width:768px){.why-grid,.steps{grid-template-columns:1fr}nav,footer{padding-left:24px;padding-right:24px}.si{padding:64px 24px}}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#070D1A;color:#F2EFE7;font-family:'Inter',sans-serif;overflow-x:hidden}
+
+nav{position:sticky;top:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(11,25,48,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,74,0.12)}
+.nav-name{font-family:'Playfair Display',serif;font-size:18px;color:#F2EFE7;letter-spacing:0.5px}
+.nav-name em{color:#C9A84A;font-style:italic}
+.nav-links{display:flex;gap:36px}
+.nav-link{font-size:11px;letter-spacing:2px;color:rgba(242,239,231,0.42);text-transform:uppercase;cursor:pointer;transition:color 0.2s}
+.nav-link:hover{color:#C9A84A}
+.nav-back{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;color:rgba(242,239,231,0.38);text-transform:uppercase;text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:#C9A84A}
+.nav-cta{background:transparent;border:1px solid rgba(201,168,74,0.4);color:#C9A84A;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;padding:10px 24px;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif}
+.nav-cta:hover{background:rgba(201,168,74,0.08);border-color:rgba(201,168,74,0.75)}
+
+.hero{display:grid;grid-template-columns:58fr 42fr;min-height:680px}
+.hero-left{position:relative;overflow:hidden}
+/* Show full image including branding — only a subtle left-edge vignette */
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:left top;filter:brightness(0.88) saturate(0.92)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(7,13,26,0.35) 0%,transparent 18%)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:64px 52px 64px 48px}
+.hero-eyebrow{font-size:9px;letter-spacing:5px;color:rgba(201,168,74,0.55);text-transform:uppercase;margin-bottom:24px}
+.hero-title{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;line-height:1.1;color:#F2EFE7;margin-bottom:20px}
+.hero-title em{color:#C9A84A}
+.hero-sub{font-size:15px;line-height:1.85;color:rgba(242,239,231,0.55);margin-bottom:32px;max-width:380px}
+.hero-btns{display:flex;gap:14px;margin-bottom:36px}
+.btn-gold{background:linear-gradient(135deg,#D4BC6A,#C9A84A);color:#070D1A;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:16px 38px;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;transition:opacity 0.2s}
+.btn-gold:hover{opacity:0.88}
+.btn-ghost{background:transparent;border:1px solid rgba(242,239,231,0.18);color:rgba(242,239,231,0.6);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:15px 28px;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:rgba(242,239,231,0.42)}
+.hero-creds{display:flex;flex-direction:column;gap:9px}
+.hero-cred{font-size:11px;color:rgba(242,239,231,0.35);letter-spacing:0.5px;display:flex;align-items:center;gap:10px}
+.hero-cred::before{content:'';width:16px;height:1px;background:rgba(201,168,74,0.4);flex-shrink:0}
+
+.creds-bar{background:rgba(201,168,74,0.05);border-top:1px solid rgba(201,168,74,0.1);border-bottom:1px solid rgba(201,168,74,0.1);padding:28px 80px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cred-val{font-family:'Playfair Display',serif;font-size:28px;color:#C9A84A;margin-bottom:6px}
+.cred-label{font-size:9px;letter-spacing:3px;color:rgba(242,239,231,0.42);text-transform:uppercase}
+.cred-div{width:1px;height:40px;background:rgba(201,168,74,0.1)}
+
+.si{max-width:1100px;margin:0 auto;padding:96px 48px}
+.s-eye{font-size:9px;letter-spacing:5px;color:rgba(201,168,74,0.6);text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.s-head{font-family:'Playfair Display',serif;font-size:36px;color:#F2EFE7;margin-bottom:16px;line-height:1.2}
+.s-rule{width:44px;height:1px;background:linear-gradient(90deg,#C9A84A,transparent);margin-bottom:48px}
+.s-rule.center{margin:16px auto 48px}
+
+.practice-sec{background:#0C1A38}
+.prac-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.prac-card{background:#070D1A;padding:48px 40px;border-left:3px solid transparent;transition:border-color 0.3s,background 0.3s}
+.prac-card:hover{border-left-color:#C9A84A;background:#0C1A38}
+.prac-num{font-family:'Playfair Display',serif;font-size:48px;color:rgba(201,168,74,0.07);margin-bottom:16px;line-height:1}
+.prac-title{font-family:'Playfair Display',serif;font-size:22px;color:#F2EFE7;margin-bottom:14px}
+.prac-body{font-size:13px;line-height:1.9;color:rgba(242,239,231,0.5)}
+
+.process-sec{background:#070D1A;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);position:relative}
+.proc-grid::before{content:'';position:absolute;top:32px;left:16.67%;right:16.67%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,74,0.22),rgba(201,168,74,0.22),transparent)}
+.proc-step{padding:40px 36px;text-align:center}
+.proc-num{width:64px;height:64px;border:1px solid rgba(201,168,74,0.28);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Playfair Display',serif;font-size:22px;color:#C9A84A;background:#070D1A;position:relative;z-index:1}
+.proc-title{font-family:'Playfair Display',serif;font-size:18px;color:#F2EFE7;margin-bottom:12px}
+.proc-body{font-size:13px;line-height:1.8;color:rgba(242,239,231,0.5)}
+
+.about-sec{background:#0C1A38;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-img{width:100%;height:580px;object-fit:cover;object-position:top;filter:brightness(0.85) saturate(0.9)}
+.about-name{font-family:'Playfair Display',serif;font-size:30px;color:#F2EFE7;margin-bottom:6px}
+.about-title{font-size:11px;letter-spacing:2.5px;color:#C9A84A;text-transform:uppercase;margin-bottom:28px}
+.about-body{font-size:14px;line-height:2;color:rgba(242,239,231,0.55);margin-bottom:24px}
+.about-bar{width:36px;height:1px;background:rgba(201,168,74,0.4);margin-bottom:28px}
+.about-creds{display:flex;flex-direction:column;gap:12px}
+.about-cred{display:flex;align-items:flex-start;gap:12px}
+.about-cred-mark{color:#C9A84A;font-size:12px;margin-top:2px;flex-shrink:0}
+.about-cred-text{font-size:13px;color:rgba(242,239,231,0.52);line-height:1.5}
+
+.testi-sec{background:#070D1A;min-height:100vh;display:flex;align-items:center;scroll-margin-top:72px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.t-card{background:#0C1A38;padding:42px 34px;border-top:1px solid rgba(201,168,74,0.07);transition:border-top-color 0.3s}
+.t-card:hover{border-top-color:rgba(201,168,74,0.32)}
+.t-open{font-family:'Playfair Display',serif;font-size:48px;color:rgba(201,168,74,0.13);line-height:0.8;margin-bottom:16px}
+.t-quote{font-family:'Playfair Display',serif;font-size:15px;line-height:1.8;color:rgba(242,239,231,0.65);margin-bottom:28px;font-style:italic}
+.t-rule{width:24px;height:1px;background:rgba(201,168,74,0.35);margin-bottom:14px}
+.t-name{font-size:11px;letter-spacing:1.5px;color:#C9A84A;text-transform:uppercase;font-weight:500}
+.t-detail{font-size:11px;color:rgba(242,239,231,0.35);margin-top:4px}
+
+.cta-sec{background:#0C1A38;border-top:1px solid rgba(201,168,74,0.1)}
+.cta-inner{max-width:680px;margin:0 auto;padding:96px 48px;text-align:center}
+.c-eye{font-size:9px;letter-spacing:5px;color:rgba(201,168,74,0.6);text-transform:uppercase;margin-bottom:20px}
+.c-head{font-family:'Playfair Display',serif;font-size:44px;color:#F2EFE7;margin-bottom:18px;line-height:1.15}
+.c-body{font-size:14px;line-height:1.9;color:rgba(242,239,231,0.52);margin-bottom:40px}
+.c-form{display:flex;gap:0;margin-bottom:16px}
+.c-input{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,74,0.2);border-right:none;color:#F2EFE7;font-size:13px;padding:16px 20px;outline:none;font-family:'Inter',sans-serif;letter-spacing:0.5px}
+.c-input::placeholder{color:rgba(242,239,231,0.2)}
+.c-input:focus{border-color:rgba(201,168,74,0.5)}
+.c-submit{background:linear-gradient(135deg,#D4BC6A,#C9A84A);color:#070D1A;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:16px 28px;border:none;cursor:pointer;white-space:nowrap;font-weight:500;transition:opacity 0.2s}
+.c-submit:hover{opacity:0.88}
+.c-fine{font-size:9px;letter-spacing:2px;color:rgba(242,239,231,0.28);text-transform:uppercase}
+
+footer{background:#040811;padding:44px 80px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,74,0.07)}
+.f-name{font-family:'Playfair Display',serif;font-size:16px;color:rgba(242,239,231,0.42)}
+.f-name em{color:#C9A84A;font-style:italic}
+.f-info{font-size:11px;color:rgba(242,239,231,0.26);text-align:center;line-height:1.9;letter-spacing:0.3px}
+.f-copy{font-size:10px;color:rgba(242,239,231,0.22);text-align:right;line-height:1.8}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}.hero-left{height:380px}
+  .hero-overlay{background:linear-gradient(to bottom,transparent 30%,#070D1A 100%)}
+  .hero-right{padding:48px 28px}.hero-title{font-size:36px}
+  .creds-bar{flex-wrap:wrap;padding:24px 28px;gap:24px}
+  .prac-grid,.testi-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}.proc-grid::before{display:none}
+  .about-inner{grid-template-columns:1fr}
+  nav{padding:0 24px}.nav-links{display:none}
+  .si{padding:64px 28px}footer{flex-direction:column;gap:20px;text-align:center;padding:36px 28px}
+  .f-copy,.f-info{text-align:center}
+}
 </style>
 </head>
 <body>
+
 <nav>
-  <div class="n-brand">One Page Loft</div>
-  <a class="n-back" href="landings_at_the_loft.html">&#8592; Back to main site</a>
+  <div class="nav-name">Hargrove <em>Law Group</em></div>
+  <div class="nav-links">
+    <span class="nav-link" onclick="document.getElementById('practice').scrollIntoView({behavior:'smooth'})">Practice Areas</span>
+    <span class="nav-link" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">Process</span>
+    <span class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</span>
+    <span class="nav-link" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">Testimonials</span>
+  </div>
+  <a class="nav-back" href="./landings_at_the_loft.html">&#8592; Home</a>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Schedule Consultation</button>
 </nav>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="h-eye">One Page Loft &nbsp;&middot;&nbsp; For Licensed Professionals</div>
-  <h1 class="h-title">Your Credentials
-Deserve a
-Presence to Match.</h1>
-  <div class="h-rule"><div class="h-rule-line"></div><div class="h-rule-diamond"></div><div class="h-rule-line"></div></div>
-  <div class="h-sub">Attorneys &middot; CPAs &middot; Advisors &middot; Therapists &middot; Practitioners</div>
-  <p class="h-body">You earned your license. You built your practice. The one thing missing is a digital presence that communicates your authority the moment a prospective client finds you.</p>
-  <a class="h-btn" href="#cta">Claim my professional page</a>
+  <div class="hero-left">
+    <img class="hero-img" src="./HargroveLawGroup.png" alt="Hargrove Law Group"/>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-eyebrow">Hargrove Law Group &nbsp;·&nbsp; Chicago, Illinois</div>
+    <h1 class="hero-title">Protecting<br/>What You've<br/><em>Built.</em></h1>
+    <p class="hero-sub">Estate planning and business law for professionals and business owners who've worked too hard to leave their legacy to chance.</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Schedule a Consultation</button>
+      <button class="btn-ghost" onclick="document.getElementById('practice').scrollIntoView({behavior:'smooth'})">Practice Areas</button>
+    </div>
+    <div class="hero-creds">
+      <div class="hero-cred">Illinois Bar — Admitted 2001</div>
+      <div class="hero-cred">AV Preeminent® Rated — Martindale-Hubbell</div>
+      <div class="hero-cred">Certified Estate Planning Specialist</div>
+      <div class="hero-cred">Complimentary Consultation for Qualified Clients</div>
+    </div>
+  </div>
 </section>
-<section class="why">
+
+<!-- CREDENTIALS BAR -->
+<div class="creds-bar">
+  <div><div class="cred-val">24</div><div class="cred-label">Years in Practice</div></div>
+  <div class="cred-div"></div>
+  <div><div class="cred-val">1,200+</div><div class="cred-label">Estates Planned</div></div>
+  <div class="cred-div"></div>
+  <div><div class="cred-val">$340M+</div><div class="cred-label">Assets Protected</div></div>
+  <div class="cred-div"></div>
+  <div><div class="cred-val">AV®</div><div class="cred-label">Martindale-Hubbell Rating</div></div>
+</div>
+
+<!-- PRACTICE AREAS -->
+<section class="practice-sec" id="practice">
 <div class="si">
-  <div class="why-grid">
+  <div style="text-align:center">
+    <div class="s-eye" style="text-align:center">How we can help</div>
+    <h2 class="s-head" style="text-align:center">Practice areas.</h2>
+    <div class="s-rule center"></div>
+  </div>
+  <div class="prac-grid">
+    <div class="prac-card">
+      <div class="prac-num">01</div>
+      <div class="prac-title">Estate Planning &amp; Trusts</div>
+      <p class="prac-body">Wills, revocable living trusts, irrevocable trusts, powers of attorney, and healthcare directives — crafted to protect your assets and your family's future with precision and care.</p>
+    </div>
+    <div class="prac-card">
+      <div class="prac-num">02</div>
+      <div class="prac-title">Business Succession Planning</div>
+      <p class="prac-body">You built this business. We make sure it outlasts you — or sells for what it's worth. Buy-sell agreements, ownership transfer structures, and exit planning done right.</p>
+    </div>
+    <div class="prac-card">
+      <div class="prac-num">03</div>
+      <div class="prac-title">Business Formation &amp; Contracts</div>
+      <p class="prac-body">LLCs, S-Corps, operating agreements, shareholder agreements, and commercial contracts. The legal foundation that lets you focus on growing, not worrying.</p>
+    </div>
+    <div class="prac-card">
+      <div class="prac-num">04</div>
+      <div class="prac-title">Asset Protection</div>
+      <p class="prac-body">Strategies that legally shield your personal and business assets from creditors, lawsuits, and unexpected claims — before you ever need them.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-sec" id="process">
+<div class="si">
+  <div style="text-align:center">
+    <div class="s-eye" style="text-align:center">How it works</div>
+    <h2 class="s-head" style="text-align:center">Clear from the first call.</h2>
+    <div class="s-rule center"></div>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-step">
+      <div class="proc-num">I</div>
+      <div class="proc-title">Initial Consultation</div>
+      <p class="proc-body">A focused 45-minute conversation — no charge, no pressure. We listen to your situation, answer your questions, and tell you plainly what you need and what it will cost.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">II</div>
+      <div class="proc-title">Custom Strategy</div>
+      <p class="proc-body">No templates. We draft a legal strategy built around your assets, your family structure, and your goals — then walk you through every decision before we put pen to paper.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">III</div>
+      <div class="proc-title">Executed &amp; Protected</div>
+      <p class="proc-body">Documents executed correctly, filed where required, explained in plain English. We stay available after close — because a plan that sits in a drawer is not a plan.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+<div class="si">
+  <div class="about-inner">
     <div>
-      <div class="s-eye">The reality</div>
-      <h2 class="s-head">Most professional practices have something online.
-Almost none of it converts.</h2>
-      <div class="s-rule"></div>
-      <p class="why-body">A generic template or an outdated website isn't just ineffective — it actively undermines your credibility. Clients judge your competence by your presence before they ever speak to you. Your page should reflect the professional you actually are.</p>
+      <div class="s-eye">Counsel</div>
+      <div class="about-name">James R. Hargrove</div>
+      <div class="about-title">Attorney at Law · Founding Partner</div>
+      <div class="about-bar"></div>
+      <p class="about-body">I've practiced estate planning and business law in Chicago for over two decades. In that time, I've seen what happens to families and businesses when the legal work is done right — and what happens when it isn't.</p>
+      <p class="about-body">My practice is deliberately small. I see every client myself. I answer my own calls. I write your documents. If you've built something worth protecting, I'd like to be the attorney you call first.</p>
+      <div class="about-creds">
+        <div class="about-cred"><div class="about-cred-mark">—</div><div class="about-cred-text">J.D., Northwestern University Pritzker School of Law, 1999</div></div>
+        <div class="about-cred"><div class="about-cred-mark">—</div><div class="about-cred-text">Illinois State Bar Association — Estate Planning Section Chair, 2018–2021</div></div>
+        <div class="about-cred"><div class="about-cred-mark">—</div><div class="about-cred-text">Certified Specialist in Estate Planning, Trust &amp; Probate Law</div></div>
+        <div class="about-cred"><div class="about-cred-mark">—</div><div class="about-cred-text">AV Preeminent® — Martindale-Hubbell's highest attorney rating</div></div>
+        <div class="about-cred"><div class="about-cred-mark">—</div><div class="about-cred-text">Illinois ARDC #6243107 · Admitted: Illinois, U.S. District Court (N.D. Ill.)</div></div>
+      </div>
     </div>
-    <div class="pain-cards">
-      <div class="pain-card"><div class="pain-label">Outdated or generic</div><div class="pain-txt">A website from 2017 on a shared template communicates that you haven't kept pace. That impression sticks before you say a word.</div></div>
-      <div class="pain-card"><div class="pain-label">Hard to contact or book</div><div class="pain-txt">If a prospective client has to work to reach you, they won't. Intake and contact must be effortless.</div></div>
-      <div class="pain-card"><div class="pain-label">Missing trust signals</div><div class="pain-txt">Credentials, specializations, process, and results need to be front and center — not buried in a wall of text.</div></div>
+    <div>
+      <img class="about-img" src="./CHATGPT IMAGE APR 22, 2026, 06_59_37 PM.PNG" alt="James R. Hargrove, Attorney"/>
     </div>
   </div>
 </div>
 </section>
-<section class="steps-sec">
-<div class="si" style="text-align:center">
-  <div class="s-eye" style="text-align:center">How it works</div>
-  <h2 class="s-head" style="text-align:center">Three steps. One perfect page.</h2>
-  <div class="s-rule" style="margin:18px auto 44px"></div>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-acc"></div><div class="step-title">Tell us your story</div><div class="step-body">Walk us through your practice — your credentials, your ideal clients, and the outcome you deliver. We handle everything from there.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-acc"></div><div class="step-title">AI builds the draft</div><div class="step-body">Our AI crafts sophisticated copy and layout that speaks the language of your field — credibility first, conversion second.</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-acc"></div><div class="step-title">We perfect it together</div><div class="step-body">One refinement round. Then your page is live: polished, professional, and built to convert informed clients who already trust you.</div></div>
-  </div>
-</div>
-</section>
-<section class="cta-sec" id="cta">
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec" id="reviews">
 <div class="si">
-  <div class="c-sub">Ready?</div>
-  <h2 class="c-head">A page that
-matches the
-professional you are.</h2>
-  <p class="c-body">Enter your email and we'll send everything you need to launch your professional page in 48 hours.</p>
-  <div class="c-form"><input class="c-input" type="email" placeholder="your@email.com"/><button class="c-submit">Claim my page</button></div>
-  <div class="c-fine">Delivered in 48 hours &nbsp;&middot;&nbsp; No website required &nbsp;&middot;&nbsp; Satisfaction guaranteed</div>
+  <div style="text-align:center">
+    <div class="s-eye" style="text-align:center">Client words</div>
+    <h2 class="s-head" style="text-align:center">What our clients say.</h2>
+    <div class="s-rule center"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="t-card">
+      <div class="t-open">"</div>
+      <p class="t-quote">James handled our family trust, my husband's business succession, and our property transfers — all in one cohesive plan. He made something that felt overwhelming completely manageable. We sleep better now.</p>
+      <div class="t-rule"></div>
+      <div class="t-name">Patricia &amp; Alan G.</div>
+      <div class="t-detail">Business Owners · Estate Planning &amp; Succession</div>
+    </div>
+    <div class="t-card">
+      <div class="t-open">"</div>
+      <p class="t-quote">I went to two other attorneys before James. The difference was night and day. He actually explained what he was doing and why. I felt like I had a counselor, not just a document processor.</p>
+      <div class="t-rule"></div>
+      <div class="t-name">Dr. Michael T.</div>
+      <div class="t-detail">Physician · Asset Protection &amp; Estate Planning</div>
+    </div>
+    <div class="t-card">
+      <div class="t-open">"</div>
+      <p class="t-quote">When my father passed without a proper plan, it took 18 months to settle his estate. When I hired James to fix mine, he had everything done in six weeks. Don't wait. Call him now.</p>
+      <div class="t-rule"></div>
+      <div class="t-name">Sandra M.</div>
+      <div class="t-detail">Real Estate Investor · Estate Planning</div>
+    </div>
+  </div>
 </div>
 </section>
+
+<!-- CTA -->
+<section class="cta-sec" id="cta">
+<div class="cta-inner">
+  <div class="c-eye">Get started</div>
+  <h2 class="c-head">Your first consultation is on us.</h2>
+  <p class="c-body">Enter your email and we'll be in touch within one business day to schedule your complimentary 45-minute consultation. No obligation. No pressure.</p>
+  <div class="c-form">
+    <input class="c-input" type="email" placeholder="your@email.com"/>
+    <button class="c-submit">Request Consultation</button>
+  </div>
+  <div class="c-fine">Confidential &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; Response within 24 hours</div>
+</div>
+</section>
+
 <footer>
-  <div class="f-logo">One Page Loft</div>
-  <div class="f-copy">&copy; 2025 One Page Loft &nbsp;&middot;&nbsp; All rights reserved</div>
+  <div class="f-name">Hargrove <em>Law Group</em></div>
+  <div class="f-info">📍 321 N. Clark Street, Suite 2800 · Chicago, IL 60654 &nbsp;·&nbsp; ☎ (312) 555-0247<br/>Illinois ARDC #6243107 &nbsp;·&nbsp; Licensed in Illinois &amp; Federal Courts</div>
+  <div class="f-copy">© 2025 Hargrove Law Group<br/>Attorney Advertising</div>
 </footer>
+
 </body>
 </html>

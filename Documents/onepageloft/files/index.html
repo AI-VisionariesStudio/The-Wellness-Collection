@@ -570,6 +570,31 @@ h1.hero-title em { font-style: italic; color: var(--warm-gold); }
 }
 .cta-location::before, .cta-location::after { content:''; width:20px; height:1px; background:var(--cashmere); opacity:0.3; }
 
+/* ─── CONTACT CARDS ───────────────────────────────────────── */
+.cta-cards {
+  display: flex; gap: 16px; justify-content: center;
+  margin-top: 52px; flex-wrap: wrap;
+}
+.cta-card {
+  flex: 1; min-width: 180px; max-width: 220px;
+  background: rgba(19,36,72,0.72);
+  border: 1px solid rgba(191,168,130,0.28);
+  padding: 28px 22px; text-decoration: none;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  transition: border-color 0.22s, background 0.22s, transform 0.22s;
+}
+.cta-card:hover { border-color: var(--warm-gold); background: rgba(19,36,72,0.92); transform: translateY(-3px); }
+.cta-card-icon { font-size: 18px; color: var(--warm-gold); line-height: 1; }
+.cta-card-label {
+  font-size: 7.5px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--cashmere); opacity: 0.6;
+}
+.cta-card-value {
+  font-family: 'Cormorant Garamond', serif; font-size: 15px;
+  font-weight: 400; color: var(--ivory); letter-spacing: 0.04em;
+  line-height: 1.4; text-align: center;
+}
+
 /* ─── FOOTER ──────────────────────────────────────────────── */
 footer {
   background: var(--cashmere); border-top: 1px solid rgba(10,22,40,0.12);
@@ -1130,6 +1155,25 @@ footer {
     <p class="cta-prefer-call">
       Prefer a quick call? <a href="mailto:hello@onepageloft.com?subject=Schedule%20a%20Call">Email us to schedule one.</a>
     </p>
+
+    <div class="cta-cards">
+      <a href="tel:9195909766" class="cta-card">
+        <span class="cta-card-icon">&#9990;</span>
+        <span class="cta-card-label">Call Us</span>
+        <span class="cta-card-value">(919) 590-9766</span>
+      </a>
+      <a href="mailto:hello@onepageloft.com" class="cta-card">
+        <span class="cta-card-icon">&#9993;</span>
+        <span class="cta-card-label">Email Us</span>
+        <span class="cta-card-value">hello@onepageloft.com</span>
+      </a>
+      <div class="cta-card">
+        <span class="cta-card-icon">&#9679;</span>
+        <span class="cta-card-label">We Serve</span>
+        <span class="cta-card-value">Raleigh · Durham · Chapel Hill &amp; Surrounding Areas</span>
+      </div>
+    </div>
+
     <p class="cta-location">Proudly Serving the Triangle · Raleigh · Durham · Chapel Hill</p>
   </div>
 </section>

@@ -7,6 +7,7 @@ function isComingSoonAllowed(pathname: string): boolean {
   return (
     pathname.startsWith('/coming-soon') ||
     pathname.startsWith('/api/waitlist') ||
+    pathname.startsWith('/api/leads') ||
     pathname.startsWith('/api/auth') ||
     pathname.startsWith('/api/health') ||
     pathname.startsWith('/_next') ||

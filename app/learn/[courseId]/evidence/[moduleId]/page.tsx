@@ -16,12 +16,16 @@ export default async function EvidencePage({
   const isAdmin = (session.user as any).role === 'ADMIN'
 
   try {
-    const [course, mod] = await Promise.all([
-      prisma.course.findUnique({ where: { id: params.courseId } }),
-      prisma.module.findUnique({ where: { id: params.moduleId } }),
-    ])
+    const course = await prisma.course.findUnique({ where: { id: params.courseId } })
+    if (!course) redirect('/dashboard')
 
-    if (!course || !mod || mod.courseId !== params.courseId) redirect('/dashboard')
+    // Raw query to avoid stale Prisma client type issues with new columns
+    const rows = await prisma.$queryRaw<
+      { id: string; courseId: string; title: string; evidenceDocumentUrl: string | null; evidenceDocumentName: string | null }[]
+    >`SELECT id, "courseId", title, "evidenceDocumentUrl", "evidenceDocumentName" FROM "Module" WHERE id = ${params.moduleId}`
+
+    const mod = rows[0]
+    if (!mod || mod.courseId !== params.courseId) redirect('/dashboard')
 
     if (!isAdmin) {
       const enrollment = await prisma.enrollment.findUnique({
@@ -29,6 +33,12 @@ export default async function EvidencePage({
       })
       if (!enrollment) redirect(`/courses/${params.courseId}`)
     }
+
+    const docUrl = mod.evidenceDocumentUrl
+    const docName = mod.evidenceDocumentName || 'Evidence Document'
+    const googleViewerUrl = docUrl
+      ? `https://docs.google.com/viewer?url=${encodeURIComponent(docUrl)}&embedded=true`
+      : null
 
     return (
       <div style={{ minHeight: '100vh', background: 'var(--bg)', overflowX: 'hidden' }}>
@@ -58,29 +68,25 @@ export default async function EvidencePage({
             Evidence Based Documentation
           </h1>
 
-          {mod.evidenceDocumentUrl ? (
+          {googleViewerUrl && docUrl ? (
             <>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0, fontWeight: 600 }}>
-                  {(mod as any).evidenceDocumentName || 'Evidence Document'}
+                  {docName}
                 </p>
-                <a
-                  href={mod.evidenceDocumentUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}
-                >
+                <a href={docUrl} target="_blank" rel="noreferrer"
+                  style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                   Download ↓
                 </a>
               </div>
               <iframe
-                src={mod.evidenceDocumentUrl}
-                title={(mod as any).evidenceDocumentName || 'Evidence Document'}
+                src={googleViewerUrl}
+                title={docName}
                 style={{ width: '100%', height: '78vh', minHeight: '560px', border: '1px solid var(--border)', borderRadius: 'var(--radius)' }}
               />
               <p style={{ textAlign: 'center', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', letterSpacing: '0.03em' }}>
                 Having trouble viewing?{' '}
-                <a href={mod.evidenceDocumentUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--text)', textDecoration: 'underline', textDecorationColor: 'var(--border)' }}>
+                <a href={docUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--text)', textDecoration: 'underline', textDecorationColor: 'var(--border)' }}>
                   Open document directly
                 </a>
               </p>

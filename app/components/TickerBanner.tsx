@@ -1,6 +1,6 @@
 const ITEMS = [
-  'Reflectively Designed',
   'Research-Grounded',
+  'Reflectively Designed',
   'Clinically Responsible',
 ]
 

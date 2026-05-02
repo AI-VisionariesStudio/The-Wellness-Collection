@@ -192,7 +192,7 @@ export default function AdminCourseEditorPage() {
                         <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           vdoCipher Video ID
                           <a
-                            href="https://dashboard.vdocipher.com/dashboard/videos"
+                            href="https://dashboard.vdocipher.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 400 }}

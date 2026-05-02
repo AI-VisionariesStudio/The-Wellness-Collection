@@ -761,8 +761,8 @@ export default function LandingPage() {
           {/* Text */}
           <div className="lp-creator-text">
             <span className="lp-creator-eyebrow lp-reveal lp-d2">Meet the Creator</span>
-            <span className="lp-creator-name lp-reveal lp-d3">Michelle R. Chasen</span>
-            <span className="lp-creator-title lp-reveal lp-d4">Licensed Therapist</span>
+            <span className="lp-creator-name lp-reveal lp-d3">Michelle R. Chasen, LCMHCA</span>
+            <span className="lp-creator-title lp-reveal lp-d4">Licensed Clinical Mental Health Therapist</span>
             <div className="lp-divider lp-reveal lp-d4" style={{ margin: '0 0 28px' }} />
             <p className="lp-creator-quote lp-reveal lp-d5">
               &ldquo;I built The Wellness Collection because I believe every person deserves

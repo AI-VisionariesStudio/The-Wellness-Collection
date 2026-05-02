@@ -14,6 +14,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       data: {
         ...(body.title !== undefined && { title: body.title }),
         ...(body.order !== undefined && { order: body.order }),
+        ...(body.evidenceDocumentUrl !== undefined && { evidenceDocumentUrl: body.evidenceDocumentUrl }),
+        ...(body.evidenceDocumentName !== undefined && { evidenceDocumentName: body.evidenceDocumentName }),
       },
     })
     return NextResponse.json(module)

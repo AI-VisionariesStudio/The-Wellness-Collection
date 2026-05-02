@@ -10,6 +10,7 @@ export default function AdminCourseEditorPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [uploading, setUploading] = useState<Record<string, boolean>>({})
+  const [uploadingEvidence, setUploadingEvidence] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     fetch(`/api/admin/courses/${courseId}?lessons=true`)
@@ -69,6 +70,36 @@ export default function AdminCourseEditorPage() {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ documentUrl: null, documentName: null }),
+    })
+  }
+
+  async function uploadEvidenceDocument(moduleId: string, file: File) {
+    setUploadingEvidence(prev => ({ ...prev, [moduleId]: true }))
+    const fd = new FormData()
+    fd.append('file', file)
+    const res = await fetch('/api/admin/upload', { method: 'POST', body: fd })
+    const data = await res.json()
+    if (res.ok) {
+      handleModuleChange(moduleId, 'evidenceDocumentUrl', data.url)
+      handleModuleChange(moduleId, 'evidenceDocumentName', data.name)
+      await fetch(`/api/admin/modules/${moduleId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ evidenceDocumentUrl: data.url, evidenceDocumentName: data.name }),
+      })
+    } else {
+      alert(data.error || 'Upload failed')
+    }
+    setUploadingEvidence(prev => ({ ...prev, [moduleId]: false }))
+  }
+
+  async function removeEvidenceDocument(moduleId: string) {
+    handleModuleChange(moduleId, 'evidenceDocumentUrl', null)
+    handleModuleChange(moduleId, 'evidenceDocumentName', null)
+    await fetch(`/api/admin/modules/${moduleId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ evidenceDocumentUrl: null, evidenceDocumentName: null }),
     })
   }
 
@@ -164,6 +195,36 @@ export default function AdminCourseEditorPage() {
                   <button onClick={() => deleteModule(module.id)} style={{ background: 'none', border: 'none', color: '#c0392b', cursor: 'pointer', fontSize: '12px' }}>
                     Delete Module
                   </button>
+                </div>
+              </div>
+
+              {/* Evidence document — per module */}
+              <div style={{ padding: '16px 28px', background: 'var(--header)', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', whiteSpace: 'nowrap', flexShrink: 0 }}>Evidence Doc</span>
+                <div style={{ flex: 1 }}>
+                  {module.evidenceDocumentUrl ? (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '9px 14px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', background: 'white' }}>
+                      <span style={{ fontSize: '16px' }}>📄</span>
+                      <a href={module.evidenceDocumentUrl} target="_blank" rel="noreferrer" style={{ flex: 1, fontSize: '13px', color: 'var(--text)', textDecoration: 'underline', textDecorationColor: 'var(--border)' }}>
+                        {module.evidenceDocumentName || module.evidenceDocumentUrl.split('/').pop()}
+                      </a>
+                      <button type="button" onClick={() => removeEvidenceDocument(module.id)}
+                        style={{ background: 'none', border: 'none', color: '#c0392b', cursor: 'pointer', fontSize: '12px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                        Remove
+                      </button>
+                    </div>
+                  ) : (
+                    <label style={{ all: 'unset', display: 'block', cursor: 'pointer' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 14px', border: '1px dashed var(--border)', borderRadius: 'var(--radius)', background: 'white', color: 'var(--text-muted)', fontSize: '13px' }}>
+                        {uploadingEvidence[module.id]
+                          ? <><span>⏳</span> Uploading…</>
+                          : <><span>📎</span> Upload evidence documentation (PDF, Word, etc.)</>}
+                      </div>
+                      <input type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" style={{ display: 'none' }}
+                        disabled={uploadingEvidence[module.id]}
+                        onChange={e => { const f = e.target.files?.[0]; if (f) uploadEvidenceDocument(module.id, f); e.target.value = '' }} />
+                    </label>
+                  )}
                 </div>
               </div>
 

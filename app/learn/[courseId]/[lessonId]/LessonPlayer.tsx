@@ -20,7 +20,7 @@ interface Lesson {
 interface Course {
   id: string
   title: string
-  modules: { id: string; title: string; lessons: Lesson[] }[]
+  modules: { id: string; title: string; evidenceDocumentUrl?: string | null; lessons: Lesson[] }[]
 }
 
 interface Props {
@@ -254,6 +254,20 @@ export default function LessonPlayer({
                     </p>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0' }}>
                       Comprehension + personal reflection
+                    </p>
+                  </div>
+                </Link>
+                <Link
+                  href={`/learn/${course.id}/evidence/${mod.id}`}
+                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 18px', borderBottom: '1px solid var(--border)', background: 'var(--mid)', textDecoration: 'none' }}
+                >
+                  <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--mid)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊕</div>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.04em', color: 'var(--text)', margin: 0, fontWeight: 500 }}>
+                      Evidence Based Documentation
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0' }}>
+                      Research &amp; source materials
                     </p>
                   </div>
                 </Link>

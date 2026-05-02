@@ -41,7 +41,7 @@ export default function ComingSoonPage() {
         }
         .cs-header-brand {
           font-family: var(--font-display);
-          font-size: 22px;
+          font-size: 30px;
           font-weight: 400;
           letter-spacing: 0.04em;
           color: var(--text);
@@ -50,7 +50,7 @@ export default function ComingSoonPage() {
         }
         .cs-header-sub {
           font-family: var(--font-body);
-          font-size: 10px;
+          font-size: 13px;
           letter-spacing: 0.28em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -169,7 +169,7 @@ export default function ComingSoonPage() {
         }
         .cs-footer-brand {
           font-family: var(--font-display);
-          font-size: 16px;
+          font-size: 22px;
           font-weight: 400;
           letter-spacing: 0.04em;
           color: var(--text);
@@ -178,7 +178,7 @@ export default function ComingSoonPage() {
         }
         .cs-footer-sub {
           font-family: var(--font-body);
-          font-size: 10px;
+          font-size: 13px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -195,7 +195,7 @@ export default function ComingSoonPage() {
         /* ── Mobile ── */
         @media (max-width: 640px) {
           .cs-header { padding: 40px 20px; }
-          .cs-header-brand { font-size: 19px; }
+          .cs-header-brand { font-size: 24px; }
           .cs-logo-section { padding: 40px 20px 0; }
           .cs-oval-logo { height: 160px !important; margin-bottom: -80px !important; }
           .cs-text-section { padding-top: 96px !important; padding-bottom: 40px !important; padding-left: 24px !important; padding-right: 24px !important; }

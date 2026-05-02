@@ -761,7 +761,7 @@ export default function LandingPage() {
           {/* Text */}
           <div className="lp-creator-text">
             <span className="lp-creator-eyebrow lp-reveal lp-d2">Meet the Creator</span>
-            <span className="lp-creator-name lp-reveal lp-d3">Michelle R. Chasen, <span style={{ fontSize: '0.82em', letterSpacing: '0.06em' }}>LCMHCA</span></span>
+            <span className="lp-creator-name lp-reveal lp-d3">Michelle R. Chasen, <span style={{ fontSize: '0.88em', letterSpacing: '0.06em' }}>LCMHCA</span></span>
             <span className="lp-creator-title lp-reveal lp-d4">Licensed Clinical Mental Health Therapist</span>
             <div className="lp-divider lp-reveal lp-d4" style={{ margin: '0 0 28px' }} />
             <p className="lp-creator-quote lp-reveal lp-d5">

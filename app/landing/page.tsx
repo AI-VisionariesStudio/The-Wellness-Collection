@@ -13,7 +13,7 @@ export default function LandingPage() {
       }),
       { threshold: 0.1 }
     )
-    document.querySelectorAll('.lp-reveal').forEach(el => observer.observe(el))
+    document.querySelectorAll('.lp-reveal, .lp-reveal-left').forEach(el => observer.observe(el))
     return () => observer.disconnect()
   }, [])
 
@@ -31,10 +31,22 @@ export default function LandingPage() {
           opacity: 1;
           transform: translateY(0);
         }
+        .lp-reveal-left {
+          opacity: 0;
+          transform: translateX(-32px);
+          transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .lp-reveal-left.lp-revealed {
+          opacity: 1;
+          transform: translateX(0);
+        }
         .lp-d1 { transition-delay: 0.1s; }
         .lp-d2 { transition-delay: 0.2s; }
         .lp-d3 { transition-delay: 0.3s; }
         .lp-d4 { transition-delay: 0.4s; }
+        .lp-d5 { transition-delay: 0.5s; }
+        .lp-d6 { transition-delay: 0.65s; }
+        .lp-d7 { transition-delay: 0.8s; }
 
 
         /* ── Logo bridge ── */
@@ -318,13 +330,85 @@ export default function LandingPage() {
           margin-top: 5px;
         }
 
-        /* ── Credibility ── */
-        .lp-credibility-section {
+        /* ── Meet the Creator ── */
+        .lp-creator-section {
           background: #fff;
           padding: 96px 40px;
-          text-align: center;
         }
-        .lp-credibility-inner { max-width: 660px; margin: 0 auto; }
+        .lp-creator-inner {
+          max-width: 960px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 340px 1fr;
+          gap: 72px;
+          align-items: center;
+        }
+        .lp-creator-photo-wrap {
+          position: relative;
+        }
+        .lp-creator-photo {
+          width: 100%;
+          aspect-ratio: 3 / 4;
+          object-fit: cover;
+          object-position: top center;
+          border-radius: var(--radius-md);
+          display: block;
+          filter: grayscale(8%);
+        }
+        .lp-creator-photo-frame {
+          position: absolute;
+          inset: -10px;
+          border: 1px solid var(--border-light);
+          border-radius: var(--radius-md);
+          pointer-events: none;
+          z-index: 0;
+        }
+        .lp-creator-text { }
+        .lp-creator-eyebrow {
+          font-family: var(--font-body);
+          font-size: 11px;
+          letter-spacing: 0.32em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          display: block;
+          margin-bottom: 18px;
+        }
+        .lp-creator-name {
+          font-family: var(--font-display);
+          font-size: 42px;
+          font-weight: 300;
+          color: var(--text);
+          letter-spacing: -0.01em;
+          line-height: 1.1;
+          margin-bottom: 6px;
+          display: block;
+        }
+        .lp-creator-title {
+          font-family: var(--font-body);
+          font-size: 11px;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          display: block;
+          margin-bottom: 28px;
+        }
+        .lp-creator-quote {
+          font-family: var(--font-display);
+          font-size: 19px;
+          font-weight: 300;
+          font-style: italic;
+          color: var(--text);
+          line-height: 1.85;
+          margin-bottom: 28px;
+        }
+        .lp-creator-body {
+          font-family: var(--font-display);
+          font-size: 17px;
+          font-weight: 300;
+          font-style: italic;
+          color: var(--text-muted);
+          line-height: 1.85;
+        }
 
         /* ── Final CTA ── */
         .lp-cta-section {
@@ -444,8 +528,12 @@ export default function LandingPage() {
           .lp-h1 { font-size: 42px !important; }
           .lp-hero-sub { font-size: 17px !important; }
 
+          .lp-creator-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .lp-creator-name { font-size: 32px !important; }
+          .lp-creator-photo { aspect-ratio: 4 / 3 !important; }
+
           .lp-about-section, .lp-pillars-section, .lp-modules-section,
-          .lp-testimonials-section, .lp-credibility-section, .lp-cta-section {
+          .lp-testimonials-section, .lp-creator-section, .lp-cta-section {
             padding: 64px 24px !important;
           }
           .lp-h2 { font-size: 30px !important; }
@@ -656,21 +744,39 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Credibility ── */}
-      <section className="lp-credibility-section">
-        <div className="lp-credibility-inner">
-          <span className="lp-section-label lp-reveal">Designed With Intention</span>
-          <div className="lp-divider lp-reveal" style={{ margin: '0 auto 28px' }} />
-          <h2 className="lp-h2 lp-reveal">
-            Built by those who do this work every day.
-          </h2>
-          <div className="lp-divider lp-reveal" />
-          <p className="lp-body-text lp-reveal">
-            The Wellness Collection was created by licensed therapists who wanted to bring
-            the depth of their professional training into a format that is accessible,
-            self-paced, and genuinely meaningful. Every word, every module, every moment
-            of this collection has been crafted with you in mind.
-          </p>
+      {/* ── Meet the Creator ── */}
+      <section className="lp-creator-section">
+        <div className="lp-creator-inner">
+
+          {/* Photo */}
+          <div className="lp-creator-photo-wrap lp-reveal-left">
+            <div className="lp-creator-photo-frame" />
+            <img
+              src="/michelle-chasen.jpeg"
+              alt="Michelle R. Chasen"
+              className="lp-creator-photo"
+            />
+          </div>
+
+          {/* Text */}
+          <div className="lp-creator-text">
+            <span className="lp-creator-eyebrow lp-reveal lp-d2">Meet the Creator</span>
+            <span className="lp-creator-name lp-reveal lp-d3">Michelle R. Chasen</span>
+            <span className="lp-creator-title lp-reveal lp-d4">Licensed Therapist</span>
+            <div className="lp-divider lp-reveal lp-d4" style={{ margin: '0 0 28px' }} />
+            <p className="lp-creator-quote lp-reveal lp-d5">
+              &ldquo;I built The Wellness Collection because I believe every person deserves
+              the kind of self-understanding that changes the way they move through the world —
+              and through the relationships that matter most to them.&rdquo;
+            </p>
+            <p className="lp-creator-body lp-reveal lp-d6">
+              I have spent years sitting with people who were carrying patterns they had never
+              been given language for. This collection is my way of putting that language
+              in your hands — at your pace, in your time, with the depth it deserves.
+            </p>
+            <div className="lp-divider lp-reveal lp-d7" style={{ margin: '28px 0 0' }} />
+          </div>
+
         </div>
       </section>
 

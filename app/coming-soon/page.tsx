@@ -30,12 +30,12 @@ export default function ComingSoonPage() {
       <style>{`
         @media (max-width: 640px) {
           .hero-logo { height: 80px !important; margin-bottom: -34px !important; }
-          .hero-body { padding: 38px 20px 12px !important; margin-left: -20px !important; margin-right: -20px !important; }
+          .hero-body { padding: 38px 20px 26px !important; margin-left: -20px !important; margin-right: -20px !important; }
           .hero-title { font-size: 26px !important; white-space: normal !important; }
           .cs-form { flex-direction: column !important; align-items: center !important; }
           .cs-form input, .cs-form button { width: 100% !important; max-width: 320px !important; box-sizing: border-box !important; }
           .cs-footer-label { display: block !important; text-align: center !important; text-indent: 0.22em !important; }
-          .cs-form-area { padding: 48px 20px 14px !important; }
+          .cs-form-area { padding: 58px 20px 14px !important; }
         }
       `}</style>
 

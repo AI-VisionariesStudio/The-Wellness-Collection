@@ -259,9 +259,9 @@ export default function LessonPlayer({
                 </Link>
                 <Link
                   href={`/learn/${course.id}/evidence/${mod.id}`}
-                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 18px', borderBottom: '1px solid var(--border)', background: 'var(--mid)', textDecoration: 'none' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 18px', borderBottom: '1px solid var(--border)', background: 'var(--bg)', textDecoration: 'none' }}
                 >
-                  <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--mid)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊕</div>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--bg)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊕</div>
                   <div>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.04em', color: 'var(--text)', margin: 0, fontWeight: 500 }}>
                       Evidence Based Documentation

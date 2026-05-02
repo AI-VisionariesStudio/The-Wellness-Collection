@@ -62,7 +62,9 @@ export default function ComingSoonPage() {
               </h1>
               <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '12px auto' }} />
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0' }}>
-                Therapist-created psychoeducation on attachment, the ways you've learned to protect yourself, and who you are becoming in your relationships.
+                Therapist-created psychoeducation on attachment,<br />
+                the ways you've learned to protect yourself,<br />
+                and who you are becoming in your relationships.
               </p>
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.65, marginTop: '10px', marginBottom: '0' }}>
                 Be the first to know when the doors open — and receive an introduction to the work as we prepare to begin.

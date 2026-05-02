@@ -29,13 +29,13 @@ export default function ComingSoonPage() {
 
       <style>{`
         @media (max-width: 640px) {
-          .hero-logo { height: 90px !important; margin-bottom: -38px !important; }
-          .hero-body { padding: 48px 24px 20px !important; }
-          .hero-title { font-size: 28px !important; white-space: normal !important; }
-          .cs-form { flex-direction: column !important; }
-          .cs-form input { width: 100% !important; }
+          .hero-logo { height: 80px !important; margin-bottom: -34px !important; }
+          .hero-body { padding: 38px 20px 12px !important; }
+          .hero-title { font-size: 26px !important; white-space: normal !important; }
+          .cs-form { flex-direction: column !important; align-items: center !important; }
+          .cs-form input, .cs-form button { width: 100% !important; max-width: 320px !important; box-sizing: border-box !important; }
           .cs-footer-label { display: block !important; text-align: center !important; text-indent: 0.22em !important; }
-          .cs-form-area { padding: 16px 24px 20px !important; }
+          .cs-form-area { padding: 12px 20px 14px !important; }
         }
       `}</style>
 
@@ -43,35 +43,35 @@ export default function ComingSoonPage() {
       <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
 
         {/* ── Hero ── */}
-        <section style={{ flex: 1, minHeight: 0, overflowY: 'auto', background: 'var(--bg)', paddingTop: '64px', textAlign: 'center' }}>
+        <section style={{ flex: 1, minHeight: 0, overflowY: 'auto', background: 'var(--bg)', paddingTop: '44px', textAlign: 'center' }}>
           <img
             src="/twc-logo.svg"
             alt="Gracefully Redefined — The Wellness Collection"
             className="hero-logo"
             style={{ height: '130px', objectFit: 'contain', display: 'block', margin: '0 auto -54px', position: 'relative', zIndex: 2 }}
           />
-          <div className="hero-body" style={{ background: '#fff', padding: '64px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div className="hero-body" style={{ background: '#fff', padding: '58px 60px 16px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
             <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '14px' }}>
                 <div style={{ width: '260px', height: '44px', overflow: 'hidden' }}>
                   <img src="/GR_FINAL_FILES_transparent.png" alt="Gracefully Redefined" style={{ width: '100%', height: 'auto' }} />
                 </div>
               </div>
-              <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 100, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0', whiteSpace: 'nowrap' }}>
+              <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: '50px', fontWeight: 100, lineHeight: 1.1, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: '0', whiteSpace: 'nowrap' }}>
                 Something beautiful is coming.
               </h1>
-              <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto' }} />
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '0' }}>
+              <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '12px auto' }} />
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '0' }}>
                 Therapist-created psychoeducation on attachment, the ways you've learned to protect yourself, and who you are becoming in your relationships.
               </p>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, color: 'var(--text-muted)', lineHeight: 1.75, marginTop: '18px', marginBottom: '0' }}>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.65, marginTop: '10px', marginBottom: '0' }}>
                 Be the first to know when the doors open — and receive an introduction to the work as we prepare to begin.
               </p>
             </div>
           </div>
 
           {/* Email capture ── sits on var(--bg), outside the white block */}
-          <div className="cs-form-area" style={{ background: 'var(--bg)', padding: '28px 60px 40px', textAlign: 'center' }}>
+          <div className="cs-form-area" style={{ background: 'var(--bg)', padding: '16px 60px 20px', textAlign: 'center' }}>
             <div style={{ maxWidth: '700px', margin: '0 auto' }}>
               {status === 'done' ? (
                 <div style={{ textAlign: 'center', padding: '8px 0' }}>
@@ -103,7 +103,7 @@ export default function ComingSoonPage() {
                       onChange={e => setFirstName(e.target.value)}
                       required
                       style={{
-                        padding: '13px 20px',
+                        padding: '10px 16px',
                         border: '1px solid var(--border)',
                         borderRadius: 'var(--radius)',
                         fontFamily: 'var(--font-body)',
@@ -121,7 +121,7 @@ export default function ComingSoonPage() {
                       onChange={e => setLastName(e.target.value)}
                       required
                       style={{
-                        padding: '13px 20px',
+                        padding: '10px 16px',
                         border: '1px solid var(--border)',
                         borderRadius: 'var(--radius)',
                         fontFamily: 'var(--font-body)',
@@ -139,7 +139,7 @@ export default function ComingSoonPage() {
                       onChange={e => setEmail(e.target.value)}
                       required
                       style={{
-                        padding: '13px 20px',
+                        padding: '10px 16px',
                         border: '1px solid var(--border)',
                         borderRadius: 'var(--radius)',
                         fontFamily: 'var(--font-body)',
@@ -154,7 +154,7 @@ export default function ComingSoonPage() {
                       type="submit"
                       disabled={status === 'loading'}
                       style={{
-                        padding: '13px 32px',
+                        padding: '10px 28px',
                         background: 'transparent',
                         border: '1px solid var(--text)',
                         borderRadius: 'var(--radius)',
@@ -186,7 +186,7 @@ export default function ComingSoonPage() {
         <TickerBanner />
 
         {/* ── Blush strip — pinned inside the 100vh container ── */}
-        <section style={{ background: 'var(--blush)', padding: '28px 40px', textAlign: 'center', flexShrink: 0 }}>
+        <section style={{ background: 'var(--blush)', padding: '14px 40px', textAlign: 'center', flexShrink: 0 }}>
           <span className="cs-footer-label" style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
             The Wellness Collection
           </span>

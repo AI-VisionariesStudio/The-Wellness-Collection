@@ -83,7 +83,7 @@ export default function FloatingHelp() {
     }
   }
 
-  if (pathname === '/coming-soon') return null
+  if (pathname === '/coming-soon' || pathname === '/landing') return null
 
   return (
     <>

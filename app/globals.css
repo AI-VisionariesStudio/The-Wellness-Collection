@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@media print {
+  * { display: none !important; }
+  body::before {
+    content: 'Printing is not permitted on this platform.' !important;
+    display: block !important;
+    font-family: serif;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 40vh;
+    color: #1a1a1a;
+  }
+}
+
 :root {
   /* ── Legacy vars (preserved — do not remove, used site-wide) ── */
   --bg: #F4EFEA;

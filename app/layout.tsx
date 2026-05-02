@@ -6,6 +6,7 @@ import Nav from '@/app/components/Nav'
 import FloatingHelp from '@/app/components/FloatingHelp'
 import DirectionManager from '@/app/components/DirectionManager'
 import ScrollReveal from '@/app/components/ScrollReveal'
+import DrmGuard from '@/app/components/DrmGuard'
 export const metadata: Metadata = {
   title: 'The Wellness Collection',
   description: 'Online courses designed to help you understand yourself, heal your patterns, and move forward with clarity and intention.',
@@ -15,34 +16,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `
-  // Disable right-click on videos
-  document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('contextmenu', function(e) {
-      if (e.target.tagName === 'VIDEO') {
-        e.preventDefault();
-        return false;
-      }
-    });
-  });
-
-  // Black screen on print screen key
-  document.addEventListener('keyup', function(e) {
-    if (e.key === 'PrintScreen') {
-      navigator.clipboard.writeText('');
-      document.body.style.filter = 'brightness(0)';
-      setTimeout(() => { document.body.style.filter = ''; }, 300);
-    }
-  });
-
-  // Disable keyboard shortcuts for saving
-  document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p' || e.key === 'u')) {
-      e.preventDefault();
-      return false;
-    }
-  });
-` }} />
         <link rel="icon" href="/icon.png?v=3" type="image/png" sizes="180x180" />
         <link rel="apple-touch-icon" href="/favicon-180x180.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ margin: 0, padding: 0 }} suppressHydrationWarning>
         <Providers>
+          <DrmGuard />
           <DirectionManager />
           <Nav />
           {children}

@@ -74,22 +74,32 @@ export default async function EvidencePage({
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0, fontWeight: 600 }}>
                   {docName}
                 </p>
-                <a href={docUrl} target="_blank" rel="noreferrer"
-                  style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                  Download ↓
-                </a>
+                {isAdmin && (
+                  <a href={docUrl} target="_blank" rel="noreferrer"
+                    style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    Download ↓
+                  </a>
+                )}
               </div>
-              <iframe
-                src={googleViewerUrl}
-                title={docName}
-                style={{ width: '100%', height: '78vh', minHeight: '560px', border: '1px solid var(--border)', borderRadius: 'var(--radius)' }}
-              />
-              <p style={{ textAlign: 'center', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', letterSpacing: '0.03em' }}>
-                Having trouble viewing?{' '}
-                <a href={docUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--text)', textDecoration: 'underline', textDecorationColor: 'var(--border)' }}>
-                  Open document directly
-                </a>
-              </p>
+              {/* Wrapper blocks the Google Docs toolbar row for non-admins */}
+              <div style={{ position: 'relative', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                <iframe
+                  src={googleViewerUrl}
+                  title={docName}
+                  style={{ width: '100%', height: '78vh', minHeight: '560px', border: 'none', display: 'block' }}
+                />
+                {!isAdmin && (
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '68px', zIndex: 10, background: 'transparent' }} />
+                )}
+              </div>
+              {isAdmin && (
+                <p style={{ textAlign: 'center', marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', letterSpacing: '0.03em' }}>
+                  Having trouble viewing?{' '}
+                  <a href={docUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--text)', textDecoration: 'underline', textDecorationColor: 'var(--border)' }}>
+                    Open document directly
+                  </a>
+                </p>
+              )}
             </>
           ) : (
             <div style={{ background: 'var(--header)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '48px 32px', textAlign: 'center' }}>

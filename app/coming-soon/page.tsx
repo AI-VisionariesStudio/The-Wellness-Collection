@@ -35,7 +35,7 @@ export default function ComingSoonPage() {
           .cs-form { flex-direction: column !important; align-items: center !important; }
           .cs-form input, .cs-form button { width: 100% !important; max-width: 320px !important; box-sizing: border-box !important; }
           .cs-footer-label { display: block !important; text-align: center !important; text-indent: 0.22em !important; }
-          .cs-form-area { padding: 12px 20px 14px !important; }
+          .cs-form-area { padding: 32px 20px 14px !important; }
         }
       `}</style>
 

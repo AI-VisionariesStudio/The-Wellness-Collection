@@ -1,5 +1,5 @@
 const ITEMS = [
-  'Research-Grounded',
+  'Research Grounded',
   'Reflectively Designed',
   'Clinically Responsible',
 ]

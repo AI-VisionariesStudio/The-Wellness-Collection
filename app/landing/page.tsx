@@ -530,7 +530,7 @@ export default function LandingPage() {
 
           .lp-creator-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
           .lp-creator-name { font-size: 32px !important; }
-          .lp-creator-photo { aspect-ratio: 4 / 3 !important; }
+          .lp-creator-photo { aspect-ratio: 4 / 5 !important; object-position: top center !important; }
 
           .lp-about-section, .lp-pillars-section, .lp-modules-section,
           .lp-testimonials-section, .lp-creator-section, .lp-cta-section {

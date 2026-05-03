@@ -22,7 +22,7 @@ export default async function CoursesPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
 
       {/* ── Hero ── */}
-      <section style={{ background: 'var(--cream)', padding: '40px 20px 24px', textAlign: 'center' }}>
+      <section style={{ background: 'var(--cream)', padding: '40px 20px 32px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
@@ -39,7 +39,7 @@ export default async function CoursesPage() {
       </section>
 
       {/* ── Course Grid ── */}
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '24px 20px 80px' }}>
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '48px 20px 80px' }}>
         {courses.length === 0 ? (
           <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '16px' }}>Courses coming soon.</p>
         ) : (
@@ -72,7 +72,7 @@ export default async function CoursesPage() {
                   {(course as any).thumbnail ? (
                     <img src={(course as any).thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
-                    <div style={{ width: '100%', height: '72px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '48px 48px' }} />
+                    <div style={{ width: '100%', height: '96px', background: '#fff', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '56px 56px' }} />
                   )}
 
                   <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>

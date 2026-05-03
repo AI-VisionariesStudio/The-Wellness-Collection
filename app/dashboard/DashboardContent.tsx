@@ -55,7 +55,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* ── Hero ── */}
-      <section style={{ background: 'var(--cream)', padding: '40px 20px 24px', textAlign: 'center' }}>
+      <section style={{ background: 'var(--cream)', padding: '40px 20px 32px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
@@ -68,7 +68,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
 
       <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
 
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '24px 20px 80px' }}>
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '48px 20px 80px' }}>
 
         {/* ── Certificates ── */}
         {certificates.length > 0 && (
@@ -159,7 +159,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                   {course.thumbnail ? (
                     <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
-                    <div style={{ width: '100%', height: '72px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '48px 48px' }} />
+                    <div style={{ width: '100%', height: '96px', background: '#fff', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '56px 56px' }} />
                   )}
 
                   <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>

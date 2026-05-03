@@ -319,13 +319,32 @@ export default function LessonPlayer({
                   <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--bg)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊕</div>
                   <div>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.04em', color: 'var(--text)', margin: 0, fontWeight: 500 }}>
-                      Evidence Based Documentation
+                      Evidence Based Resources
                     </p>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0' }}>
                       Research &amp; source materials
                     </p>
                   </div>
                 </Link>
+                {documentViewUrl && (
+                  <a
+                    href={documentViewUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => { if (window.innerWidth < 768) setSidebarOpen(false) }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 18px', borderBottom: '1px solid var(--border)', background: 'var(--cream)', textDecoration: 'none' }}
+                  >
+                    <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--cream)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊞</div>
+                    <div>
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.04em', color: 'var(--text)', margin: 0, fontWeight: 500 }}>
+                        Module Summary
+                      </p>
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0' }}>
+                        View summary PDF
+                      </p>
+                    </div>
+                  </a>
+                )}
               </div>
             ))}
           </aside>

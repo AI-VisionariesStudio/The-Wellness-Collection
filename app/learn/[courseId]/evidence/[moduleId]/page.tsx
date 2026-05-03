@@ -65,7 +65,7 @@ export default async function EvidencePage({
             {mod.title}
           </p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', margin: '0 0 32px', lineHeight: 1.1 }}>
-            Evidence Based Documentation
+            Evidence Based Resources
           </h1>
 
           {googleViewerUrl && docUrl ? (

@@ -233,7 +233,7 @@ export default function LessonPlayer({
           onClick={() => setSidebarOpen(o => !o)}
           style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '6px 14px', fontSize: '12px', fontFamily: 'var(--font-body)', letterSpacing: '0.06em', cursor: 'pointer', color: 'var(--text)', whiteSpace: 'nowrap', flexShrink: 0 }}
         >
-          {sidebarOpen ? 'Hide' : 'Lessons'}
+          {sidebarOpen ? 'Hide Sections' : 'Course Sections'}
         </button>
       </div>
 

@@ -427,6 +427,38 @@ export default function LandingPage() {
           margin-bottom: 0;
         }
 
+        /* ── Disclaimer ── */
+        .lp-disclaimer {
+          background: var(--cream);
+          padding: 40px 40px 0;
+          text-align: center;
+        }
+        .lp-disclaimer-inner {
+          max-width: 680px;
+          margin: 0 auto;
+          padding: 32px 0;
+          border-top: 1px solid var(--border-light);
+        }
+        .lp-disclaimer-label {
+          font-family: var(--font-body);
+          font-size: 10px;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          opacity: 0.6;
+          display: block;
+          margin-bottom: 12px;
+        }
+        .lp-disclaimer-text {
+          font-family: var(--font-body);
+          font-size: 12px;
+          line-height: 1.85;
+          color: var(--text-muted);
+          opacity: 0.65;
+          letter-spacing: 0.01em;
+          margin: 0;
+        }
+
         /* ── Footer ── */
         .lp-footer {
           background: var(--blush);
@@ -545,6 +577,7 @@ export default function LandingPage() {
           .lp-module-item { flex-direction: column; gap: 6px; }
           .lp-module-title { font-size: 20px !important; }
 
+          .lp-disclaimer { padding: 32px 24px 0; }
           .lp-footer { padding: 44px 24px; }
           .lp-footer-links { gap: 18px; }
         }
@@ -797,6 +830,19 @@ export default function LandingPage() {
           </a>
         </div>
       </section>
+
+      {/* ── Disclaimer ── */}
+      <div className="lp-disclaimer">
+        <div className="lp-disclaimer-inner">
+          <span className="lp-disclaimer-label">Disclaimer</span>
+          <p className="lp-disclaimer-text">
+            This resource is for psychoeducational and informational purposes only and is not a substitute for
+            psychotherapy, counseling, diagnosis, or medical advice. Purchasing this resource does not establish
+            a therapeutic relationship. If you are in crisis or need mental health support, please contact a
+            licensed provider or emergency services in your area.
+          </p>
+        </div>
+      </div>
 
       {/* ── Footer ── */}
       <footer className="lp-footer">

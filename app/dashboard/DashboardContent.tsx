@@ -159,7 +159,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                   {course.thumbnail ? (
                     <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
-                    <div style={{ width: '100%', height: '120px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '80px 80px' }} />
+                    <div style={{ width: '100%', height: '72px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '48px 48px' }} />
                   )}
 
                   <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>

@@ -56,12 +56,12 @@ export default function DashboardContent({ certificates, enrollments, progress, 
 
       <style>{`
         .db-hero-section { background: #fff; padding-top: 64px; text-align: center; }
-        .db-hero-logo { height: 140px; object-fit: contain; display: block; margin: 0 auto -56px; position: relative; z-index: 2; }
+        .db-hero-logo { width: 140px; height: 140px; object-fit: contain; display: block; margin: 0 auto -56px; position: relative; z-index: 2; }
         .db-hero-body { background: var(--cream); padding: 72px 60px 14px; text-align: center; position: relative; z-index: 1; }
         .db-main { max-width: 1060px; margin: 0 auto; padding: 24px 40px 80px; }
         @media (max-width: 640px) {
           .db-hero-section { padding-top: 40px; }
-          .db-hero-logo { height: 100px; margin-bottom: -44px; }
+          .db-hero-logo { width: 100px; height: 100px; margin-bottom: -44px; }
           .db-hero-body { padding: 60px 20px 14px; }
           .db-main { padding: 20px 16px 64px; }
         }
@@ -177,7 +177,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                     <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
                     <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
-                      <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain' }} />
+                      <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ width: '72px', height: '72px', objectFit: 'contain', display: 'block' }} />
                     </div>
                   )}
 

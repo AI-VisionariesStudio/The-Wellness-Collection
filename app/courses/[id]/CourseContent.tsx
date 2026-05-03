@@ -131,7 +131,7 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
-          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
+          style={{ width: '140px', height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
         />
         <div className="cc-hero-inner">
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>

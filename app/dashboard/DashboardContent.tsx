@@ -54,17 +54,30 @@ export default function DashboardContent({ certificates, enrollments, progress, 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
+      <style>{`
+        .db-hero-section { background: #fff; padding-top: 64px; text-align: center; }
+        .db-hero-logo { height: 140px; object-fit: contain; display: block; margin: 0 auto -56px; position: relative; z-index: 2; }
+        .db-hero-body { background: var(--cream); padding: 72px 60px 14px; text-align: center; position: relative; z-index: 1; }
+        .db-main { max-width: 1060px; margin: 0 auto; padding: 24px 40px 80px; }
+        @media (max-width: 640px) {
+          .db-hero-section { padding-top: 40px; }
+          .db-hero-logo { height: 100px; margin-bottom: -44px; }
+          .db-hero-body { padding: 60px 20px 14px; }
+          .db-main { padding: 20px 16px 64px; }
+        }
+      `}</style>
+
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', paddingTop: '64px', textAlign: 'center' }}>
+      <section className="db-hero-section">
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
-          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -56px', position: 'relative', zIndex: 2 }}
+          className="db-hero-logo"
         />
-        <div style={{ background: 'var(--cream)', padding: '46px 60px 14px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="db-hero-body">
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>The Wellness Collection</p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>Administrative Dashboard</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>Administrative Dashboard</h1>
             <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto 0' }} />
           </div>
         </div>
@@ -72,7 +85,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
 
       <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
 
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '24px 40px 80px' }}>
+      <main className="db-main">
 
         {/* ── Certificates ── */}
         {certificates.length > 0 && (

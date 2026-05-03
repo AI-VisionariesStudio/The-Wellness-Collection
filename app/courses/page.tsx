@@ -69,11 +69,7 @@ export default async function CoursesPage() {
                     </div>
                   )}
 
-                  {(course as any).thumbnail ? (
-                    <img src={(course as any).thumbnail} alt={course.title} style={{ width: '100%', height: '140px', objectFit: 'contain', display: 'block', background: '#fff', padding: '12px' }} />
-                  ) : (
-                    <div style={{ width: '100%', height: '96px', background: '#fff', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '56px 56px' }} />
-                  )}
+                  <div style={{ width: '100%', height: '140px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: `url(${(course as any).thumbnail || '/twc-logo.svg'})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: (course as any).thumbnail ? 'contain' : '64px 64px' }} />
 
                   <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                     <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 400, color: 'var(--text)', marginBottom: '6px', lineHeight: 1.2 }}>

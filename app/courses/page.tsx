@@ -72,9 +72,7 @@ export default async function CoursesPage() {
                   {(course as any).thumbnail ? (
                     <img src={(course as any).thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
-                    <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
-                      <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ width: '72px', height: '72px', objectFit: 'contain', display: 'block' }} />
-                    </div>
+                    <div style={{ width: '100%', height: '120px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '80px 80px' }} />
                   )}
 
                   <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>

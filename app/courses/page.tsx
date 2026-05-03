@@ -21,42 +21,25 @@ export default async function CoursesPage() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
 
-      <style>{`
-        .cp-hero-section { background: #fff; padding-top: 60px; text-align: center; }
-        .cp-hero-logo { width: 120px; height: 120px; object-fit: contain; display: block; margin: 0 auto -48px; position: relative; z-index: 2; }
-        .cp-hero-body { background: var(--cream); padding: 68px 60px 10px; text-align: center; position: relative; z-index: 1; }
-        .cp-main { max-width: 1060px; margin: 0 auto; padding: 8px 40px 80px; }
-        @media (max-width: 640px) {
-          .cp-hero-section { padding-top: 40px; }
-          .cp-hero-logo { width: 90px; height: 90px; margin-bottom: -36px; }
-          .cp-hero-body { padding: 52px 20px 10px; }
-          .cp-main { padding: 8px 16px 64px; }
-        }
-      `}</style>
-
       {/* ── Hero ── */}
-      <section className="cp-hero-section">
+      <section style={{ background: 'var(--cream)', padding: '40px 20px 24px', textAlign: 'center' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
-          className="cp-hero-logo"
+          style={{ width: '100px', height: '100px', objectFit: 'contain', display: 'block', margin: '0 auto 20px' }}
         />
-        <div className="cp-hero-body">
-          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '4px' }}>The Wellness Collection</p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
-              The Wellness Courses
-            </h1>
-            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '10px auto 10px' }} />
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-              Psychoeducational journeys rooted in trauma recovery, attachment healing, and nervous system care.
-            </p>
-          </div>
-        </div>
+        <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '8px' }}>The Wellness Collection</p>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, margin: '0 auto', maxWidth: '600px' }}>
+          The Wellness Courses
+        </h1>
+        <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '16px auto' }} />
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: '520px', margin: '0 auto' }}>
+          Psychoeducational journeys rooted in trauma recovery, attachment healing, and nervous system care.
+        </p>
       </section>
 
       {/* ── Course Grid ── */}
-      <main className="cp-main">
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '24px 20px 80px' }}>
         {courses.length === 0 ? (
           <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '16px' }}>Courses coming soon.</p>
         ) : (

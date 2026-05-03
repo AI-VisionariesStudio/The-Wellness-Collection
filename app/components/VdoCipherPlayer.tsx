@@ -7,14 +7,92 @@ interface Props {
   onEnded?: () => void
 }
 
+function isIOSNonSafari(): boolean {
+  if (typeof navigator === 'undefined') return false
+  const ua = navigator.userAgent
+  const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  if (!isIOS) return false
+  // Safari on iOS includes "Safari" but NOT "Chrome", "CriOS", "FxiOS", "EdgiOS", etc.
+  const isSafari = /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|Chrome/.test(ua)
+  return !isSafari
+}
+
+function IOSSafariPrompt() {
+  const [copied, setCopied] = useState(false)
+  const url = typeof window !== 'undefined' ? window.location.href : ''
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      /* ignore */
+    }
+  }
+
+  return (
+    <div style={{
+      aspectRatio: '16/9',
+      background: 'var(--header)',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-lg)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '24px',
+      gap: '16px',
+      textAlign: 'center',
+    }}>
+      <div style={{ fontSize: '28px', lineHeight: 1 }}>🎬</div>
+      <p style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 300, color: 'var(--text)', margin: 0, lineHeight: 1.4 }}>
+        Open in Safari to watch
+      </p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.6, maxWidth: '260px' }}>
+        Video playback is not supported in this browser on iOS. Copy the link below and paste it into Safari.
+      </p>
+      <button
+        onClick={copyLink}
+        style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '12px',
+          letterSpacing: '0.08em',
+          padding: '10px 24px',
+          background: copied ? 'var(--success)' : 'var(--text)',
+          color: 'white',
+          border: 'none',
+          borderRadius: 'var(--radius)',
+          cursor: 'pointer',
+          transition: 'background 0.2s',
+        }}
+      >
+        {copied ? '✓ Copied!' : 'Copy Link'}
+      </button>
+      <a
+        href={`x-safari-${url}`}
+        style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.06em', textDecoration: 'underline', textDecorationColor: 'var(--border)' }}
+      >
+        or tap here to open in Safari
+      </a>
+    </div>
+  )
+}
+
 export default function VdoCipherPlayer({ videoId, lessonId, onEnded }: Props) {
   const [otp, setOtp] = useState<string | null>(null)
   const [playbackInfo, setPlaybackInfo] = useState<string | null>(null)
   const [error, setError] = useState(false)
+  const [iosNonSafari, setIosNonSafari] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    setIosNonSafari(isIOSNonSafari())
+  }, [])
 
   // Fetch OTP from our backend when the component mounts or videoId changes
   useEffect(() => {
+    if (iosNonSafari) return
     setOtp(null)
     setPlaybackInfo(null)
     setError(false)
@@ -33,7 +111,7 @@ export default function VdoCipherPlayer({ videoId, lessonId, onEnded }: Props) {
         setPlaybackInfo(data.playbackInfo)
       })
       .catch(() => setError(true))
-  }, [videoId, lessonId])
+  }, [videoId, lessonId, iosNonSafari])
 
   // Listen for video end event from vdoCipher iframe
   useEffect(() => {
@@ -48,6 +126,8 @@ export default function VdoCipherPlayer({ videoId, lessonId, onEnded }: Props) {
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
   }, [onEnded])
+
+  if (iosNonSafari) return <IOSSafariPrompt />
 
   if (error) {
     return (

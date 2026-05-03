@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import CourseCompanion from '@/app/components/CourseCompanion'
@@ -113,13 +113,18 @@ export default function LessonPlayer({
   const router = useRouter()
   const [completed, setCompleted] = useState(initialCompleted)
   const [marking, setMarking] = useState(false)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [companionOpen, setCompanionOpen] = useState(false)
   const [resetting, setResetting] = useState<string | null>(null)
   const [showPrePulse, setShowPrePulse] = useState(true)
   const [showPostPulse, setShowPostPulse] = useState(false)
   const currentModule = course.modules.find(m => m.lessons.some(l => l.id === lesson.id))
   const moduleTitle = currentModule?.title ?? ''
+
+  // Open sidebar by default on wide screens only
+  useEffect(() => {
+    if (window.innerWidth >= 768) setSidebarOpen(true)
+  }, [])
 
   const resetLesson = useCallback(async (lessonId: string) => {
     setResetting(lessonId)
@@ -152,25 +157,81 @@ export default function LessonPlayer({
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
 
+      <style>{`
+        .lp-topbar-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 40vw;
+        }
+        .lp-sidebar {
+          width: 260px;
+          flex-shrink: 0;
+          position: sticky;
+          top: 52px;
+          height: calc(100vh - 52px);
+          overflow-y: auto;
+          background: var(--card);
+          border-right: 1px solid var(--border);
+        }
+        .lp-main-pad {
+          max-width: 760px;
+          padding: 32px 28px 64px;
+          margin-right: auto;
+        }
+        .lp-actions-row {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          flex-shrink: 0;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 767px) {
+          .lp-sidebar {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 52px);
+            z-index: 100;
+            border-right: none;
+            border-bottom: 1px solid var(--border);
+          }
+          .lp-main-pad {
+            padding: 20px 16px 56px;
+            margin-left: 0 !important;
+          }
+          .lp-actions-row {
+            width: 100%;
+            justify-content: stretch;
+          }
+          .lp-actions-row .btn {
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+          }
+        }
+      `}</style>
+
       {/* ── Lesson top bar ── */}
       <div style={{
         position: 'sticky', top: 0, zIndex: 50,
         background: 'var(--header)',
         borderBottom: '1px solid var(--border)',
-        padding: '0 24px',
+        padding: '0 16px',
         height: '52px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        gap: '16px',
+        gap: '12px',
       }}>
-        <Link href={`/courses/${course.id}`} style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+        <Link href={`/courses/${course.id}`} className="lp-topbar-title" style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
           ← {course.title}
         </Link>
-        <span style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.06em', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.06em', color: 'var(--text-muted)', whiteSpace: 'nowrap', flexShrink: 0 }}>
           {completedIds.length} / {allLessons.length} complete
         </span>
         <button
           onClick={() => setSidebarOpen(o => !o)}
-          style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '6px 14px', fontSize: '12px', fontFamily: 'var(--font-body)', letterSpacing: '0.06em', cursor: 'pointer', color: 'var(--text)', whiteSpace: 'nowrap' }}
+          style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '6px 14px', fontSize: '12px', fontFamily: 'var(--font-body)', letterSpacing: '0.06em', cursor: 'pointer', color: 'var(--text)', whiteSpace: 'nowrap', flexShrink: 0 }}
         >
           {sidebarOpen ? 'Hide' : 'Lessons'}
         </button>
@@ -179,18 +240,9 @@ export default function LessonPlayer({
       {/* ── Body: sidebar + main content + companion panel ── */}
       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
 
-        {/* Sidebar — sticky, stays at top-left as user scrolls */}
+        {/* Sidebar */}
         {sidebarOpen && (
-          <aside style={{
-            width: '260px',
-            flexShrink: 0,
-            position: 'sticky',
-            top: '52px',
-            height: 'calc(100vh - 52px)',
-            overflowY: 'auto',
-            background: 'var(--card)',
-            borderRight: '1px solid var(--border)',
-          }}>
+          <aside className="lp-sidebar">
             {course.modules.map((mod, mi) => (
               <div key={mod.id}>
                 <div style={{ padding: '14px 20px', background: 'var(--header)', borderBottom: '1px solid var(--border)' }}>
@@ -211,6 +263,7 @@ export default function LessonPlayer({
                     }}>
                       <Link
                         href={`/learn/${course.id}/${l.id}`}
+                        onClick={() => { if (window.innerWidth < 768) setSidebarOpen(false) }}
                         style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, minWidth: 0, textDecoration: 'none' }}
                       >
                         <div style={{
@@ -245,6 +298,7 @@ export default function LessonPlayer({
 
                 <Link
                   href={`/learn/${course.id}/reflection`}
+                  onClick={() => { if (window.innerWidth < 768) setSidebarOpen(false) }}
                   style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 18px', borderBottom: '1px solid var(--border)', background: 'var(--mid)', textDecoration: 'none' }}
                 >
                   <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--mid)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>✎</div>
@@ -259,6 +313,7 @@ export default function LessonPlayer({
                 </Link>
                 <Link
                   href={`/learn/${course.id}/evidence/${mod.id}`}
+                  onClick={() => { if (window.innerWidth < 768) setSidebarOpen(false) }}
                   style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 18px', borderBottom: '1px solid var(--border)', background: 'var(--bg)', textDecoration: 'none' }}
                 >
                   <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--bg)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊕</div>
@@ -278,19 +333,22 @@ export default function LessonPlayer({
 
         {/* ── Main content column ── */}
         <main style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
-          <div style={{ maxWidth: '760px', marginLeft: sidebarOpen ? 'max(0px, calc(50vw - 640px))' : 'auto', marginRight: 'auto', padding: '32px 28px 64px' }}>
+          <div
+            className="lp-main-pad"
+            style={{ marginLeft: sidebarOpen ? 'max(0px, calc(50vw - 640px))' : 'auto' }}
+          >
 
             {/* Lesson title + actions row */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', marginBottom: '28px', flexWrap: 'wrap' }}>
-              <div>
-                <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 300, color: 'var(--text)', margin: '0 0 4px', lineHeight: 1.3 }}>
+              <div style={{ minWidth: 0 }}>
+                <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px, 4vw, 26px)', fontWeight: 300, color: 'var(--text)', margin: '0 0 4px', lineHeight: 1.3 }}>
                   {lesson.title}
                 </h1>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', margin: 0, letterSpacing: '0.03em' }}>
                   {Math.floor(lesson.duration / 60)} min
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0, flexWrap: 'wrap' }}>
+              <div className="lp-actions-row">
                 <button
                   onClick={() => setCompanionOpen(o => !o)}
                   className="btn btn-outline"

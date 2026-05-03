@@ -21,17 +21,30 @@ export default async function CoursesPage() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
 
+      <style>{`
+        .cp-hero-section { background: #fff; padding-top: 60px; text-align: center; }
+        .cp-hero-logo { width: 120px; height: 120px; object-fit: contain; display: block; margin: 0 auto -48px; position: relative; z-index: 2; }
+        .cp-hero-body { background: var(--cream); padding: 68px 60px 10px; text-align: center; position: relative; z-index: 1; }
+        .cp-main { max-width: 1060px; margin: 0 auto; padding: 8px 40px 80px; }
+        @media (max-width: 640px) {
+          .cp-hero-section { padding-top: 40px; }
+          .cp-hero-logo { width: 90px; height: 90px; margin-bottom: -36px; }
+          .cp-hero-body { padding: 52px 20px 10px; }
+          .cp-main { padding: 8px 16px 64px; }
+        }
+      `}</style>
+
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', paddingTop: '28px', textAlign: 'center' }}>
+      <section className="cp-hero-section">
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
-          style={{ height: '120px', objectFit: 'contain', display: 'block', margin: '0 auto -48px', position: 'relative', zIndex: 2 }}
+          className="cp-hero-logo"
         />
-        <div style={{ background: 'var(--cream)', padding: '76px 60px 10px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="cp-hero-body">
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '4px' }}>The Wellness Collection</p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
               The Wellness Courses
             </h1>
             <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '10px auto 10px' }} />
@@ -43,7 +56,7 @@ export default async function CoursesPage() {
       </section>
 
       {/* ── Course Grid ── */}
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '8px 40px 80px' }}>
+      <main className="cp-main">
         {courses.length === 0 ? (
           <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '16px' }}>Courses coming soon.</p>
         ) : (
@@ -77,7 +90,7 @@ export default async function CoursesPage() {
                     <img src={(course as any).thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
                   ) : (
                     <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
-                      <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain' }} />
+                      <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ width: '72px', height: '72px', objectFit: 'contain', display: 'block' }} />
                     </div>
                   )}
 

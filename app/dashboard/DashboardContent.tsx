@@ -57,7 +57,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
       <style>{`
         .db-hero-section { background: #fff; padding-top: 64px; text-align: center; }
         .db-hero-logo { width: 140px; height: 140px; object-fit: contain; display: block; margin: 0 auto -56px; position: relative; z-index: 2; }
-        .db-hero-body { background: var(--cream); padding: 72px 60px 14px; text-align: center; position: relative; z-index: 1; }
+        .db-hero-body { background: var(--cream); padding: 76px 60px 14px; text-align: center; position: relative; z-index: 1; }
         .db-main { max-width: 1060px; margin: 0 auto; padding: 24px 40px 80px; }
         @media (max-width: 640px) {
           .db-hero-section { padding-top: 40px; }

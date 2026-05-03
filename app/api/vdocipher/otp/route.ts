@@ -21,9 +21,9 @@ export async function POST(req: NextRequest) {
     const isAdmin = (session.user as any).role === 'ADMIN'
     const userId = (session.user as any).id
 
-    // Verify the lesson exists and the vdoCipherId matches — prevents OTP fishing
-    // Non-admins must also be enrolled in the course this lesson belongs to
-    if (lessonId) {
+    if (!isAdmin) {
+      // Verify the lesson exists, vdoCipherId matches, and user is enrolled
+      if (!lessonId) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       const lesson = await prisma.lesson.findUnique({
         where: { id: lessonId },
         include: { module: { select: { courseId: true } } },
@@ -31,18 +31,13 @@ export async function POST(req: NextRequest) {
       if (!lesson || lesson.vdoCipherId !== videoId) {
         return NextResponse.json({ error: 'Invalid video' }, { status: 403 })
       }
-      if (!isAdmin) {
-        const courseId = (lesson as any).module?.courseId
-        const enrollment = courseId
-          ? await prisma.enrollment.findUnique({ where: { userId_courseId: { userId, courseId } } })
-          : null
-        if (!enrollment) {
-          return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-        }
+      const courseId = lesson.module?.courseId
+      const enrollment = courseId
+        ? await prisma.enrollment.findUnique({ where: { userId_courseId: { userId, courseId } } })
+        : null
+      if (!enrollment) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       }
-    } else if (!isAdmin) {
-      // No lessonId provided and not admin — deny
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
     const apiSecret = process.env.VDOCIPHER_API_SECRET

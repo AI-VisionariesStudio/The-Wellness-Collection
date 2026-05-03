@@ -43,6 +43,89 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
   return (
     <div suppressHydrationWarning style={{ minHeight: '100vh', background: 'var(--cream)', fontFamily: 'var(--font-body)', direction: dir }}>
 
+      <style>{`
+        .cc-hero-inner {
+          background: var(--cream);
+          padding: 72px 60px 48px;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        }
+        .cc-main {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 56px 40px 100px;
+        }
+        .cc-summary-bar {
+          background: #fff;
+          border: 1px solid var(--border);
+          padding: 28px 40px;
+          margin-bottom: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 32px;
+          flex-wrap: wrap;
+          box-shadow: 0 2px 12px rgba(180,160,140,0.08);
+        }
+        .cc-summary-actions {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 12px;
+          flex-shrink: 0;
+        }
+        .cc-module-header {
+          padding: 14px 28px;
+          background: var(--header);
+          border-bottom: 1px solid var(--border);
+        }
+        .cc-lesson-row {
+          padding: 14px 28px;
+          border-bottom: 1px solid var(--border-light);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .cc-lesson-meta {
+          display: flex;
+          gap: 14px;
+          align-items: center;
+        }
+        @media (max-width: 640px) {
+          .cc-hero-inner {
+            padding: 56px 20px 36px;
+          }
+          .cc-main {
+            padding: 32px 16px 72px;
+          }
+          .cc-summary-bar {
+            padding: 20px 20px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+          }
+          .cc-summary-actions {
+            align-items: stretch;
+          }
+          .cc-summary-actions a,
+          .cc-summary-actions button {
+            text-align: center;
+          }
+          .cc-module-header {
+            padding: 12px 16px;
+          }
+          .cc-lesson-row {
+            padding: 12px 16px;
+            gap: 8px;
+          }
+          .cc-lesson-meta {
+            flex-direction: row-reverse;
+            gap: 10px;
+          }
+        }
+      `}</style>
+
       {/* ── Hero ── */}
       <section style={{ background: '#fff', paddingTop: '80px', textAlign: 'center' }}>
         <img
@@ -50,16 +133,16 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
           alt="Gracefully Redefined"
           style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
         />
-        <div style={{ background: 'var(--cream)', padding: '72px 60px 48px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="cc-hero-inner">
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '16px' }}>The Wellness Collection</p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>{course.title}</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 4vw, 44px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>{course.title}</h1>
             <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '24px auto 0' }} />
           </div>
         </div>
       </section>
 
-      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '56px 40px 100px' }}>
+      <main className="cc-main">
 
         {isAdmin && (
           <div style={{ marginBottom: '28px', textAlign: 'center' }}>
@@ -70,13 +153,13 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
         )}
 
         {/* ── Course Summary Bar ── */}
-        <div style={{ background: '#fff', border: '1px solid var(--border)', padding: '28px 40px', marginBottom: '48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '32px', flexWrap: 'wrap', boxShadow: '0 2px 12px rgba(180,160,140,0.08)' }}>
-          <div style={{ flex: 1, minWidth: '240px' }}>
+        <div className="cc-summary-bar">
+          <div style={{ flex: 1, minWidth: 0 }}>
             <p style={{ color: 'var(--text-muted)', fontSize: '15px', lineHeight: 1.7, margin: 0 }}>{course.description}</p>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
+          <div className="cc-summary-actions">
             {enrollment && (
-              <div style={{ width: '220px' }}>
+              <div style={{ width: '100%', maxWidth: '220px' }}>
                 <div className="progress-bar" style={{ marginBottom: '6px' }}>
                   <div className="progress-fill" style={{ width: `${pct}%` }} />
                 </div>
@@ -84,7 +167,7 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
               </div>
             )}
             {!enrollment && !isAdmin && !course.isComingSoon && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
                 <div>
                   <span style={{ fontFamily: 'var(--font-display)', fontSize: '34px', fontWeight: 300, color: 'var(--text)' }}>
                     ${(course.price / 100).toFixed(0)}
@@ -145,7 +228,7 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
             <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>
               {T.curriculum}
             </p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '34px', fontWeight: 300, color: 'var(--text)', margin: '0 0 12px' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 300, color: 'var(--text)', margin: '0 0 12px' }}>
               {T.whatsInside}
             </h2>
             <div style={{ width: '32px', height: '1px', background: 'var(--border)', margin: '0 auto' }} />
@@ -154,7 +237,7 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
           <div style={{ display: 'grid', gap: '12px' }}>
             {course.modules.map((module, mi) => (
               <div key={module.id} style={{ background: '#fff', border: '1px solid var(--border)', overflow: 'hidden', boxShadow: '0 1px 8px rgba(180,160,140,0.06)' }}>
-                <div style={{ padding: '14px 28px', background: 'var(--header)', borderBottom: '1px solid var(--border)' }}>
+                <div className="cc-module-header">
                   <p style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>
                     {T.module} {mi + 1}
                   </p>
@@ -169,15 +252,8 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
                     const canAccess = !!(enrollment || isAdmin)
 
                     return (
-                      <div key={lesson.id} style={{
-                        padding: '14px 28px',
-                        borderBottom: '1px solid var(--border-light)',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        background: isCompleted ? '#f8fdf9' : '#fff',
-                      }}>
-                        <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
+                      <div key={lesson.id} className="cc-lesson-row" style={{ background: isCompleted ? '#f8fdf9' : '#fff' }}>
+                        <div className="cc-lesson-meta">
                           <div>
                             <div style={{ fontWeight: 500, color: 'var(--text)', fontSize: '14px' }}>{lesson.title}</div>
                             <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px', letterSpacing: '0.04em' }}>{Math.floor(lesson.duration / 60)} {T.min}</div>
@@ -194,11 +270,11 @@ export default function CourseContent({ course, isAdmin, enrollment, progress, p
                           </div>
                         </div>
                         {canAccess ? (
-                          <Link href={`/learn/${course.id}/${lesson.id}`} className="btn btn-outline" style={{ padding: '7px 16px', fontSize: '11px', letterSpacing: '0.08em' }}>
+                          <Link href={`/learn/${course.id}/${lesson.id}`} className="btn btn-outline" style={{ padding: '7px 16px', fontSize: '11px', letterSpacing: '0.08em', flexShrink: 0 }}>
                             {isCompleted ? T.review : T.start}
                           </Link>
                         ) : (
-                          <span style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>{T.enrollToAccess}</span>
+                          <span style={{ fontSize: '12px', color: 'var(--text-muted)', letterSpacing: '0.04em', flexShrink: 0 }}>{T.enrollToAccess}</span>
                         )}
                       </div>
                     )

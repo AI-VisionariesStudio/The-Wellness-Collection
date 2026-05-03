@@ -613,7 +613,7 @@ export default function LandingPage() {
           </h1>
           <div className="lp-divider lp-reveal lp-d2" />
           <p className="lp-hero-sub lp-reveal lp-d2">
-            Therapist-created psychoeducation on attachment,<br />
+            Licensed Mental Health Therapist-created psychoeducation on attachment,<br />
             the ways you&apos;ve learned to protect yourself,<br />
             and who you are becoming in your relationships.
           </p>
@@ -640,7 +640,7 @@ export default function LandingPage() {
             The Wellness Collection is a carefully curated psychoeducational platform
             designed to bring accessible, meaningful insight into the patterns that shape
             your relationships — and into who you are choosing to become. Created by
-            therapists. Designed for you.
+            Licensed Mental Health Therapists. Designed for you.
           </p>
         </div>
       </section>

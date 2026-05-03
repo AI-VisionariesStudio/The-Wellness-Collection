@@ -157,7 +157,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                   )}
 
                   {course.thumbnail ? (
-                    <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
+                    <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '140px', objectFit: 'contain', display: 'block', background: '#fff', padding: '12px' }} />
                   ) : (
                     <div style={{ width: '100%', height: '96px', background: '#fff', borderBottom: '1px solid var(--border)', backgroundImage: 'url(/twc-logo.svg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '56px 56px' }} />
                   )}

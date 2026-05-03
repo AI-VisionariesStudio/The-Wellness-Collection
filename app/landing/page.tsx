@@ -640,7 +640,7 @@ export default function LandingPage() {
             The Wellness Collection is a carefully curated psychoeducational platform
             designed to bring accessible, meaningful insight into the patterns that shape
             your relationships — and into who you are choosing to become. Created by
-            Licensed Mental Health Therapists. Designed for you.
+            A Licensed Mental Health Therapist. Designed for you.
           </p>
         </div>
       </section>

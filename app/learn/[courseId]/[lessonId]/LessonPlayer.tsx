@@ -319,7 +319,7 @@ export default function LessonPlayer({
                   <div style={{ width: '22px', height: '22px', borderRadius: '4px', background: 'var(--bg)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', flexShrink: 0 }}>⊕</div>
                   <div>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.04em', color: 'var(--text)', margin: 0, fontWeight: 500 }}>
-                      Evidence Based Resources
+                      Evidence Based Research
                     </p>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: '2px 0 0' }}>
                       Research &amp; source materials

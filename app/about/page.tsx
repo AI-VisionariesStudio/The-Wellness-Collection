@@ -12,31 +12,31 @@ export default function AboutPage() {
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* White top — logo layers into cream below */}
-      <div className="overlay-top">
+      <div className="overlay-top" style={{ padding: '28px 40px 0' }}>
         <Link href="/" style={{ display: 'block' }}>
           <img src="/twc-logo.svg" alt="Gracefully Redefined" className="overlay-logo" />
         </Link>
       </div>
 
       {/* Cream body */}
-      <div className="overlay-body">
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '14px' }}>
+      <div className="overlay-body" style={{ paddingTop: '108px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '6px' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>
             The Wellness Collection
           </p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', marginBottom: '0', lineHeight: 1.1 }}>
             {T.title}
           </h1>
-          <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '20px auto 0' }} />
+          <div style={{ width: '40px', height: '1px', background: 'var(--border)', margin: '14px auto 0' }} />
         </div>
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 20px' }}>
         <div style={{ background: '#fff', border: '1px solid var(--border)', boxShadow: '0 2px 24px rgba(180,160,140,0.10)' }}>
-          <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '18px 40px' }}>
+          <div style={{ background: 'var(--header)', borderBottom: '1px solid var(--border)', padding: '11px 40px' }}>
             <p style={{ fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
               Our Story
             </p>
           </div>
-          <div style={{ padding: '48px 40px' }}>
+          <div style={{ padding: '24px 40px' }}>
             <p style={{ fontSize: '17px', lineHeight: 1.85, color: 'var(--text-muted)' }}>{T.body}</p>
           </div>
         </div>

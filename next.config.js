@@ -29,7 +29,7 @@ const securityHeaders = [
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
       // iframes: vdoCipher player, Google Docs, Office Online, Stripe
-      "frame-src 'self' https://player.vdocipher.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com",
+      "frame-src 'self' https://player.vdocipher.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com https://*.supabase.co",
       // API connections: vdoCipher OTP, Sentry error reporting, Vercel analytics
       "connect-src 'self' https://dev.vdocipher.com https://*.ingest.sentry.io https://vitals.vercel-insights.com",
       // No plugins

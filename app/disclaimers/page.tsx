@@ -19,8 +19,8 @@ export default function Disclaimers() {
       </section>
 
       {/* Cream content */}
-      <section className="overlay-body" style={{ paddingLeft: '40px', paddingRight: '40px', paddingBottom: '100px' }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center', marginBottom: '56px' }}>
+      <section className="overlay-body" style={{ paddingTop: '68px', paddingLeft: '40px', paddingRight: '40px', paddingBottom: '100px' }}>
+        <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center', marginBottom: '28px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px' }}>
             {T.notice}
           </p>

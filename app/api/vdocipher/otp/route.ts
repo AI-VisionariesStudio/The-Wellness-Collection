@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
     if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    if ((session.user as any).role !== 'ADMIN') return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
     const body = await req.json()
     const { videoId, lessonId } = body
@@ -19,11 +18,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'videoId is required' }, { status: 400 })
     }
 
-    // Verify the lesson exists and the vdoCipherId matches — prevents OTP fishing
-    if (lessonId) {
-      const lesson = await prisma.lesson.findUnique({ where: { id: lessonId } })
+    const isAdmin = (session.user as any).role === 'ADMIN'
+    const userId = (session.user as any).id
+
+    if (!isAdmin) {
+      // Verify the lesson exists, vdoCipherId matches, and user is enrolled
+      if (!lessonId) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+      const lesson = await prisma.lesson.findUnique({
+        where: { id: lessonId },
+        include: { module: { select: { courseId: true } } },
+      })
       if (!lesson || lesson.vdoCipherId !== videoId) {
         return NextResponse.json({ error: 'Invalid video' }, { status: 403 })
+      }
+      const courseId = lesson.module?.courseId
+      const enrollment = courseId
+        ? await prisma.enrollment.findUnique({ where: { userId_courseId: { userId, courseId } } })
+        : null
+      if (!enrollment) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       }
     }
 

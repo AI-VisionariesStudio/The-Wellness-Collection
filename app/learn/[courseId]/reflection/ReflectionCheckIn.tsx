@@ -123,17 +123,11 @@ export default function ReflectionCheckIn({ courseId }: { courseId: string }) {
 
         {/* Header */}
         <p style={{ fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px' }}>
-          Module Reflection
-        </p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', margin: '0 0 8px', lineHeight: 1.1 }}>
-          &amp; Check-In
-        </h1>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '17px', fontStyle: 'italic', color: 'var(--text-muted)', margin: '0 0 32px' }}>
           Module 01 — Attachment Science &amp; Development
         </p>
-
-        {/* PDF Viewer */}
-        <ReflectionPdf />
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '44px', fontWeight: 300, color: 'var(--text)', margin: '0 0 32px', lineHeight: 1.1 }}>
+          Module Reflection &amp; Check-In
+        </h1>
 
         {/* Intro note */}
         <div style={{ background: 'var(--header)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '20px 24px', marginBottom: '52px' }}>
@@ -470,31 +464,6 @@ export default function ReflectionCheckIn({ courseId }: { courseId: string }) {
   )
 }
 
-function ReflectionPdf() {
-  const pdfPath = '/Module_01_Reflection_CheckIn.pdf'
-
-  return (
-    <div style={{ marginBottom: '52px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0, fontWeight: 600 }}>
-          Module 01 — Reflection &amp; Check-In Sheet
-        </p>
-        <a
-          href={pdfPath}
-          download
-          style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.06em', textTransform: 'uppercase' }}
-        >
-          Download ↓
-        </a>
-      </div>
-      <iframe
-        src={pdfPath}
-        title="Module 01 Reflection Check-In"
-        style={{ width: '100%', height: '70vh', minHeight: '500px', border: '1px solid var(--border)', borderRadius: 'var(--radius)' }}
-      />
-    </div>
-  )
-}
 
 function SectionBar({ children }: { children: React.ReactNode }) {
   return (

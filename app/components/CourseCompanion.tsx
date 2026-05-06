@@ -105,7 +105,7 @@ export default function CourseCompanion({
 
   return (
     <div
-      className="fade-in"
+      className="fade-in cc-companion-panel"
       style={{
         position: 'sticky',
         top: '52px',
@@ -121,6 +121,21 @@ export default function CourseCompanion({
         overflowY: 'hidden',
       }}
     >
+      <style>{`
+        @media (max-width: 767px) {
+          .cc-companion-panel {
+            position: fixed !important;
+            top: 52px !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            height: calc(100vh - 52px) !important;
+            z-index: 110;
+            border-left: none !important;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.12) !important;
+          }
+        }
+      `}</style>
       {/* Header */}
       <div style={{
         padding: '14px 16px', background: 'var(--header)',

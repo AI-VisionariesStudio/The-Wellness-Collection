@@ -54,8 +54,8 @@ export default function ResourcesPage() {
 
       <style>{`
         @media (max-width: 640px) {
-          .hero-logo { height: 140px !important; margin-bottom: -60px !important; }
-          .hero-body { padding: 80px 32px 60px !important; }
+          .hero-logo { height: 100px !important; margin-bottom: -44px !important; }
+          .hero-body { padding: 56px 24px 24px !important; }
           .hero-title { font-size: 40px !important; }
         }
 
@@ -65,7 +65,7 @@ export default function ResourcesPage() {
           gap: 28px;
           max-width: 1100px;
           margin: 0 auto;
-          padding: 64px 40px 100px;
+          padding: 28px 40px 100px;
         }
         .resource-card {
           border: 1px solid var(--border);
@@ -168,14 +168,14 @@ export default function ResourcesPage() {
       `}</style>
 
       {/* Hero */}
-      <section style={{ background: 'var(--bg)', paddingTop: '100px', textAlign: 'center' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: '64px', textAlign: 'center' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
           className="hero-logo"
-          style={{ height: '200px', objectFit: 'contain', display: 'block', margin: '0 auto -90px', position: 'relative', zIndex: 2 }}
+          style={{ height: '140px', objectFit: 'contain', display: 'block', margin: '0 auto -60px', position: 'relative', zIndex: 2 }}
         />
-        <div className="hero-body" style={{ background: 'var(--cream)', padding: '110px 60px 80px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="hero-body" style={{ background: 'var(--cream)', padding: '70px 60px 90px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
               <div style={{ width: '260px', height: '44px', overflow: 'hidden' }}>
@@ -185,7 +185,7 @@ export default function ResourcesPage() {
             <h1 className="hero-title" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(38px, 5.5vw, 56px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>
               Resources
             </h1>
-            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '36px auto' }} />
+            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto' }} />
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', lineHeight: 1.75, maxWidth: '480px', margin: '0 auto' }}>
               Thoughtfully crafted tools to support your healing — at your own pace, in your own time.
             </p>
@@ -197,7 +197,7 @@ export default function ResourcesPage() {
       <TickerBanner bg="#fff" />
 
       {/* Card Grid */}
-      <div className="resources-grid" style={{ paddingTop: '220px' }}>
+      <div className="resources-grid">
 
         {PAID_RESOURCES.map(resource => (
           <div key={resource.id} className="resource-card">

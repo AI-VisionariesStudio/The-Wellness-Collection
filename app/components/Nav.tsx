@@ -44,7 +44,7 @@ export default function Nav() {
     { label: T.contact, href: '/contact' },
   ]
 
-  if (pathname === '/coming-soon') return null
+  if (pathname === '/coming-soon' || pathname === '/landing') return null
 
   return (
     <nav style={{ background: 'var(--bg)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid var(--border-light)' }}>

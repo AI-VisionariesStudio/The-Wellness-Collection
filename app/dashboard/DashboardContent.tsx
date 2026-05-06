@@ -55,24 +55,20 @@ export default function DashboardContent({ certificates, enrollments, progress, 
     <div style={{ minHeight: '100vh', background: 'var(--cream)', direction: dir }}>
 
       {/* ── Hero ── */}
-      <section style={{ background: '#fff', paddingTop: '70px', textAlign: 'center' }}>
+      <section style={{ background: 'var(--cream)', padding: '40px 20px 32px', textAlign: 'center', borderBottom: '1px solid var(--border)' }}>
         <img
           src="/twc-logo.svg"
           alt="Gracefully Redefined"
-          style={{ height: '180px', objectFit: 'contain', display: 'block', margin: '0 auto -72px', position: 'relative', zIndex: 2 }}
+          style={{ width: '100px', height: '100px', objectFit: 'contain', display: 'block', margin: '0 auto 20px' }}
         />
-        <div style={{ background: 'var(--cream)', padding: '80px 60px 32px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>The Wellness Collection</p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, marginBottom: '0' }}>Administrative Dashboard</h1>
-            <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto 0' }} />
-          </div>
-        </div>
+        <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', marginBottom: '14px' }}>The Wellness Collection</p>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 4vw, 40px)', fontWeight: 300, color: 'var(--text)', lineHeight: 1.1, margin: 0 }}>Administrative Dashboard</h1>
+        <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '20px auto 0' }} />
       </section>
 
       <MilestoneCelebration totalCompleted={totalCompleted} streak={streak} />
 
-      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '36px 40px 80px' }}>
+      <main style={{ maxWidth: '1060px', margin: '0 auto', padding: '48px 20px 80px' }}>
 
         {/* ── Certificates ── */}
         {certificates.length > 0 && (
@@ -160,13 +156,7 @@ export default function DashboardContent({ certificates, enrollments, progress, 
                     </div>
                   )}
 
-                  {course.thumbnail ? (
-                    <img src={course.thumbnail} alt={course.title} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
-                  ) : (
-                    <div style={{ width: '100%', background: 'var(--cream)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 0', borderBottom: '1px solid var(--border)' }}>
-                      <img src="/twc-logo.svg" alt="Gracefully Redefined" style={{ height: '72px', objectFit: 'contain' }} />
-                    </div>
-                  )}
+                  <div style={{ width: '100%', height: '140px', background: 'var(--cream)', borderBottom: '1px solid var(--border)', backgroundImage: `url(${course.thumbnail || '/twc-logo.svg'})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: course.thumbnail ? 'cover' : '64px 64px' }} />
 
                   <div style={{ padding: '18px 24px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '19px', fontWeight: 400, color: 'var(--text)', marginBottom: '6px', lineHeight: 1.2 }}>

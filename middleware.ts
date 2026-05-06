@@ -6,6 +6,7 @@ import type { NextRequest } from 'next/server'
 function isComingSoonAllowed(pathname: string): boolean {
   return (
     pathname.startsWith('/coming-soon') ||
+    pathname.startsWith('/landing') ||
     pathname.startsWith('/api/waitlist') ||
     pathname.startsWith('/api/leads') ||
     pathname.startsWith('/api/auth') ||

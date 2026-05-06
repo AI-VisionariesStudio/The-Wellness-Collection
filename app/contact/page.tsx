@@ -47,7 +47,7 @@ export default function ContactPage() {
       </div>
 
       {/* Cream body */}
-      <div className="overlay-body" style={{ paddingTop: '68px', paddingBottom: '20px' }}>
+      <div className="overlay-body" style={{ paddingTop: '50px', paddingBottom: '20px' }}>
         <div style={{ textAlign: 'center', marginBottom: '12px' }}>
           <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>
             {T.heading}

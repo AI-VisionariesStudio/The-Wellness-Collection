@@ -204,6 +204,66 @@ h1.hero-title em { font-style: italic; color: var(--warm-gold); }
 @keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:.8} }
 
 /* ─── STRIP ───────────────────────────────────────────────── */
+/* ─── INAUGURAL PORTFOLIO BANNER ──────────────────────── */
+.inaugural-banner {
+  background: var(--alabaster);
+  border-top: 1px solid rgba(191,168,130,0.22);
+  border-bottom: 1px solid rgba(191,168,130,0.22);
+  padding: 18px 32px;
+  position: relative;
+}
+.inaugural-banner::before,
+.inaugural-banner::after {
+  content: '';
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  width: 60px; height: 1px;
+  background: var(--warm-gold);
+  opacity: 0.32;
+}
+.inaugural-banner::before { top: 0; }
+.inaugural-banner::after  { bottom: 0; }
+.inaugural-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 12px;
+  text-align: center;
+}
+.inaugural-mark {
+  color: var(--warm-gold);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  transform: scale(0.9);
+}
+.inaugural-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--warm-gold);
+  font-weight: 500;
+}
+.inaugural-divider {
+  color: rgba(191,168,130,0.55);
+  font-size: 10px;
+  margin: 0 4px;
+}
+.inaugural-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--deep-navy);
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 760px) {
+  .inaugural-banner { padding: 14px 20px; }
+  .inaugural-inner { gap: 8px; }
+  .inaugural-text { font-size: 13px; line-height: 1.5; }
+  .inaugural-divider { display: none; }
+}
+
 .strip {
   background: var(--deep-navy); padding: 17px 0; overflow: hidden;
 }
@@ -569,31 +629,6 @@ h1.hero-title em { font-style: italic; color: var(--warm-gold); }
   display: flex; align-items: center; justify-content: center; gap: 12px;
 }
 .cta-location::before, .cta-location::after { content:''; width:20px; height:1px; background:var(--cashmere); opacity:0.3; }
-
-/* ─── CONTACT CARDS ───────────────────────────────────────── */
-.cta-cards {
-  display: flex; gap: 16px; justify-content: center;
-  margin-top: 52px; flex-wrap: wrap;
-}
-.cta-card {
-  flex: 1; min-width: 180px; max-width: 220px;
-  background: rgba(19,36,72,0.72);
-  border: 1px solid rgba(191,168,130,0.28);
-  padding: 28px 22px; text-decoration: none;
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  transition: border-color 0.22s, background 0.22s, transform 0.22s;
-}
-.cta-card:hover { border-color: var(--warm-gold); background: rgba(19,36,72,0.92); transform: translateY(-3px); }
-.cta-card-icon { font-size: 18px; color: var(--warm-gold); line-height: 1; }
-.cta-card-label {
-  font-size: 7.5px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--cashmere); opacity: 0.6;
-}
-.cta-card-value {
-  font-family: 'Cormorant Garamond', serif; font-size: 15px;
-  font-weight: 400; color: var(--ivory); letter-spacing: 0.04em;
-  line-height: 1.4; text-align: center;
-}
 
 /* ─── FOOTER ──────────────────────────────────────────────── */
 footer {
@@ -991,6 +1026,16 @@ footer {
   <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
 </section>
 
+<!-- INAUGURAL PORTFOLIO BANNER — premium ribbon between hero and strip -->
+<aside class="inaugural-banner" aria-label="Inaugural Triangle Portfolio">
+  <div class="inaugural-inner">
+    <span class="inaugural-mark">◆</span>
+    <span class="inaugural-eyebrow">Inaugural Triangle Portfolio</span>
+    <span class="inaugural-divider">·</span>
+    <span class="inaugural-text">First 10 clients featured permanently on onepageloft.com — now booking through May 2026.</span>
+  </div>
+</aside>
+
 <!-- STRIP — IVORY -->
 <div class="strip">
   <div class="strip-track">
@@ -1155,25 +1200,6 @@ footer {
     <p class="cta-prefer-call">
       Prefer a quick call? <a href="mailto:hello@onepageloft.com?subject=Schedule%20a%20Call">Email us to schedule one.</a>
     </p>
-
-    <div class="cta-cards">
-      <a href="tel:9195909766" class="cta-card">
-        <span class="cta-card-icon">&#9990;</span>
-        <span class="cta-card-label">Call Us</span>
-        <span class="cta-card-value">(919) 590-9766</span>
-      </a>
-      <a href="mailto:hello@onepageloft.com" class="cta-card">
-        <span class="cta-card-icon">&#9993;</span>
-        <span class="cta-card-label">Email Us</span>
-        <span class="cta-card-value">hello@onepageloft.com</span>
-      </a>
-      <div class="cta-card">
-        <span class="cta-card-icon">&#9679;</span>
-        <span class="cta-card-label">We Serve</span>
-        <span class="cta-card-value">Raleigh · Durham · Chapel Hill &amp; Surrounding Areas</span>
-      </div>
-    </div>
-
     <p class="cta-location">Proudly Serving the Triangle · Raleigh · Durham · Chapel Hill</p>
   </div>
 </section>
@@ -1592,8 +1618,8 @@ window.addEventListener('scroll', () => {
       michael: "$197. Single-page, 5 sections, mobile-optimized, click-to-call, contact form. 72-hour delivery. One revision round. You own it outright."
     },
     faq_signature: {
-      erin:    "Signature is $497 — our most popular tier. Everything in Essential plus 8 refined sections (services grid, results, FAQ added), a custom palette built around your brand, subtle animations, testimonial section with photos, SEO-optimized meta data, and Google Business Profile setup help. Two revision rounds included.",
-      michael: "$497. 8 sections including services grid, results, FAQ. Custom palette to your brand. Animations, testimonial photos, SEO-optimized. Two revision rounds. Google Business setup included."
+      erin:    "Signature is $497 — our most popular tier. Everything in Essential plus 8 refined sections (services grid, results, FAQ added), a custom palette built around your brand, subtle animations, testimonial section with photos, and full on-page SEO — meta tags, structured data, and Open Graph for social sharing. Two revision rounds included.",
+      michael: "$497. 8 sections including services grid, results, FAQ. Custom palette to your brand. Animations, testimonial photos, full on-page SEO — meta tags, structured data, Open Graph. Two revision rounds."
     },
     faq_authority: {
       erin:    "Authority is $997 — by application only, limited slots. Everything in Signature plus a multi-page experience (landing + about + services), custom hero illustration direction, Calendly or booking integration, lead capture with automated email response, NC Bar or NC GC compliance review, and three revision rounds. Delivered in 7 days.",
@@ -1640,8 +1666,8 @@ window.addEventListener('scroll', () => {
       michael: "Custom email isn't included — Google Workspace at $6/user/month is the standard setup. We can recommend the right configuration. Email service itself is separate from the site."
     },
     faq_seo: {
-      erin:    "On-page SEO is included in every tier — proper meta titles, descriptions, structured data, mobile speed optimization, and Google Business Profile setup help. Ongoing monthly SEO services aren't part of the package — that's a different specialty. We focus on a strong foundation that ranks well locally for your name and core terms.",
-      michael: "On-page SEO included: meta tags, structured data, mobile speed, Google Business help. Ongoing monthly SEO is a separate specialty — not included. Foundation is solid for local search."
+      erin:    "On-page SEO is included in Signature and Authority tiers — meta titles, descriptions, structured data (Schema.org), Open Graph tags for social sharing, and mobile speed optimization. Google Business Profile is a separate Google product that requires identity verification — we can't automate it, but we'll give you a step-by-step guide to set it up in 10 minutes, or handle it for you as a $50 add-on.",
+      michael: "On-page SEO included in Signature and Authority: meta tags, Schema.org structured data, Open Graph, mobile optimization. Google Business Profile requires manual verification by Google — we provide setup instructions free or handle it as a $50 add-on."
     },
     faq_logo: {
       erin:    "Logo design isn't included — we focus on website craftsmanship. If you don't have a logo yet, we can recommend a great Triangle-area designer, or you can use a clean wordmark in your custom palette and add a logo later. Either way, we'll make the site look polished from day one.",
@@ -2344,12 +2370,17 @@ window.addEventListener('scroll', () => {
 (function () {
   var STRIPE_PUBLISHABLE_KEY = 'pk_test_51TRzupRfSnygIsy4kY3CEXhlBzN9KJqi7OBR56sWpiRlHELnZRqjDqLhnwxk0vfaQtSfOT9hw6Dwuxk2sBT7ZnId002vGRAOR';
 
-  var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+  var stripe = null;
   var checkout = null;
 
   var modal = document.getElementById('stripe-checkout-modal');
   var container = document.getElementById('stripe-checkout-container');
   var closeBtn = document.getElementById('stripe-checkout-close');
+
+  function getStripe() {
+    if (!stripe) { stripe = Stripe(STRIPE_PUBLISHABLE_KEY); }
+    return stripe;
+  }
 
   function openCheckout(tier) {
     fetch('/api/create-checkout-session', {
@@ -2363,7 +2394,7 @@ window.addEventListener('scroll', () => {
         alert('Sorry — could not start checkout. Please email hello@onepageloft.com and we will help directly.');
         return;
       }
-      stripe.createEmbeddedCheckoutPage({ fetchClientSecret: function() { return Promise.resolve(data.clientSecret); } })
+      getStripe().createEmbeddedCheckoutPage({ fetchClientSecret: function() { return Promise.resolve(data.clientSecret); } })
         .then(function (c) {
           checkout = c;
           container.innerHTML = '';
@@ -2385,6 +2416,7 @@ window.addEventListener('scroll', () => {
     document.body.style.overflow = '';
   }
 
+  // Wire up tier buttons
   document.querySelectorAll('[data-tier]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       openCheckout(btn.getAttribute('data-tier'));
@@ -2397,5 +2429,6 @@ window.addEventListener('scroll', () => {
   });
 })();
 </script>
+
 </body>
 </html>

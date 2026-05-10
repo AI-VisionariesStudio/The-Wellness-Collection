@@ -420,14 +420,13 @@ export default async function AdminPage() {
     console.error('[AdminPage]', err)
     return (
       <div style={{ minHeight: '100vh', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="card" style={{ padding: '48px', textAlign: 'center', maxWidth: '460px' }}>
+        <div className="card" style={{ padding: '48px', textAlign: 'center', maxWidth: '560px' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', color: 'var(--text)', marginBottom: '12px' }}>
             Something&apos;s not quite right on our end.
           </h2>
-          <p style={{ color: 'var(--text-muted)', marginBottom: '28px', lineHeight: 1.7 }}>
-            Please try refreshing — we&apos;ll have things back to normal shortly. If this continues, reach out to us at{' '}
-            <a href="mailto:support@gracefullyredefined.com" style={{ color: 'var(--gold)' }}>support@gracefullyredefined.com</a>
-          </p>
+          <pre style={{ textAlign: 'left', background: '#f5f5f5', padding: '16px', borderRadius: '6px', fontSize: '12px', color: '#c00', overflowX: 'auto', marginBottom: '24px', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+            {err?.message ?? String(err)}
+          </pre>
           <Link href="/admin" className="btn btn-primary">Try Again</Link>
         </div>
       </div>

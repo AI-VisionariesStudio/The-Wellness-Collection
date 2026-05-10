@@ -1,8 +1,29 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import TickerBanner from '@/app/components/TickerBanner'
 
 export default function LandingPage() {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) return
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/leads/wellness', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: `${firstName.trim()} ${lastName.trim()}`, email: email.trim() }),
+      })
+      setStatus(res.ok ? 'done' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => {
@@ -825,9 +846,49 @@ export default function LandingPage() {
             Join the waitlist and be among the first to access The Wellness Collection
             when we open our doors. Be the first to know — and the first to begin.
           </p>
-          <a href="/coming-soon" className="lp-btn-outline lp-reveal lp-d1">
-            Join the Waitlist
-          </a>
+          {status === 'done' ? (
+            <p className="lp-body-text lp-reveal" style={{ color: 'var(--text)', fontStyle: 'normal' }}>
+              You&apos;re on the list. We&apos;ll be in touch soon.
+            </p>
+          ) : (
+            <form onSubmit={handleSubmit} className="lp-reveal lp-d1" style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px', margin: '0 auto' }}>
+              <input
+                type="text"
+                placeholder="First name"
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
+                required
+                style={{ padding: '14px 16px', fontSize: '14px', border: '1px solid var(--border-light)', fontFamily: 'var(--font-body)', background: '#fff', color: 'var(--text)' }}
+              />
+              <input
+                type="text"
+                placeholder="Last name"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
+                required
+                style={{ padding: '14px 16px', fontSize: '14px', border: '1px solid var(--border-light)', fontFamily: 'var(--font-body)', background: '#fff', color: 'var(--text)' }}
+              />
+              <input
+                type="email"
+                placeholder="Email address"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                style={{ padding: '14px 16px', fontSize: '14px', border: '1px solid var(--border-light)', fontFamily: 'var(--font-body)', background: '#fff', color: 'var(--text)' }}
+              />
+              {status === 'error' && (
+                <p style={{ color: '#c84644', fontSize: '13px', margin: 0 }}>Something went wrong. Please try again.</p>
+              )}
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="lp-btn-outline"
+                style={{ opacity: status === 'loading' ? 0.6 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}
+              >
+                {status === 'loading' ? 'Joining…' : 'Join the Waitlist'}
+              </button>
+            </form>
+          )}
         </div>
       </section>
 

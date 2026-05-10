@@ -867,7 +867,7 @@ export default function LandingPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="lp-reveal lp-d1" style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px', margin: '0 auto' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px', margin: '0 auto' }}>
               <input
                 type="text"
                 placeholder="First name"

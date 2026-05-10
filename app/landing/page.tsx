@@ -871,6 +871,7 @@ export default function LandingPage() {
               <input
                 type="text"
                 placeholder="First name"
+                autoComplete="given-name"
                 value={firstName}
                 onChange={e => setFirstName(e.target.value)}
                 required
@@ -879,6 +880,7 @@ export default function LandingPage() {
               <input
                 type="text"
                 placeholder="Last name"
+                autoComplete="family-name"
                 value={lastName}
                 onChange={e => setLastName(e.target.value)}
                 required
@@ -887,6 +889,7 @@ export default function LandingPage() {
               <input
                 type="email"
                 placeholder="Email address"
+                autoComplete="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required

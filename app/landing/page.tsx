@@ -847,9 +847,25 @@ export default function LandingPage() {
             when we open our doors. Be the first to know — and the first to begin.
           </p>
           {status === 'done' ? (
-            <p className="lp-body-text lp-reveal" style={{ color: 'var(--text)', fontStyle: 'normal' }}>
-              You&apos;re on the list. We&apos;ll be in touch soon.
-            </p>
+            <div style={{ textAlign: 'center', padding: '8px 0' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', margin: '0 0 20px' }}>
+                Gracefully Redefined
+              </p>
+              <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: 300, color: 'var(--text)', margin: '0 0 16px', lineHeight: 1.2 }}>
+                You&apos;re on the list.
+              </p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--text-muted)', margin: '0 0 28px', lineHeight: 1.75 }}>
+                We&apos;ll be in touch the moment we open our doors.
+              </p>
+              <div style={{ width: '40px', height: '1px', background: 'var(--mid)', margin: '0 auto 28px' }} />
+              <button
+                onClick={() => { setStatus('idle'); setFirstName(''); setLastName(''); setEmail('') }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.55 }}
+              >
+                ← Use a different email
+              </button>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="lp-reveal lp-d1" style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px', margin: '0 auto' }}>
               <input

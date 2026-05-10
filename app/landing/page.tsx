@@ -847,7 +847,7 @@ export default function LandingPage() {
             when we open our doors. Be the first to know — and the first to begin.
           </p>
           {status === 'done' ? (
-            <div style={{ textAlign: 'center', padding: '8px 0' }}>
+            <div style={{ textAlign: 'center', padding: '48px 40px', background: '#fff', borderRadius: '4px', maxWidth: '400px', margin: '0 auto' }}>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--mid)', margin: '0 0 20px' }}>
                 Gracefully Redefined
               </p>

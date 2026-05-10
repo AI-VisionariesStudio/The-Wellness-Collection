@@ -22,7 +22,7 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       // Next.js requires unsafe-inline for hydration scripts
-      "script-src 'self' 'unsafe-inline' https://js.stripe.com",
+      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://connect.facebook.net",
       // Next.js uses inline styles
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       // Images: self + data URIs + HTTPS (thumbnails may be hosted anywhere)
@@ -31,7 +31,8 @@ const securityHeaders = [
       // iframes: vdoCipher player, Google Docs, Office Online, Stripe
       "frame-src 'self' https://player.vdocipher.com https://docs.google.com https://view.officeapps.live.com https://js.stripe.com https://hooks.stripe.com https://*.supabase.co",
       // API connections: vdoCipher OTP, Sentry error reporting, Vercel analytics
-      "connect-src 'self' https://dev.vdocipher.com https://*.ingest.sentry.io https://vitals.vercel-insights.com",
+      "connect-src 'self' https://dev.vdocipher.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://vitals.vercel-insights.com https://www.facebook.com https://connect.facebook.net",
+      "worker-src 'self' blob:",
       // No plugins
       "object-src 'none'",
       // Restrict base tag hijacking

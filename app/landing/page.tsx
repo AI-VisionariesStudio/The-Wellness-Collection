@@ -13,7 +13,7 @@ export default function LandingPage() {
     if (!firstName.trim() || !lastName.trim() || !email.trim()) return
     setStatus('loading')
     try {
-      const res = await fetch('/api/leads/wellness', {
+      const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: `${firstName.trim()} ${lastName.trim()}`, email: email.trim() }),

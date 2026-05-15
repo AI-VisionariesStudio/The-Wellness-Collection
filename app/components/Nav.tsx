@@ -45,6 +45,7 @@ export default function Nav() {
   ]
 
   if (pathname === '/coming-soon' || pathname === '/landing') return null
+  if (pathname.startsWith('/learn/')) return null
 
   return (
     <nav style={{ background: 'var(--bg)', padding: '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid var(--border-light)' }}>

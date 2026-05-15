@@ -70,6 +70,12 @@ export default function CourseCompanion({
     if (open && !transitioning) setTimeout(() => inputRef.current?.focus(), 50)
   }, [open, transitioning])
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') handleClose() }
+    if (open) document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
+
   const handleClose = () => {
     setMessages([])
     setTransitioning(false)
@@ -160,7 +166,7 @@ export default function CourseCompanion({
             {transitioning ? 'Connecting…' : `Lesson Companion · ${lessonTitle}`}
           </p>
         </div>
-        <button onClick={handleClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', fontSize: '20px', lineHeight: 1, padding: '4px', flexShrink: 0 }} aria-label="Close">×</button>
+        <button onClick={handleClose} style={{ background: 'var(--blush)', border: '1px solid var(--mid)', borderRadius: 'var(--radius)', cursor: 'pointer', color: 'var(--text)', fontSize: '12px', letterSpacing: '0.06em', padding: '6px 12px', flexShrink: 0, fontFamily: 'var(--font-body)' }} aria-label="Close">✕ Close</button>
       </div>
 
       {/* Countdown screen or chat */}
@@ -235,9 +241,14 @@ export default function CourseCompanion({
                 Send
               </button>
             </div>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: '8px 0 0', lineHeight: 1.5, letterSpacing: '0.01em' }}>
-              {DISCLAIMER}
-            </p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5, letterSpacing: '0.01em', flex: 1 }}>
+                {DISCLAIMER}
+              </p>
+              <button onClick={handleClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.06em', textDecoration: 'underline', flexShrink: 0, marginLeft: '12px', padding: 0 }}>
+                Close Chat
+              </button>
+            </div>
           </div>
         </>
       )}

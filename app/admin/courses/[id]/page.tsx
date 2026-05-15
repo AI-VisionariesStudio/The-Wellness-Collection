@@ -130,7 +130,7 @@ export default function AdminCourseEditorPage() {
     const res = await fetch(`/api/admin/modules`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ courseId, title: 'New Module', order: 99 })
+      body: JSON.stringify({ courseId, title: 'New Module', order: (course?.modules?.length ?? 0) + 1 })
     })
     const newModule = await res.json()
     setCourse((prev: any) => ({ ...prev, modules: [...prev.modules, { ...newModule, lessons: [] }] }))

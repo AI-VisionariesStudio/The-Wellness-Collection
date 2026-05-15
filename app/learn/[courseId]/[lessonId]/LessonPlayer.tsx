@@ -2,7 +2,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import CourseCompanion from '@/app/components/CourseCompanion'
 import ReflectionPulse from '@/app/components/ReflectionPulse'
 import VdoCipherPlayer from '@/app/components/VdoCipherPlayer'
 
@@ -114,7 +113,6 @@ export default function LessonPlayer({
   const [completed, setCompleted] = useState(initialCompleted)
   const [marking, setMarking] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [companionOpen, setCompanionOpen] = useState(false)
   const [resetting, setResetting] = useState<string | null>(null)
   const [showPrePulse, setShowPrePulse] = useState(true)
   const [showPostPulse, setShowPostPulse] = useState(false)
@@ -371,13 +369,6 @@ export default function LessonPlayer({
               </div>
               <div className="lp-actions-row">
                 <button
-                  onClick={() => setCompanionOpen(o => !o)}
-                  className="btn btn-outline"
-                  style={{ fontSize: '11px', padding: '10px 18px', letterSpacing: '0.1em', background: companionOpen ? 'var(--blush)' : undefined }}
-                >
-                  ✦ Ask AI
-                </button>
-                <button
                   onClick={markComplete}
                   disabled={completed || marking}
                   className="btn btn-primary"
@@ -468,16 +459,6 @@ export default function LessonPlayer({
           </div>
         </main>
 
-        {/* ── Course Companion — sticky right column ── */}
-        <CourseCompanion
-          courseTitle={course.title}
-          moduleTitle={moduleTitle}
-          lessonTitle={lesson.title}
-          lessonDescription={lesson.description}
-          backedResearch={lesson.backedResearch}
-          open={companionOpen}
-          onClose={() => setCompanionOpen(false)}
-        />
       </div>
 
       {/* POST Reflection Pulse — full-screen modal, triggered when video finishes */}

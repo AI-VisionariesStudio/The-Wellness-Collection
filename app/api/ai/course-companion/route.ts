@@ -16,10 +16,21 @@ function sanitize(value: string | undefined, maxLen: number, singleLine = false)
 }
 
 export async function POST(req: NextRequest) {
-  const limited = await checkRateLimit(req, 'ai-companion')
-  if (limited) return limited
+  try {
+    const limited = await checkRateLimit(req, 'ai-companion')
+    if (limited) return limited
+  } catch (err) {
+    console.error('[course-companion] Rate limit check failed:', err)
+    // Degrade gracefully — let the request through if rate limiter is down
+  }
 
-  const session = await getServerSession(authOptions)
+  let session
+  try {
+    session = await getServerSession(authOptions)
+  } catch (err) {
+    console.error('[course-companion] Session check failed:', err)
+    return NextResponse.json({ error: 'Authentication error' }, { status: 500 })
+  }
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   let body: {

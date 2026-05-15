@@ -18,10 +18,20 @@ function sanitize(value: string | undefined, maxLen: number): string {
 }
 
 export async function POST(req: NextRequest) {
-  const limited = await checkRateLimit(req, 'ai-reflection')
-  if (limited) return limited
+  try {
+    const limited = await checkRateLimit(req, 'ai-reflection')
+    if (limited) return limited
+  } catch (err) {
+    console.error('[reflection-response] Rate limit check failed:', err)
+  }
 
-  const session = await getServerSession(authOptions)
+  let session: Awaited<ReturnType<typeof getServerSession<typeof authOptions>>>
+  try {
+    session = await getServerSession(authOptions)
+  } catch (err) {
+    console.error('[reflection-response] Session check failed:', err)
+    return NextResponse.json({ error: 'Authentication error' }, { status: 500 })
+  }
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const userId = (session.user as { id: string }).id

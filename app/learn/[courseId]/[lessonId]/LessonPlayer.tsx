@@ -137,6 +137,8 @@ export default function LessonPlayer({
     router.refresh()
   }, [router])
 
+  const onVideoEnded = useCallback(() => setShowPostPulse(true), [])
+
   const markComplete = useCallback(async () => {
     if (completed || marking) return
     setMarking(true)
@@ -412,7 +414,7 @@ export default function LessonPlayer({
                   <VdoCipherPlayer
                     videoId={lesson.vdoCipherId}
                     lessonId={lesson.id}
-                    onEnded={() => setShowPostPulse(true)}
+                    onEnded={onVideoEnded}
                   />
                   {showPrePulse && !isAdmin && (
                     <div style={{ position: 'absolute', inset: 0, zIndex: 2, cursor: 'default' }} />
